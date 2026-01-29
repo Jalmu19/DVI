@@ -37,7 +37,7 @@
 
 ---
 
-### 👤 @Jalmu_19
+### 👤 @Jalmu19
 * **Rol:** 
 * **Tareas Realizadas:**
     * 
@@ -50,7 +50,7 @@
 
 | Usuario (GitHub)    | Rol             | Puntuación | Puntuación como número |
 |:--------------------|:----------------|:----------:|:----------------------:|
-| **@dev_master_99**  | Programación    |   ⭐⭐⭐⭐⭐ |           5            |
-| **@pixel_art_luna** | Arte / UI       |   ⭐⭐⭐⭐⭐ |           5            |
-| **@audio_dave**     | Audio / Diseño  |   ⭐⭐⭐⭐☆ |           4            |
-| **@lazy_coder_x**   | Programación UI |   ⭐⭐☆☆☆  |           2            |
+| **@yo262**  | Programación    |   ⭐⭐⭐⭐⭐ |           5            |
+| **@ERTUTAS** | Arte / UI       |   ⭐⭐⭐⭐⭐ |           5            |
+| **@sesils**     | Audio / Diseño  |   ⭐⭐⭐⭐☆ |           4            |
+| **@Jalmu19**   | Programación UI |   ⭐⭐☆☆☆  |           2            |
