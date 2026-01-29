@@ -1,0 +1,164 @@
+Equipo de desarrollo: 
+Programación: Chris Stamper
+Arte: Tim Stamper
+Documentación en español: Guillermo Jiménez 
+
+Última Actualización: 27/12/2024
+ 
+1	Resumen
+1.1	Descripción
+JetPac es un juego en el que tenemos que ayudar al astronauta Jetman a ensamblar las partes de su cohete y llenarlo de combustible para poder despegar hacia un nuevo planeta. Todo esto debe realizarse en medio de una lluvia de asteroides y de ataques de aliens que impedirán a Jetman realizar su trabajo. Por suerte, Jetman tiene un jetpac con el que volar y un láser con el que poder defenderse de sus enemigos.
+1.2	Género
+Arcade. Videojuego de disparos en el espacio.
+1.3	Setting
+Jetman es un cazatesoros espacial cuya misión es, como jefe de pruebas de naves de la compañía “Acme Interestelar Transport”, la de recolectar y ensamblar las partes de los transbordadores desmantelados que han sido repartidos por diferentes planetas del sistema solar. Una vez que los ha reconstruido, ha de llenarlos de combustible para despegar y viajar hasta su siguiente destino. Sin embargo, en sus misiones se encontrará con peligros y recompensas, ya que los planetas a los que viaja están llenos de tesoros, así como de aliens hostiles a los que no les gustan los intrusos. Por suerte, la compañía ha equipado a Jetman con un arma láser capaz de acabar con cualquier amenaza intergaláctica con la que se enfrente. En cada viaje, Jetman se encontrará con enemigos cada vez más peligrosos mientras que sigue con su aventura de recoger tesoros, llenar de combustible las naves y, ocasionalmente, reensamblar nuevos transbordadores.
+1.4	Características principales
+-	Mueve a Jetman usando su jetpac para reconstruir naves, llenarlas de combustible y abandonar el planeta.
+-	Esquiva y destruye enemigos mientras recoges los valiosos objetos que caen al planeta..
+-	Múltiples planetas que visitar y enemigos de los que escapar.
+-	Estilo pixelart de la vieja escuela de Spectrum, con arte principalmente monocromo (blanco y negro) y uso de colores CGA para destacar elementos de juego.
+2	Gameplay
+2.1	Objetivo del juego
+El objetivo del juego es recorrer todos los planetas y conseguir la máxima puntuación recogiendo objetos que aparecen en cada planeta. 
+Dentro de cada planeta, el objetivo es sobrevivir a los enemigos mientras reconstruimos la nave y la llenamos de combustible para poder viajar al siguiente planeta. 
+El juego termina si hemos completado todos los planetas o si el jugador muere a manos de los enemigos. La puntuación obtenida se usará para actualizar la puntuación máxima.
+2.2	Core loops
+Mientras el jugador está en un planeta, el core loop es el siguiente:
+1.	Reconstruir la nave (solo en uno de cada 4 niveles).
+2.	Llenar la nave de combustible.
+3.	Viajar al siguiente planeta/nivel.
+Dentro del core loop principal de juego se pueden incluir las acciones de matar enemigos y recoger objetos para mejorar la puntuación, con el objetivo de superar la puntuación máxima.
+  
+
+3	Mecánicas
+3.1	Movimiento horizontal
+El jugador se encarga de mover a Jetman, el astronauta. Cuando está en el suelo o sobre una plataforma, Jetman se mueve andando a izquierda y derecha a una velocidad constante. Cada planeta es toroidal, lo que significa que cuando Jetman llega al límite derecho de la pantalla reaparece por el izquierdo y viceversa.
+Parámetros:
+●	Velocidad horizontal: Velocidad (m/s) a la que se mueve Jetman mientras está en el suelo o en el aire.
+ 
+3.3	Propulsión
+Jetman también dispone de un jetpac que le propulsa hacia arriba. Mientras se mantiene pulsado el botón de propulsión, el jugador incrementa su velocidad vertical hasta alcanzar la velocidad máxima de ascensión. Mientras está en el aire, se puede mover también en horizontal con la misma velocidad que cuando está andando. El movimiento se detiene si choca contra una plataforma o contra el límite superior de la pantalla. 
+Si el jugador deja de pulsar el botón de propulsión, cae simulando una fuerza gravitatoria. Durante el movimiento descendente se puede seguir moviendo en horizontal de la misma forma en la que se mueve durante la propulsión.
+Parámetros:
+●	Fuerza de Propulsión: tiempo (s) que tarda Jetman en conseguir la velocidad máxima de ascensión cuando se pulsa el botón de propulsión.
+●	Velocidad máxima de ascensión: velocidad (m/s) máxima a la que se puede mover Jetman hacia arriba.
+●	Gravedad: tiempo (s) que tarda en alcanzar la velocidad máxima de caída.
+●	Velocidad máxima de caída: velocidad (m/s) máxima a la que se puede mover Jetman hacia abajo una vez que se ha dejado de pulsar el botón de propulsión.
+3.4	Disparo
+Jetman dispone de un láser con el que dispara a los enemigos. Cuando el jugador pulsa el botón de disparo, aparece un rayo láser en la dirección en la que mira Jetman. El láser llega hasta una determinada distancia y desaparece. Al igual que Jetman, el láser puede salir por un lado de la pantalla y aparecer por el otro lado. Si se mantiene pulsado, no aparece un nuevo láser hasta que el que se ha disparado ha desaparecido. Sin embargo, se pueden disparar todos los lásers que se quiera pulsando múltiples veces el botón de disparo.
+Cuando un láser choca contra una plataforma o contra un enemigo, se destruye. Si el láser choca contra un enemigo, lo matará y proporcionará puntos.
+Parámetros
+●	Distancia máxima: distancia (m) que recorre el láser antes de destruirse
+●	Velocidad: tiempo (s) que tarda el láser en recorrer la distancia máxima.
+3.5	Reconstrucción de la nave
+En 1 de cada 4 planetas, la nave que ha de usar Jetman para salir del planeta aparece desmontada. Por tanto, la primera tarea a realizar es reconstruirla. La nave se compone de 3 piezas que se apilan en vertical. La pieza inferior siempre aparece en el suelo del planeta, en una posición fija. Las otras dos piezas aparecen en dos de las 3 plataformas del planeta. Cada pieza de la nave es de 1m x 1m. 
+
+Para reconstruir la nave es necesario recoger cada pieza individualmente y montarla en la nave:
+●	Recoger piezas. Si Jetman pasa por encima de una pieza y no lleva ninguna otra pieza, dicha pieza es recogida y se mueve junto con Jetman.
+●	Montar pieza en la nave: Si Jetman pasa por encima de la vertical de la nave (donde se sitúa la pieza inferior de la nave) entonces deja caer la pieza. Cuando la pieza soltada llega a la nave, se apila sobre las piezas que ya existiesen. Si es necesario, la pieza se alinea con las piezas que ya hubiese antes cuando cae. Si el jugador no está volando entonces la pieza se coloca directamente sobre el resto de piezas al pasar sobre la nave.
+Parámetros:
+●	Posición de la pieza inferior: coordenada horizontal en la que se sitúa la pieza inferior (la coordenada vertical viene fijada por la posición del suelo).
+●	Velocidad de caída: velocidad (m/s) a la que cae una pieza.
+●	Área de reconstrucción: distancia a izquierda y derecha (en m) desde el centro de la pieza inferior para definir el área de reconstrucción. Este área sirve para que cuando Jetman atraviese ese área, la pieza se alinea con la pieza inferior y se deja caer automáticamente sobre la nave.
+3.6	Combustible
+Una vez que la nave esté completa, será necesario llenarla de combustible para poder completar el nivel y salir del planeta. La carga de combustible es similar a la Reconstrucción de la nave y consiste en recoger las cargas de combustible del escenario y dejarlas en la nave. Cada elemento de combustible es de 1m x 1m.
+Una nave tiene un número de cargas de combustible necesarias para llenarla completamente de combustible. Cuando la nave está reconstruida, caerá una carga de combustible desde una posición aleatoria en la parte superior de la pantalla. Solo habrá una carga de combustible en la escena por lo que no aparecerá otra carga de combustible hasta que no se haya dejado en la nave.
+Cada vez que se deja una carga de combustible en la nave, ésta cambiará de color para indicar cuántas cargas de combustible tiene y cuántas le faltan por recargar. 
+Parámetros
+●	Número de cargas de combustible: cuántas veces hay que recoger combustible y llenar la nave para poder completar el nivel
+●	El resto de parámetros son los mismos que los de la Reconstrucción de la nave.
+3.7	Salir del planeta
+Una vez que la nave está llena de combustible, Jetman tendrá que dirigirse a la base de la nave para completar el nivel del planeta. En ese momento, el jugador desaparecerá y la nave despegará. Una vez que sale por la parte superior de la pantalla, se cargará un nuevo nivel/planeta. Dependiendo de qué nivel se trate, al cargar el nivel aparecerán las piezas de la nave para reconstruirla o aparecerá una nave que aterrizará en el planeta y aparecerá Jetman. 
+3.8	Recoger objetos
+Cuando Jetman pasa por encima de un objeto, lo recoge. Esto implica que el objeto desaparece y suma un determinado número de puntos a la puntuación del jugador (ver la sección Objetos y Sistema de puntuación).
+3.9	Sistema de vida
+El jugador inicia la partida con un determinado número de vidas. Cada vez que un enemigo colisiona con el jugador, éste pierde una vida y se reinicia el nivel, de modo que el jugador vuelve a su posición inicial y se eliminan todos los enemigos del nivel. El estado de la nave y del combustible se conservan.
+Una vez que el jugador pierde todas las vidas, la partida se termina y se vuelve al menú de inicio.
+Parámetros:
+●	Número de vidas: Número de vidas con las que empieza el jugador una partida.
+3.10	Sistema de puntuación
+El jugador comienza el primer nivel con 0 puntos. El jugador gana puntos por:
+1.	Recoger una pieza de la nave.
+2.	Recoger combustible.
+3.	Recoger un objeto. Cada objeto proporciona una puntuación diferente (ver Objetos).
+4.	Matar a un enemigo con el Disparo. Cada enemigo proporciona una puntuación diferente (ver enemigos).
+La puntuación se pasa de un nivel al siguiente. Al terminar la partida, la puntuación máxima es actualizada con la puntuación conseguida por el jugador en la última partida.
+Parámetros:
+●	Puntos por recoger una pieza de la nave
+●	Puntos por recoger combustible.
+4	Interfaz
+4.1	Controles
+Los controles del juego son los siguientes:
+●	Izquierda / Derecha: Mueve a Jetman a izquierda y derecha tanto en el suelo como en el aire (ver sección Movimiento Horizontal)
+●	Propulsión: Mientras se mantiene pulsado, propulsa a Jetman hacia arriba  (ver sección Propulsión)
+●	Disparo: Mientras se mantiene pulsado, dispara un láser.
+Estos controles se pueden manejar usando:
+1.	Teclas 1: Cursores para Izquierda/derecha y Propulsión + Space para disparo
+2.	Teclas 2: ADW para Izquierda/derecha y Propulsión + Space para disparo
+3.	XBox controller: Joystick izquierdo o Joypad para Izquierda/derecha y Propulsión + botón A para disparo
+ 
+4.2	Cámara
+La cámara es fija y muestra todo el nivel de juego (el planeta actual). 
+4.3	HUD
+El HUD contiene información sobre:
+-	El número de vidas que les quedan al jugador.
+-	La puntuación actual del jugador
+-	La puntuación más alta
+4.4	Menús
+El juego solo tiene un menú principal que contiene las opciones para seleccionar los controles y la opción de comenzar el juego. Así mismo. presenta la última puntuación del jugador y la puntuación más alta. 
+NOTA SOBRE EL EJEMPLO: Ignoramos la opción multijugador
+ 
+ 
+5	Mundo del juego
+5.1	Personajes
+5.1.1	Jetman
+Jetman es el protagonista del juego y es la representación del jugador dentro del juego. Su comportamiento se describe en la sección de mecánicas. Las dimensiones de Jetman son de 1m x 2m (ancho x alto).
+5.1.2	Enemigos
+Dentro del juego hay varios tipos de enemigos que pueden matar al jugador. Todos tienen un conjunto de comportamientos comunes:
+-	Si un enemigo colisiona con el jugador, le quita una vida (ver Sistema de vida)
+-	Si el láser colisiona con el enemigo, lo elimina (ver Disparo) y aumenta la puntuación del jugador. Cada enemigo da una puntuación diferente.
+-	Los enemigos aparecen en posiciones aleatorias al comenzar cada nivel. Al igual que Jetman, se mueven de acuerdo a la configuración toroidal de los planetas (cuando llegan al límite derecho de la pantalla reaparece por el izquierdo y viceversa).
+A continuación se describen las particularidades de cada tipo de enemigo del juego.
+5.1.2.1	Meteorito
+Se mueve en línea recta, en un ángulo descendente. Si  colisiona con las plataformas o el suelo del nivel se destruye (pero no da puntos al jugador). El ángulo con el que cae es aleatorio para cada meteorito.
+Parámetros:
+●	Ángulo inicial: Ángulo con el que se inicia el movimiento del meteorito. Para garantizar que el ángulo sea descendente, su valor ha de estar en el rango (0, 180), donde 0º representa una dirección hacia la derecha de la pantalla y el desplazamiento es en sentido horario (visto como un reloj, 0º mira a las 3, 90º mira a las 6 y 180º mira a las 9.
+●	Velocidad: Velocidad (m/s) a la que se mueve.
+●	Puntos: número de puntos que se otorga al ser disparado por el jugador.
+5.1.2.2	Peluso
+Se mueve en línea recta y rebota contra el suelo, las plataformas y la parte superior de la pantalla. Siempre aparecen en el límite izquierdo o derecho de la pantalla, con un ángulo de +/- 45º
+Parámetros:
+●	Ángulo inicial: Ángulo con el que se inicia el movimiento del meteorito. Puede ser +/-45º, donde + hace referencia al sentido horario y - hace referencia al sentido antihorario.
+●	Velocidad: Velocidad (m/s) a la que se mueve.
+●	Puntos: número de puntos que se otorga al ser disparado por el jugador.
+5.1.2.3	Burbuja
+Se mueve igual que el peluso pero en cualquier momento comenzar a moverse en horizontal. Pasado un tiempo, vuelve a cambiar a un movimiento diagonal sin cambiar el sentido en el que se estaba moviendo.
+Parámetros:
+●	Ángulo inicial: Ángulo con el que se inicia el movimiento del meteorito. Puede ser +/-45º, donde + hace referencia al sentido horario y - hace referencia al sentido antihorario.
+●	Velocidad: Velocidad (m/s) a la que se mueve.
+●	Puntos: número de puntos que se otorga al ser disparado por el jugador.
+NOTA SOBRE EL EJEMPLO: Hay más tipos de enemigos pero con estos nos bastan como ejemplo
+5.2	Objetos
+Los objetos aparecen con una frecuencia aleatoria en una posición aleatoria de la parte superior de la pantalla, cayendo hasta que se colocan sobre el suelo o sobre una plataforma. Todos los objetos tienen unas dimensiones de 1m x 1m. Existen distintos tipos de objetos, cada uno de los cuales da una puntuación diferente. A continuación se muestran los objetos y sus puntuaciones.
+Nombre	Oro	Diamante	Compuesto raro
+Puntos	100	200	500
+Aspecto	 	 	 
+
+5.3	Niveles
+Todos los niveles son iguales. Un planeta es un mundo toroidal con un suelo y 3 plataformas que siempre se sitúan en las mismas coordenadas.
+Si tomamos como referencia las dimensiones en píxeles de una pantalla de Spectrum, entonces el planeta tiene un tamaño de 256x192 píxeles (ancho x alto). Si consideramos que 16px = 1m entonces tenemos que un planeta tiene 16m de ancho y 12m de alto.
+En algunos planetas, el aspecto de la nave que ha de reconstruir Jetman es distinto. Sin embargo, todas se componen del mismo número de bloques de ensamblado.
+6	Estética y contenido
+NOTA SOBRE EL EJEMPLO: Me salto esta parte 
+7	Experiencia de juego
+TODO
+8	Producción
+8.1	Planificación (roadmap)
+TODO
+9	Referencias
+Estas son las referencias usadas para entender este documento. En realidad, deberían ser referencias a otros videojuegos que inspiran el diseño.
+●	https://archive.org/details/zx_Jetpac_1983_Ultimate_Play_The_Game_16K
+●	https://www.youtube.com/watch?v=9Hy29KoBnGY
+●	https://en.wikipedia.org/wiki/Jetpac
+●	https://es.wikipedia.org/wiki/Jetpac
+
