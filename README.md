@@ -1,5 +1,4 @@
-# GDD
-(NOMBRE DEL JUEGO)
+# GDD (NOMBRE DEL JUEGO)
 
 #### Equipo de desarrollo:
 - Cecilia Martínez Rodado
