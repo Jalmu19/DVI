@@ -1,8 +1,8 @@
 {
-    "name": "plantillaphaser",
+    "name": "Enchantments",
     "version": "1.0.0",
     "main": "./main.js",
-    "description": "Plantilla para juegos con Phaser",
+    "description": "Juego de DVI",
     "scripts": {
         "build:win": "npm run electron && npx electron-builder --win --config",
         "build:mac": "npm run electron && npx electron-builder --mac --config",
@@ -13,15 +13,20 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/cleongh/plantillaphaser.git"
+        "url": "git+https://github.com/Jalmu19/DVI.git"
     },
     "keywords": [],
-    "author": "Carlos León <cleon@ucm.es>",
+    "contributors": [
+        "Cecilia Martinez Rodado <cecili03@ucm.es>", 
+        "Abel Fáfula Domínguez <abfafula@ucm.es>", 
+        "Almudena García Navas <almude12@ucm.es>",
+        "Irene Rodríguez San Martín <irodri15@ucm.es>"
+    ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/cleongh/plantillaphaser/issues"
+        "url": "https://github.com/Jalmu19/DVI/issues"
     },
-    "homepage": "https://github.com/cleongh/plantillaphaser#readme",
+    "homepage": "https://github.com/Jalmu19/DVI#readme",
     "type": "module",
     "devDependencies": {
         "electron": "^34.0.1",
