@@ -4,7 +4,7 @@ import Phaser from 'phaser';
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
  * También almacena la puntuación o número de estrellas que ha recogido hasta el momento.
  */
-export default class Player extends Phaser.GameObjects.Sprite {
+export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     /**
      * Constructor del jugador
@@ -21,10 +21,15 @@ export default class Player extends Phaser.GameObjects.Sprite {
         // Queremos que el jugador no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
         this.speed = 300;
-        this.jumpSpeed = -400;
         // Esta label es la UI en la que pondremos la puntuación del jugador
         this.label = this.scene.add.text(10, 10, "", { fontSize: 20 });
-        this.cursors = this.scene.input.keyboard.createCursorKeys();
+        this.cursors = this.scene.input.keyboard.addKeys({
+            up: Phaser.Input.Keyboard.KeyCodes.W,
+            down: Phaser.Input.Keyboard.KeyCodes.S,
+            left: Phaser.Input.Keyboard.KeyCodes.A,
+            right: Phaser.Input.Keyboard.KeyCodes.D,
+            interact: Phaser.Input.Keyboard.KeyCodes.E
+        });
         this.updateScore();
     }
 
@@ -52,18 +57,21 @@ export default class Player extends Phaser.GameObjects.Sprite {
      */
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
-        if (this.cursors.up.isDown && this.body.onFloor()) {
-            this.body.setVelocityY(this.jumpSpeed);
+
+        this.body.setVelocity(0);
+
+        if (this.cursors.up.isDown) {
+            this.body.setVelocityY(-this.speed);
         }
         if (this.cursors.left.isDown) {
             this.body.setVelocityX(-this.speed);
         }
-        else if (this.cursors.right.isDown) {
+        if (this.cursors.right.isDown) {
             this.body.setVelocityX(this.speed);
         }
-        else {
-            this.body.setVelocityX(0);
-        }
+        if(this.cursors.down.isDown){
+            this.body.setVelocityY(this.speed);
+        }   
     }
 
 }
