@@ -1,5 +1,5 @@
 import Platform from './platform.js';
-import Player from './player.js';
+import Player from './game-objects/player/player.js';
 import Phaser from 'phaser';
 
 
