@@ -23,6 +23,7 @@ export default class Level extends Phaser.Scene {
      * Creación de los elementos de la escena principal de juego
      */
     create() {
+
         this.stars = 10;
         this.bases = this.add.group();
         this.player = new Player(this, 200, 300);
@@ -61,4 +62,6 @@ export default class Level extends Phaser.Scene {
 
         }
     }
+
+    
 }

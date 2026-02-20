@@ -31,6 +31,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             interact: Phaser.Input.Keyboard.KeyCodes.E
         });
         this.updateScore();
+        
+        this.scene.input.mouse.disableContextMenu();
+        this.scene.input.on('pointerdown', pointer => {
+            if(pointer.rightButtonDown()) console.log("CLICK");
+        })
     }
 
     /**
