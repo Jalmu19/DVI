@@ -32,9 +32,24 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         });
         this.updateScore();
         
+       
+        this.varita = scene.add.image(x + 10, y, 'palo');
+        this.varita.visible = false;
         this.scene.input.mouse.disableContextMenu();
         this.scene.input.on('pointerdown', pointer => {
-            if(pointer.rightButtonDown()) console.log("CLICK");
+            if(pointer.isDown){
+                if(pointer.rightButtonDown()) {
+                    this.varita = scene.add.image(x + 10, y, 'palo');
+                    this.varita.setActive(true).setVisible(true);
+                }
+                if(pointer.leftButtonDown()) console.log("DISPARA");
+            }  
+        })
+        this.scene.input.on('pointerup', pointer => {
+            if(pointer.rightButtonReleased()) {
+                
+                this.varita.setActive(false).setVisible(false);
+            }
         })
     }
 
