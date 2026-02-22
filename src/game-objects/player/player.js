@@ -39,16 +39,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.input.on('pointerdown', pointer => {
             if(pointer.isDown){
                 if(pointer.rightButtonDown()) {
-                    this.varita = scene.add.image(x + 10, y, 'palo');
                     this.varita.setActive(true).setVisible(true);
+                    if(pointer.leftButtonDown()) console.log("DISPARA");
                 }
-                if(pointer.leftButtonDown()) console.log("DISPARA");
             }  
         })
         this.scene.input.on('pointerup', pointer => {
             if(pointer.rightButtonReleased()) {
-                
                 this.varita.setActive(false).setVisible(false);
+                console.log("SUELTA");
             }
         })
     }
