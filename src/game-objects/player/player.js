@@ -25,7 +25,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.speed = 300;
         // Esta label es la UI en la que pondremos la puntuación del jugador
         this.label = this.scene.add.text(10, 10, "", { fontSize: 20 });
-        this.health = new Health();
+        this.health = new Health(scene);
         this.weapon = new Staff(scene, this);
         this.cursors = this.scene.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -44,6 +44,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     point() {
         this.score++;
         this.updateScore();
+    }
+
+    takeDamage(dmg) {
+        this.health.takeDamage(dmg);
     }
 
     /**
