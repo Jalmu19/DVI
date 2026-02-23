@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Staff from '../items/staffs-wands/staff';
+import Health from '../health';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
@@ -24,6 +25,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.speed = 300;
         // Esta label es la UI en la que pondremos la puntuación del jugador
         this.label = this.scene.add.text(10, 10, "", { fontSize: 20 });
+        this.health = new Health();
         this.weapon = new Staff(scene, this);
         this.cursors = this.scene.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
