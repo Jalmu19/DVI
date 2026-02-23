@@ -1,5 +1,6 @@
 import Platform from './platform.js';
 import Player from './game-objects/player/player.js';
+import Spike from './game-objects/enemy/spike.js';
 import Phaser from 'phaser';
 
 
@@ -23,12 +24,11 @@ export default class Level extends Phaser.Scene {
      * Creación de los elementos de la escena principal de juego
      */
     create() {
-        this.palo = this.add.image(200, 300, 'palo');
-        this.palo.visible = false;
         this.stars = 10;
         this.bases = this.add.group();
         this.player = new Player(this, 200, 300);
 
+        new Spike(this, 400, 300);
         new Platform(this, this.player, this.bases, 150, 350);
         new Platform(this, this.player, this.bases, 850, 350);
         new Platform(this, this.player, this.bases, 500, 200);
@@ -63,6 +63,4 @@ export default class Level extends Phaser.Scene {
 
         }
     }
-
-    
 }
