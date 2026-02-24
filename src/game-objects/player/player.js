@@ -20,13 +20,18 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
+        //cambiar hitbox
+        this.body.setSize(14,20).setOffset(9,8);
         // Queremos que el jugador no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
         this.speed = 300;
+        this.health = new Health(scene, this);
+        this.weapon = new Staff(scene, this);
+        this.invincible = false;
+        
         // Esta label es la UI en la que pondremos la puntuación del jugador
         this.label = this.scene.add.text(10, 10, "", { fontSize: 20 });
-        this.health = new Health(scene);
-        this.weapon = new Staff(scene, this);
+        
         this.cursors = this.scene.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
             down: Phaser.Input.Keyboard.KeyCodes.S,
@@ -46,8 +51,29 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.updateScore();
     }
 
+    /**
+     * Un enemigo ha dado al jugador, entonces en la clase de Health
+     * se baja la vida acorde al dmg y se le dan unos i-frames
+     */
     takeDamage(dmg) {
         this.health.takeDamage(dmg);
+        this.invincible = true;
+        this.setTint(0x1abc9c);
+        this.scene.time.addEvent({
+            delay: 1000,
+            callback: () => {
+                this.invincible = false;
+                this.clearTint();
+            }
+        })
+    }
+
+    /**
+     * Funcion que mueve al personaje cuando le dan
+     */
+    knockBack() {
+        this.setVelocityX(600);
+        this.setVelocityY(-300);
     }
 
     /**
