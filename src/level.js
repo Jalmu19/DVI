@@ -1,6 +1,7 @@
 import Platform from './platform.js';
 import Player from './game-objects/player/player.js';
 import Spike from './game-objects/enemy/spike.js';
+import Shoots from './game-objects/spells/shoots.js';
 import Phaser from 'phaser';
 
 
@@ -28,6 +29,11 @@ export default class Level extends Phaser.Scene {
         this.bases = this.add.group();
         this.player = new Player(this, 200, 300);
         
+        this.shoots = this.add.existing(new Shoots(this.physics.world, this, { name: 'shoots' }));
+        this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
+        this.player.actual_enchantment = this.shoots;
+        
+
         new Spike(this, 400, 300);
         new Platform(this, this.player, this.bases, 150, 350);
         new Platform(this, this.player, this.bases, 850, 350);

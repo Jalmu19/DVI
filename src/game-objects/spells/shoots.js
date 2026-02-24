@@ -1,17 +1,19 @@
-class Shoots extends Phaser.Physics.Arcade.Group{
-    constructor(scene, config){
-        super(scene,
-            {classType: Bullet, createCallback: Bullets.prototype.onCreate}
+import Shoot from "./shoot";
+
+export default class Shoots extends Phaser.Physics.Arcade.Group{
+    constructor(world, scene, config){
+        super(world, scene,
+            {...config, classType: Shoot, createCallback: Shoot.prototype.onCreate}
         );
     }
 
     fire(x, y, vx, vy){
-        const bullet = this.getFirst.Dead(false);
+        const shoot = this.getFirstDead(false);
 
-        if(bullet) bullet.fire(x, y, vx, vy);
+        if(shoot) shoot.fire(x, y, vx, vy);
     }
 
-    onCreate(bullet){
-        bullet.onCreate();
+    onCreate(shoot){
+        shoot.onCreate();
     }
 }

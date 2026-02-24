@@ -29,6 +29,22 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.weapon = new Staff(scene, this);
         this.invincible = false;
         
+        this.actual_enchantment = null;
+        this.scene.input.on('pointerdown', (pointer) => {
+            // 1. Longitud del palo (ajusta este número según el largo de tu sprite)
+            const longitudPalo = 16; 
+
+            // 2. Calculamos la punta del palo usando el ángulo actual
+            const spawnX = this.x + Math.cos(this.weapon.rotation) * longitudPalo;
+            const spawnY = this.y + Math.sin(this.weapon.rotation) * longitudPalo;
+
+            // 3. Definimos la velocidad (vector) del hechizo
+            const velocidad = 100;
+            const vx = Math.cos(this.weapon.rotation) * velocidad;
+            const vy = Math.sin(this.weapon.rotation) * velocidad;
+            if(pointer.rightButtonDown() && pointer.leftButtonDown()) this.lanzarHechizo(spawnX, spawnY, vx, vy);
+        });
+
         // Esta label es la UI en la que pondremos la puntuación del jugador
         this.label = this.scene.add.text(10, 10, "", { fontSize: 20 });
         
@@ -40,6 +56,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             interact: Phaser.Input.Keyboard.KeyCodes.E
         });
         this.updateScore();
+    }
+
+    lanzarHechizo(x, y, vx, vy) {
+        // Usamos la referencia que le pasamos en la escena
+        if (this.actual_enchantment) {
+            this.actual_enchantment.fire(x, y, vx, vy);
+        }
     }
 
     /**

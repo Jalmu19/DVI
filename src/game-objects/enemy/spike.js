@@ -14,6 +14,8 @@ export default class Spike extends Phaser.GameObjects.Sprite {
         //cambiar hitbox
         this.body.setSize(50,60).setOffset(77.5,97.5);
         this.dmgGiven = 0.5;
+
+        
     }
 
     preUpdate(t,dt) {
