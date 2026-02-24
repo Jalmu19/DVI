@@ -11,6 +11,8 @@ export default class Spike extends Phaser.GameObjects.Sprite {
         this.setScale(0.25);
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this, true);
+        //cambiar hitbox
+        this.body.setSize(50,60).setOffset(77.5,97.5);
         this.dmgGiven = 0.5;
     }
 
