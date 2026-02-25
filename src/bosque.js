@@ -2,22 +2,16 @@ import Phaser from "phaser";
 import Player from './game-objects/player/player.js'
 
 
-import mIre from './assets/entrada-mazmorra-bosque.json' 
-
 export default class Bosque extends Phaser.Scene{
 
     constructor(){
         super({key:'bosque'});
     }
 
-    preload(){
-        //this.load.image('base', base)
-        this.load.tilemapTiledJSON('mapaIrene', mIre);
-
-    }
+  
 
     create(){
-        var map = this.make.tilemap({key : 'puebloIni'});
+        var map = this.make.tilemap({key : 'mapa'});
 
         var img1 = map.addTilesetImage('Casa', 'casa');
         var img2 = map.addTilesetImage('Villa1', 'plantilla');
@@ -47,6 +41,15 @@ export default class Bosque extends Phaser.Scene{
     cambiarScene(){
         if(this.player.x > 500)
             this.scene.start('end');
+
+        this.player = new Player(this,150,100);
+        //limites de camara
+        //this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
+        /*this.cameras.main.startFollow(this.player);
+        //colision suelo-player
+        this.physics.add.collider(this.player,arboles);
+        this.physics.add.collider(this.player, casas);*/
+
     }
 
 }
