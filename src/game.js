@@ -1,7 +1,7 @@
 import Boot from './boot.js';
 import End from './end.js';
 import Level from './level.js';
-import Bosque from './bosque.jss'
+import Bosque from './bosque.js'
 import Phaser from 'phaser';
 
 /**
