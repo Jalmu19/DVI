@@ -1,6 +1,7 @@
 import Boot from './boot.js';
 import End from './end.js';
 import Level from './level.js';
+import Bosque from './bosque.js'
 import Phaser from 'phaser';
 
 /**
@@ -17,11 +18,11 @@ let config = {
         autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
     pixelArt: true,
-    scene: [Boot, Level, End],
+    scene: [Boot, Bosque, Level, End],
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 400 },
+            //gravity: { y: 400 },
             debug: false
         }
     }

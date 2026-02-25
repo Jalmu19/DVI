@@ -1,10 +1,17 @@
 import Phaser from 'phaser'
 
 
-import platform from '../assets/sprites/platform.png'
-import base from '../assets/sprites/base.png'
-import star from '../assets/sprites/star.png'
-import player from '../assets/sprites/player.png'
+import villa from './assets/villa1.png'
+import casa from './assets/casaAzul.png'
+import cNaranj from './assets/casaNaranja.png'
+import cGrande from './assets/casaGrande.png'
+import pozo from './assets/pozo.png'
+import arbol from './assets/arbol.png'
+import flor from './assets/florAmarilla.png'
+import player from './assets/kirbo.png'
+
+import mapa from './assets/mapaVilla.json'
+
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
  * Esta escena se puede mejorar añadiendo una imagen del juego y una 
@@ -26,17 +33,25 @@ export default class Boot extends Phaser.Scene {
   preload() {
     // Con setPath podemos establecer el prefijo que se añadirá a todos los load que aparecen a continuación
     //this.load.setPath('assets/sprites/');
-    this.load.image('platform', platform);
-    this.load.image('base', base);
-    this.load.image('star', star);
+    this.load.image('casa', casa);
+    this.load.image('plantilla', villa);
+    this.load.image('naranja', cNaranj);
+    this.load.image('grande', cGrande);
+    this.load.image('arbol', arbol);
+    this.load.image('pozo', pozo);
+    this.load.image('flor', flor);
+
+    this.load.tilemapTiledJSON('puebloIni', mapa);
     this.load.image('player', player);
+
+   
   }
 
   /**
    * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
    * nivel del juego
    */
-  create() {
-    this.scene.start('level');
-  }
+    create() {    
+      this.scene.start('bosque');
+    }
 }
