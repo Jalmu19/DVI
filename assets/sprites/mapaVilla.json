@@ -129,9 +129,31 @@
          "width":20,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":8,
+         "name":"Salidas",
+         "objects":[
+                {
+                 "height":14.1716887638945,
+                 "id":12,
+                 "name":"",
+                 "rotation":359.760054973413,
+                 "type":"",
+                 "visible":true,
+                 "width":54.1020874268327,
+                 "x":132.677052118436,
+                 "y":2.02290317807189
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":6,
- "nextobjectid":12,
+ "nextlayerid":9,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -140,7 +162,7 @@
         {
          "columns":25,
          "firstgid":1,
-         "image":"villa1.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/villa1.png",
          "imageheight":400,
          "imagewidth":400,
          "margin":0,
@@ -153,7 +175,7 @@
         {
          "columns":5,
          "firstgid":626,
-         "image":"casaAzul.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaAzul.png",
          "imageheight":112,
          "imagewidth":80,
          "margin":0,
@@ -166,7 +188,7 @@
         {
          "columns":8,
          "firstgid":661,
-         "image":"TILESET VILLAGE TOP DOWN\/HOUSE 2 - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/HOUSE 2 - DAY.png",
          "imageheight":112,
          "imagewidth":128,
          "margin":0,
@@ -179,7 +201,7 @@
         {
          "columns":2,
          "firstgid":717,
-         "image":"pozo.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/pozo.png",
          "imageheight":48,
          "imagewidth":32,
          "margin":0,
@@ -192,7 +214,7 @@
         {
          "columns":8,
          "firstgid":723,
-         "image":"casaGrande.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaGrande.png",
          "imageheight":112,
          "imagewidth":128,
          "margin":0,
@@ -205,7 +227,7 @@
         {
          "columns":3,
          "firstgid":779,
-         "image":"arbol.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/arbol.png",
          "imageheight":48,
          "imagewidth":48,
          "margin":0,
@@ -218,7 +240,7 @@
         {
          "columns":1,
          "firstgid":788,
-         "image":"GRASS DETAIL 2 - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/GRASS DETAIL 2 - DAY.png",
          "imageheight":16,
          "imagewidth":16,
          "margin":0,
