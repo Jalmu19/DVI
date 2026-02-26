@@ -70,16 +70,21 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     takeDamage(dmg,enemyX,enemyY) {
         if(!this.invincible) {
             this.health.reduceHealth(dmg);
-            this.invincible = true;
-            this.setTint(0x1abc9c);
-            this.knockBack(enemyX, enemyY);
-            this.scene.time.addEvent({
-                delay: 1000,
-                callback: () => {
-                this.invincible = false;
-                this.clearTint();
-                }
-            })
+            if(!this.health.isDead()) {
+                this.invincible = true;
+                this.setTint(0x1abc9c);
+                this.knockBack(enemyX, enemyY);
+                this.scene.time.addEvent({
+                    delay: 1000,
+                    callback: () => {
+                    this.invincible = false;
+                    this.clearTint();
+                    }
+                })
+            }
+            else {
+                this.scene.dies();
+            }
         }
     }
 

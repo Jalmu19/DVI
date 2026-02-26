@@ -53,6 +53,10 @@ export default class Level extends Phaser.Scene {
         Phaser.Math.RND.pick(from || this.bases.children.entries).spawn();
     }
 
+    dies() {
+        this.scene.start('game-over');
+    }
+
     /**
      * Método que se ejecuta al coger una estrella. Se pasa la base
      * sobre la que estaba la estrella cogida para evitar repeticiones
