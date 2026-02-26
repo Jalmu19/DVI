@@ -17,7 +17,7 @@ export default class Staff extends Phaser.GameObjects.Sprite {
             if(pointer.isDown){
                 if(pointer.rightButtonDown()) {
                     this.setActive(true).setVisible(true);
-                    if(pointer.leftButtonDown()) console.log("DISPARA");
+                    if(pointer.leftButtonDown()) this.player.lanzarHechizo(this.x,this.y, this.rotation);
                 }
             }  
         })
@@ -34,6 +34,6 @@ export default class Staff extends Phaser.GameObjects.Sprite {
         this.x = this.player.x - 7;
         this.y = this.player.y + 7.5;
         const pointer = this.scene.input.activePointer;
-        this.rotation = Phaser.Math.Angle.Between(this.x,this.y - 1, pointer.x, pointer.y);
+        this.rotation = Phaser.Math.Angle.Between(this.x, this.y, pointer.worldX, pointer.worldY) + Phaser.Math.DegToRad(45);
     }
 }
