@@ -9,8 +9,7 @@ export default class Staff extends Phaser.GameObjects.Sprite {
         super(scene, 0, 0, 'palo');
         this.scene.add.existing(this);
         this.setVisible(false);
-        //this.setOrigin(0,1)
-        //this.setAngle(-60);
+        this.setOrigin(0.375,0.625)
         this.player = player;
         this.scene.input.mouse.disableContextMenu();
         this.scene.input.on('pointerdown', pointer => {
@@ -31,9 +30,9 @@ export default class Staff extends Phaser.GameObjects.Sprite {
 
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
-        this.x = this.player.x - 7;
-        this.y = this.player.y + 7.5;
+        this.x = this.player.x - 5.5;
+        this.y = this.player.y + 6;
         const pointer = this.scene.input.activePointer;
-        this.rotation = Phaser.Math.Angle.Between(this.x,this.y, pointer.worldX, pointer.worldY) + Phaser.Math.DegToRad(45);
-
+        this.rotation = Phaser.Math.Angle.Between(this.x, this.y, pointer.worldX, pointer.worldY) + Phaser.Math.DegToRad(45);
+    }
 }
