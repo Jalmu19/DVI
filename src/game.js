@@ -23,7 +23,10 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
+<<<<<<< HEAD
             //gravity: { y: 400 },
+=======
+>>>>>>> 39eb570badf4ab83a7cf397197de0c50dbe85aa4
             debug: false
         }
     }
