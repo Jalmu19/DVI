@@ -14,7 +14,7 @@ Enchantments es un juego en el que el jugador será una maga aspirante a ser la 
  ### 1.2 Género
 Acción-Aventura
  ### 1.3 Setting
- [Personaje] es una maga que tras descubrir un pasado mágico que tu familia te ha estado ocultando todo este tiempo decide salir para explorar más territorio a parte del bosque en el que vive. En el camino, una rata mágica le roba el mapa y tras recuperarlo decide ir a la [ciudad] . Allí descubrirá la liga mágica, un lugar donde los mejores magos y brujas se baten en duelo para ser la mejor de la región y alcanzar la gloria eterna, es entonces cuando descubre que ese era su destino todo este tiempo. Explorando las diversas zonas de la región,  [Personaje] aprenderá los hechizos más poderosos para poder hacer frente a la liga y cumplir así con su objetivo.
+ Lilith es una maga que tras descubrir un pasado mágico que tu familia te ha estado ocultando todo este tiempo decide salir para explorar más territorio a parte del bosque en el que vive. En el camino, una rata mágica le roba el mapa y tras recuperarlo decide ir a la [ciudad] . Allí descubrirá la liga mágica, un lugar donde los mejores magos y brujas se baten en duelo para ser la mejor de la región y alcanzar la gloria eterna, es entonces cuando descubre que ese era su destino todo este tiempo. Explorando las diversas zonas de la región,  Lilith aprenderá los hechizos más poderosos para poder hacer frente a la liga y cumplir así con su objetivo.
  ### 1.4 Características principales
 - Explora las zonas y ciudades de la región mágica
 - Colecciona grimorios para aprender nuevos hechizos y usarlos en combate contra enemigos.
@@ -40,13 +40,20 @@ El juego termina al llegar a la última zona y vencer en la liga mágica o si se
 <br>
 
 ## 3. Mecánicas
-### 3.1 Movimiento vertical
-### 3.2 Movimiento horizontal
-### 3.3 Correr
-### 3.4 Recolectar objetos
-### 3.5 Atacar / Usar hechizos
-### 3.6 Interactuar con NPCs
-### 3.7 Empujar cosas
+### 3.1 Movimiento horizontal
+El jugador se encarga de mover al personaje. Lilith se mueve a una velocidad constante de izquierda a derecha o viceversa. En el caso en el que llegue al límite de la pantalla tanto por la izquierda como por la derecha, se choca y deja de avanzar en esa dirección.
+Parámetros:
+- Velocidad horizontal: Velocidad (m/s) a la que se mueve el personaje.
+### 3.2 Movimiento vertical
+El jugador se encarga de mover al personaje. Lilith se mueve a una velocidad constante de arriba a abajo y viceversa. En el caso en el que llegue al límite de la pantalla tanto por arriba como por abajo, se choca y deja de avanzar en esa dirección.
+### 3.3 Recolectar objetos
+Lilith puede recoger los objetos, ya sea de los cofres o de aquellos que se encuentre por el camino simplemente pasando por encima de ellos.
+### 3.4 Atacar / Usar hechizos
+Para atacar a los enemigos o usar los hechizos de los que disponga se usará el botón izquierdo del ratón. Para apuntar hacia dónde lanzar el hechizo se usará el botón derecho del ratón.
+### 3.5 Interactuar con NPCs
+Lilith podrá hablar con los personajes que se encuentre por el camino acercándose a ellos. Aparecerá un diálogo que el jugador podrá ir siguiendo y enterarse de la historia.
+### 3.6 Empujar cosas
+Para empujar los objetos que haya bastará con ponerse en el lado opuesto del objeto hacia el que se quiera mover y desplazarse con los controles del movimiento vertical/horizontal. Si el objeto cae en una esquina se reseteará la posición del objeto a la posición original.
 
 <br>
 
@@ -74,8 +81,13 @@ Cámara top-down o cenital centrada en el protagonista.
 
 ## 6. Mundo del juego
 ### 6.1 Personajes
+#### 6.1.1 Lilith
+Lilith es la protagonista del juego y es la representación del jugador dentro del juego. Su comportamiento se describe en la sección de mecánicas. Las dimensiones de Lilith son de 16x16
+#### 6.1.2 Enemigos
+Dentro del juego hay varios tipos de enemigos que pueden matar al jugador.
 ### 6.2 Objetos
 ### 6.3 Niveles
+
 
 <br>
 
