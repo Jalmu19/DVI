@@ -25,26 +25,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         // Queremos que el jugador no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
         this.speed = 300;
-<<<<<<< HEAD
-        this.health = new Health(scene, this);
-=======
         this.health = new Health(scene);
->>>>>>> 39eb570badf4ab83a7cf397197de0c50dbe85aa4
         this.weapon = new Staff(scene, this);
         this.invincible = false;
         
         this.actual_enchantment = null;
-<<<<<<< HEAD
-        this.scene.input.on('pointerdown', (pointer) => { 
-            if(pointer.rightButtonDown() && pointer.leftButtonDown()) 
-                this.lanzarHechizo(this.x, this.y, this.weapon.rotation);
-        });
-=======
         /*this.scene.input.on('pointerdown', (pointer) => { 
             if(pointer.rightButtonDown() && pointer.leftButtonDown()) 
                 this.lanzarHechizo(this.x, this.y, this.weapon.rotation);
         });*/
->>>>>>> 39eb570badf4ab83a7cf397197de0c50dbe85aa4
 
         // Esta label es la UI en la que pondremos la puntuación del jugador
         this.label = this.scene.add.text(10, 10, "", { fontSize: 20 });
@@ -78,19 +67,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * Un enemigo ha dado al jugador, entonces en la clase de Health
      * se baja la vida acorde al dmg y se le dan unos i-frames
      */
-<<<<<<< HEAD
-    takeDamage(dmg) {
-        this.health.takeDamage(dmg);
-        this.invincible = true;
-        this.setTint(0x1abc9c);
-        this.scene.time.addEvent({
-            delay: 1000,
-            callback: () => {
-                this.invincible = false;
-                this.clearTint();
-            }
-        })
-=======
     takeDamage(dmg,enemyX,enemyY) {
         if(!this.invincible) {
             this.health.reduceHealth(dmg);
@@ -105,21 +81,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 }
             })
         }
->>>>>>> 39eb570badf4ab83a7cf397197de0c50dbe85aa4
     }
 
     /**
      * Funcion que mueve al personaje cuando le dan
      */
-<<<<<<< HEAD
-    knockBack() {
-        this.setVelocityX(600);
-        this.setVelocityY(-300);
-=======
     knockBack(enemyX, enemyY) {
         this.setVelocityX((this.x > enemyX ? 1 : -1) * 600);
         this.setVelocityY((this.Y > enemyY ? 1 : -1) * 300);
->>>>>>> 39eb570badf4ab83a7cf397197de0c50dbe85aa4
     }
 
     /**
