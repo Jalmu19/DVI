@@ -21,6 +21,7 @@ export default class Spike extends Phaser.GameObjects.Sprite {
         super.preUpdate(t,dt);
         if (this.scene.physics.overlap(this.scene.player, this)) {
             this.scene.player.takeDamage(this.dmgGiven, this.x, this.y);
+
         }
     }
 }

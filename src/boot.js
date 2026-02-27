@@ -1,9 +1,16 @@
 import Phaser from 'phaser'
 
 
-import platform from '../assets/sprites/platform.png'
-import base from '../assets/sprites/base.png'
-import star from '../assets/sprites/star.png'
+import villa from '../assets/sprites/villa1.png'
+import mapa from '../assets/sprites/mapaVilla.json'
+
+import casa from '../assets/sprites/casaAzul.png'
+import arbol from '../assets/sprites/arbol.png'
+import flor from '../assets/sprites/florAmarilla.png'
+import cNaranja from '../assets/sprites/casaNaranja.png'
+import cGrande from '../assets/sprites/casaGrande.png'
+import pozo from '../assets/sprites/pozo.png'
+
 import player from '../assets/sprites/player.png'
 import palo from '../assets/sprites/palo.png'
 import shoot from '../assets/sprites/shoot.png'
@@ -29,13 +36,25 @@ export default class Boot extends Phaser.Scene {
   preload() {
     // Con setPath podemos establecer el prefijo que se añadirá a todos los load que aparecen a continuación
     //this.load.setPath('assets/sprites/');
-    this.load.image('platform', platform);
+    /*this.load.image('platform', platform);
     this.load.image('base', base);
-    this.load.image('star', star);
+    this.load.image('star', star);*/
+
+
     this.load.image('player', player);
     this.load.image('palo', palo);
     this.load.image('shoot', shoot);
     this.load.image('spike',spike);
+
+    this.load.image('plantilla', villa);
+    this.load.tilemapTiledJSON('mapa', mapa);
+    this.load.image('casa', casa);
+    this.load.image('arbol', arbol);
+    this.load.image('flor', flor);
+    this.load.image('naranja', cNaranja);
+    this.load.image('grande', cGrande);
+    this.load.image('pozo', pozo);
+
   }
 
   /**
@@ -43,6 +62,6 @@ export default class Boot extends Phaser.Scene {
    * nivel del juego
    */
   create() {
-    this.scene.start('level');
+    this.scene.start('bosque');
   }
 }
