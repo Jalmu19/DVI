@@ -49,6 +49,9 @@ export default class Bosque extends Phaser.Scene{
         arboles.setCollisionByExclusion([-1], true);
         casas.setCollisionByExclusion([-1], true);
         
+        //Tamaño del mundo fisico
+        this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+
         this.player = new Player(this, 150,100);
 
 
@@ -63,7 +66,7 @@ export default class Bosque extends Phaser.Scene{
         
         //limites de camara
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
-        this.cameras.main.startFollow(this.player);
+        this.cameras.main.startFollow(this.player, true);
         //colision suelo-player
         this.physics.add.collider(this.player,arboles);
         this.physics.add.collider(this.player, casas);
