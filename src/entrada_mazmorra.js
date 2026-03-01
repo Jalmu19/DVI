@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import Salidas from './game-objects/enemy/salidas.js'
 import Player from './game-objects/player/player.js'
 
 
@@ -63,6 +64,16 @@ export default class Entrada_mazmorra extends Phaser.Scene{
 
 
         this.player = new Player(this, 150,100);
+
+        this.salidas = this.physics.add.group();
+        this.capaSalidas = map.getObjectLayer('Salidas');
+        
+        this.capaSalidas.objects.forEach(objeto =>{
+            
+            var a = new Salidas(this, objeto.x, objeto.y);
+            this.salidas.add(a)
+        })
+
         //limites de camara
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);
@@ -78,12 +89,21 @@ export default class Entrada_mazmorra extends Phaser.Scene{
 
         //this.player = new Player(this,150,100);
         //limites de camara
-        this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
-        this.cameras.main.startFollow(this.player);
+        //this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
+        //this.cameras.main.startFollow(this.player);
         //colision suelo-player
         //this.physics.add.collider(this.player,arboles);
         //this.physics.add.collider(this.player, casas);
 
+    }
+
+    /*cambiarScene(){
+        this.scene.start('mazmorra');
+           
+    }*/
+
+    dies() {
+        this.scene.start('game-over');
     }
 
 }

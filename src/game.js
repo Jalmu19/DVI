@@ -22,8 +22,8 @@ let config = {
         autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
     pixelArt: true,
-    //scene: [Boot, Entrada_mazmorra, Level, End],
-    scene: [Boot,Bosque,zBosque, Level, End, GameOver],
+    scene: [Boot, Entrada_mazmorra, Level, End],
+    //scene: [Boot,Bosque,zBosque, Level, End, GameOver],
     physics: {
         default: 'arcade',
         arcade: {
