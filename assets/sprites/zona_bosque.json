@@ -159,58 +159,40 @@
          "name":"Enemigos",
          "objects":[
                 {
-                 "gid":804,
-                 "height":31.3333,
-                 "id":78,
-                 "name":"Enemigo1",
-                 "properties":[
-                        {
-                         "name":"vida",
-                         "type":"int",
-                         "value":10
-                        }],
+                 "height":0,
+                 "id":81,
+                 "name":"",
+                 "point":true,
                  "rotation":0,
-                 "type":"Enemigo",
+                 "type":"",
                  "visible":true,
-                 "width":27.3333,
-                 "x":118.726,
-                 "y":126.85
+                 "width":0,
+                 "x":128.667,
+                 "y":122
                 }, 
                 {
-                 "gid":804,
-                 "height":31.3333,
-                 "id":79,
-                 "name":"Enemigo2",
-                 "properties":[
-                        {
-                         "name":"vida",
-                         "type":"int",
-                         "value":10
-                        }],
+                 "height":0,
+                 "id":82,
+                 "name":"",
+                 "point":true,
                  "rotation":0,
-                 "type":"Enemigo",
+                 "type":"",
                  "visible":true,
-                 "width":27.3333,
-                 "x":147.182,
-                 "y":192.436
+                 "width":0,
+                 "x":160,
+                 "y":186.667
                 }, 
                 {
-                 "gid":804,
-                 "height":31.3333,
-                 "id":80,
-                 "name":"Enemigo3",
-                 "properties":[
-                        {
-                         "name":"vida",
-                         "type":"int",
-                         "value":10
-                        }],
+                 "height":0,
+                 "id":83,
+                 "name":"",
+                 "point":true,
                  "rotation":0,
-                 "type":"Enemigo",
+                 "type":"",
                  "visible":true,
-                 "width":27.3333,
-                 "x":434.345,
-                 "y":189.71
+                 "width":0,
+                 "x":454,
+                 "y":178
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -219,7 +201,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":81,
+ "nextobjectid":84,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
