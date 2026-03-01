@@ -1,12 +1,10 @@
 import Phaser from 'phaser';
-import Staff from '../items/staffs-wands/staff';
-import Health from '../health';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
  * También almacena la puntuación o número de estrellas que ha recogido hasta el momento.
  */
-export default class Player extends Phaser.Physics.Arcade.Sprite {
+export default class Salidas extends Phaser.Physics.Arcade.Sprite {
 
     /**
      * Constructor del jugador
@@ -15,7 +13,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * @param {number} y Coordenada Y
      */
     constructor(scene, x, y) {
-        super(scene, x, y, 'player');
+        super(scene, x, y,'player');
 
         this.tag = "salida"
         this.scene.add.existing(this);

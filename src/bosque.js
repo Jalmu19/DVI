@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import Player from './game-objects/player/player.js'
-import Player1 from './game-objects/player/player1.js'
+import Salidas from './game-objects/enemy/salidas.js'
 
 
 
@@ -61,7 +61,7 @@ export default class Bosque extends Phaser.Scene{
         
         this.capaSalidas.objects.forEach(objeto =>{
             
-            var a = new Player1(this, objeto.x, objeto.y);
+            var a = new Salidas(this, objeto.x, objeto.y);
             this.salidas.add(a)
         })
         
