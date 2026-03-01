@@ -10,6 +10,7 @@ import flor from '../assets/sprites/florAmarilla.png'
 import cuervo from '../assets/sprites/kirbo.png'
 
 import zonaBosque from '../assets/sprites/zona_bosque.json'
+import Spike from "./game-objects/enemy/spike.js";
 
 export default class Bosque extends Phaser.Scene{
 
@@ -77,6 +78,10 @@ export default class Bosque extends Phaser.Scene{
     cambiarScene(){
         this.scene.start('zonaBosque');
            
+    }
+
+    dies() {
+        this.scene.start('game-over');
     }
 
 }

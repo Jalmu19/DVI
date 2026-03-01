@@ -4,6 +4,7 @@ import Level from './level.js';
 import Bosque from './bosque.js'
 import Phaser from 'phaser';
 import zBosque from './zonaBosque.js'
+import GameOver from './game-over.js';
 
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
@@ -19,11 +20,11 @@ let config = {
         autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
     pixelArt: true,
-    scene: [Boot,Bosque,zBosque, Level, End],
+    scene: [Boot,Bosque,zBosque, Level, End, GameOver],
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true
+            debug: false
         }
     }
 };
