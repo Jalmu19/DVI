@@ -1,17 +1,8 @@
 import Phaser from "phaser";
 import Player from './game-objects/player/player.js'
-import Player1 from './game-objects/player/player1.js'
+import Salidas from './game-objects/enemy/salidas.js'
 
-
-
-import villa from '../assets/sprites/villa1.png'
-import arbol from '../assets/sprites/arbol.png'
-import flor from '../assets/sprites/florAmarilla.png'
-import cuervo from '../assets/sprites/kirbo.png'
-
-import zonaBosque from '../assets/sprites/zona_bosque.json'
-
-export default class Bosque extends Phaser.Scene{
+export default class Zona_bosque extends Phaser.Scene{
 
     constructor(){
         super({key:'zonaBosque'});
@@ -45,8 +36,15 @@ export default class Bosque extends Phaser.Scene{
         //Crear capa de salidas, pero no configuradas
               
         arboles.setCollisionByExclusion([-1], true);
+        //Tamaño del mundo fisico
+        this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         
         this.player = new Player(this, 150,100);
+        //Añadiendo colision a las fisicas
+        this.physics.add.collider(this.player, arboles);
+        //limites de camara
+        this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
+        this.cameras.main.startFollow(this.player);
 
 
        /** this.salidas = this.physics.add.group();
@@ -54,7 +52,7 @@ export default class Bosque extends Phaser.Scene{
         
         this.capaSalidas.objects.forEach(objeto =>{
             
-            var a = new Player1(this, objeto.x, objeto.y);
+            var a = new Salida(this, objeto.x, objeto.y);
             this.salidas.add(a)
         })
         
