@@ -21,14 +21,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         //cambiar hitbox
-        this.body.setSize(14,20).setOffset(9,8);
+        this.body.setSize(14, 20).setOffset(9, 8);
         // Queremos que el jugador no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
         this.speed = 175;
         this.health = new Health(scene);
         this.weapon = new Staff(scene, this);
         this.invincible = false;
-        
+        this.knocked = false;
+
         this.actual_enchantment = null;
         /*this.scene.input.on('pointerdown', (pointer) => { 
             if(pointer.rightButtonDown() && pointer.leftButtonDown()) 
@@ -37,7 +38,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Esta label es la UI en la que pondremos la puntuación del jugador
         this.label = this.scene.add.text(10, 10, "", { fontSize: 20 });
-        
+
         this.cursors = this.scene.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
             down: Phaser.Input.Keyboard.KeyCodes.S,
@@ -67,18 +68,18 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * Un enemigo ha dado al jugador, entonces en la clase de Health
      * se baja la vida acorde al dmg y se le dan unos i-frames
      */
-    takeDamage(dmg,enemyX,enemyY) {
-        if(!this.invincible) {
+    takeDamage(dmg, enemyX, enemyY) {
+        if (!this.invincible) {
             this.health.reduceHealth(dmg);
-            if(!this.health.isDead()) {
+            if (!this.health.isDead()) {
                 this.invincible = true;
                 this.setTint(0x1abc9c);
                 this.knockBack(enemyX, enemyY);
                 this.scene.time.addEvent({
                     delay: 1000,
                     callback: () => {
-                    this.invincible = false;
-                    this.clearTint();
+                        this.invincible = false;
+                        this.clearTint();
                     }
                 })
             }
@@ -92,8 +93,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * Funcion que mueve al personaje cuando le dan
      */
     knockBack(enemyX, enemyY) {
-        this.setVelocityX((this.x > enemyX ? 1 : -1) * 600);
-        this.setVelocityY((this.Y > enemyY ? 1 : -1) * 300);
+        this.setVelocityX((this.x > enemyX ? 1 : -1) * 100);
+        this.setVelocityY((this.Y > enemyY ? 1 : -1) * 100);
+
+        this.knocked = true;
+        this.scene.time.addEvent({
+            delay: 50,
+            callback: () => {
+                this.knocked = false;
+            }
+        })
     }
 
     /**
@@ -112,20 +121,22 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
 
-        this.body.setVelocity(0);
+        if (!this.knocked) {
+            this.body.setVelocity(0);
 
-        if (this.cursors.up.isDown) {
-            this.body.setVelocityY(-this.speed);
+            if (this.cursors.up.isDown) {
+                this.body.setVelocityY(-this.speed);
+            }
+            if (this.cursors.left.isDown) {
+                this.body.setVelocityX(-this.speed);
+            }
+            if (this.cursors.right.isDown) {
+                this.body.setVelocityX(this.speed);
+            }
+            if (this.cursors.down.isDown) {
+                this.body.setVelocityY(this.speed);
+            }
         }
-        if (this.cursors.left.isDown) {
-            this.body.setVelocityX(-this.speed);
-        }
-        if (this.cursors.right.isDown) {
-            this.body.setVelocityX(this.speed);
-        }
-        if(this.cursors.down.isDown){
-            this.body.setVelocityY(this.speed);
-        }   
     }
 
 }
