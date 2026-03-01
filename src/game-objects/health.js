@@ -4,13 +4,16 @@ export default class Health {
      * @param {Phaser.Scene} scene Escena a la que pertenece el jugador
      * @param {Phaser.Physics.Arcade.Sprite} player Jugador para saber si esta en iframe
     */
+
     constructor(scene){
         this.maxHearts = 3;
         this.actualHealth = this.maxHearts*2;
         this.containers = 0;
-        this.label = scene.add.text(900, 10, "", {fontsize: 40});
+        this.label = scene.add.text(scene.cameras.main.width - 10, 10, "", {fontSize: 15});
+        this.label.setScrollFactor(0).setOrigin(1,0);
         this.updateHealth();
     }
+
 
     reduceHealth(dmg) {
         this.actualHealth -= dmg;
@@ -20,6 +23,7 @@ export default class Health {
     updateHealth() {
         this.label.text = "Health: "+ this.actualHealth;
     }
+
 
     isDead() {
         return this.actualHealth === 0;

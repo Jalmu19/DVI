@@ -1,9 +1,8 @@
 import Phaser from 'phaser'
 
-
-//import villa from '../assets/sprites/villa1.png'
-//import mapa from '../assets/sprites/mapaVilla.json'
 import entrada_mazmorra from '../assets/sprites/entrada-mazmorra-bosque.json'
+import villa from '../assets/sprites/villa1.png'
+import mapa from '../assets/sprites/mapaVilla.json'
 
 import casa from '../assets/sprites/casaAzul.png'
 import arbol from '../assets/sprites/arbol.png'
@@ -13,9 +12,9 @@ import cGrande from '../assets/sprites/casaGrande.png'
 import pozo from '../assets/sprites/pozo.png'
 
 import player from '../assets/sprites/player.png'
-import palo from '../assets/sprites/palo.png'
+/*import palo from '../assets/sprites/palo.png'
 import shoot from '../assets/sprites/shoot.png'
-import spike from '../assets/sprites/spikes-placeholder.png'
+import spike from '../assets/sprites/spikes-placeholder.png'*/
 
 import cesped from '../assets/sprites/cesped.png'
 import plataforma_cesped from '../assets/sprites/plataforma_cesped.png'
@@ -57,19 +56,19 @@ export default class Boot extends Phaser.Scene {
     this.load.image('star', star);*/
 
 
-      this.load.image('player', player);
-      /*this.load.image('palo', palo);
-      this.load.image('shoot', shoot);
-      this.load.image('spike',spike);*/
+    this.load.image('player', player);
+    /*this.load.image('palo', palo);
+    this.load.image('shoot', shoot);
+    this.load.image('spike',spike);*/
 
-   /* this.load.image('plantilla', villa);
+    this.load.image('plantilla', villa);
     this.load.tilemapTiledJSON('mapa', mapa);
     this.load.image('casa', casa);
     this.load.image('arbol', arbol);
     this.load.image('flor', flor);
     this.load.image('naranja', cNaranja);
     this.load.image('grande', cGrande);
-    this.load.image('pozo', pozo);*/
+    this.load.image('pozo', pozo);
 
     this.load.tilemapTiledJSON('entrada-mazmorra-bosque', entrada_mazmorra)
     this.load.image('cesped', cesped);
@@ -85,6 +84,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('puerta_mazmorra', puerta_mazmorra);    
     this.load.image('arbusto', arbusto);
   
+    this.load.image('pozo', pozo);
+
   }
 
   /**
@@ -92,6 +93,7 @@ export default class Boot extends Phaser.Scene {
    * nivel del juego
    */
   create() {
-    this.scene.start('entrada_mazmorra');
+    //this.scene.start('entrada_mazmorra');
+    this.scene.start('bosque');
   }
 }
