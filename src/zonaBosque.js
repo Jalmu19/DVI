@@ -7,18 +7,22 @@ export default class Zona_bosque extends Phaser.Scene{
     constructor(){
         super({key:'zonaBosque'});
     }
-/**
- * 
-    preload(){
-        this.load.image('cuervoEnemigo', cuervo);
-        this.load.image('plantilla', villa);
-        this.load.image('arbol', arbol);
-        this.load.image('flor', flor);
 
-        this.load.tilemapTiledJSON('zBosque', zonaBosque);
+  /*  preload(){
+        this.load.tilemapTiledJSON('entrada-mazmorra-bosque', entrada_mazmorra)
+        this.load.image('cesped', cesped);
+        this.load.image('plataforma_cesped', plataforma_cesped);
+        this.load.image('puente', puente);
+        this.load.image('seta', seta);
+        this.load.image('florAmarilla', florAmarilla);
+        this.load.image('tierra', tierra);
+        this.load.image('piedras_tierra', piedras_tierra);
+        this.load.image('escaleras', escaleras);
+        this.load.image('pared_mazmorra', pared_mazmorra);
+        this.load.image('puerta_mazmorra', puerta_mazmorra);  
 
-    }
- */
+    }*/
+ 
   
 
     create(){

@@ -12,9 +12,9 @@ import cGrande from '../assets/sprites/casaGrande.png'
 import pozo from '../assets/sprites/pozo.png'
 
 import player from '../assets/sprites/player.png'
-/*import palo from '../assets/sprites/palo.png'
+import palo from '../assets/sprites/palo.png'
 import shoot from '../assets/sprites/shoot.png'
-import spike from '../assets/sprites/spikes-placeholder.png'*/
+import spike from '../assets/sprites/spikes-placeholder.png'
 
 import cesped from '../assets/sprites/cesped.png'
 import plataforma_cesped from '../assets/sprites/plataforma_cesped.png'
@@ -26,7 +26,7 @@ import piedras_tierra from '../assets/sprites/piedras_tierra.png'
 import escaleras from '../assets/sprites/escaleras.png'
 import pared_mazmorra from '../assets/sprites/pared_mazmorra.png'
 import puerta_mazmorra from '../assets/sprites/dungeon.png'
-import arbusto from '../assets/sprites/arbusto.png'
+
 
 
 
@@ -70,10 +70,9 @@ export default class Boot extends Phaser.Scene {
     this.load.image('grande', cGrande);
     this.load.image('pozo', pozo);
 
-    this.load.tilemapTiledJSON('entrada-mazmorra-bosque', entrada_mazmorra)
+    /*this.load.tilemapTiledJSON('entrada-mazmorra-bosque', entrada_mazmorra)
     this.load.image('cesped', cesped);
     this.load.image('plataforma_cesped', plataforma_cesped);
-    this.load.image('arbol', arbol);
     this.load.image('puente', puente);
     this.load.image('seta', seta);
     this.load.image('florAmarilla', florAmarilla);
@@ -81,10 +80,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('piedras_tierra', piedras_tierra);
     this.load.image('escaleras', escaleras);
     this.load.image('pared_mazmorra', pared_mazmorra);
-    this.load.image('puerta_mazmorra', puerta_mazmorra);    
-    this.load.image('arbusto', arbusto);
-  
-    this.load.image('pozo', pozo);
+    this.load.image('puerta_mazmorra', puerta_mazmorra);    */
 
   }
 
