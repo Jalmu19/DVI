@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Staff from '../items/staffs-wands/staff';
 import Health from '../health';
+import Shoots from '../spells/shoots';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
@@ -30,7 +31,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.invincible = false;
         this.knocked = false;
 
-        this.actual_enchantment = null;
+        this.shoots = new Shoots(this.scene.physics.world, this.scene, { key: 'shoot', speed: 200 });
+        this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
+        this.actual_enchantment = this.shoots;
+
+        //this.actual_enchantment = null;
         /*this.scene.input.on('pointerdown', (pointer) => { 
             if(pointer.rightButtonDown() && pointer.leftButtonDown()) 
                 this.lanzarHechizo(this.x, this.y, this.weapon.rotation);

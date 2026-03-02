@@ -16,6 +16,8 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
 
         const vx = Math.cos(rotation) * this.speed;
         const vy = Math.sin(rotation) * this.speed;
+
+        this.angle = Phaser.Math.RadToDeg(rotation) - 90;
        
         this.enableBody(true, posX, posY, true, true);
         this.setVelocity(vx, vy);

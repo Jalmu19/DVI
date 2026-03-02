@@ -16,7 +16,7 @@ export default class Staff extends Phaser.GameObjects.Sprite {
             if(pointer.isDown){
                 if(pointer.rightButtonDown()) {
                     this.setActive(true).setVisible(true);
-                    if(pointer.leftButtonDown()) this.player.lanzarHechizo(this.x,this.y, this.rotation);
+                    if(pointer.leftButtonDown()) this.player.lanzarHechizo(this.x,this.y, this.rotation - Phaser.Math.DegToRad(45));
                 }
             }  
         })
