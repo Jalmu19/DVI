@@ -3,13 +3,12 @@ import Player from './game-objects/player/player.js'
 import Salidas from './game-objects/enemy/salidas.js'
 
 
-
 import villa from '../assets/sprites/villa1.png'
 import arbol from '../assets/sprites/arbol.png'
 import flor from '../assets/sprites/florAmarilla.png'
 import cuervo from '../assets/sprites/kirbo.png'
 
-import zonaBosque from '../assets/sprites/zona_bosque.json'
+import zonaBosque from '../assets/mapas/zona_bosque.json'
 import Spike from "./game-objects/enemy/spike.js";
 
 export default class Bosque extends Phaser.Scene{
@@ -76,8 +75,7 @@ export default class Bosque extends Phaser.Scene{
     }
 
     cambiarScene(){
-        this.scene.start('zonaBosque');
-           
+        this.scene.start('zonaBosque');           
     }
 
     dies() {

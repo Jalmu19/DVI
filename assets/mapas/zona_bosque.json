@@ -199,9 +199,42 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":11,
+         "name":"Salidas",
+         "objects":[
+                {
+                 "height":63.3333,
+                 "id":88,
+                 "name":"salidaCiu",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":15.3333,
+                 "x":464,
+                 "y":128
+                }, 
+                {
+                 "height":14.6667,
+                 "id":87,
+                 "name":"salidaDun",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":76,
+                 "x":352,
+                 "y":302.667
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":11,
- "nextobjectid":84,
+ "nextlayerid":12,
+ "nextobjectid":89,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -210,7 +243,7 @@
         {
          "columns":3,
          "firstgid":1,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/arbol.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/arbol.png",
          "imageheight":48,
          "imagewidth":48,
          "margin":0,
@@ -223,7 +256,7 @@
         {
          "columns":3,
          "firstgid":10,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/TREE 1 - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/TREE 1 - DAY.png",
          "imageheight":48,
          "imagewidth":48,
          "margin":0,
@@ -236,7 +269,7 @@
         {
          "columns":5,
          "firstgid":19,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaAzul.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaAzul.png",
          "imageheight":112,
          "imagewidth":80,
          "margin":0,
@@ -249,7 +282,7 @@
         {
          "columns":2,
          "firstgid":54,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/TERRAIN SET 3 CURVES - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/TERRAIN SET 3 CURVES - DAY.png",
          "imageheight":32,
          "imagewidth":32,
          "margin":0,
@@ -262,7 +295,7 @@
         {
          "columns":1,
          "firstgid":58,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/GRASS DETAIL 2 - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/GRASS DETAIL 2 - DAY.png",
          "imageheight":16,
          "imagewidth":16,
          "margin":0,
@@ -275,7 +308,7 @@
         {
          "columns":8,
          "firstgid":59,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/HOUSE 2 - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/HOUSE 2 - DAY.png",
          "imageheight":112,
          "imagewidth":128,
          "margin":0,
@@ -288,7 +321,7 @@
         {
          "columns":8,
          "firstgid":115,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaGrande.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaGrande.png",
          "imageheight":112,
          "imagewidth":128,
          "margin":0,
@@ -301,7 +334,7 @@
         {
          "columns":2,
          "firstgid":171,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/pozo.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/pozo.png",
          "imageheight":48,
          "imagewidth":32,
          "margin":0,
@@ -314,7 +347,7 @@
         {
          "columns":25,
          "firstgid":177,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/villa1.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/villa1.png",
          "imageheight":400,
          "imagewidth":400,
          "margin":0,
@@ -327,7 +360,7 @@
         {
          "columns":1,
          "firstgid":802,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/FENCE 2 - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/FENCE 2 - DAY.png",
          "imageheight":16,
          "imagewidth":16,
          "margin":0,
@@ -346,7 +379,7 @@
         {
          "columns":1,
          "firstgid":803,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/kirbo.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/kirbo.png",
          "imageheight":16,
          "imagewidth":16,
          "margin":0,
@@ -359,7 +392,7 @@
         {
          "columns":4,
          "firstgid":804,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/Rook-Sheet.png",
+         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/Rook-Sheet.png",
          "imageheight":64,
          "imagewidth":64,
          "margin":0,
