@@ -1,8 +1,7 @@
 import Phaser from 'phaser'
 
-import entrada_mazmorra from '../assets/sprites/entrada-mazmorra-bosque.json'
 import villa from '../assets/sprites/villa1.png'
-import mapa from '../assets/sprites/mapaVilla.json'
+import mapa from '../assets/mapas/mapaVilla.json'
 
 import casa from '../assets/sprites/casaAzul.png'
 import arbol from '../assets/sprites/arbol.png'
@@ -15,20 +14,6 @@ import player from '../assets/sprites/player.png'
 import palo from '../assets/sprites/palo.png'
 import shoot from '../assets/sprites/shoot.png'
 import spike from '../assets/sprites/spikes-placeholder.png'
-
-import cesped from '../assets/sprites/cesped.png'
-import plataforma_cesped from '../assets/sprites/plataforma_cesped.png'
-import puente from '../assets/sprites/puente.png'
-import seta from '../assets/sprites/seta.png'
-import florAmarilla from '../assets/sprites/florAmarilla.png'
-import tierra from '../assets/sprites/tierra.png'
-import piedras_tierra from '../assets/sprites/piedras_tierra.png'
-import escaleras from '../assets/sprites/escaleras.png'
-import pared_mazmorra from '../assets/sprites/pared_mazmorra.png'
-import puerta_mazmorra from '../assets/sprites/dungeon.png'
-
-
-
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -70,17 +55,6 @@ export default class Boot extends Phaser.Scene {
     this.load.image('grande', cGrande);
     this.load.image('pozo', pozo);
 
-    /*this.load.tilemapTiledJSON('entrada-mazmorra-bosque', entrada_mazmorra)
-    this.load.image('cesped', cesped);
-    this.load.image('plataforma_cesped', plataforma_cesped);
-    this.load.image('puente', puente);
-    this.load.image('seta', seta);
-    this.load.image('florAmarilla', florAmarilla);
-    this.load.image('tierra', tierra);
-    this.load.image('piedras_tierra', piedras_tierra);
-    this.load.image('escaleras', escaleras);
-    this.load.image('pared_mazmorra', pared_mazmorra);
-    this.load.image('puerta_mazmorra', puerta_mazmorra);    */
 
   }
 

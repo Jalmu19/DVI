@@ -7,9 +7,7 @@ export default class Entrada_mazmorra extends Phaser.Scene{
 
     constructor(){
         super({key:'entrada_mazmorra'});
-    }
-
-  
+    }  
 
     create(){
         var map = this.make.tilemap({key : 'entrada-mazmorra-bosque'});
@@ -19,7 +17,7 @@ export default class Entrada_mazmorra extends Phaser.Scene{
         var img3 = map.addTilesetImage('arbol', 'arbol');
         var img4 = map.addTilesetImage('puente', 'puente');
         var img5 = map.addTilesetImage('seta', 'seta');
-        var img6 = map.addTilesetImage('florAmarilla', 'florAmarilla');
+        var img6 = map.addTilesetImage('florAmarilla', 'flor');
         var img7 = map.addTilesetImage('tierra', 'tierra');
         var img8 = map.addTilesetImage('piedras_tierra', 'piedras_tierra');
         var img9 = map.addTilesetImage('escaleras', 'escaleras');
@@ -28,17 +26,20 @@ export default class Entrada_mazmorra extends Phaser.Scene{
 
         map.createLayer('Suelo', [img1, img7, img8], 0,0);
         var mazmorra = map.createLayer('mazmorra', [img10, img11], 0,0);
-        var plataformas = map.createLayer('Plataformas', [img2], 0,0);
-        var naturaleza = map.createLayer('setitas y flores', [img5,img6 ], 0,0);
-        var arboles = map.createLayer('arboles', [img3], 0,0);
-        var capa_puente = map.createLayer('capa_puente', [img4], 0,0);
-        var escaleras = map.createLayer('escaleras', [img9], 0,0);
+        map.createLayer('Plataformas', img2, 0,0);
+        map.createLayer('setitas y flores', [img5,img6 ], 0,0);
+        var arboles = map.createLayer('arboles', img3, 0,0);
+        map.createLayer('capa_puente', img4, 0,0);
+        map.createLayer('escaleras', img9, 0,0);
        
              
         arboles.setCollisionByExclusion([-1], false);
         mazmorra.setCollisionByExclusion([-1], false);
 
-       /* plataformas.setCollisionByExclusion([-1], true);
+        this.player = new Player(this, 100, 150);
+        this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        
+        /* plataformas.setCollisionByExclusion([-1], true);
         plataformas.forEachTile( tile => {
                 tile.collideLeft = false; 
                 tile.collideRight = false; 
@@ -60,31 +61,20 @@ export default class Entrada_mazmorra extends Phaser.Scene{
             { this.player.enEscalera = false; });
         */
 
-
-        this.player = new Player(this, 150,100);
-
-        /*this.salidas = this.physics.add.group();
-        this.capaSalidas = map.getObjectLayer('Salidas');
-        
-        this.capaSalidas.objects.forEach(objeto =>{
-            
-            var a = new Salidas(this, objeto.x, objeto.y);
-            this.salidas.add(a)
-        })*/
-
         //limites de camara
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);
+        //Salidas
+
+
         //colision suelo-player
         this.physics.add.collider(this.player, mazmorra); 
         this.physics.add.collider(this.player, arboles); 
 
     }
-
-    cambiarScene(){
+    /**cambiarScene(){
         this.scene.start('mazmorra');
-           
-    }
+    } */
 
     dies() {
         this.scene.start('game-over');
