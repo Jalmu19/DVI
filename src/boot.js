@@ -13,7 +13,7 @@ import pozo from '../assets/sprites/pozo.png'
 
 import player from '../assets/sprites/player.png'
 import palo from '../assets/sprites/palo.png'
-import shoot from '../assets/sprites/shoot.png'
+import shoot from '../assets/sprites/basic-spell.png'
 import spike from '../assets/sprites/spikes-placeholder.png'
 
 import cesped from '../assets/sprites/cesped.png'
@@ -57,9 +57,9 @@ export default class Boot extends Phaser.Scene {
 
 
     this.load.image('player', player);
-    /*this.load.image('palo', palo);
+    this.load.image('palo', palo);
     this.load.image('shoot', shoot);
-    this.load.image('spike',spike);*/
+    this.load.image('spike',spike);
 
     this.load.image('plantilla', villa);
     this.load.tilemapTiledJSON('mapa', mapa);
