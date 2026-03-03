@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import Player from './game-objects/player/player.js'
 import Salidas from './game-objects/enemy/salidas.js'
+import Spike from './game-objects/enemy/spike.js'
 
 import entrada_mazmorra from '../assets/mapas/entrada-mazmorra-bosque.json'
 import cesped from '../assets/sprites/cesped.png'
@@ -69,6 +70,14 @@ export default class Zona_bosque extends Phaser.Scene{
             this.salidas.add(a)
         })
        this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
+
+       this.enemigos = this.physics.add.group();
+       this.capaEnemigos = map.getObjectLayer('Enemigos');
+       this.capaEnemigos.objects.forEach(obj=>{
+            var a = new Spike(this, obj.x, obj.y);
+            this.enemigos.add(a);
+       })
+       this.physics.add.collider(this.player, this.enemigos);
         
     }
     cambiarScene(){

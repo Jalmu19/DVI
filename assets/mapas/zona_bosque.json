@@ -191,8 +191,92 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":454,
-                 "y":178
+                 "x":454.667,
+                 "y":190
+                }, 
+                {
+                 "height":0,
+                 "id":89,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":455.333,
+                 "y":166
+                }, 
+                {
+                 "height":0,
+                 "id":90,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":451.333,
+                 "y":138
+                }, 
+                {
+                 "height":0,
+                 "id":91,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":248.667,
+                 "y":97.3333
+                }, 
+                {
+                 "height":0,
+                 "id":92,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":270,
+                 "y":119.333
+                }, 
+                {
+                 "height":0,
+                 "id":93,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":254.667,
+                 "y":154
+                }, 
+                {
+                 "height":0,
+                 "id":94,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":345.333,
+                 "y":139.333
+                }, 
+                {
+                 "height":0,
+                 "id":95,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":358.667,
+                 "y":97.3333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -234,7 +318,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":89,
+ "nextobjectid":96,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -243,7 +327,7 @@
         {
          "columns":3,
          "firstgid":1,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/arbol.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/arbol.png",
          "imageheight":48,
          "imagewidth":48,
          "margin":0,
@@ -256,7 +340,7 @@
         {
          "columns":3,
          "firstgid":10,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/TREE 1 - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/TREE 1 - DAY.png",
          "imageheight":48,
          "imagewidth":48,
          "margin":0,
@@ -269,7 +353,7 @@
         {
          "columns":5,
          "firstgid":19,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaAzul.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaAzul.png",
          "imageheight":112,
          "imagewidth":80,
          "margin":0,
@@ -277,12 +361,469 @@
          "spacing":0,
          "tilecount":35,
          "tileheight":16,
+         "tiles":[
+                {
+                 "id":1,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":3,
+                             "id":1,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":16,
+                             "x":0,
+                             "y":13
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":2,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":8,
+                             "id":1,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":16,
+                             "x":0,
+                             "y":8
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":8,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":0,
+                             "id":1,
+                             "name":"",
+                             "polygon":[
+                                    {
+                                     "x":0,
+                                     "y":0
+                                    }, 
+                                    {
+                                     "x":14,
+                                     "y":13.9063
+                                    }, 
+                                    {
+                                     "x":14,
+                                     "y":15.875
+                                    }, 
+                                    {
+                                     "x":-1.96875,
+                                     "y":15.9063
+                                    }, 
+                                    {
+                                     "x":-1.96875,
+                                     "y":-0.03125
+                                    }],
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":0,
+                             "x":2,
+                             "y":0.0625
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":10,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":16.0938,
+                             "id":1,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":14,
+                             "x":2,
+                             "y":-0.09375
+                            }, 
+                            {
+                             "height":16,
+                             "id":2,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":14,
+                             "x":2,
+                             "y":0
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":14,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":16,
+                             "id":1,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":14,
+                             "x":0,
+                             "y":0
+                            }, 
+                            {
+                             "height":0,
+                             "id":2,
+                             "name":"",
+                             "polygon":[
+                                    {
+                                     "x":0,
+                                     "y":0
+                                    }, 
+                                    {
+                                     "x":11.9063,
+                                     "y":11.9375
+                                    }, 
+                                    {
+                                     "x":11.9375,
+                                     "y":15.8438
+                                    }, 
+                                    {
+                                     "x":-2.0625,
+                                     "y":15.9688
+                                    }, 
+                                    {
+                                     "x":-2.03125,
+                                     "y":-0.125
+                                    }],
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":0,
+                             "x":2.03125,
+                             "y":0.03125
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":20,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":16,
+                             "id":1,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":16,
+                             "x":0,
+                             "y":0
+                            }, 
+                            {
+                             "height":16,
+                             "id":2,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":16,
+                             "x":0,
+                             "y":0
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":25,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":16,
+                             "id":1,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":11,
+                             "x":5,
+                             "y":0
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":29,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":16,
+                             "id":1,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":11,
+                             "x":0,
+                             "y":0
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":30,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":8,
+                             "id":1,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":11,
+                             "x":5,
+                             "y":0
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":31,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":15,
+                             "id":1,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":16,
+                             "x":0,
+                             "y":0
+                            }, 
+                            {
+                             "height":0,
+                             "id":2,
+                             "name":"",
+                             "polygon":[
+                                    {
+                                     "x":0,
+                                     "y":0
+                                    }, 
+                                    {
+                                     "x":10.9063,
+                                     "y":-0.0625
+                                    }, 
+                                    {
+                                     "x":10.9063,
+                                     "y":0.78125
+                                    }, 
+                                    {
+                                     "x":14.9688,
+                                     "y":6.90625
+                                    }, 
+                                    {
+                                     "x":15.9375,
+                                     "y":6.96875
+                                    }, 
+                                    {
+                                     "x":15.9375,
+                                     "y":-8.03125
+                                    }, 
+                                    {
+                                     "x":0,
+                                     "y":-8.09375
+                                    }],
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":0,
+                             "x":0.03125,
+                             "y":8.03125
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":33,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":0,
+                             "id":1,
+                             "name":"",
+                             "polygon":[
+                                    {
+                                     "x":0,
+                                     "y":0
+                                    }, 
+                                    {
+                                     "x":0.90625,
+                                     "y":0
+                                    }, 
+                                    {
+                                     "x":4.9375,
+                                     "y":-6.125
+                                    }, 
+                                    {
+                                     "x":4.9375,
+                                     "y":-7.0625
+                                    }, 
+                                    {
+                                     "x":15.9375,
+                                     "y":-7.0625
+                                    }, 
+                                    {
+                                     "x":15.875,
+                                     "y":-15.0625
+                                    }, 
+                                    {
+                                     "x":-0.03125,
+                                     "y":-15
+                                    }],
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":0,
+                             "x":0.09375,
+                             "y":15.0313
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":34,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":8,
+                             "id":1,
+                             "name":"",
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":11,
+                             "x":0,
+                             "y":0
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }],
          "tilewidth":16
         }, 
         {
          "columns":2,
          "firstgid":54,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/TERRAIN SET 3 CURVES - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/TERRAIN SET 3 CURVES - DAY.png",
          "imageheight":32,
          "imagewidth":32,
          "margin":0,
@@ -295,7 +836,7 @@
         {
          "columns":1,
          "firstgid":58,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/GRASS DETAIL 2 - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/GRASS DETAIL 2 - DAY.png",
          "imageheight":16,
          "imagewidth":16,
          "margin":0,
@@ -308,7 +849,7 @@
         {
          "columns":8,
          "firstgid":59,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/HOUSE 2 - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/HOUSE 2 - DAY.png",
          "imageheight":112,
          "imagewidth":128,
          "margin":0,
@@ -321,7 +862,7 @@
         {
          "columns":8,
          "firstgid":115,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaGrande.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaGrande.png",
          "imageheight":112,
          "imagewidth":128,
          "margin":0,
@@ -334,7 +875,7 @@
         {
          "columns":2,
          "firstgid":171,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/pozo.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/pozo.png",
          "imageheight":48,
          "imagewidth":32,
          "margin":0,
@@ -347,7 +888,7 @@
         {
          "columns":25,
          "firstgid":177,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/villa1.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/villa1.png",
          "imageheight":400,
          "imagewidth":400,
          "margin":0,
@@ -360,7 +901,7 @@
         {
          "columns":1,
          "firstgid":802,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/FENCE 2 - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/FENCE 2 - DAY.png",
          "imageheight":16,
          "imagewidth":16,
          "margin":0,
@@ -379,7 +920,7 @@
         {
          "columns":1,
          "firstgid":803,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/kirbo.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/kirbo.png",
          "imageheight":16,
          "imagewidth":16,
          "margin":0,
@@ -392,7 +933,7 @@
         {
          "columns":4,
          "firstgid":804,
-         "image":"..\/..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/Rook-Sheet.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/Rook-Sheet.png",
          "imageheight":64,
          "imagewidth":64,
          "margin":0,
