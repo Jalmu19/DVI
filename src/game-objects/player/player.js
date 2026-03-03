@@ -131,37 +131,38 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         if (!this.knocked) {
             this.body.setVelocity(0);
 
-            let moving = false;
-            
-            if (this.cursors.up.isDown) {
-                this.body.setVelocityY(-this.speed);
-                this.play('idle-back',true);
+            let anim;
+            let vY = 0;
+            let vX = 0;
+
+            if (this.cursors.up.isDown){
+                vY = -this.speed;
+                anim = 'idle-back';
                 this.lastDir = 'back';
-                moving = true;
-            }
-            if (this.cursors.left.isDown) {
-                this.body.setVelocityX(-this.speed);
-                this.play('walk-lside', true);
-                this.lastDir = 'lside';
-                moving = true;
-            }
-            if (this.cursors.right.isDown) {
-                this.body.setVelocityX(this.speed);
-                this.play('walk-rside', true);
-                this.lastDir = 'rside';
-                moving  = true;
             }
             if (this.cursors.down.isDown) {
-                this.body.setVelocityY(this.speed);
-                this.play('walk-front', true);
+                vY = this.speed;
+                anim = 'walk-front';
                 this.lastDir = 'front';
-                moving = true;
+            }
+            if (this.cursors.left.isDown){
+                vX = -this.speed;
+                anim = 'walk-lside';
+                this.lastDir = 'lside';
+            }
+            if (this.cursors.right.isDown) {
+                vX = this.speed;
+                anim = 'walk-rside';
+                this.lastDir = 'rside';
             }
 
-            if(!moving) {
+            this.body.setVelocity(vX,vY);
+            
+            if(vX === 0 && vY === 0) {
                 let idle = 'idle-' + this.lastDir;
                 this.play(idle,true);
             }
+            else this.play(anim,true);
         }
     }
 
