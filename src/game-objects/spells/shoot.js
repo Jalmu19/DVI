@@ -33,4 +33,13 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
     }
     }
     
+    preUpdate(time, delta){
+        super.preUpdate(time, delta);
+        const extra = 32;
+        const bounds = this.scene.physics.world.bounds;
+        if(this.y <= -32 || this.y >= bounds.height + 32 || this.x >= bounds.width + 32 || this.x <= -32){
+            this.setActive(false);
+            this.setVisible(false);
+        }
+    }
 }

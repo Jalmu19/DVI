@@ -30,7 +30,6 @@ export default class Level extends Phaser.Scene {
         this.player = new Player(this, 200, 300);
         
         this.shoots = new Shoots(this.physics.world, this, { key: 'shoot', speed: 400 });
-        this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
         this.player.actual_enchantment = this.shoots;
         
 

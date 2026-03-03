@@ -8,6 +8,8 @@ export default class Shoots extends Phaser.Physics.Arcade.Group{
         super(world, scene,
             {...config, classType: Shoot, createCallback: Shoot.prototype.onCreate}
         );
+
+        this.createMultiple({key: 'shoot', frameQuantity: 1, active: false, visible: false});
     }
 
     fire(x, y, rotation){
