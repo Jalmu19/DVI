@@ -25,7 +25,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.body.setSize(14, 20).setOffset(9, 8);
         // Queremos que el jugador no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
-        this.speed = 175;
+        this.speed = 100;
         this.health = new Health(scene);
         this.weapon = new Staff(scene, this);
         this.invincible = false;
