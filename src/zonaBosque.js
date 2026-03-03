@@ -83,5 +83,8 @@ export default class Zona_bosque extends Phaser.Scene{
     cambiarScene(){
         this.scene.start('entrada_mazmorra');
     } 
+    dies() {
+        this.scene.start('game-over');
+    }
 
 }
