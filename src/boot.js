@@ -11,6 +11,7 @@ import cGrande from '../assets/sprites/casaGrande.png'
 import pozo from '../assets/sprites/pozo.png'
 
 import player from '../assets/sprites/player.png'
+import playerjson from '../assets/sprites/player.json'
 import palo from '../assets/sprites/palo.png'
 import shoot from '../assets/sprites/basic-spell.png'
 import spike from '../assets/sprites/spikes-placeholder.png'
@@ -41,7 +42,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('star', star);*/
 
 
-    this.load.image('player', player);
+    this.load.aseprite('player', player, playerjson);
     this.load.image('palo', palo);
     this.load.image('shoot', shoot);
     this.load.image('spike',spike);
@@ -64,6 +65,7 @@ export default class Boot extends Phaser.Scene {
    */
   create() {
     //this.scene.start('entrada_mazmorra');
+    this.anims.createFromAseprite('player');
     this.scene.start('bosque');
   }
 }

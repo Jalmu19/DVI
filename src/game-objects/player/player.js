@@ -30,6 +30,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.weapon = new Staff(scene, this);
         this.invincible = false;
         this.knocked = false;
+        // Variable para saber que direccion de sprite parado poner cuando no se toque tecla
+        this.lastDir = 'front';
 
         this.shoots = new Shoots(this.scene.physics.world, this.scene, { key: 'shoot', speed: 200 });
         this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
@@ -129,17 +131,36 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         if (!this.knocked) {
             this.body.setVelocity(0);
 
+            let moving = false;
+            
             if (this.cursors.up.isDown) {
                 this.body.setVelocityY(-this.speed);
+                this.play('idle-back',true);
+                this.lastDir = 'back';
+                moving = true;
             }
             if (this.cursors.left.isDown) {
                 this.body.setVelocityX(-this.speed);
+                this.play('walk-lside', true);
+                this.lastDir = 'lside';
+                moving = true;
             }
             if (this.cursors.right.isDown) {
                 this.body.setVelocityX(this.speed);
+                this.play('walk-rside', true);
+                this.lastDir = 'rside';
+                moving  = true;
             }
             if (this.cursors.down.isDown) {
                 this.body.setVelocityY(this.speed);
+                this.play('walk-front', true);
+                this.lastDir = 'front';
+                moving = true;
+            }
+
+            if(!moving) {
+                let idle = 'idle-' + this.lastDir;
+                this.play(idle,true);
             }
         }
     }
