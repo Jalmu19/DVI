@@ -41,8 +41,7 @@ export default class Mazmorra extends Phaser.Scene{
         map.createLayer('Puertas', [img1], 0, 0);
 
 
-
-        this.player = new Player(this,  0, map.widthInPixels);
+        this.player = new Player(this,  48, 292);
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         
         //Crear capa de salidas, pero no configuradas  
@@ -54,18 +53,15 @@ export default class Mazmorra extends Phaser.Scene{
             var a = new Salidas(this, objeto.x, objeto.y);
             this.salidas.add(a)
         })
+         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
         //limites de camara
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);
 
-        //colision suelo-player
-        this.physics.add.collider(this.player, paredes_y_entrada);        
+        //colision paredes-player
         paredes_y_entrada.setCollisionByExclusion([-1], true);
-
-
-
-        this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
+        this.physics.add.collider(this.player, paredes_y_entrada);       
 
     }
 
