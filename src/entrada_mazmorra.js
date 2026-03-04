@@ -81,10 +81,10 @@ export default class Entrada_mazmorra extends Phaser.Scene{
         plataformas.setCollisionByExclusion([-1], true);
 
         this.escalerasFisicas = this.physics.add.staticGroup();
-        var ObjetosEscaleras = map.getObjectLayer('Objetos_Escaleras'); 
+        this.objetosEscaleras = map.getObjectLayer('Objetos_Escaleras'); 
 
-        if(ObjetosEscaleras){
-            ObjetosEscaleras.objects.forEach( object => {
+        if(this.objetosEscaleras){
+            this.objetosEscaleras.objects.forEach( object => {
                 let zona = this.add.zone(object.x, object.y, object.width, object.height).setOrigin(0, 0);           
                 // Le damos cuerpo físico
                 this.physics.add.existing(zona, true); 
@@ -94,10 +94,10 @@ export default class Entrada_mazmorra extends Phaser.Scene{
 
         //COLISION CON EL PUENTE
         this.puenteFisico = this.physics.add.staticGroup();
-        var ObjetoPuente = map.getObjectLayer('Objeto_puente'); 
+        this.objetoPuente = map.getObjectLayer('Objeto_puente'); 
 
-        if(ObjetoPuente){
-            ObjetoPuente.objects.forEach( object => {
+        if(this.objetoPuente){
+            this.objetoPuente.objects.forEach( object => {
                 let zona = this.add.zone(object.x, object.y, object.width, object.height).setOrigin(0, 0);           
                 // Le damos cuerpo físico
                 this.physics.add.existing(zona, true); 
@@ -107,10 +107,10 @@ export default class Entrada_mazmorra extends Phaser.Scene{
 
         //para que no se caiga del puente
         this.barandillasPuente= this.physics.add.staticGroup();
-        var ObjetoBarandillas = map.getObjectLayer('Barandillas_puente'); 
+        this.objetoBarandillas = map.getObjectLayer('Barandillas_puente'); 
 
-        if(ObjetoBarandillas){
-            ObjetoBarandillas.objects.forEach( object => {
+        if(this.objetoBarandillas){
+            this.objetoBarandillas.objects.forEach( object => {
                 let zona = this.add.zone(object.x, object.y, object.width, object.height).setOrigin(0, 0);           
                 // Le damos cuerpo físico
                 this.physics.add.existing(zona, true); 
@@ -131,8 +131,8 @@ export default class Entrada_mazmorra extends Phaser.Scene{
         arboles.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, arboles);
 
-        suelo.setCollisionByExclusion([-1], true);       
-        this.physics.add.collider(this.player, suelo);
+        /**suelo.setCollisionByExclusion([-1], true);       
+        this.physics.add.collider(this.player, suelo); */
         this.colisionPlataforma = this.physics.add.collider(this.player, plataformas);
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
