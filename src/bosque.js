@@ -66,11 +66,11 @@ export default class Bosque extends Phaser.Scene{
         //limites de camara
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player, true);
+        
         //colision suelo-player
         this.physics.add.collider(this.player,arboles);
-        this.physics.add.collider(this.player,casas);
-
-        this.physics.add.overlap(this.player, tejado,null,null,this);        
+        this.physics.add.overlap(this.player, tejado,null,null,this);    
+        this.physics.add.collider(this.player,casas);            
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
         
