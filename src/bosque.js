@@ -41,8 +41,8 @@ export default class Bosque extends Phaser.Scene{
 
 
         map.createLayer('Suelo', img2, 0,0);
-        var casas = map.createLayer('Casas', [img1,img2, img5, img6, img7], 0,0);
-        var arboles = map.createLayer('Arboleda', [img3, img4], 0,0);
+        var arboles = map.createLayer('Arboleda', [img3, img4, img7], 0,0);
+        var casas = map.createLayer('Casas', [img1,img2, img5, img6], 0,0);
 
         //Crear capa de salidas, pero no configuradas
               
