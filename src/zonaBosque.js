@@ -61,6 +61,7 @@ export default class Zona_bosque extends Phaser.Scene{
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);
 
+        //SALIDAS
         this.salidas = this.physics.add.group();
         this.capaSalidas = map.getObjectLayer('Salidas');
         
@@ -71,12 +72,14 @@ export default class Zona_bosque extends Phaser.Scene{
         })
        this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
+       //ENEMIGOS
        this.enemigos = this.physics.add.group();
        this.capaEnemigos = map.getObjectLayer('Enemigos');
-       this.capaEnemigos.objects.forEach(obj=>{
-            var a = new Spike(this, obj.x, obj.y);
-            this.enemigos.add(a);
+       this.capaEnemigos.objects.forEach(obj => {
+            var enemigo = new Spike(this, obj.x, obj.y)
+            this.enemigos.add(enemigo)
        })
+       //this.physics.add.collider(this.enemigos, arboles);
        this.physics.add.collider(this.player, this.enemigos);
         
     }
