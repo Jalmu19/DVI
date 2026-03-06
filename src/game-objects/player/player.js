@@ -83,7 +83,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 this.setTint(0x1abc9c);
                 this.knockBack(enemyX, enemyY);
                 this.scene.time.addEvent({
-                    delay: 1000,
+                    delay: 500,
                     callback: () => {
                         this.invincible = false;
                         this.clearTint();
@@ -100,12 +100,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * Funcion que mueve al personaje cuando le dan
      */
     knockBack(enemyX, enemyY) {
-        this.setVelocityX((this.x > enemyX ? 1 : -1) * 100);
-        this.setVelocityY((this.Y > enemyY ? 1 : -1) * 100);
+        this.setVelocityX((this.x > enemyX ? 1 : -1) * 200);
+        this.setVelocityY((this.Y > enemyY ? 1 : -1) * 200);
 
         this.knocked = true;
         this.scene.time.addEvent({
-            delay: 50,
+            delay: 100,
             callback: () => {
                 this.knocked = false;
             }
