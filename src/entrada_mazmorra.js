@@ -56,7 +56,7 @@ export default class Entrada_mazmorra extends Phaser.Scene{
         var img1 = map.addTilesetImage('cesped', 'cesped');
         var img2 = map.addTilesetImage('plataforma_cesped', 'plataforma_cesped');
         var img3 = map.addTilesetImage('arbol', 'arbol');
-        var img4 = map.addTilesetImage('bridge', 'puente');
+        var img4 = map.addTilesetImage('Bridges', 'Bridges');
         var img5 = map.addTilesetImage('seta', 'seta');
         var img6 = map.addTilesetImage('florAmarilla', 'flor');
         var img7 = map.addTilesetImage('tierra', 'tierra');
