@@ -137,7 +137,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
             if (this.cursors.up.isDown){
                 vY = -this.speed;
-                anim = 'idle-back';
+                anim = 'walk-back';
                 this.lastDir = 'back';
             }
             if (this.cursors.down.isDown) {
