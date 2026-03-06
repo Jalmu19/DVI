@@ -63,9 +63,7 @@ export default class Boot extends Phaser.Scene {
    * Creación de la escena. En este caso, solo cambiamos a la escena que representa el
    * nivel del juego
    */
-  create() {
-    //this.scene.start('entrada_mazmorra');
-    this.anims.createFromAseprite('player');
+  create() {   
     this.scene.start('bosque');
   }
 }

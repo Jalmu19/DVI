@@ -56,7 +56,7 @@ export default class Entrada_mazmorra extends Phaser.Scene{
         var img1 = map.addTilesetImage('cesped', 'cesped');
         var img2 = map.addTilesetImage('plataforma_cesped', 'plataforma_cesped');
         var img3 = map.addTilesetImage('arbol', 'arbol');
-        var img4 = map.addTilesetImage('puente', 'puente');
+        var img4 = map.addTilesetImage('bridge', 'puente');
         var img5 = map.addTilesetImage('seta', 'seta');
         var img6 = map.addTilesetImage('florAmarilla', 'flor');
         var img7 = map.addTilesetImage('tierra', 'tierra');
@@ -105,19 +105,19 @@ export default class Entrada_mazmorra extends Phaser.Scene{
             })
         }
 
-        //para que no se caiga del puente
-        this.barandillasPuente= this.physics.add.staticGroup();
-        this.objetoBarandillas = map.getObjectLayer('Barandillas_puente'); 
+        //para que no se caiga del puente ni atraviese las plataformas al bajar la escalera
+        this.barandillas= this.physics.add.staticGroup();
+        this.objetoBarandillas = map.getObjectLayer('Barandillas'); 
 
         if(this.objetoBarandillas){
             this.objetoBarandillas.objects.forEach( object => {
                 let zona = this.add.zone(object.x, object.y, object.width, object.height).setOrigin(0, 0);           
                 // Le damos cuerpo físico
                 this.physics.add.existing(zona, true); 
-                this.barandillasPuente.add(zona);
+                this.barandillas.add(zona);
             })
         }
-        this.physics.add.collider(this.player, this.barandillasPuente);
+        this.physics.add.collider(this.player, this.barandillas);
 
 
         
