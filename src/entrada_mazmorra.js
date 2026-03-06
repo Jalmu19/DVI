@@ -131,8 +131,6 @@ export default class Entrada_mazmorra extends Phaser.Scene{
         arboles.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, arboles);
 
-        /**suelo.setCollisionByExclusion([-1], true);       
-        this.physics.add.collider(this.player, suelo); */
         this.colisionPlataforma = this.physics.add.collider(this.player, plataformas);
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);

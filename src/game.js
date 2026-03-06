@@ -2,7 +2,6 @@ import Boot from './boot.js';
 import End from './end.js';
 import Level from './level.js';
 import Phaser from 'phaser';
-import Inicio from './inicio.js';
 import Entrada_mazmorra from './entrada_mazmorra.js';
 import Bosque from './bosque.js';
 import Mazmorra from './mazmorra.js'

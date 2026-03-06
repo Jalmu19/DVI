@@ -44,20 +44,6 @@ export default class Mazmorra extends Phaser.Scene{
         this.player = new Player(this,  48, 292);
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-
-        this.cajas = this.physics.add.group();
-        this.capaCajas = map.getObjectLayer('Cajas');
-        
-       /* this.capaCajas.objects.forEach(objeto =>{
-            
-            var a = new Cajas(this, objeto.x, objeto.y);
-            this.cajas.add(a)
-        })
-      */
-
-
-
-
         
         //Crear capa de salidas, pero no configuradas  
         this.salidas = this.physics.add.group();
