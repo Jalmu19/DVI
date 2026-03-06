@@ -64,6 +64,7 @@ export default class Boot extends Phaser.Scene {
    * nivel del juego
    */
   create() {   
+    this.anims.createFromAseprite('player');
     this.scene.start('bosque');
   }
 }

@@ -157,6 +157,7 @@ export default class Entrada_mazmorra extends Phaser.Scene{
     }
 
     cambiarScene(){
+        this.anims.createFromAseprite('player');
         this.scene.start('mazmorra');
     } 
 

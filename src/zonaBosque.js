@@ -84,6 +84,7 @@ export default class Zona_bosque extends Phaser.Scene{
         
     }
     cambiarScene(){
+        this.anims.createFromAseprite('player');
         this.scene.start('entrada_mazmorra');
     } 
     dies() {

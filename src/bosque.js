@@ -77,6 +77,7 @@ export default class Bosque extends Phaser.Scene{
     }
 
     cambiarScene(){
+        this.anims.createFromAseprite('player');
         this.scene.start('zonaBosque');           
     }
 
