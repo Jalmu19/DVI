@@ -56,6 +56,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.updateScore();
     }
 
+    getHechizo(){return this.actual_enchantment};
     lanzarHechizo(x, y, rotation) {
         if (this.actual_enchantment) {
             this.actual_enchantment.fire(x, y, rotation);

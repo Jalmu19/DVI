@@ -12,6 +12,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.body.setSize(10,9).setOffset(11, 12);
         this.speed = 10;
         this.dmgGiven = 0.5; 
+        this.health = 5;
 
         //Ejecuta una funcion cuando pase cierto tiempo
         this.scene.time.addEvent({
@@ -40,10 +41,25 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         })
     }
 
+    takeDamage(){
+        this.health = this.health - 1;
+        console.log("ENEMIGO HERIDO, HP: ", this.health);
+
+        if(this.health <= 0){
+            this.destroy();
+        }
+    }
+
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
         if (this.scene.physics.overlap(this.scene.player, this)) 
             this.scene.player.takeDamage(this.dmgGiven, this.x, this.y);
+        if(this.scene.physics.add.overlap(this, this.scene.player.getHechizo(), (enemy, spell) => {
+            enemy.takeDamage();
+            spell.setActive(false).setVisible(false);
+            spell.body.setEnable(false);
+        }
+        ));
         
     }
 

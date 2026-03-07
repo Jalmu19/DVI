@@ -6,7 +6,7 @@ import Spike from './game-objects/enemy/spike.js'
 import entrada_mazmorra from '../assets/mapas/entrada-mazmorra-bosque.json'
 import cesped from '../assets/sprites/cesped.png'
 import plataforma_cesped from '../assets/sprites/plataforma_cesped.png'
-import puente from '../assets/sprites/Bridges.png'
+import puente from '../assets/sprites/puente.png'
 import seta from '../assets/sprites/seta.png'
 import tierra from '../assets/sprites/tierra.png'
 import piedras_tierra from '../assets/sprites/piedras_tierra.png'
@@ -24,7 +24,7 @@ export default class Zona_bosque extends Phaser.Scene{
         this.load.tilemapTiledJSON('entrada-mazmorra-bosque', entrada_mazmorra)
         this.load.image('cesped', cesped);
         this.load.image('plataforma_cesped', plataforma_cesped);
-        this.load.image('Bridges', puente);
+        this.load.image('puente', puente);
         this.load.image('seta', seta);
         this.load.image('tierra', tierra);
         this.load.image('piedras_tierra', piedras_tierra);
@@ -61,7 +61,6 @@ export default class Zona_bosque extends Phaser.Scene{
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);
 
-        //SALIDAS
         this.salidas = this.physics.add.group();
         this.capaSalidas = map.getObjectLayer('Salidas');
         
@@ -72,19 +71,16 @@ export default class Zona_bosque extends Phaser.Scene{
         })
        this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
-       //ENEMIGOS
        this.enemigos = this.physics.add.group();
        this.capaEnemigos = map.getObjectLayer('Enemigos');
-       this.capaEnemigos.objects.forEach(obj => {
-            var enemigo = new Spike(this, obj.x, obj.y)
-            this.enemigos.add(enemigo)
+       this.capaEnemigos.objects.forEach(obj=>{
+            var a = new Spike(this, obj.x, obj.y, 'spike');
+            this.enemigos.add(a);
        })
        //this.physics.add.collider(this.enemigos, arboles);
-       this.physics.add.collider(this.player, this.enemigos);
         
     }
     cambiarScene(){
-        this.anims.createFromAseprite('player');
         this.scene.start('entrada_mazmorra');
     } 
     dies() {

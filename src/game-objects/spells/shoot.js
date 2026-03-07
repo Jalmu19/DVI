@@ -8,6 +8,7 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
         super(scene, x, y, key);
         this.speed = speed; 
         this.setDisplaySize(16, 16);
+        
     }
 
     fire(x, y, rotation){
@@ -21,16 +22,19 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
        
         this.enableBody(true, posX, posY, true, true);
         this.setVelocity(vx, vy);
+        this.setBodySize(10, 10);
     }
 
     onCreate(){
         if (this.body) {
         this.disableBody(true, true);
-    } else {
-        // Si no, usamos los flags manuales
-        this.setActive(false);
-        this.setVisible(false);
-    }
+        
+        } else {
+            // Si no, usamos los flags manuales
+            this.setActive(false);
+            this.setVisible(false);
+        }
+   
     }
     
     preUpdate(time, delta){
