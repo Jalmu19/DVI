@@ -87,8 +87,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * Método que mueve al personaje cuando le dan
      */
     knockBack(enemyX, enemyY) {
-        this.setVelocityX((this.x > enemyX ? 1 : -1) * 200);
-        this.setVelocityY((this.Y > enemyY ? 1 : -1) * 200);
+        // Calcula el angulo entre el jugador y el enemigo
+        const angle = Phaser.Math.Angle.Between(enemyX, enemyY, this.x, this.y);
+        // Convierte de angulo a coordenadas cartesianas
+        this.body.velocity.setToPolar(angle, 200);
 
         this.knocked = true;
         this.scene.time.addEvent({
