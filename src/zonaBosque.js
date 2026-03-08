@@ -6,7 +6,7 @@ import Spike from './game-objects/enemy/spike.js'
 import entrada_mazmorra from '../assets/mapas/entrada-mazmorra-bosque.json'
 import cesped from '../assets/sprites/cesped.png'
 import plataforma_cesped from '../assets/sprites/plataforma_cesped.png'
-import puente from '../assets/sprites/puente.png'
+import puente from '../assets/sprites/Bridges.png'
 import seta from '../assets/sprites/seta.png'
 import tierra from '../assets/sprites/tierra.png'
 import piedras_tierra from '../assets/sprites/piedras_tierra.png'
@@ -24,7 +24,7 @@ export default class Zona_bosque extends Phaser.Scene{
         this.load.tilemapTiledJSON('entrada-mazmorra-bosque', entrada_mazmorra)
         this.load.image('cesped', cesped);
         this.load.image('plataforma_cesped', plataforma_cesped);
-        this.load.image('puente', puente);
+        this.load.image('Bridges', puente);
         this.load.image('seta', seta);
         this.load.image('tierra', tierra);
         this.load.image('piedras_tierra', piedras_tierra);

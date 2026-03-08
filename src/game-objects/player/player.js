@@ -84,7 +84,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 this.setTint(0x1abc9c);
                 this.knockBack(enemyX, enemyY);
                 this.scene.time.addEvent({
-                    delay: 500,
+                    delay: 300,
                     callback: () => {
                         this.invincible = false;
                         this.clearTint();
@@ -165,6 +165,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             }
             else this.play(anim,true);
         }
+    }
+
+    getPlayer(target){
+        return target.set(this.x, this.y);
     }
 
 }
