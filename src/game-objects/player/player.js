@@ -18,7 +18,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      */
     constructor(scene, x, y) {
         super(scene, x, y, 'player');
-        this.score = 0;
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
@@ -39,15 +38,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.shoots = new FreezingShoot(this.scene, 0, 0, 'shoot');
         this.actual_enchantment = this.shoots;
 
-        //this.actual_enchantment = null;
-        /*this.scene.input.on('pointerdown', (pointer) => { 
-            if(pointer.rightButtonDown() && pointer.leftButtonDown()) 
-                this.lanzarHechizo(this.x, this.y, this.weapon.rotation);
-        });*/
-
-        // Esta label es la UI en la que pondremos la puntuación del jugador
-        this.label = this.scene.add.text(10, 10, "", { fontSize: 20 });
-
         this.cursors = this.scene.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
             down: Phaser.Input.Keyboard.KeyCodes.S,
@@ -55,23 +45,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             right: Phaser.Input.Keyboard.KeyCodes.D,
             interact: Phaser.Input.Keyboard.KeyCodes.E
         });
-        this.updateScore();
     }
 
-    getHechizo(){return this.actual_enchantment};
+    getHechizo(){ return this.actual_enchantment; }
+
+    /**
+     * Método que que dispara siempre y cuando se tenga un hechizo
+     */
     lanzarHechizo(x, y, rotation) {
         if (this.actual_enchantment) {
             this.actual_enchantment.fire(x, y, rotation);
         }
-    }
-
-    /**
-     * El jugador ha recogido una estrella por lo que este método añade un punto y
-     * actualiza la UI con la puntuación actual.
-     */
-    point() {
-        this.score++;
-        this.updateScore();
     }
 
     /**
@@ -100,7 +84,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     /**
-     * Funcion que mueve al personaje cuando le dan
+     * Método que mueve al personaje cuando le dan
      */
     knockBack(enemyX, enemyY) {
         this.setVelocityX((this.x > enemyX ? 1 : -1) * 200);
@@ -113,13 +97,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 this.knocked = false;
             }
         })
-    }
-
-    /**
-     * Actualiza la UI con la puntuación actual
-     */
-    updateScore() {
-        this.label.text = 'Score: ' + this.score;
     }
 
     /**
