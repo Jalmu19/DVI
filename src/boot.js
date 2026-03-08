@@ -67,6 +67,7 @@ export default class Boot extends Phaser.Scene {
    */
   create() {   
     this.anims.createFromAseprite('player');
-    this.scene.start('mainmenu', { globals : this.globals});
+    this.scene.start('bosque');
+    //this.scene.start('mainmenu', { globals : this.globals});
   }
 }

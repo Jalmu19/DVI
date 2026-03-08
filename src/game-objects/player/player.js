@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import Staff from '../items/staffs-wands/staff';
 import Health from '../health';
 import Shoots from '../spells/shoots';
+import FreezingShoot from '../spells/freezingShoot';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
@@ -33,8 +34,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         // Variable para saber que direccion de sprite parado poner cuando no se toque tecla
         this.lastDir = 'front';
 
-        this.shoots = new Shoots(this.scene.physics.world, this.scene, { key: 'shoot', speed: 200 });
-        this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
+        //this.shoots = new Shoots(this.scene.physics.world, this.scene, { key: 'shoot', speed: 200 });
+        //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
+        this.shoots = new FreezingShoot(this.scene, 0, 0, 'shoot');
         this.actual_enchantment = this.shoots;
 
         //this.actual_enchantment = null;
