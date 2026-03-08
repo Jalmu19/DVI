@@ -17,8 +17,8 @@
     },
     "keywords": [],
     "contributors": [
-        "Cecilia Martinez Rodado <cecili03@ucm.es>", 
-        "Abel Fáfula Domínguez <abfafula@ucm.es>", 
+        "Cecilia Martinez Rodado <cecili03@ucm.es>",
+        "Abel Fáfula Domínguez <abfafula@ucm.es>",
         "Almudena García Navas <almude12@ucm.es>",
         "Irene Rodríguez San Martín <irodri15@ucm.es>"
     ],
@@ -36,6 +36,7 @@
         "vite": "5.4.6"
     },
     "dependencies": {
-        "phaser": "3.85.2"
+        "phaser": "3.85.2",
+        "webfontloader": "^1.6.28"
     }
 }

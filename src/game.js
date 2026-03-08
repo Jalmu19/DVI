@@ -7,7 +7,7 @@ import Bosque from './bosque.js';
 import Mazmorra from './mazmorra.js'
 import zBosque from './zonaBosque.js';
 import GameOver from './game-over.js';
-
+import MainMenu from './mainMenu.js';
 
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
@@ -23,7 +23,7 @@ let config = {
         autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
     pixelArt: true,
-    scene: [Boot, Bosque,zBosque, Entrada_mazmorra, Mazmorra, Level, End, GameOver],
+    scene: [Boot, MainMenu, Bosque,zBosque, Entrada_mazmorra, Mazmorra, Level, End, GameOver],
     physics: {
         default: 'arcade',
         arcade: {

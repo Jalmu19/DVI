@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 
+import background from '../assets/sprites/background.jpg'
 import villa from '../assets/sprites/villa1.png'
 import mapa from '../assets/mapas/mapaVilla.json'
 
@@ -41,6 +42,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('base', base);
     this.load.image('star', star);*/
 
+    this.load.image('background', background);
 
     this.load.aseprite('player', player, playerjson);
     this.load.image('palo', palo);
@@ -65,6 +67,6 @@ export default class Boot extends Phaser.Scene {
    */
   create() {   
     this.anims.createFromAseprite('player');
-    this.scene.start('bosque');
+    this.scene.start('mainmenu', { globals : this.globals});
   }
 }
