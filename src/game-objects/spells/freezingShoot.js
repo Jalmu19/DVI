@@ -2,6 +2,17 @@ import Shoot from "./shoot";
 
 export default class FreezingShoot extends Shoot{
 
+    constructor(scene, x, y){
+        const key = scene.currentShootKey;
+        const speed = scene.currentShootSpeed;
+
+        super(scene, x, y, key);
+        this.speed = speed; 
+        this.setDisplaySize(16, 16);
+        
+        this.freeze = true;
+    }
+
     fire(x, y, rotation){
         const posX = x + Math.cos(rotation);
         const posY = y + Math.sin(rotation);
@@ -18,6 +29,7 @@ export default class FreezingShoot extends Shoot{
         this.scene.time.delayedCall(500, () => {
             this.setActive(false);
             this.setVisible(false);
+            this.disableBody(true, true);
         });
     }
     

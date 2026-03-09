@@ -10,9 +10,12 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.scene.physics.add.existing(this, false);
         this.body.setCollideWorldBounds(true);          //para que no se salga de los limites
         this.body.setSize(10,9).setOffset(11, 12);
-        this.speed = 10;
+        this.speed = 50;
         this.dmgGiven = 0.5; 
         this.health = 5;
+
+        this.freezed = false;
+        this.canBeFreezed = false;
 
         //PERSIGUE AL JUGADOR
         this.isChasing = true;
@@ -30,35 +33,56 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
 
     movement(){
         this.setVelocity(0,0);
-        this.scene.time.delayedCall(200, () => {       //para que haga pausas mientras se mueve
-            const randomDirection = Phaser.Math.Between(0, 3);
-            if(randomDirection === 0) this.setVelocity(0, -this.speed);
-            else if(randomDirection === 1) this.setVelocity(0, this.speed);
-            else if(randomDirection === 2) this.setVelocity(-this.speed, 0);
-            else this.setVelocity(this.speed, 0);
+        if(!this.freezed){
+            this.scene.time.delayedCall(200, () => {       //para que haga pausas mientras se mueve
+                const randomDirection = Phaser.Math.Between(0, 3);
+                if(randomDirection === 0) this.setVelocity(0, -this.speed);
+                else if(randomDirection === 1) this.setVelocity(0, this.speed);
+                else if(randomDirection === 2) this.setVelocity(-this.speed, 0);
+                else this.setVelocity(this.speed, 0);
 
-            this.scene.time.addEvent({
-            delay: Phaser.Math.Between(500, 1500),  
-            callback: this.movement,                
-            callbackScope: this,                   
-            loop: false,                            
-        })
-        })
+                this.scene.time.addEvent({
+                delay: Phaser.Math.Between(500, 1500),  
+                callback: this.movement,                
+                callbackScope: this,                   
+                loop: false,                            
+            })
+            })
+        }
     }
 
-    takeDamage(){
+    takeDamage(spell){
         this.health = this.health - 1;
         console.log("ENEMIGO HERIDO, HP: ", this.health);
-        this.setTint(0x1abc9c);
-        this.scene.time.addEvent({
-            delay: 500,
-            callback: () => {
-                this.clearTint();
-            }
-        })
-    
+
         if(this.health <= 0){
             this.destroy();
+        }
+        else{
+            if(spell.isFreezer()){
+                console.log("ENEMIGO CONGELADO");
+                this.setTint(0x00ffff);
+                this.freezed = true;
+                const oldSpeed = this.speed;
+                if(!this.canBeFreezed) this.speed *= 0.5;
+                this.scene.time.addEvent({
+                delay: 2000,
+                callback: () => {
+                    this.clearTint();
+                    this.freezed = false;
+                    this.speed = oldSpeed;
+                }
+            })
+            }
+            else{
+                this.setTint(0xff0000);
+                this.scene.time.addEvent({
+                delay: 500,
+                callback: () => {
+                    this.clearTint();
+                }
+            })
+            }
         }
     }
 
@@ -69,22 +93,25 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
             this.scene.player.takeDamage(this.dmgGiven, this.x, this.y);
         //DAÑO AL ENEMIGO
         if(this.scene.physics.add.overlap(this, this.scene.player.getHechizo(), (enemy, spell) => {
-            enemy.takeDamage();
+            enemy.takeDamage(spell);
             spell.setActive(false).setVisible(false);
             spell.body.setEnable(false);
         }
         ));
 
-        this.scene.player.getPlayer(this.target);
-        const distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
-        if (distance < this.visionRange){
-            this.isChasing = true;
-            this.rotation = this.scene.physics.moveToObject(this, this.target, this.speed) + 1.5707963267948966;
+        if(!this.canBeFreezed || !this.freezed){
+            this.scene.player.getPlayer(this.target);
+            const distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
+            if (distance < this.visionRange){
+                this.isChasing = true;
+                this.rotation = this.scene.physics.moveToObject(this, this.target, this.speed) + 1.5707963267948966;
+            }
+            else {
+                this.isChasing = false;
+                this.setVelocity(0, 0);
+            }
         }
-        else {
-            this.isChasing = false;
-            this.setVelocity(0, 0);
-        }
+        else if(this.canBeFreezed) this.setVelocity(0, 0);
         
     }
 

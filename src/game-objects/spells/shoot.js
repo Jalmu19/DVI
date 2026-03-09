@@ -9,6 +9,7 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
         this.speed = speed; 
         this.setDisplaySize(16, 16);
         
+        this.freeze = false;
     }
 
     fire(x, y, rotation){
@@ -37,6 +38,8 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
    
     }
     
+    isFreezer() { return this.freeze}
+
     preUpdate(time, delta){
         super.preUpdate(time, delta);
         const extra = 32;
