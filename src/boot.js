@@ -18,6 +18,8 @@ import palo from '../assets/sprites/palo.png'
 import shoot from '../assets/sprites/basic-spell.png'
 import spike from '../assets/sprites/spikes-placeholder.png'
 
+import shield from '../assets/sprites/bandera_azul.png'
+
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
  * Esta escena se puede mejorar añadiendo una imagen del juego y una 
@@ -50,7 +52,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('palo', palo);
     this.load.image('shoot', shoot);
     this.load.image('spike',spike);
-
+    this.load.image('shield', shield);
     this.load.image('plantilla', villa);
     this.load.tilemapTiledJSON('mapa', mapa);
     this.load.image('casa', casa);

@@ -3,6 +3,7 @@ import Staff from '../items/staffs-wands/staff';
 import Health from '../health';
 import Shoots from '../spells/shoots';
 import FreezingShoot from '../spells/freezingShoot';
+import Shield from '../spells/shield';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
@@ -35,9 +36,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         //this.shoots = new Shoots(this.scene.physics.world, this.scene, { key: 'shoot', speed: 200 });
         //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
-        this.shoots = new Shoots(this.scene.physics.world, this.scene, { classType: FreezingShoot, key: 'shoot', speed: 150 });
-        this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
-        this.actual_enchantment = this.shoots;
+        //this.shoots = new Shoots(this.scene.physics.world, this.scene, { classType: FreezingShoot, key: 'shoot', speed: 150 });
+        //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
+        //this.actual_enchantment = this.shoots;
+        this.actual_enchantment = new Shield(this.scene, x, y);
 
         this.cursors = this.scene.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
