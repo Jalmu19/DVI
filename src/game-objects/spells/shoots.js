@@ -6,7 +6,7 @@ export default class Shoots extends Phaser.Physics.Arcade.Group{
         scene.currentShootSpeed = config.speed;
 
         super(world, scene,
-            {...config, classType: Shoot, createCallback: Shoot.prototype.onCreate}
+            {...config, classType: config.classType, createCallback: config.classType.prototype.onCreate}
         );
 
         this.createMultiple({key: 'shoot', frameQuantity: 1, active: false, visible: false});

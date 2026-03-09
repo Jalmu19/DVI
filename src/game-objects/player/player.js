@@ -35,7 +35,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         //this.shoots = new Shoots(this.scene.physics.world, this.scene, { key: 'shoot', speed: 200 });
         //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
-        this.shoots = new FreezingShoot(this.scene, 0, 0, 'shoot');
+        this.shoots = new Shoots(this.scene.physics.world, this.scene, { classType: FreezingShoot, key: 'shoot', speed: 150 });
+        this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
         this.actual_enchantment = this.shoots;
 
         this.cursors = this.scene.input.keyboard.addKeys({

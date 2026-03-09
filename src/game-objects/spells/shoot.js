@@ -41,7 +41,7 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
         super.preUpdate(time, delta);
         const extra = 32;
         const bounds = this.scene.physics.world.bounds;
-        if(this.y <= -32 || this.y >= bounds.height + 32 || this.x >= bounds.width + 32 || this.x <= -32){
+        if(this.y <= -extra || this.y >= bounds.height + extra || this.x >= bounds.width + extra || this.x <= -extra){
             this.setActive(false);
             this.setVisible(false);
         }
