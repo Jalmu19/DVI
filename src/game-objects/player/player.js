@@ -4,6 +4,7 @@ import Health from '../health';
 import Shoots from '../spells/shoots';
 import FreezingShoot from '../spells/freezingShoot';
 import Shield from '../spells/shield';
+import Shoot from '../spells/shoot';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
@@ -34,12 +35,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         // Variable para saber que direccion de sprite parado poner cuando no se toque tecla
         this.lastDir = 'front';
 
-        //this.shoots = new Shoots(this.scene.physics.world, this.scene, { key: 'shoot', speed: 200 });
+        //this.shoots = new Shoots(this.scene.physics.world, this.scene, { classType: Shoot, key: 'shoot', speed: 200 });
         //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
         //this.shoots = new Shoots(this.scene.physics.world, this.scene, { classType: FreezingShoot, key: 'shoot', speed: 150 });
         //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
         //this.actual_enchantment = this.shoots;
-        this.actual_enchantment = new Shield(this.scene, x, y);
+        this.actual_enchantment = new Shield(this.scene, x, y, this);
+        this.protected = false;
 
         this.cursors = this.scene.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -155,4 +157,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         return target.set(this.x, this.y);
     }
 
+    setProtection() {this.protected = true;}
+    removeProtection() {this.protected = false;}
+    isProtected() {return this.protected;}
 }

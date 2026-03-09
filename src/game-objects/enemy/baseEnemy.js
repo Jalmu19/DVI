@@ -10,7 +10,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.scene.physics.add.existing(this, false);
         this.body.setCollideWorldBounds(true);          //para que no se salga de los limites
         this.body.setSize(10,9).setOffset(11, 12);
-        this.speed = 50;
+        this.speed = 10;
         this.dmgGiven = 0.5; 
         this.health = 5;
 
@@ -21,7 +21,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.isChasing = true;
         this.target = new Phaser.Math.Vector2();
         this.visionRange = 70;
-
+        this.isRebounding = false;
         //Ejecuta una funcion cuando pase cierto tiempo
         this.scene.time.addEvent({
             delay: Phaser.Math.Between(500, 1500),  //tiempo que espera (variado, entre 500-1500ms)
@@ -29,6 +29,8 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
             callbackScope: this,                    //asegura que siga siendo la clase baseenemy
             loop: false,                            //se mueven todo el rato
         })
+
+        this.setupCollisions();
     }
 
     movement(){
@@ -86,19 +88,59 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         }
     }
 
+    setupCollisions() {
+    this.scene.physics.add.overlap(this, this.scene.player.getHechizo(), (enemy, spell) => {
+        this.handleSpellCollision(spell);
+    });
+    }
+
+    handleSpellCollision(spell) {
+    // 1. Comprobamos el estado del jugador
+    if (this.scene.player.isProtected()) {
+        // Lógica de REBOTE (No recibe daño)
+        this.scene.player.getPlayer(this.target);
+        const angle = Phaser.Math.Angle.Between(this.target.x, this.target.y, this.x, this.y);
+        this.body.velocity.setToPolar(angle, 50);
+        this.isRebounding = true;
+        this.scene.time.delayedCall(500, () => {
+            this.isRebounding = false;
+        });
+        console.log("¡Hechizo bloqueado por el escudo!");
+    } 
+    else {
+        // Lógica de DAÑO
+        this.takeDamage(spell);
+        spell.setActive(false).setVisible(false);
+        spell.body.setEnable(false);
+    }
+    }
+
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
         //DAÑO AL JUGADOR
         if (this.scene.physics.overlap(this.scene.player, this)) 
             this.scene.player.takeDamage(this.dmgGiven, this.x, this.y);
         //DAÑO AL ENEMIGO
-        if(this.scene.physics.add.overlap(this, this.scene.player.getHechizo(), (enemy, spell) => {
-            enemy.takeDamage(spell);
-            spell.setActive(false).setVisible(false);
-            spell.body.setEnable(false);
+        /*
+        if(!this.scene.player.isProtected()){
+            if(this.scene.physics.add.overlap(this, this.scene.player.getHechizo(), (enemy, spell) => {
+                enemy.takeDamage(spell);
+                spell.setActive(false).setVisible(false);
+                spell.body.setEnable(false);
+            }
+            ));
         }
-        ));
-
+        else{
+            if(this.scene.physics.add.overlap(this, this.scene.player.getHechizo())){
+                // Calcula el angulo entre el jugador y el enemigo
+                this.scene.player.getPlayer(this.target);
+                const angle = Phaser.Math.Angle.Between(this.target.x, this.target.y, this.x, this.y);
+                // Convierte de angulo a coordenadas cartesianas
+                this.body.velocity.setToPolar(angle, 200);
+            }
+        }
+        */
+        if(!this.isRebounding){
         if(!this.canBeFreezed || !this.freezed){
             this.scene.player.getPlayer(this.target);
             const distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
@@ -112,6 +154,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
             }
         }
         else if(this.canBeFreezed) this.setVelocity(0, 0);
+        }
         
     }
 
