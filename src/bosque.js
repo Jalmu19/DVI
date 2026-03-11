@@ -72,7 +72,7 @@ export default class Bosque extends Phaser.Scene{
         this.physics.add.overlap(this.player, tejado,null,null,this);    
         this.physics.add.collider(this.player,casas);            
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
-
+        this.scene.launch('ui');
         
     }
 
