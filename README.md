@@ -59,7 +59,7 @@ Para empujar los objetos que haya bastará con ponerse en el lado opuesto del ob
 
 ## 4. Sistemas
 ### 4.1. Sistema de vida
-El jugador tiene 3 vidas al iniciar el juego, a medida que avanza en la aventura puede encontrarse objetos que, al agrupar 4 de estos, aumente la vida del jugador en una vida. Se perderá una vida cada vez que se reciba un ataque enemigo, si se pierde todas las vidas en una mazmorra se reiniciará el juego desde fuera de ésta o en la zona más cercana si mueres en un camino.
+El jugador tiene 3 corazones al iniciar el juego, a medida que avanza en la aventura puede encontrarse objetos que, al agrupar 2 de estos, aumente los corazones totales del jugador en uno. Se perderá un cuarto, mitad o corazón entero cada vez que se reciba un ataque dependiendo del enemigo, si se pierde todos los corazones en una mazmorra se reiniciará el juego desde fuera de ésta o en la zona más cercana si mueres en un camino.
 ### 4.2. Sistema de estadísticas
 El jugador tendrá una serie de estadísticas que puede aumentar o disminuir dependiendo de los objetos que lleve equipados y de los hechizos que use.
 
@@ -68,8 +68,9 @@ El jugador tendrá una serie de estadísticas que puede aumentar o disminuir dep
 ## 5. Interfaz
 ### 5.1 Controles
 - WASD Para movimiento multidireccional (en ejes cartesianos)
-- Click izquierdo del ratón -> lanzar hechizos
 - Mantener click derecho del ratón -> Apuntar
+- Click izquierdo del ratón -> lanzar hechizos
+- Tabulador para abrir el menú de hechizos
 
 
 ### 5.2 Cámara
@@ -82,10 +83,11 @@ Cámara top-down o cenital centrada en el protagonista.
 ## 6. Mundo del juego
 ### 6.1 Personajes
 #### 6.1.1 Lilith
-Lilith es la protagonista del juego y es la representación del jugador dentro del juego. Su comportamiento se describe en la sección de mecánicas. Las dimensiones de Lilith son de 16x16
+Lilith es la protagonista del juego y es la representación del jugador dentro del juego. Su comportamiento se describe en la sección de mecánicas. Las dimensiones de Lilith son de 17x26
 #### 6.1.2 Enemigos
 Dentro del juego hay varios tipos de enemigos que pueden matar al jugador.
 ### 6.2 Objetos
+
 ### 6.3 Niveles
 
 
