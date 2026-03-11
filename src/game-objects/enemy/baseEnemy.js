@@ -89,7 +89,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
     }
 
     setupCollisions() {
-        this.scene.physics.add.overlap(this, this.scene.player.getHechizo(), (spell) => {
+        this.scene.physics.add.overlap(this, this.scene.player.getHechizo(), (self,spell) => {
             this.handleSpellCollision(spell);
         });
     }
