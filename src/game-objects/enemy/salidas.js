@@ -12,14 +12,14 @@ export default class Salidas extends Phaser.Physics.Arcade.Sprite {
      * @param {number} x Coordenada X
      * @param {number} y Coordenada Y
      */
-    constructor(scene, x, y) {
-        super(scene, x, y,'player');
+    constructor(scene, x, y, width, height, nombre) {
+        super(scene, x, y);
 
-        this.tag = "salida"
+        this.tag = nombre
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         //cambiar hitbox
-        this.body.setSize(14,20).setOffset(9,8);
+        this.body.setSize(width,height).setOffset(9,8);
         // Queremos que el jugador no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
        
