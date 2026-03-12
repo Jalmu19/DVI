@@ -42,9 +42,10 @@ export default class Zona_bosque extends Phaser.Scene{
         var img1 = map.addTilesetImage('Villa1', 'plantilla');
         var img2 = map.addTilesetImage('Arbol', 'arbol');
         var img3 = map.addTilesetImage('flor1', 'flor');
+        var img4 = map.addTilesetImage('Hierba', 'hierba');
 
 
-        map.createLayer('fondo', img1, 0,0);
+        map.createLayer('fondo', img4, 0,0);
         map.createLayer('Detalles', [img3, img1], 0,0);
         var arboles = map.createLayer('Arboles', img2, 0,0);
 

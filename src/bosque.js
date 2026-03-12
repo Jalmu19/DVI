@@ -9,7 +9,7 @@ import flor from '../assets/sprites/florAmarilla.png'
 import cuervo from '../assets/sprites/kirbo.png'
 
 import zonaBosque from '../assets/mapas/zona_bosque.json'
-import Spike from "./game-objects/enemy/spike.js";
+import hierba from "../assets/sprites/hierba.png";
 
 export default class Bosque extends Phaser.Scene{
 
@@ -22,6 +22,7 @@ export default class Bosque extends Phaser.Scene{
         this.load.image('plantilla', villa);
         this.load.image('arbol', arbol);
         this.load.image('flor', flor);
+        this.load.image('hierba', hierba);
 
         this.load.tilemapTiledJSON('zBosque', zonaBosque);
 
@@ -42,6 +43,7 @@ export default class Bosque extends Phaser.Scene{
         map.createLayer('Suelo', img2, 0,0);
         var arboles = map.createLayer('Arboleda', [img3, img4, img7], 0,0);
         var casas = map.createLayer('Casas', [img1,img2, img5, img6], 0,0);
+      
         this.player = new Player(this, 150,100);
         var tejado = map.createLayer('Tejados', [img1,img5,img6],0,0);
        
