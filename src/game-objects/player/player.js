@@ -34,6 +34,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.knocked = false;
         // Variable para saber que direccion de sprite parado poner cuando no se toque tecla
         this.lastDir = 'front';
+        // Para comprobar si anteriormente se ha habierto el menu de hechizos. Así en cada preUpdate no mandara el evento de cerrar el menu
+        this.menuOpened = false;
 
         //this.shoots = new Shoots(this.scene.physics.world, this.scene, { classType: Shoot, key: 'shoot', speed: 200 });
         //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
@@ -48,11 +50,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             down: Phaser.Input.Keyboard.KeyCodes.S,
             left: Phaser.Input.Keyboard.KeyCodes.A,
             right: Phaser.Input.Keyboard.KeyCodes.D,
-            interact: Phaser.Input.Keyboard.KeyCodes.E
+            interact: Phaser.Input.Keyboard.KeyCodes.E,
+            spellMenu: Phaser.Input.Keyboard.KeyCodes.TAB
         });
     }
 
-    getHechizo(){ return this.actual_enchantment; }
+    getHechizo() { return this.actual_enchantment; }
 
     /**
      * Método que que dispara siempre y cuando se tenga un hechizo
@@ -107,9 +110,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     /**
-     * Métodos preUpdate de Phaser. En este caso solo se encarga del movimiento del jugador.
-     * Como se puede ver, no se tratan las colisiones con las estrellas, ya que estas colisiones 
-     * ya son gestionadas por la estrella (no gestionar las colisiones dos veces)
+     * Métodos preUpdate de Phaser.
+     * Se encarga del movimiento del jugador, de animar el sprite, y de abrir el menú de hechizos
      * @override
      */
     preUpdate(t, dt) {
@@ -118,11 +120,23 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         if (!this.knocked) {
             this.body.setVelocity(0);
 
+            if (this.cursors.spellMenu.isDown) {
+                this.scene.game.events.emit('open-menu');
+                this.scene.slowTime();
+                this.menuOpened = true;
+            }
+
+            if (!this.cursors.spellMenu.isDown && this.menuOpened) {
+                this.scene.game.events.emit('close-menu');
+                this.scene.resetTime();
+                this.menuOpened = false;
+            }
+
             let anim;
             let vY = 0;
             let vX = 0;
 
-            if (this.cursors.up.isDown){
+            if (this.cursors.up.isDown) {
                 vY = -this.speed;
                 anim = 'walk-back';
                 this.lastDir = 'back';
@@ -132,7 +146,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 anim = 'walk-front';
                 this.lastDir = 'front';
             }
-            if (this.cursors.left.isDown){
+            if (this.cursors.left.isDown) {
                 vX = -this.speed;
                 anim = 'walk-lside';
                 this.lastDir = 'lside';
@@ -143,21 +157,21 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 this.lastDir = 'rside';
             }
 
-            this.body.setVelocity(vX,vY);
-            
-            if(vX === 0 && vY === 0) {
+            this.body.setVelocity(vX, vY);
+
+            if (vX === 0 && vY === 0) {
                 let idle = 'idle-' + this.lastDir;
-                this.play(idle,true);
+                this.play(idle, true);
             }
-            else this.play(anim,true);
+            else this.play(anim, true);
         }
     }
 
-    getPlayer(target){
+    getPlayer(target) {
         return target.set(this.x, this.y);
     }
 
-    setProtection() {this.protected = true;}
-    removeProtection() {this.protected = false;}
-    isProtected() {return this.protected;}
+    setProtection() { this.protected = true; }
+    removeProtection() { this.protected = false; }
+    isProtected() { return this.protected; }
 }

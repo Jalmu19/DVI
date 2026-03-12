@@ -10,8 +10,9 @@ import cuervo from '../assets/sprites/kirbo.png'
 
 import zonaBosque from '../assets/mapas/zona_bosque.json'
 import hierba from "../assets/sprites/hierba.png";
+import GameScene from "./game-scene.js";
 
-export default class Bosque extends Phaser.Scene{
+export default class Bosque extends GameScene{
 
     constructor(){
         super({key:'bosque'});
@@ -88,9 +89,4 @@ export default class Bosque extends Phaser.Scene{
         this.anims.createFromAseprite('player');
         this.scene.start('zonaBosque');           
     }
-
-    dies() {
-        this.scene.start('game-over');
-    }
-
 }

@@ -8,7 +8,7 @@ import Mazmorra from './mazmorra.js'
 import zBosque from './zonaBosque.js';
 import GameOver from './game-over.js';
 import MainMenu from './mainMenu.js';
-import UIScene from './ui/ui-scene.js';
+import UIScene from './ui/ui-scene.js'
 
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos

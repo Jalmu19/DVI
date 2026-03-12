@@ -18,9 +18,10 @@ import bandera_azul from '../assets/sprites/bandera_azul.png'
 import bandera_amarilla from '../assets/sprites/bandera_amarilla.png'
 import paredes from '../assets/sprites/dungeon.png'
 import antorchas from '../assets/sprites/dungeon.png'
+import GameScene from "./game-scene.js";
 
 
-export default class Entrada_mazmorra extends Phaser.Scene{
+export default class Entrada_mazmorra extends GameScene{
 
     constructor(){
         super({key:'entrada_mazmorra'}); 
@@ -158,10 +159,6 @@ export default class Entrada_mazmorra extends Phaser.Scene{
         this.anims.createFromAseprite('player');
         this.scene.start('mazmorra');
     } 
-
-    dies() {
-        this.scene.start('game-over');
-    }
 
     update(){
         if(this.atravesarPlataforma)

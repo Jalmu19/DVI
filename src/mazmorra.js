@@ -4,16 +4,15 @@ import Salidas from './game-objects/enemy/salidas.js'
 import Cajas from './game-objects/items/cajas.js'
 import Banderas from './game-objects/items/banderas.js'
 import Puertas from './game-objects/items/puertas.js'
+import GameScene from "./game-scene.js";
 
 
 
-export default class Mazmorra extends Phaser.Scene{
+export default class Mazmorra extends GameScene{
 
     constructor(){
         super({key:'mazmorra'});
     }
-
-
 
     create(){
         var map = this.make.tilemap({key : 'mazmorra'});
@@ -119,10 +118,6 @@ export default class Mazmorra extends Phaser.Scene{
         this.anims.createFromAseprite('player');
         this.scene.start('game-over');
            
-    }
-
-    dies() {
-        this.scene.start('game-over');
     }
 
 
