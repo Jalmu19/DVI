@@ -43,8 +43,9 @@ export default class Bosque extends Phaser.Scene{
         map.createLayer('Suelo', img2, 0,0);
         var arboles = map.createLayer('Arboleda', [img3, img4, img7], 0,0);
         var casas = map.createLayer('Casas', [img1,img2, img5, img6], 0,0);
-      
-        this.player = new Player(this, 150,100);
+
+        this.player = new Player(this, 251,381);
+
         var tejado = map.createLayer('Tejados', [img1,img5,img6],0,0);
        
         //Crear capa de salidas, pero no configuradas
@@ -69,16 +70,21 @@ export default class Bosque extends Phaser.Scene{
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player, true);
         
-        //colision suelo-player
+        //colision suelo-this.player
         this.physics.add.collider(this.player,arboles);
         this.physics.add.overlap(this.player, tejado,null,null,this);    
         this.physics.add.collider(this.player,casas);            
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
         this.scene.launch('ui');
+
+
+
+        console.log("Veo los datos:", this.registry.get('datos'))
         
     }
 
     cambiarScene(){
+        this.registry.set('datos',{x : 80 , y : 210} )
         this.anims.createFromAseprite('player');
         this.scene.start('zonaBosque');           
     }

@@ -74,7 +74,9 @@ export default class Entrada_mazmorra extends Phaser.Scene{
         map.createLayer('escaleras', img9, 0,0);
 
 
-        this.player = new Player(this, 0, 30);
+        let datos = this.registry.get('datos');
+        this.player = new Player(this, datos.x,datos.y);
+        
 
 
         //COLISIONES CON PLATAFORMAS Y ESCALERAS
@@ -155,6 +157,7 @@ export default class Entrada_mazmorra extends Phaser.Scene{
     }
 
     cambiarScene(){
+        this.registry.set('datos', {x:48, y:292})
         this.anims.createFromAseprite('player');
         this.scene.start('mazmorra');
     } 

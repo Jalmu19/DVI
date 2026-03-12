@@ -54,8 +54,10 @@ export default class Zona_bosque extends Phaser.Scene{
         arboles.setCollisionByExclusion([-1], true);
         //Tamaño del mundo fisico
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-        
-        this.player = new Player(this, 150,100);
+
+        let datos = this.registry.get('datos');
+        this.player = new Player(this, datos.x,datos.y);
+
         //Añadiendo colision a las fisicas
         this.physics.add.collider(this.player, arboles);
         //limites de camara
@@ -82,6 +84,7 @@ export default class Zona_bosque extends Phaser.Scene{
         
     }
     cambiarScene(){
+        this.registry.set('datos', {x : 0 , y : 30})
         this.scene.start('entrada_mazmorra');
     } 
     dies() {
