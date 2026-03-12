@@ -31,13 +31,13 @@ export default class Entrada_mazmorra extends Phaser.Scene{
     //preload de la escena siguiente    
     preload(){
         this.load.image('suelo', suelo);
-        this.load.image('puertas', puertas);
+        this.load.image('puerta', puertas);
         this.load.image('puerta_entrada', puerta_entrada);
-        this.load.image('cofre_verde', cofre_verde);
-        this.load.image('cofre_rojo', cofre_rojo);
-        this.load.image('cofre_morado', cofre_morado);
-        this.load.image('cofre_azul', cofre_azul);
-        this.load.image('cofre_amarillo', cofre_amarillo);
+        this.load.image('caja_verde', cofre_verde);
+        this.load.image('caja_roja', cofre_rojo);
+        this.load.image('caja_morada', cofre_morado);
+        this.load.image('caja_azul', cofre_azul);
+        this.load.image('caja_amarilla', cofre_amarillo);
         this.load.image('bandera_verde', bandera_verde);
         this.load.image('bandera_roja', bandera_roja);
         this.load.image('bandera_morada', bandera_morada);
@@ -74,9 +74,7 @@ export default class Entrada_mazmorra extends Phaser.Scene{
         map.createLayer('escaleras', img9, 0,0);
 
 
-        let datos = this.registry.get('datos');
-        this.player = new Player(this, datos.x,datos.y);
-        
+        this.player = new Player(this, 0, 30);
 
 
         //COLISIONES CON PLATAFORMAS Y ESCALERAS
@@ -157,7 +155,6 @@ export default class Entrada_mazmorra extends Phaser.Scene{
     }
 
     cambiarScene(){
-        this.registry.set('datos', {x:48, y:292})
         this.anims.createFromAseprite('player');
         this.scene.start('mazmorra');
     } 

@@ -28,7 +28,7 @@
          "name":"Suelo",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":30,
          "x":0,
          "y":0
@@ -90,7 +90,7 @@
          "name":"Antorchas",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":30,
          "x":0,
          "y":0
@@ -150,7 +150,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -163,17 +163,17 @@
                  "gid":402,
                  "height":16,
                  "id":5,
-                 "name":"",
+                 "name":"caja_roja",
                  "properties":[
                         {
-                         "name":"abre_puertaSalida",
+                         "name":"abrePuertaSalida",
                          "type":"object",
-                         "value":3
+                         "value":20
                         }, 
                         {
-                         "name":"relacion",
+                         "name":"relacion_roja",
                          "type":"object",
-                         "value":9
+                         "value":28
                         }],
                  "rotation":0,
                  "type":"",
@@ -183,110 +183,20 @@
                  "y":38
                 }, 
                 {
-                 "gid":403,
-                 "height":16,
-                 "id":6,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"abre_puertaSalida",
-                         "type":"object",
-                         "value":3
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":383.5,
-                 "y":17
-                }, 
-                {
-                 "gid":404,
-                 "height":16,
-                 "id":7,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"abre_puerta2",
-                         "type":"object",
-                         "value":1
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":272,
-                 "y":81
-                }, 
-                {
-                 "gid":405,
-                 "height":16,
-                 "id":8,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"abre_puerta_1",
-                         "type":"object",
-                         "value":2
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":46,
-                 "y":80
-                }, 
-                {
-                 "gid":406,
-                 "height":16,
-                 "id":9,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"abre_puertaSalida",
-                         "type":"object",
-                         "value":3
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":368.5,
-                 "y":210
-                }, 
-                {
-                 "gid":407,
-                 "height":16,
-                 "id":10,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"abre_puerta3",
-                         "type":"object",
-                         "value":4
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":207,
-                 "y":226.5
-                }, 
-                {
                  "gid":408,
                  "height":16,
                  "id":11,
-                 "name":"",
+                 "name":"caja_amarilla",
                  "properties":[
                         {
-                         "name":"abre_puerta2",
+                         "name":"abrePuerta2",
                          "type":"object",
                          "value":1
                         }, 
                         {
-                         "name":"relacion",
+                         "name":"relacion_amarillo",
                          "type":"object",
-                         "value":7
+                         "value":21
                         }],
                  "rotation":0,
                  "type":"",
@@ -299,17 +209,17 @@
                  "gid":409,
                  "height":16,
                  "id":12,
-                 "name":"",
+                 "name":"caja_azul",
                  "properties":[
                         {
-                         "name":"abre_puertaSalida",
+                         "name":"abrePuertaSalida",
                          "type":"object",
-                         "value":3
+                         "value":20
                         }, 
                         {
-                         "name":"relacion",
+                         "name":"relacion_azul",
                          "type":"object",
-                         "value":6
+                         "value":22
                         }],
                  "rotation":0,
                  "type":"",
@@ -322,17 +232,17 @@
                  "gid":410,
                  "height":16,
                  "id":13,
-                 "name":"",
+                 "name":"caja_morada",
                  "properties":[
                         {
-                         "name":"abre_puerta_1",
+                         "name":"abrePuerta1",
                          "type":"object",
                          "value":2
                         }, 
                         {
-                         "name":"relacion",
+                         "name":"relacion_morado",
                          "type":"object",
-                         "value":8
+                         "value":26
                         }],
                  "rotation":0,
                  "type":"",
@@ -345,17 +255,12 @@
                  "gid":411,
                  "height":16,
                  "id":14,
-                 "name":"",
+                 "name":"caja_verde",
                  "properties":[
                         {
-                         "name":"abre_puerta3",
+                         "name":"abrePuerta3",
                          "type":"object",
                          "value":4
-                        }, 
-                        {
-                         "name":"relacion",
-                         "type":"object",
-                         "value":10
                         }],
                  "rotation":0,
                  "type":"",
@@ -366,7 +271,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -396,15 +301,112 @@
          "draworder":"topdown",
          "id":6,
          "name":"Banderas",
-         "objects":[],
+         "objects":[
+                {
+                 "gid":404,
+                 "height":16,
+                 "id":21,
+                 "name":"bandera_amarilla",
+                 "properties":[
+                        {
+                         "name":"abrePuerta2",
+                         "type":"object",
+                         "value":1
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":272.558301831928,
+                 "y":79.2667926722884
+                }, 
+                {
+                 "gid":403,
+                 "height":16,
+                 "id":22,
+                 "name":"bandera_azul",
+                 "properties":[
+                        {
+                         "name":"abrePuertaSalida",
+                         "type":"object",
+                         "value":20
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":383.558301831928,
+                 "y":15.0918871765048
+                }, 
+                {
+                 "gid":405,
+                 "height":16,
+                 "id":26,
+                 "name":"bandera_morada",
+                 "properties":[
+                        {
+                         "name":"abrePuerta1",
+                         "type":"object",
+                         "value":2
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":47.5,
+                 "y":80.0918871765048
+                }, 
+                {
+                 "gid":407,
+                 "height":16,
+                 "id":27,
+                 "name":"bandera_verde",
+                 "properties":[
+                        {
+                         "name":"abrePuerta3",
+                         "type":"object",
+                         "value":4
+                        }, 
+                        {
+                         "name":"relacion_verde",
+                         "type":"object",
+                         "value":14
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":203.5,
+                 "y":224.266792672288
+                }, 
+                {
+                 "gid":406,
+                 "height":16,
+                 "id":28,
+                 "name":"bandera_roja",
+                 "properties":[
+                        {
+                         "name":"abrePuertaSalida",
+                         "type":"object",
+                         "value":20
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":378.558301831928,
+                 "y":207.708490840361
+                }],
+         "offsetx":0,
+         "offsety":-1.11660366385577,
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":21,
+ "nextobjectid":29,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -413,7 +415,7 @@
         {
          "columns":10,
          "firstgid":1,
-         "image":"..\/..\/..\/assets\/Dungeon_Tileset.png",
+         "image":"..\/sprites\/dungeon.png",
          "imageheight":160,
          "imagewidth":160,
          "margin":0,
@@ -426,7 +428,7 @@
         {
          "columns":10,
          "firstgid":101,
-         "image":"..\/..\/..\/assets\/Dungeon_Tileset.png",
+         "image":"..\/sprites\/dungeon.png",
          "imageheight":160,
          "imagewidth":160,
          "margin":0,
@@ -439,7 +441,7 @@
         {
          "columns":10,
          "firstgid":201,
-         "image":"..\/..\/..\/assets\/Dungeon_Tileset.png",
+         "image":"..\/sprites\/dungeon.png",
          "imageheight":160,
          "imagewidth":160,
          "margin":0,
@@ -456,7 +458,7 @@
          "imageheight":16,
          "imagewidth":16,
          "margin":0,
-         "name":"puertas",
+         "name":"puerta",
          "spacing":0,
          "tilecount":1,
          "tileheight":16,
