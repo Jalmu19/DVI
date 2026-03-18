@@ -103,20 +103,14 @@
                 {
                  "gid":301,
                  "height":16,
-                 "id":1,
-                 "name":"puerta2",
-                 "rotation":90,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":336.5,
-                 "y":128
-                }, 
-                {
-                 "gid":301,
-                 "height":16,
                  "id":2,
                  "name":"puerta1",
+                 "properties":[
+                        {
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"morado"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -127,32 +121,32 @@
                 {
                  "gid":301,
                  "height":16,
-                 "id":3,
-                 "name":"puertaSalida",
-                 "rotation":-90,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":16,
-                 "y":48
-                }, 
-                {
-                 "gid":301,
-                 "height":16,
                  "id":4,
                  "name":"puerta3",
+                 "properties":[
+                        {
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"verde"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":224.5,
+                 "x":224,
                  "y":80
                 }, 
                 {
                  "gid":2147483949,
                  "height":16,
                  "id":29,
-                 "name":"puerta3",
+                 "name":"puerta3.1",
+                 "properties":[
+                        {
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"verde"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -161,22 +155,16 @@
                  "y":79.9770867793825
                 }, 
                 {
-                 "gid":1073742125,
-                 "height":16,
-                 "id":30,
-                 "name":"puerta2",
-                 "rotation":-90,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":352.545454545455,
-                 "y":160
-                }, 
-                {
                  "gid":2147483949,
                  "height":16,
                  "id":31,
-                 "name":"puerta1",
+                 "name":"puerta1.2",
+                 "properties":[
+                        {
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"morado"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -185,16 +173,76 @@
                  "y":224.375
                 }, 
                 {
-                 "gid":1073742125,
+                 "gid":2147484060,
                  "height":16,
-                 "id":32,
-                 "name":"puertaSalida",
-                 "rotation":90,
+                 "id":33,
+                 "name":"puertaLateral1",
+                 "properties":[
+                        {
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"amarillo"
+                        }],
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":-1.77635683940025e-15,
-                 "y":16.3333333333333
+                 "x":336.062133900291,
+                 "y":143.792077059921
+                }, 
+                {
+                 "gid":2147484060,
+                 "height":16,
+                 "id":34,
+                 "name":"puertaLateral2",
+                 "properties":[
+                        {
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"amarillo"
+                        }],
+                 "rotation":-180,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":352.30719833384,
+                 "y":144.208617173602
+                }, 
+                {
+                 "gid":2147484060,
+                 "height":16,
+                 "id":35,
+                 "name":"puertaSalida2",
+                 "properties":[
+                        {
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"rojoYazul"
+                        }],
+                 "rotation":-180,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":15.3262463661214,
+                 "y":14.6646418188918
+                }, 
+                {
+                 "gid":2147484060,
+                 "height":16,
+                 "id":36,
+                 "name":"puertaSalida",
+                 "properties":[
+                        {
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"rojoYazul"
+                        }],
+                 "rotation":-180,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":15.7427864798021,
+                 "y":31.3262463661214
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -208,38 +256,15 @@
          "name":"Cajas",
          "objects":[
                 {
-                 "gid":402,
-                 "height":16,
-                 "id":5,
-                 "name":"caja_roja",
-                 "properties":[
-                        {
-                         "name":"abrePuertaSalida",
-                         "type":"object",
-                         "value":20
-                        }, 
-                        {
-                         "name":"relacion_roja",
-                         "type":"object",
-                         "value":28
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":130.483295005858,
-                 "y":52.9954440925066
-                }, 
-                {
                  "gid":408,
                  "height":16,
                  "id":11,
                  "name":"caja_amarilla",
                  "properties":[
                         {
-                         "name":"abrePuerta2",
-                         "type":"object",
-                         "value":1
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"amarillo"
                         }, 
                         {
                          "name":"relacion_amarillo",
@@ -260,9 +285,9 @@
                  "name":"caja_azul",
                  "properties":[
                         {
-                         "name":"abrePuertaSalida",
-                         "type":"object",
-                         "value":20
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"rojoYazul"
                         }, 
                         {
                          "name":"relacion_azul",
@@ -273,8 +298,8 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":383.581181932573,
-                 "y":285.654770685989
+                 "x":379.832320909446,
+                 "y":275.241267843971
                 }, 
                 {
                  "gid":410,
@@ -283,9 +308,9 @@
                  "name":"caja_morada",
                  "properties":[
                         {
-                         "name":"abrePuerta1",
-                         "type":"object",
-                         "value":2
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"morado"
                         }, 
                         {
                          "name":"relacion_morado",
@@ -296,8 +321,8 @@
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":269.75341693062,
-                 "y":139.490888185013
+                 "x":261.422614657005,
+                 "y":142.406668980778
                 }, 
                 {
                  "gid":411,
@@ -306,9 +331,9 @@
                  "name":"caja_verde",
                  "properties":[
                         {
-                         "name":"abrePuerta3",
-                         "type":"object",
-                         "value":4
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"verde"
                         }],
                  "rotation":0,
                  "type":"",
@@ -357,9 +382,9 @@
                  "name":"bandera_amarilla",
                  "properties":[
                         {
-                         "name":"abrePuerta2",
-                         "type":"object",
-                         "value":1
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"amarillo"
                         }],
                  "rotation":0,
                  "type":"",
@@ -375,16 +400,16 @@
                  "name":"bandera_azul",
                  "properties":[
                         {
-                         "name":"abrePuertaSalida",
-                         "type":"object",
-                         "value":20
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"rojoYazul"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":383.558301831928,
-                 "y":15.0918871765048
+                 "x":381.892141377205,
+                 "y":18.00766797227
                 }, 
                 {
                  "gid":405,
@@ -393,9 +418,9 @@
                  "name":"bandera_morada",
                  "properties":[
                         {
-                         "name":"abrePuerta1",
-                         "type":"object",
-                         "value":2
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"morado"
                         }],
                  "rotation":0,
                  "type":"",
@@ -411,9 +436,9 @@
                  "name":"bandera_verde",
                  "properties":[
                         {
-                         "name":"abrePuerta3",
-                         "type":"object",
-                         "value":4
+                         "name":"abreGrupo",
+                         "type":"string",
+                         "value":"verde"
                         }, 
                         {
                          "name":"relacion_verde",
@@ -426,24 +451,6 @@
                  "width":16,
                  "x":203.5,
                  "y":224.266792672288
-                }, 
-                {
-                 "gid":406,
-                 "height":16,
-                 "id":28,
-                 "name":"bandera_roja",
-                 "properties":[
-                        {
-                         "name":"abrePuertaSalida",
-                         "type":"object",
-                         "value":20
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":378.558301831928,
-                 "y":207.708490840361
                 }],
          "offsetx":0,
          "offsety":-1.11660366385577,
@@ -454,7 +461,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":33,
+ "nextobjectid":37,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -650,6 +657,19 @@
          "imagewidth":16,
          "margin":0,
          "name":"cofre_verde",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":16,
+         "tilewidth":16
+        }, 
+        {
+         "columns":1,
+         "firstgid":412,
+         "image":"..\/..\/..\/puerta_lateral.png",
+         "imageheight":16,
+         "imagewidth":16,
+         "margin":0,
+         "name":"puerta_lateral",
          "spacing":0,
          "tilecount":1,
          "tileheight":16,

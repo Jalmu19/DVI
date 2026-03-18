@@ -1,6 +1,5 @@
 import Phaser from "phaser";
 import Player from './game-objects/player/player.js'
-import Salidas from './game-objects/enemy/salidas.js'
 import Cajas from './game-objects/items/cajas.js'
 import Banderas from './game-objects/items/banderas.js'
 import Puertas from './game-objects/items/puertas.js'
@@ -118,21 +117,31 @@ export default class Mazmorra extends GameScene{
 
 
     cajaSobreBandera(caja, bandera) {
-        var abreCaja = caja.properties.find(p => p.name.startsWith("abrePuerta"));
-        var abreBandera = bandera.properties.find(p => p.name.startsWith("abrePuerta"));
+        var abreCaja = caja.properties.find(p => p.name === "abreGrupo");
+        var abreBandera = bandera.properties.find(p => p.name === "abreGrupo");
 
         // Si la bandera y la caja abren la misma puerta
         if (abreCaja && abreBandera && abreCaja.value === abreBandera.value) {
             const distancia = Phaser.Math.Distance.Between(caja.x, caja.y, bandera.x, bandera.y);
-            if(distancia < 5)      
+            if(distancia < 10){
+                caja.body.setVelocity(0);
+                caja.x = bandera.x;
+                caja.y = bandera.y;
                 this.abrirPuerta(abreCaja.value);
+            }
         }
     }
 
-    abrirPuerta(idPuerta) {
+
+
+    abrirPuerta(valor) {
         this.puertas.children.iterate(puerta=> {
-            if(puerta && puerta.id === idPuerta){
-                puerta.disableBody(true, true);
+            if(puerta){
+                const propGrupo = puerta.properties.find(p => p.name === "abreGrupo");
+                // Si la puerta tiene esa propiedad y coincide con lo que manda la caja/bandera
+                if (propGrupo && propGrupo.value === valor) {
+                    puerta.disableBody(true, true); // Se desactivan todas las del grupo
+                }
             }
         })
     }
@@ -141,8 +150,7 @@ export default class Mazmorra extends GameScene{
     update() {
         // Recorremos todas las cajas y si no tienen a nadie empujando, velocidad 0
         this.cajas.children.iterate(caja => {
-            // Si la caja se está moviendo, la frenamos gradualmente
-            // Esto hace que se detenga en seco
+            // Si la caja se está moviendo, la frenamos
             caja.setVelocity(0); 
         });
     }
