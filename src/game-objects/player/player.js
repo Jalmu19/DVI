@@ -41,9 +41,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
         //this.shoots = new Shoots(this.scene.physics.world, this.scene, { classType: FreezingShoot, key: 'shoot', speed: 150 });
         //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
-        //this.actual_enchantment = this.shoots;
-        this.actual_enchantment = new Shield(this.scene, x, y, this);
+        //this.actualSpell = this.shoots;
+        this.mapOfSpells = [];
+        this.añadirHechizo('shoot');
+        this.actualSpell = new Shield(this.scene, x, y, this);
         this.protected = false;
+
+        this.scene.game.events.on('spell-changed', (data) => {this.changeSpell(data)});
 
         this.cursors = this.scene.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -55,20 +59,48 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         });
     }
 
-    getHechizo() { return this.actual_enchantment; }
+    /**
+     * Metodo que añade un hechizo al personaje
+     * @param {String} spell El key del hechizo que se añade
+     */
+    añadirHechizo(spell) {
+        let aux;
+        if(spell !== 'shield') aux = new Shoots(this.scene.physics.world, this.scene, { classType: Shoot, key: spell });
+        else aux = new Shield(this.scene, x, y, this);
+        this.mapOfSpells[spell] = aux;
+        this.scene.game.events.emit('spell-gained', spell);
+    }
+
+    /**
+     * Cambia el hechizo actual
+     * @param {String} spell El key del hechizo que al que se cambia
+     */
+    changeSpell(spell) {
+        let aux = this.mapOfSpells[spell];
+        if(spell !== 'shield') aux.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
+        this.actualSpell = aux;
+    }
+
+    /**
+     * Devuelve el hechizo actual
+     */
+    getHechizo() { return this.actualSpell; }
 
     /**
      * Método que que dispara siempre y cuando se tenga un hechizo
      */
     lanzarHechizo(x, y, rotation) {
-        if (this.actual_enchantment) {
-            this.actual_enchantment.fire(x, y, rotation);
+        if (this.actualSpell) {
+            this.actualSpell.fire(x, y, rotation);
         }
     }
 
     /**
      * Un enemigo ha dado al jugador, entonces en la clase de Health
      * se baja la vida acorde al dmg y se le dan unos i-frames
+     * @param {number} dmg Daño que recibe el jugador
+     * @param {number} enemyX Coordenada X del enemigo que daña al jugador
+     * @param {number} enemyY Coordenada Y del enemigo que daña al jugador
      */
     takeDamage(dmg, enemyX, enemyY) {
         if (!this.invincible) {
@@ -120,12 +152,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         if (!this.knocked) {
             this.body.setVelocity(0);
 
+            // Comprueba si se abre el menu de hechizos
             if (this.cursors.spellMenu.isDown) {
                 this.scene.game.events.emit('open-menu');
                 this.scene.slowTime();
                 this.menuOpened = true;
             }
 
+            // Cierrra el menu de hechizos solo si anteriormente se ha abierto
             if (!this.cursors.spellMenu.isDown && this.menuOpened) {
                 this.scene.game.events.emit('close-menu');
                 this.scene.resetTime();
