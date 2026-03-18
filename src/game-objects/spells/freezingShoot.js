@@ -4,7 +4,7 @@ export default class FreezingShoot extends Shoot{
 
     constructor(scene, x, y){
         const key = scene.currentShootKey;
-        const speed = scene.currentShootSpeed;
+        const speed = 150;
 
         super(scene, x, y, key);
         this.speed = speed; 
