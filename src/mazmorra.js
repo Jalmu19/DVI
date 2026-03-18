@@ -18,7 +18,6 @@ export default class Mazmorra extends GameScene{
         var map = this.make.tilemap({key : 'mazmorra'});
 
         var img12 = map.addTilesetImage('paredes', 'paredes');
-        //var img1 = map.addTilesetImage('puertas', 'puerta'); //puertas de dentro de la mazmorra y la de salida
         var img13 = map.addTilesetImage('antorchas', 'antorchas');
         var img14 = map.addTilesetImage('puerta_entrada', 'puerta_entrada');
         var img15 = map.addTilesetImage('suelo', 'suelo');
@@ -27,11 +26,13 @@ export default class Mazmorra extends GameScene{
         map.createLayer('Suelo', img15, 0,0);
         var paredes_y_entrada = map.createLayer('ParedesYEntrada', [img12, img14], 0,0);
         map.createLayer('Antorchas', img13, 0,0); //antorchas
-        //map.createLayer('Puertas', [img1], 0, 0);
-
 
         this.player = new Player(this,  48, 292);
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+
+        //colision paredes-player
+        paredes_y_entrada.setCollisionByExclusion([-1], true);
+        this.physics.add.collider(this.player, paredes_y_entrada);  
 
         
         //Crear capa de salidas, pero no configuradas  
@@ -83,8 +84,8 @@ export default class Mazmorra extends GameScene{
             var aux =  new Banderas(this, objeto.x, objeto.y, objeto);
             this.banderas.add(aux);  
         });
-        this.physics.add.overlap(this.cajas, this.banderas,map, (caja, bandera, map) => {
-            this.cajaSobreBandera(caja, bandera, map);
+        this.physics.add.overlap(this.cajas, this.banderas,(caja, bandera) => {
+            this.cajaSobreBandera(caja, bandera);
         }, null, this);
 
 
@@ -94,20 +95,17 @@ export default class Mazmorra extends GameScene{
         
         this.capaPuertas.objects.forEach(objeto =>{            
             var a = new Puertas(this, objeto.x, objeto.y, objeto);
-            this.puertas.add(a)
-        })
-
-
-
+            this.puertas.add(a);
+            a.body.updateFromGameObject();
+        });
+        this.physics.add.collider(this.player, this.puertas); 
+        this.physics.add.collider(this.puertas, paredes_y_entrada);
+        this.physics.add.collider(this.cajas, this.puertas); //para que al empujar una caja no se desplace la puerta
 
 
         //limites de camara
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
-        this.cameras.main.startFollow(this.player);
-
-        //colision paredes-player
-        paredes_y_entrada.setCollisionByExclusion([-1], true);
-        this.physics.add.collider(this.player, paredes_y_entrada);       
+        this.cameras.main.startFollow(this.player);     
 
     }
 
@@ -118,33 +116,27 @@ export default class Mazmorra extends GameScene{
     }
 
 
-    cajaSobreBandera(caja, bandera, map) {
-        // Buscar propiedad de relación
-        var relacionCaja = caja.properties.find(p => p.name.startsWith("relacion"));
-        var abreCaja = caja.properties.find(p => p.name.startsWith("abrePuerta"));
 
+    cajaSobreBandera(caja, bandera) {
+        var abreCaja = caja.properties.find(p => p.name.startsWith("abrePuerta"));
         var abreBandera = bandera.properties.find(p => p.name.startsWith("abrePuerta"));
 
         // Si la bandera y la caja abren la misma puerta
         if (abreCaja && abreBandera && abreCaja.value === abreBandera.value) {
-            console.log("¡Caja correcta colocada!");
-            this.abrirPuerta(abreCaja.value, map);
+            const distancia = Phaser.Math.Distance.Between(caja.x, caja.y, bandera.x, bandera.y);
+            if(distancia < 5)      
+                this.abrirPuerta(abreCaja.value);
         }
     }
 
-    abrirPuerta(idPuerta, capaPuertas, map) {
-        var capaPuertas = map.getObjectLayer('Puertas');
-
-        capaPuertas.objects.forEach(obj => {
-            if (obj.id === idPuerta) {
-
-                var puerta = this.physics.add.sprite(obj.x, obj.y, 'puertas');
-                puerta.disableBody(true, true); // Desaparece
-
-                console.log("Puerta abierta:", obj.name);
+    abrirPuerta(idPuerta) {
+        this.puertas.children.iterate(puerta=> {
+            if(puerta && puerta.id === idPuerta){
+                puerta.disableBody(true, true);
             }
-        });
+        })
     }
+
 
     update() {
         // Recorremos todas las cajas y si no tienen a nadie empujando, velocidad 0

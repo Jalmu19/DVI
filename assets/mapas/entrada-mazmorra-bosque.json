@@ -1,12 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"json",
-         "target":"entrada-mazmorra-bosque.json"
-        }
-    },
  "height":30,
  "infinite":false,
  "layers":[
@@ -312,6 +304,17 @@
                  "width":34,
                  "x":383.333,
                  "y":0
+                }, 
+                {
+                 "height":48.6506288924167,
+                 "id":27,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":15.8261081939187,
+                 "x":0,
+                 "y":15.8261081939187
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -380,15 +383,15 @@
          "name":"Objeto_puente",
          "objects":[
                 {
-                 "height":15.3333333333333,
+                 "height":12.4242424242424,
                  "id":11,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":128.333333333333,
-                 "x":291.25,
-                 "y":390.439393939394
+                 "x":290.522727272727,
+                 "y":392.621212121212
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -419,9 +422,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":72.667,
-                 "x":317.080858264081,
-                 "y":409.70093595232
+                 "width":74.8488181818182,
+                 "x":314.899040082263,
+                 "y":408.064572315956
                 }, 
                 {
                  "height":32.75,
@@ -474,10 +477,10 @@
          "y":0
         }],
  "nextlayerid":14,
- "nextobjectid":27,
+ "nextobjectid":28,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.11.2",
+ "tiledversion":"1.10.1",
  "tileheight":16,
  "tilesets":[
         {
