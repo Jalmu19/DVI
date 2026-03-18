@@ -209,7 +209,7 @@
                  "y":144.208617173602
                 }, 
                 {
-                 "gid":2147484060,
+                 "gid":3221225884,
                  "height":16,
                  "id":35,
                  "name":"puertaSalida2",
@@ -219,7 +219,7 @@
                          "type":"string",
                          "value":"rojoYazul"
                         }],
-                 "rotation":-180,
+                 "rotation":180,
                  "type":"",
                  "visible":true,
                  "width":16,
@@ -344,7 +344,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -456,7 +456,7 @@
          "offsety":-1.11660366385577,
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
