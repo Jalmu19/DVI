@@ -37,13 +37,10 @@ export default class Mazmorra extends GameScene{
         //Crear capa de salidas, pero no configuradas  
         this.salidas = this.physics.add.group();
         this.capaSalidas = map.getObjectLayer('Salidas');
-        
-        this.capaSalidas.objects.forEach(objeto =>{
-            
-            var a = new Salidas(this, objeto.x, objeto.y);
-            this.salidas.add(a)
-        })
-         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
+
+        this.cargarSalidas(this.capaSalidas, this.salidas);
+
+        this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
 
         //cajas

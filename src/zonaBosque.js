@@ -68,11 +68,8 @@ export default class Zona_bosque extends GameScene {
         this.salidas = this.physics.add.group();
         this.capaSalidas = map.getObjectLayer('Salidas');
 
-        this.capaSalidas.objects.forEach(objeto => {
-
-            var a = new Salidas(this, objeto.x, objeto.y);
-            this.salidas.add(a)
-        })
+        this.cargarSalidas(this.capaSalidas, this.salidas);
+        
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
         this.enemigos = this.physics.add.group();
@@ -85,8 +82,21 @@ export default class Zona_bosque extends GameScene {
 
     }
 
-    cambiarScene() {
+    cambiarScene(jugador, salidas) {
         this.registry.set('datos', { x: 0, y: 30 })
-        this.scene.start('entrada_mazmorra');
+
+        console.log(salidas.name);
+        console.log(salidas.tag);
+
+
+        if(salidas.tag === 'salidaMazmorra' ){
+            this.scene.start('entrada_mazmorra');
+        }
+        else if(salidas.tag === 'salidaLago'){
+            //this.scene.start("zonaLago")
+        }
+        else{
+            this.scene.switch('bosque');
+        }
     }
 }

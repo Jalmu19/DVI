@@ -19,7 +19,7 @@ export default class Salidas extends Phaser.Physics.Arcade.Sprite {
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         //cambiar hitbox
-        this.body.setSize(width,height).setOffset(9,8);
+        this.body.setSize(width,height).setOffset(16,16);
         // Queremos que el jugador no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
        

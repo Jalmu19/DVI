@@ -239,26 +239,26 @@
          "name":"Salidas",
          "objects":[
                 {
-                 "height":63.3333,
+                 "height":64,
                  "id":88,
                  "name":"salidaLago",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":15.3333,
+                 "width":16,
                  "x":464,
                  "y":128
                 }, 
                 {
-                 "height":16.6667,
+                 "height":16,
                  "id":106,
                  "name":"salidaMazmorra",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":80.6667,
-                 "x":350.667,
-                 "y":222
+                 "width":80,
+                 "x":352,
+                 "y":224
                 }, 
                 {
                  "height":16,
@@ -267,7 +267,7 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":63.3333,
+                 "width":64,
                  "x":48,
                  "y":224
                 }],
@@ -1063,7 +1063,7 @@
         {
          "columns":1,
          "firstgid":820,
-         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/GRASS TILE - DAY.png",
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/hierba.png",
          "imageheight":16,
          "imagewidth":16,
          "margin":0,

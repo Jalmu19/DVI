@@ -172,15 +172,15 @@
          "name":"Salidas",
          "objects":[
                 {
-                 "height":15.9227318417933,
+                 "height":16,
                  "id":12,
                  "name":"salidaBosque",
                  "rotation":359.76,
                  "type":"",
                  "visible":true,
-                 "width":63.1009738487913,
-                 "x":128.170791458097,
-                 "y":0.290728468922527
+                 "width":64,
+                 "x":128,
+                 "y":0
                 }],
          "opacity":1,
          "type":"objectgroup",

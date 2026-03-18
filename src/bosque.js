@@ -60,12 +60,8 @@ export default class Bosque extends GameScene{
 
         this.salidas = this.physics.add.group();
         this.capaSalidas = map.getObjectLayer('Salidas');
-        
-        this.capaSalidas.objects.forEach(objeto =>{
-            
-            var a = new Salidas(this, objeto.x, objeto.y);
-            this.salidas.add(a)
-        })
+
+        this.cargarSalidas(this.capaSalidas, this.salidas);
         
         //limites de camara
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
