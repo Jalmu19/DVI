@@ -73,15 +73,9 @@ export default class Bosque extends GameScene{
         this.physics.add.collider(this.player,casas);            
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
         this.scene.launch('ui');
-
-
-
-        console.log("Veo los datos:", this.registry.get('datos'))
-        
     }
 
     cambiarScene(){
-        this.registry.set('datos',{x : 80 , y : 210} )
         this.anims.createFromAseprite('player');
         this.scene.start('zonaBosque');           
     }

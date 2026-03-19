@@ -56,9 +56,9 @@ export default class Zona_bosque extends GameScene {
         //Tamaño del mundo fisico
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-        let datos = this.registry.get('datos');
-        this.player = new Player(this, datos.x, datos.y);
-
+      
+        this.player = new Player(this, 80, 210);
+        
         //Añadiendo colision a las fisicas
         this.physics.add.collider(this.player, arboles);
         //limites de camara
@@ -83,12 +83,6 @@ export default class Zona_bosque extends GameScene {
     }
 
     cambiarScene(jugador, salidas) {
-        this.registry.set('datos', { x: 0, y: 30 })
-
-        console.log(salidas.name);
-        console.log(salidas.tag);
-
-
         if(salidas.tag === 'salidaMazmorra' ){
             this.scene.start('entrada_mazmorra');
         }
