@@ -95,7 +95,6 @@ export default class Mazmorra extends GameScene{
         this.capaPuertas.objects.forEach(objeto =>{            
             var a = new Puertas(this, objeto.x, objeto.y, objeto);
             this.puertas.add(a);
-            a.body.updateFromGameObject();
         });
         this.physics.add.collider(this.player, this.puertas); 
         this.physics.add.collider(this.puertas, paredes_y_entrada);
