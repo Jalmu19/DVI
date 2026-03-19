@@ -77,7 +77,7 @@ export default class Entrada_mazmorra extends GameScene{
         map.createLayer('escaleras', img9, 0,0);
 
 
-        this.player = new Player(this, 0, 30);
+        this.player = new Player(this, 30, 30);
 
 
         //COLISIONES CON PLATAFORMAS Y ESCALERAS
@@ -153,9 +153,15 @@ export default class Entrada_mazmorra extends GameScene{
 
     }
 
-    cambiarScene(){
+    cambiarScene(jugador, salidas){
         this.anims.createFromAseprite('player');
-        this.scene.start('mazmorra');
+        
+        if(salidas.tag === 'salidaMazmorra' ){
+            this.scene.start('mazmorra');
+        }
+        else{
+            this.scene.start('zonaBosque');
+        }
     } 
 
     update(){
