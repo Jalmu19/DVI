@@ -47,7 +47,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.actualSpell = new Shield(this.scene, x, y, this);
         this.protected = false;
 
-        this.scene.game.events.on('spell-changed', (data) => {this.changeSpell(data)});
+        this.scene.game.events.on('spell-changed', (data) => { this.changeSpell(data) });
 
         this.cursors = this.scene.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -65,7 +65,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      */
     añadirHechizo(spell) {
         let aux;
-        if(spell !== 'shield') aux = new Shoots(this.scene.physics.world, this.scene, { classType: Shoot, key: spell });
+        if (spell !== 'shield') aux = new Shoots(this.scene.physics.world, this.scene, { classType: Shoot, key: spell });
         else aux = new Shield(this.scene, x, y, this);
         this.mapOfSpells[spell] = aux;
         this.scene.game.events.emit('spell-gained', spell);
@@ -76,9 +76,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * @param {String} spell El key del hechizo que al que se cambia
      */
     changeSpell(spell) {
-        let aux = this.mapOfSpells[spell];
-        if(spell !== 'shield') aux.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
-        this.actualSpell = aux;
+        if (spell !== this.actualSpell.getKey()) {
+            let aux = this.mapOfSpells[spell];
+            if (spell !== 'shield') aux.createMultiple({ key: 'shoot', quantity: 10, active: false, visible: false });
+            this.actualSpell = aux;
+        }
     }
 
     /**

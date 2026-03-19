@@ -21,4 +21,8 @@ export default class Shoots extends Phaser.Physics.Arcade.Group{
     onCreate(shoot){
         shoot.onCreate();
     }
+
+    getKey() {
+        return this.key;
+    }
 }

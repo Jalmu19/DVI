@@ -1,6 +1,7 @@
 export default class Shield extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, player){
         super(scene, x, y, 'shield');
+        this.key = 'shield';
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
         this.setDisplaySize(30, 30);
@@ -34,6 +35,8 @@ export default class Shield extends Phaser.Physics.Arcade.Sprite{
     }
 
     isFreezer() { return this.freeze}
+
+    getKey() { return this.key; }
 
     preUpdate(t, dt){
         super.preUpdate(t, dt);
