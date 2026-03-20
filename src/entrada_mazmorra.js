@@ -6,6 +6,7 @@ import mazmorra from '../assets/mapas/mazmorra.json'
 import suelo from '../assets/sprites/dungeon.png'
 import puertas from '../assets/sprites/puerta.png'
 import puertas_laterales from '../assets/sprites/puerta_lateral.png'
+import puertas_salida from '../assets/sprites/puerta_salida.png'
 import puerta_entrada from '../assets/sprites/dungeon.png'
 import cofre_verde from '../assets/sprites/cofre_verde.png'
 import cofre_rojo from '../assets/sprites/cofre_rojo.png'
@@ -35,6 +36,7 @@ export default class Entrada_mazmorra extends GameScene{
         this.load.image('suelo', suelo);
         this.load.image('puerta', puertas);
         this.load.image('puerta_lateral', puertas_laterales);
+        this.load.image('puerta_salida', puertas_salida);
         this.load.image('puerta_entrada', puerta_entrada);
         this.load.image('caja_verde', cofre_verde);
         this.load.image('caja_roja', cofre_rojo);
