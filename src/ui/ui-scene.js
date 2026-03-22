@@ -1,3 +1,5 @@
+import { SCENE } from "../constants";
+
 export default class UIScene extends Phaser.Scene {
     constructor() {
         super({ key: 'ui' });
@@ -10,8 +12,8 @@ export default class UIScene extends Phaser.Scene {
 
         this.spells = ['shield']; // Teniendo solo un hechizo no se podra abrir el menú
         this.chosenSpell;
-        this.menuX = 320 / 2;
-        this.menuY = 180 / 2;
+        this.menuX = SCENE.WIDTH / 2;
+        this.menuY = SCENE.HEIGHT / 2;
         this.spellsMenu = this.add.container(this.menuX, this.menuY);
         this.drawSpellsMenu();
         this.game.events.on('spell-gained', (data) => { this.spells.push(data); this.drawGrimores(); }) // Data será el tag del hechizo 

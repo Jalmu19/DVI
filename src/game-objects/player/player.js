@@ -5,6 +5,7 @@ import Shoots from '../spells/shoots';
 import FreezingShoot from '../spells/freezingShoot';
 import Shield from '../spells/shield';
 import Shoot from '../spells/shoot';
+import { PLAYER } from '../../constants';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
@@ -27,7 +28,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.body.setSize(14, 20).setOffset(9, 8);
         // Queremos que el jugador no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
-        this.speed = 100;
+        this.speed = PLAYER.SPEED;
         this.health = new Health(scene);
         this.weapon = new Staff(scene, this);
         this.invincible = false;

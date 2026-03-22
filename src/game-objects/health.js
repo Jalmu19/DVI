@@ -1,3 +1,5 @@
+import { PLAYER } from "../constants";
+
 export default class Health {
 
     /**
@@ -6,7 +8,7 @@ export default class Health {
     */
 
     constructor(scene){
-        this.maxHearts = 3;
+        this.maxHearts = PLAYER.MAX_HEALTH_CONTAINER;
         this.actualHealth = this.maxHearts*2;
         this.containers = 0;
         this.scene = scene;
@@ -31,7 +33,7 @@ export default class Health {
      * Incrementa el numero de partes de contenedor y comprueba si es posible aumentar la vida maxima y la recupera
      */
     addContainer() {
-        if(++this.containers === 2){
+        if(++this.containers === PLAYER.HEALTH_PIECE){
             this.maxHearts++;
             this.actualHealth = this.maxHearts*2;   
         }
