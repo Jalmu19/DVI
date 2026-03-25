@@ -8,6 +8,8 @@ export default class Inventory{
 
         if(i) {i.quantity += quantity}
         else {this.items.push({id, name, frame, quantity})}
+
+        return true
     }
 
     eliminateItem(id){

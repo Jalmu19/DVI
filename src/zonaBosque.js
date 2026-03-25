@@ -80,9 +80,10 @@ export default class Zona_bosque extends GameScene {
             this.enemigos.add(a);
         })
         //this.physics.add.collider(this.enemigos, arboles);
-
+    
+        this.keyInteract = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
         this.items = this.physics.add.staticGroup()
-        const berry = new Item(this, 100, 200, 'berry', 0, { id: 'berry', nombre: 'Berry' });
+        const berry = new Item(this, 100, 100, 'berry', 0, { id: 'berry', name: 'berry', frame: 0 });
         this.items.add(berry)
         this.manageItems(this.player, this.items)
     }
@@ -102,14 +103,16 @@ export default class Zona_bosque extends GameScene {
     manageItems(player, items){
         
         this.physics.add.overlap(player, this.items, (player, item) => {
-            console.log("COGIDO")
-            const added = this.registry.get('Inventario').agregarItem(
-                item.itemData.id, 
-                item.itemData.name, 
-                item.itemData.frame
-            );
+            if (Phaser.Input.Keyboard.JustDown(this.keyInteract)) {
+                console.log("COGIDO")
+                const added = this.registry.get('Inventario').addItem(
+                    item.itemData.id, 
+                    item.itemData.name, 
+                    item.itemData.frame
+                );
 
-            if (added) item.destroy()
+                if (added) item.destroy()
+            }
         });
     }
 }
