@@ -41,7 +41,7 @@ export default class Mazmorra extends GameScene{
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
         //colision paredes-player
-       // paredes_y_entrada.setCollisionByExclusion([-1], true);
+        paredes_y_entrada.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, paredes_y_entrada);  
 
         
