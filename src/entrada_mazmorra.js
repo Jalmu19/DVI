@@ -83,7 +83,7 @@ export default class Entrada_mazmorra extends GameScene{
 
 
         //COLISIONES CON PLATAFORMAS Y ESCALERAS
-        plataformas.setCollisionByExclusion([-1], true);
+       // plataformas.setCollisionByExclusion([-1], true);
 
         this.escalerasFisicas = this.physics.add.staticGroup();
         this.objetosEscaleras = map.getObjectLayer('Objetos_Escaleras'); 
