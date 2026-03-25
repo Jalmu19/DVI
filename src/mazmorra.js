@@ -5,6 +5,9 @@ import Banderas from './game-objects/items/banderas.js'
 import Puertas from './game-objects/items/puertas.js'
 import GameScene from "./game-scene.js";
 
+import habitacion_boss from '../assets/mapas/habitacion_boss.json'
+import suelo from '../assets/sprites/dungeon.png'
+import paredes from '../assets/sprites/dungeon.png'
 
 
 export default class Mazmorra extends GameScene{
@@ -12,6 +15,14 @@ export default class Mazmorra extends GameScene{
     constructor(){
         super({key:'mazmorra'});
     }
+
+    //preload de la escena siguiente    
+    preload(){
+        this.load.image('suelo', suelo);
+        this.load.image('paredes', paredes);
+        this.load.tilemapTiledJSON('habitacion_boss', habitacion_boss);
+    }
+
 
     create(){
         var map = this.make.tilemap({key : 'mazmorra'});
@@ -109,7 +120,7 @@ export default class Mazmorra extends GameScene{
 
     cambiarScene(){
         this.anims.createFromAseprite('player');
-        this.scene.start('game-over');
+        this.scene.start('habitacion_boss');
            
     }
 

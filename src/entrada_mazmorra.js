@@ -79,7 +79,7 @@ export default class Entrada_mazmorra extends GameScene{
         map.createLayer('escaleras', img9, 0,0);
 
 
-        this.player = new Player(this, 30, 30);
+        this.player = new Player(this, 50, 20);
 
 
         //COLISIONES CON PLATAFORMAS Y ESCALERAS
