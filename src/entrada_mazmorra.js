@@ -70,8 +70,8 @@ export default class Entrada_mazmorra extends GameScene{
         var img10 = map.addTilesetImage('pared_mazmorra', 'pared_mazmorra');
         var img11 = map.addTilesetImage('puerta_mazmorra', 'puerta_mazmorra');
 
-        var suelo = map.createLayer('Suelo', [img1, img7, img8], 0,0);
-        map.createLayer('mazmorra', [img10, img11], 0,0);
+        map.createLayer('Suelo', [img1, img7, img8], 0,0);
+        var dungeon = map.createLayer('mazmorra', [img10, img11], 0,0);
         var plataformas = map.createLayer('Plataformas', img2, 0,0);
         map.createLayer('setitas y flores', [img5,img6 ], 0,0);
         var arboles = map.createLayer('arboles', img3, 0,0);
@@ -123,7 +123,7 @@ export default class Entrada_mazmorra extends GameScene{
             })
         }
         this.physics.add.collider(this.player, this.barandillas);
-
+       
 
         
         this.physics.add.overlap(this.player, [this.escalerasFisicas, this.puenteFisico], () => {
@@ -135,6 +135,11 @@ export default class Entrada_mazmorra extends GameScene{
         //OTRAS COLISIONES
         arboles.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, arboles);
+
+
+        dungeon.setCollisionByExclusion([-1], true);
+        this.physics.add.collider(this.player, dungeon);
+
 
         this.colisionPlataforma = this.physics.add.collider(this.player, plataformas);
 
