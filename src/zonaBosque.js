@@ -14,6 +14,7 @@ import escaleras from '../assets/sprites/escaleras.png'
 import pared_mazmorra from '../assets/sprites/pared_mazmorra.png'
 import puerta_mazmorra from '../assets/sprites/dungeon.png'
 import GameScene from "./game-scene.js";
+import Item from "./game-objects/item.js";
 
 export default class Zona_bosque extends GameScene {
 
@@ -80,6 +81,10 @@ export default class Zona_bosque extends GameScene {
         })
         //this.physics.add.collider(this.enemigos, arboles);
 
+        this.items = this.physics.add.staticGroup()
+        const berry = new Item(this, 100, 200, 'berry', 0, { id: 'berry', nombre: 'Berry' });
+        this.items.add(berry)
+        this.manageItems(this.player, this.items)
     }
 
     cambiarScene(jugador, salidas) {
@@ -92,5 +97,19 @@ export default class Zona_bosque extends GameScene {
         else{
             this.scene.switch('bosque');
         }
+    }
+
+    manageItems(player, items){
+        
+        this.physics.add.overlap(player, this.items, (player, item) => {
+            console.log("COGIDO")
+            const added = this.registry.get('Inventario').agregarItem(
+                item.itemData.id, 
+                item.itemData.name, 
+                item.itemData.frame
+            );
+
+            if (added) item.destroy()
+        });
     }
 }

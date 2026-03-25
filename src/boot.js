@@ -21,6 +21,9 @@ import spike from '../assets/sprites/spikes-placeholder.png'
 
 import shield from '../assets/sprites/bandera_azul.png'
 
+import berry from '../assets/sprites/baya_curativa.png'
+import Inventory from './inventory'
+
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
  * Esta escena se puede mejorar añadiendo una imagen del juego y una 
@@ -63,7 +66,10 @@ export default class Boot extends Phaser.Scene {
     this.load.image('naranja', cNaranja);
     this.load.image('grande', cGrande);
     this.load.image('pozo', pozo);
+    this.load.image('berry', berry)
 
+    const inventory = new Inventory()
+    this.registry.set('Inventario', inventory)
 
   }
 
