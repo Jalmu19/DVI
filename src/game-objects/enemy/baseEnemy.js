@@ -116,7 +116,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
         //DAÑO AL JUGADOR
-        if (this.scene.physics.overlap(this.scene.player, this)) 
+        if (this.scene.physics.overlap(this.scene.player.hurtbox, this)) 
             this.scene.player.takeDamage(this.dmgGiven, this.x, this.y);
 
         if(!this.isRebounding){
