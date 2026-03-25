@@ -24,10 +24,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-        //cambiar hitbox
-        this.body.setSize(14, 20).setOffset(9, 8);
+        // Cambiar hitbox para chocar con el entorno
+        this.body.setSize(14, 15).setOffset(8, 13);
         // Queremos que el jugador no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
+        // Añadimos una "hitbox" para el daño que recibe
+        this.hurtbox = this.scene.add.zone(this.x,this.y, 14, 20);
+        this.scene.physics.add.existing(this.hurtbox);
+        // Hacemos que el cuerpo del hurtbox sea un sensor (no choca, solo detecta)
+        this.hurtbox.body.setAllowGravity(false);
+
         this.speed = PLAYER.SPEED;
         this.health = new Health(scene);
         this.weapon = new Staff(scene, this);
@@ -144,6 +150,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         })
     }
 
+    updateHurtBox() {
+        this.hurtbox.body.setVelocity(this.body.velocity.x, this.body.velocity.y);
+        this.hurtbox.x = this.x - 1;
+        this.hurtbox.y = this.y + 2;
+    }
+
     /**
      * Métodos preUpdate de Phaser.
      * Se encarga del movimiento del jugador, de animar el sprite, y de abrir el menú de hechizos
@@ -152,6 +164,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
 
+        this.updateHurtBox();
         if (!this.knocked) {
             this.body.setVelocity(0);
 
