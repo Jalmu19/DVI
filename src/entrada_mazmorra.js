@@ -2,24 +2,13 @@ import Phaser from "phaser";
 import Salidas from './game-objects/enemy/salidas.js'
 import Player from './game-objects/player/player.js'
 
-import mazmorra from '../assets/mapas/mazmorra.json'
+import mazmorra_inicial from '../assets/mapas/mazmorra_inicial.json'
 import suelo from '../assets/sprites/dungeon.png'
-import puertas from '../assets/sprites/puerta.png'
-import puertas_laterales from '../assets/sprites/puerta_lateral.png'
-import puertas_salida from '../assets/sprites/puerta_salida.png'
+import puerta from '../assets/sprites/puerta.png'
 import puerta_entrada from '../assets/sprites/dungeon.png'
-import cofre_verde from '../assets/sprites/cofre_verde.png'
-import cofre_rojo from '../assets/sprites/cofre_rojo.png'
-import cofre_azul from '../assets/sprites/cofre_azul.png'
-import cofre_amarillo from '../assets/sprites/cofre_amarillo.png'
-import cofre_morado from '../assets/sprites/cofre_morado.png'
-import bandera_verde from '../assets/sprites/bandera_verde.png'
-import bandera_roja from '../assets/sprites/bandera_roja.png'
-import bandera_morada from '../assets/sprites/bandera_morada.png'
-import bandera_azul from '../assets/sprites/bandera_azul.png'
-import bandera_amarilla from '../assets/sprites/bandera_amarilla.png'
 import paredes from '../assets/sprites/dungeon.png'
-import antorchas from '../assets/sprites/dungeon.png'
+import cofre_rojo from '../assets/sprites/cofre_rojo.png'
+import bandera_roja from '../assets/sprites/bandera_roja.png'
 import GameScene from "./game-scene.js";
 
 
@@ -34,24 +23,13 @@ export default class Entrada_mazmorra extends GameScene{
     //preload de la escena siguiente    
     preload(){
         this.load.image('suelo', suelo);
-        this.load.image('puerta', puertas);
-        this.load.image('puerta_lateral', puertas_laterales);
-        this.load.image('puerta_salida', puertas_salida);
         this.load.image('puerta_entrada', puerta_entrada);
-        this.load.image('caja_verde', cofre_verde);
-        this.load.image('caja_roja', cofre_rojo);
-        this.load.image('caja_morada', cofre_morado);
-        this.load.image('caja_azul', cofre_azul);
-        this.load.image('caja_amarilla', cofre_amarillo);
-        this.load.image('bandera_verde', bandera_verde);
-        this.load.image('bandera_roja', bandera_roja);
-        this.load.image('bandera_morada', bandera_morada);
-        this.load.image('bandera_azul', bandera_azul);
-        this.load.image('bandera_amarilla', bandera_amarilla);
+        this.load.image('puerta', puerta);
         this.load.image('paredes', paredes);
-        this.load.image('antorchas', antorchas);
+        this.load.image('caja_roja', cofre_rojo);
+        this.load.image('bandera_roja', bandera_roja);
 
-        this.load.tilemapTiledJSON('mazmorra', mazmorra);
+        this.load.tilemapTiledJSON('mazmorra_inicial', mazmorra_inicial);
     }
 
 
@@ -164,7 +142,7 @@ export default class Entrada_mazmorra extends GameScene{
         this.anims.createFromAseprite('player');
         
         if(salidas.tag === 'salidaMazmorra' ){
-            this.scene.start('mazmorra');
+            this.scene.start('mazmorra_inicial');
         }
         else{
             this.scene.start('zonaBosque');
