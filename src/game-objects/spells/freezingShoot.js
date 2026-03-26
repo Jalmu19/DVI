@@ -1,13 +1,13 @@
 import Shoot from "./shoot";
+import { SPELLS } from "../../constants";
 
 export default class FreezingShoot extends Shoot{
 
     constructor(scene, x, y){
         const key = scene.currentShootKey;
-        const speed = 150;
-
         super(scene, x, y, key);
-        this.speed = speed; 
+        this.key = key;
+        this.speed = SPELLS.FREEZE_SHOOT.SPEED; 
         this.setDisplaySize(16, 16);
         
         this.freeze = true;

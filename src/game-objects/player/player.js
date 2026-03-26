@@ -83,7 +83,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * @param {String} spell El key del hechizo que al que se cambia
      */
     changeSpell(spell) {
-        if (spell !== this.actualSpell.getKey()) {
+        if (spell !== this.actualSpell.key) {
             let aux = this.mapOfSpells[spell];
             if (spell !== 'shield') aux.createMultiple({ key: 'shoot', quantity: 10, active: false, visible: false });
             this.actualSpell = aux;

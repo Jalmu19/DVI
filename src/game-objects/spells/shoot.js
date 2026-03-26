@@ -1,12 +1,12 @@
+import { SPELLS } from "../../constants";
 
 export default class Shoot extends Phaser.Physics.Arcade.Sprite{
 
     constructor(scene, x, y){
         const key = scene.currentShootKey;
-        const speed = 200;
-
         super(scene, x, y, key);
-        this.speed = speed; 
+        this.key = key;
+        this.speed = SPELLS.SHOOT.SPEED; 
         this.setDisplaySize(16, 16);
         
         this.freeze = false;
