@@ -1,4 +1,4 @@
-import { SCENE } from "../constants";
+import { SCENE, UI } from "../constants";
 
 export default class UIScene extends Phaser.Scene {
     constructor() {
@@ -41,11 +41,11 @@ export default class UIScene extends Phaser.Scene {
         let children = this.hearts.getChildren();
         for (let i = 0; i < children.length; ++i) {
             const heart = Math.max(0, Math.min(2, actualHealth - i * 2));
-            if (heart >= 2) children[i].setFrame(0);
-            else if (heart >= 1.5) children[i].setFrame(1);
-            else if (heart >= 1) children[i].setFrame(2);
-            else if (heart >= 0.5) children[i].setFrame(3);
-            else children[i].setFrame(4);
+            if (heart >= 2) children[i].setFrame(UI.HEALTH.FULL_HEART);
+            else if (heart >= 1.5) children[i].setFrame(UI.HEALTH.THREE_QUARTER_HEART);
+            else if (heart >= 1) children[i].setFrame(UI.HEALTH.MID_HEART);
+            else if (heart >= 0.5) children[i].setFrame(UI.HEALTH.QUARTER_HEART);
+            else children[i].setFrame(UI.HEALTH.ZERO_HEART);
         }
     }
 
