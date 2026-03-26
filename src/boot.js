@@ -21,6 +21,8 @@ import spike from '../assets/sprites/spikes-placeholder.png'
 
 import shield from '../assets/sprites/bandera_azul.png'
 
+import chest from '../assets/sprites/cofre_pequenyo.png'
+import chestjson from '../assets/sprites/cofre_pequenyo.json'
 import berry from '../assets/sprites/baya_curativa.png'
 import Inventory from './inventory'
 
@@ -53,6 +55,7 @@ export default class Boot extends Phaser.Scene {
 
     this.load.aseprite('player', player, playerjson);
     this.load.spritesheet('health', health, { frameWidth: 32, frameHeight: 32 });
+    this.load.aseprite('chest', chest, chestjson);
     this.load.image('palo', palo);
     this.load.image('shoot', shoot);
     this.load.image('grimorio-basico', grimorioBasico);
@@ -79,6 +82,7 @@ export default class Boot extends Phaser.Scene {
    */
   create() {   
     this.anims.createFromAseprite('player');
+    this.anims.createFromAseprite('chest');
     this.scene.start('bosque');
     //this.scene.start('mainmenu', { globals : this.globals});
   }
