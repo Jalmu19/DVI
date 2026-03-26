@@ -26,4 +26,9 @@ export default class GameScene extends Phaser.Scene {
         })
 
     }
+
+    openInventory(){
+        this.scene.launch('InventoryScene')
+        this.scene.pause();
+    }
 }

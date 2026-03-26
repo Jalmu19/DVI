@@ -85,6 +85,8 @@ export default class Zona_bosque extends GameScene {
         const berry = new Item(this, 100, 100, 'berry', 0, { id: 'berry', name: 'berry', frame: 0 });
         this.items.add(berry)
         this.manageItems(this.player, this.items)
+
+        
     }
 
     cambiarScene(jugador, salidas) {
