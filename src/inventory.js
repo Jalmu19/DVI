@@ -1,4 +1,4 @@
-export default class Inventory{
+class Inventory{
     constructor(){
         this.items = []
     }
@@ -21,5 +21,12 @@ export default class Inventory{
             if (this.items[index].cantidad <= 0) this.items.splice(index, 1)
         }
     }
+
+    getItems() { return this.items }
     
 }
+
+
+const instance = new Inventory();
+
+export default instance;
