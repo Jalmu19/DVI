@@ -67,7 +67,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             left: Phaser.Input.Keyboard.KeyCodes.A,
             right: Phaser.Input.Keyboard.KeyCodes.D,
             interact: Phaser.Input.Keyboard.KeyCodes.E,
-            spellMenu: Phaser.Input.Keyboard.KeyCodes.TAB
+            spellMenu: Phaser.Input.Keyboard.KeyCodes.TAB,
+            inventoryMenu: Phaser.Input.Keyboard.KeyCodes.F
         });
     }
 
@@ -220,12 +221,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             }
             else this.play(anim, true);
 
-            if(this.cursors.interact.justDown){
-               
-                   this.scene.openInventory();
-                   console.log("ABRE INVENTARIO")
-                   
-                
+            if (Phaser.Input.Keyboard.JustDown(this.cursors.inventoryMenu)) {
+                this.scene.game.events.emit('inventoryMenu', this.scene);
             }
         }
     }
