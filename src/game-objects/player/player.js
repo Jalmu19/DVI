@@ -19,7 +19,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * @param {number} x Coordenada X
      * @param {number} y Coordenada Y
      */
-    constructor(scene, x, y) {
+    constructor(scene, x, y, mapOfSpells, protec, lastDir, actualHealth) {
         super(scene, x, y, 'player');
 
         this.scene.add.existing(this);
@@ -53,6 +53,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.añadirHechizo('shoot');
         this.actualSpell = new Shield(this.scene, x, y, this);
         this.protected = false;
+
+        this.mapOfSpells = mapOfSpells;
+        this.protected = protec;
+        this.lastDir = lastDir;
+        this.health.actualHealth = actualHealth;
 
         this.scene.game.events.on('spell-changed', (data) => { this.changeSpell(data) });
 

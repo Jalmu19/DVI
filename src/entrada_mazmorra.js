@@ -18,6 +18,9 @@ export default class Entrada_mazmorra extends GameScene{
         super({key:'entrada_mazmorra'}); 
         this.atravesarPlataforma = false; 
     }  
+    init(datos){
+         this.datos = [datos.x, datos.y, datos.mapOfSpells, datos.protec, datos.lastDir, datos.actualHealth];
+    }
 
 
     //preload de la escena siguiente    
@@ -57,8 +60,8 @@ export default class Entrada_mazmorra extends GameScene{
         map.createLayer('escaleras', img9, 0,0);
 
 
-        this.player = new Player(this, 50, 20);
-
+        //this.player = new Player(this, 50, 20);
+       this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2], this.datos[3], this.datos[4], this.datos[5]);
 
         //COLISIONES CON PLATAFORMAS Y ESCALERAS
         plataformas.setCollisionByExclusion([-1], true);
@@ -142,10 +145,25 @@ export default class Entrada_mazmorra extends GameScene{
         this.anims.createFromAseprite('player');
         
         if(salidas.tag === 'salidaMazmorra' ){
-            this.scene.start('mazmorra_inicial');
+            this.scene.start('mazmorra_inicial', {
+                x : 133,
+                y : 252,
+                mapOfSpells : this.player.mapOfSpells,
+                protec : this.player.protected,
+                lastDir : this.player.lastDir,
+                actualHealth : this.player.health.actualHealth
+            
+            });
         }
         else{
-            this.scene.start('zonaBosque');
+            this.scene.start('zonaBosque', {
+                x : 393,
+                y : 210,
+                mapOfSpells : this.player.mapOfSpells,
+                protec : this.player.protected,
+                lastDir : this.player.lastDir,
+                actualHealth : this.player.health.actualHealth
+            });
         }
     } 
 

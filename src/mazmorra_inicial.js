@@ -30,6 +30,9 @@ export default class MazmorraInicial extends GameScene{
     constructor(){
         super({key:'mazmorra_inicial'});
     }
+    init(datos){
+        this.datos = [datos.x, datos.y, datos.mapOfSpells, datos.protec, datos.lastDir, datos.actualHealth];
+    }
 
     //preload de la escena siguiente    
     preload(){
@@ -67,7 +70,7 @@ export default class MazmorraInicial extends GameScene{
  
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-        this.player = new Player(this,  133, 252);
+       this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2], this.datos[3], this.datos[4], this.datos[5]);
 
 
 
@@ -115,7 +118,15 @@ export default class MazmorraInicial extends GameScene{
 
     cambiarScene(){
         this.anims.createFromAseprite('player');
-        this.scene.start('mazmorra');
+        this.scene.start('mazmorra', {
+            x : 48,
+            y : 292,
+            mapOfSpells : this.player.mapOfSpells,
+            protec : this.player.protected,
+            lastDir : this.player.lastDir,
+            actualHealth : this.player.health.actualHealth
+            
+        });
            
     }
 

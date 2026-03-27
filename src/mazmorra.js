@@ -15,6 +15,9 @@ export default class Mazmorra extends GameScene{
     constructor(){
         super({key:'mazmorra'});
     }
+    init(datos){
+         this.datos = [datos.x, datos.y, datos.mapOfSpells, datos.protec, datos.lastDir, datos.actualHealth];
+    }
 
     //preload de la escena siguiente    
     preload(){
@@ -37,7 +40,8 @@ export default class Mazmorra extends GameScene{
         var paredes_y_entrada = map.createLayer('ParedesYEntrada', [img12, img14], 0,0);
         map.createLayer('Antorchas', img13, 0,0); //antorchas
 
-        this.player = new Player(this,  48, 292);
+       // this.player = new Player(this,  48, 292);
+       this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2], this.datos[3], this.datos[4], this.datos[5]);
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
         paredes_y_entrada.setCollisionByExclusion([-1], true);
@@ -89,7 +93,14 @@ export default class Mazmorra extends GameScene{
 
     cambiarScene(){
         this.anims.createFromAseprite('player');
-        this.scene.start('habitacion_boss');
+        this.scene.start('habitacion_boss', {
+                x : 350,
+                y : 112,
+                mapOfSpells : this.player.mapOfSpells,
+                protec : this.player.protected,
+                lastDir : this.player.lastDir,
+                actualHealth : this.player.health.actualHealth
+            });
            
     }
 

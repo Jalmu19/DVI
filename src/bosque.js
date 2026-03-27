@@ -17,6 +17,9 @@ export default class Bosque extends GameScene{
     constructor(){
         super({key:'bosque'});
     }
+    init(datos){
+        this.datos = [datos.x, datos.y, datos.actualHealth];
+    }
 
     preload(){
         this.load.image('cuervoEnemigo', cuervo);
@@ -45,7 +48,7 @@ export default class Bosque extends GameScene{
         var arboles = map.createLayer('Arboleda', [img3, img4, img7], 0,0);
         var casas = map.createLayer('Casas', [img1,img2, img5, img6], 0,0);
 
-        this.player = new Player(this, 251,381);
+        this.player = new Player(this, this.datos[0],this.datos[1], [], false, 'front', this.datos[2]);
 
         var tejado = map.createLayer('Tejados', [img1,img5,img6],0,0);
        
@@ -72,11 +75,18 @@ export default class Bosque extends GameScene{
         this.physics.add.overlap(this.player, tejado,null,null,this);    
         this.physics.add.collider(this.player,casas);            
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
-        this.scene.launch('ui');
+        
     }
 
     cambiarScene(){
         this.anims.createFromAseprite('player');
-        this.scene.start('zonaBosque');           
+        this.scene.start('zonaBosque', {
+            x : 80,
+            y : 210,
+            mapOfSpells : this.player.mapOfSpells,
+            protect : this.player.protected,
+            lastDir : this.player.lastDir,
+            actualHealth : this.player.health.actualHealth
+        });           
     }
 }
