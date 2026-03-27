@@ -15,6 +15,7 @@ import pared_mazmorra from '../assets/sprites/pared_mazmorra.png'
 import puerta_mazmorra from '../assets/sprites/dungeon.png'
 import GameScene from "./game-scene.js";
 import Item from "./game-objects/item.js";
+import Inventory from './inventory.js';
 
 export default class Zona_bosque extends GameScene {
 
@@ -105,7 +106,7 @@ export default class Zona_bosque extends GameScene {
         
         this.physics.add.overlap(player, this.items, (player, item) => {
             console.log("COGIDO")
-            const added = this.registry.get('Inventario').addItem(
+            const added = Inventory.addItem(
                 item.itemData.id, 
                 item.itemData.name, 
                 item.itemData.frame
