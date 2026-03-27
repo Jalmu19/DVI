@@ -19,6 +19,7 @@ export default class UIScene extends Phaser.Scene {
         this.game.events.on('spell-gained', (data) => { this.spells.push(data); this.drawGrimores(); }) // Data será el tag del hechizo 
         this.game.events.on('open-menu', () => this.updateSpellsMenu());
         this.game.events.on('close-menu', () => this.updateSpell());
+        this.game.events.on('inventoryMenu', (actualScene) => this.inventoryMenu(actualScene));
     }
 
     /**
@@ -112,5 +113,17 @@ export default class UIScene extends Phaser.Scene {
     updateSpell() {
         this.spellsMenu.setVisible(false)
         this.game.events.emit('spell-changed', this.chosenSpell);
+    }
+
+    inventoryMenu(actualScene){
+        if (this.scene.isActive('InventoryScene')) {
+            this.scene.stop('InventoryScene');
+            this.scene.resume(actualScene);
+            console.log("CIERRA INVENTARIO")
+        } else {
+            this.scene.pause(actualScene);
+            this.scene.launch('InventoryScene', { backgroundScene: actualScene });
+            console.log("ABRE INVENTARIO")
+        }
     }
 }
