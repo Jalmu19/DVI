@@ -2,16 +2,28 @@ import Phaser from "phaser";
 import Inventory from '.././inventory.js';
 
 export default class InventoryScene extends Phaser.Scene {
+    /**
+    @param {Phaser.Scene} backgroundScene
+    */
+
     constructor() {
         super({ key: 'InventoryScene' });
         this.positions = [];
         this.cursor = 0;
     }
 
+    init(data){
+        this.backgroundScene = data.backgroundScene
+    }
+
     create() {
         this.inventoryLogic = Inventory;
         this.add.rectangle(0, 0, 800, 600, 0x000000, 0.7).setOrigin(0);
         this.paintInventory();
+
+        this.input.keyboard.on('keydown-F', () => {
+            this.game.events.emit('inventoryMenu', this.backgroundScene);
+        });
     }
 
     paintInventory() {
