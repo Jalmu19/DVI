@@ -86,8 +86,12 @@ export default class Zona_bosque extends GameScene {
         //this.physics.add.collider(this.enemigos, arboles);
     
         this.items = this.physics.add.staticGroup()
-        const berry = new Item(this, 100, 100, 'berry', 0, { id: 'berry', name: 'berry', frame: 0 });
-        this.items.add(berry)
+        const berry1 = new Item(this, 100, 100, 'berry', 0, { id: 'berry', name: 'berry1', quantity: 1});
+        const berry2 = new Item(this, 150, 100, 'berry', 0, { id: 'berry2', name: 'berry2',  quantity: 3});
+        const berry3 = new Item(this, 200, 100, 'berry', 0, { id: 'berry', name: 'berry3', quantity: 1});
+        this.items.add(berry1)
+        this.items.add(berry2)
+        this.items.add(berry3)
         this.manageItems(this.player, this.items)
 
         
@@ -126,7 +130,9 @@ export default class Zona_bosque extends GameScene {
             const added = Inventory.addItem(
                 item.itemData.id, 
                 item.itemData.name, 
-                item.itemData.frame
+                item.itemData.frame,
+                item.itemData.quantity,
+                item.itemData.texture
             );
 
             if (added) item.destroy()
