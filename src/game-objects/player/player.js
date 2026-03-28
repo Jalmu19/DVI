@@ -19,7 +19,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * @param {number} x Coordenada X
      * @param {number} y Coordenada Y
      */
-    constructor(scene, x, y, mapOfSpells, protec, lastDir, actualHealth) {
+    constructor(scene, x, y, stats = null) {
         super(scene, x, y, 'player');
 
         this.scene.add.existing(this);
@@ -50,14 +50,18 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
         //this.actualSpell = this.shoots;
         this.mapOfSpells = [];
-        this.añadirHechizo('shoot');
-        this.actualSpell = new Shield(this.scene, x, y, this);
         this.protected = false;
-
-        this.mapOfSpells = mapOfSpells;
-        this.protected = protec;
-        this.lastDir = lastDir;
-        this.health.actualHealth = actualHealth;
+        if(stats) {
+            this.lastDir = stats.lastDir;
+            this.protected = stats.protected;
+            this.health.setStats(stats.health);
+            //TODO los hechizos
+        }
+        else {
+            this.añadirHechizo('shoot');
+            //this.actualSpell = /*new Shield(this.scene, x, y, this);
+            this.actualSpell = this.mapOfSpells['shoot'];
+        }
 
         this.scene.game.events.on('spell-changed', (data) => { this.changeSpell(data) });
 
@@ -229,6 +233,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     getPlayer(target) {
         return target.set(this.x, this.y);
+    }
+
+    getStats() {
+        return {
+            mapOfSpells : Object.keys(this.mapOfSpells),
+            actualSpell : this.actualSpell.key,
+            lastDir : this.lastDir,
+            protected : this.protected,
+            health : this.health.getStats()
+        }
     }
 
     setProtection() { this.protected = true; }

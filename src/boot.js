@@ -88,7 +88,7 @@ export default class Boot extends Phaser.Scene {
     this.anims.createFromAseprite('player');
     this.anims.createFromAseprite('chest');
     this.scene.launch('ui');
-    this.scene.start('bosque', {x: 251, y: 381, actualHealth : 6 });
+    this.scene.start('bosque', {x: 251, y: 381});
 
     //musica
     this.musicaFondo = this.sound.add('musicaFondo');

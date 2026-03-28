@@ -17,8 +17,9 @@ export default class Bosque extends GameScene{
     constructor(){
         super({key:'bosque'});
     }
+
     init(datos){
-        this.datos = [datos.x, datos.y, datos.actualHealth];
+        this.datos = [datos.x, datos.y];
     }
 
     preload(){
@@ -48,7 +49,7 @@ export default class Bosque extends GameScene{
         var arboles = map.createLayer('Arboleda', [img3, img4, img7], 0,0);
         var casas = map.createLayer('Casas', [img1,img2, img5, img6], 0,0);
 
-        this.player = new Player(this, this.datos[0],this.datos[1], [], false, 'front', this.datos[2]);
+        this.player = new Player(this, this.datos[0],this.datos[1]);
 
         var tejado = map.createLayer('Tejados', [img1,img5,img6],0,0);
        
@@ -83,10 +84,7 @@ export default class Bosque extends GameScene{
         this.scene.start('zonaBosque', {
             x : 80,
             y : 210,
-            mapOfSpells : this.player.mapOfSpells,
-            protect : this.player.protected,
-            lastDir : this.player.lastDir,
-            actualHealth : this.player.health.actualHealth
+            stats : this.player.getStats()
         });           
     }
 }

@@ -16,7 +16,7 @@ export const SPELLS = {
     },
     FREEZE_SHOOT: {
         SPEED : 150,
-        KEY : 'shoot'
+        KEY : 'freezing_shoot'
     },
     SHIELD: {
         KEY : 'shield'

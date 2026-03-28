@@ -23,7 +23,7 @@ export default class Zona_bosque extends GameScene {
         super({ key: 'zonaBosque' });
     }
     init(datos){
-        this.datos = [datos.x, datos.y, datos.mapOfSpells, datos.protec, datos.lastDir, datos.actualHealth];
+        this.datos = [datos.x, datos.y, datos.stats];
     }
 
     preload() {
@@ -62,7 +62,7 @@ export default class Zona_bosque extends GameScene {
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
       
-        this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2], this.datos[3], this.datos[4], this.datos[5]);
+        this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
         
         //Añadiendo colision a las fisicas
         this.physics.add.collider(this.player, arboles);
@@ -102,10 +102,7 @@ export default class Zona_bosque extends GameScene {
             this.scene.start('entrada_mazmorra', {
                 x : 50,
                 y : 20,
-                mapOfSpells : this.player.mapOfSpells,
-                protec : this.player.protected,
-                lastDir : this.player.lastDir,
-                actualHealth : this.player.health.actualHealth
+                stats : this.player.getStats()
             });
         }
         else if(salidas.tag === 'salidaLago'){
@@ -115,10 +112,7 @@ export default class Zona_bosque extends GameScene {
             this.scene.switch('bosque', {
                 x : 156,
                 y : 26,
-                mapOfSpells : this.player.mapOfSpells,
-                protec : this.player.protected,
-                lastDir : this.player.lastDir,
-                actualHealth : this.player.health.actualHealth
+                stats : this.player.getStats()
             });
         }
     }

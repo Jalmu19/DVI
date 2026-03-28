@@ -38,4 +38,19 @@ export default class Health {
             this.actualHealth = this.maxHearts*2;   
         }
     }
+
+    setStats(stats) {
+        this.maxHearts = stats.maxHearts;
+        this.actualHealth = stats.actualHealth;
+        this.containers = stats.containers;
+
+    } 
+
+    getStats() {
+        return {
+            maxHearts : this.maxHearts,
+            actualHealth : this.actualHealth,
+            containers : this.containers
+        }
+    }
 }

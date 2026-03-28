@@ -9,9 +9,10 @@ export default class HabitacionBoss extends GameScene{
 
     constructor(){
         super({key:'habitacion_boss'}); 
-    }  
+    }
+
     init(datos){
-         this.datos = [datos.x, datos.y, datos.mapOfSpells, datos.protec, datos.lastDir, datos.actualHealth];
+         this.datos = [datos.x, datos.y, datos.stats];
     }
 
     create(){
@@ -24,7 +25,7 @@ export default class HabitacionBoss extends GameScene{
         var paredes = map.createLayer('paredes', [img2], 0,0);
 
         //this.player = new Player(this, 350, 112);
-        this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2], this.datos[3], this.datos[4], this.datos[5]);
+        this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
         //COLISIONES
         paredes.setCollisionByExclusion([-1], true);
