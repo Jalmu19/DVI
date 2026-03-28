@@ -6,7 +6,6 @@ export default class FreezingShoot extends Shoot{
     constructor(scene, x, y){
         const key = scene.currentShootKey;
         super(scene, x, y, key);
-        this.key = key;
         this.speed = SPELLS.FREEZE_SHOOT.SPEED; 
         this.setDisplaySize(16, 16);
         

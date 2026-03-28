@@ -55,7 +55,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             this.lastDir = stats.lastDir;
             this.protected = stats.protected;
             this.health.setStats(stats.health);
-            //TODO los hechizos
+            console.log(stats.actualSpell);
+            stats.mapOfSpells.forEach(key => {
+                this.añadirHechizo(key, false);
+            })
+            this.actualSpell = this.mapOfSpells[stats.actualSpell];
         }
         else {
             this.añadirHechizo('shoot');
@@ -85,12 +89,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * Metodo que añade un hechizo al personaje
      * @param {String} spell El key del hechizo que se añade
      */
-    añadirHechizo(spell) {
+    añadirHechizo(spell, emit = true) {
         let aux;
         if (spell !== 'shield') aux = new Shoots(this.scene.physics.world, this.scene, { classType: Shoot, key: spell });
         else aux = new Shield(this.scene, x, y, this);
         this.mapOfSpells[spell] = aux;
-        this.scene.game.events.emit('spell-gained', spell);
+        if (emit) this.scene.game.events.emit('spell-gained', spell);
     }
 
     /**
