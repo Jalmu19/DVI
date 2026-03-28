@@ -3,11 +3,15 @@ class Inventory{
         this.items = []
     }
 
-    addItem(id, name, frame, quantity){
+    addItem(id, name, frame, quantity, texture){
+        console.log(id)
+        console.log(name)
+        console.log(frame)
+        console.log(quantity)
         const i = this.items.find(item => item.id === id)
 
         if(i) {i.quantity += quantity}
-        else {this.items.push({id, name, frame, quantity})}
+        else {this.items.push({id, name, frame, quantity, texture})}
 
         return true
     }
