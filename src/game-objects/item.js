@@ -8,7 +8,9 @@ export default class Item extends Phaser.Physics.Arcade.Sprite {
 
         this.itemData = { id: data.id, 
                           name: data.name, 
-                          frame: frame 
+                          frame: frame,
+                          quantity: data.quantity,
+                          texture:texture
                         }
     }
 
