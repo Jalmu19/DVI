@@ -1,4 +1,4 @@
-import { SCENE, UI } from "../constants";
+import { SCENE, UI , PLAYER } from "../constants";
 
 export default class UIScene extends Phaser.Scene {
     constructor() {
@@ -7,10 +7,10 @@ export default class UIScene extends Phaser.Scene {
 
     create() {
         this.hearts = this.add.group();
-        this.drawHearts(3); // Al principio los corazones maximos son 3 TODO crear clase de constantes
+        this.drawHearts(PLAYER.MAX_HEALTH_CONTAINER); // Al principio los corazones maximos son 3 TODO crear clase de constantes
         this.game.events.on('health-changed', (data) => { this.updateHearts(data.heartNum, data.actualHealth) });
 
-        this.spells = ['shield']; // Teniendo solo un hechizo no se podra abrir el menú
+        this.spells = []; // Teniendo solo un hechizo no se podra abrir el menú
         this.chosenSpell;
         this.menuX = SCENE.WIDTH / 2;
         this.menuY = SCENE.HEIGHT / 2;
