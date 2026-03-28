@@ -63,7 +63,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             this.actualSpell = this.mapOfSpells['shoot'];
         }
 
-        this.scene.game.events.on('spell-changed', (data) => { this.changeSpell(data) });
+        this.onSpellChange = (data) => { this.changeSpell(data) };
+        this.scene.game.events.on('spell-changed', this.onSpellChange);
 
         this.cursors = this.scene.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
@@ -73,6 +74,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             interact: Phaser.Input.Keyboard.KeyCodes.E,
             spellMenu: Phaser.Input.Keyboard.KeyCodes.TAB,
             inventoryMenu: Phaser.Input.Keyboard.KeyCodes.F
+        });
+
+        this.on('destroy', () => {
+            this.scene.game.events.off('spell-changed', this.onSpellChange);
         });
     }
 
