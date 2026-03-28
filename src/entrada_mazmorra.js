@@ -66,10 +66,11 @@ export default class Entrada_mazmorra extends GameScene{
 
 
         //this.player = new Player(this, 50, 20);
-       this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
+        this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
         //COLISIONES CON PLATAFORMAS Y ESCALERAS
-      //  plataformas.setCollisionByExclusion([-1], true);
+        plataformas.setCollisionByExclusion([-1], true);
+
 
         this.escalerasFisicas = this.physics.add.staticGroup();
         this.objetosEscaleras = map.getObjectLayer('Objetos_Escaleras'); 
