@@ -34,16 +34,29 @@ export default class InventoryScene extends Phaser.Scene {
             const x = 100 + (index % columns) * (size + 10);
             const y = 100 + Math.floor(index / columns) * (size + 10);
 
-            this.add.image(x, y, 'slot_bg');
             
-            if (item) this.add.image(x, y, item.texture)
+            
+            if (item) {
+                this.add.image(x, y, item.texture).setFrame(item.frame)
+                if (item.quantity > 1) {
+                
+                const countText = this.add.text(x + 15, y + 15, `x${item.quantity}`, {
+                    fontSize: '14px',
+                    fontFamily: 'Arial',
+                    fill: '#ffffff',
+                    stroke: '#000000',
+                    strokeThickness: 3
+                });
+                countText.setOrigin(0.5); // Centrar el texto en su propia posición
+            }
+            }
 
-            this.slots.push({ x, y });
+            this.positions.push({ x, y });
         });
     }
 
     updateCursorPosition() {
-        const target = this.slots[this.cursor];
+        const target = this.positions[this.cursor];
 
         this.tweens.add({
             targets: this.cursor,
