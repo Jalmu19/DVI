@@ -6,8 +6,9 @@ import Salidas from "./game-objects/enemy/salidas";
  */
 export default class GameScene extends Phaser.Scene {
     dies() {
+        this.sound.stopAll(); //paramos todos los sonidos
         this.scene.stop('ui');
-        this.scene.start('game-over');
+        this.scene.start('game-over');       
     }
 
     slowTime() {
@@ -62,27 +63,30 @@ export default class GameScene extends Phaser.Scene {
     }
 
     cajaSobreBandera(caja, bandera, puertas) {
+
         var abreCaja = caja.properties.find(p => p.name === "abreGrupo");
         var abreBandera = bandera.properties.find(p => p.name === "abreGrupo");
 
         // Si la bandera y la caja abren la misma puerta
-        if (abreCaja && abreBandera && abreCaja.value === abreBandera.value) {
+        if (abreCaja && abreBandera && abreCaja.value === abreBandera.value && !caja.abierto) {
             const distancia = Phaser.Math.Distance.Between(caja.x, caja.y, bandera.x, bandera.y);
-            if(distancia < 10){
+            if(distancia < 10){   
+                caja.abierto = true           
+                this.sonidoAbrirPuerta.play();
                 caja.body.setVelocity(0);
                 caja.x = bandera.x;
-                caja.y = bandera.y;
+                caja.y = bandera.y;      
                 this.abrirPuerta(abreCaja.value, puertas);
             }
         }
     }
 
     abrirPuerta(valor, puertas) {
-        puertas.children.iterate(puerta=> {
+         puertas.children.iterate(puerta=> {
             if(puerta){
                 const propGrupo = puerta.properties.find(p => p.name === "abreGrupo");
                 // Si la puerta tiene esa propiedad y coincide con lo que manda la caja/bandera
-                if (propGrupo && propGrupo.value === valor) {
+                if (propGrupo && propGrupo.value === valor) {     
                     puerta.disableBody(true, true); // Se desactivan todas las del grupo
                 }
             }

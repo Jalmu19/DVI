@@ -50,5 +50,6 @@ export default class MainMenu extends Phaser.Scene
     changeScene()
     {
         this.scene.start("bosque",{ globals : this.globals});
+        this.sonidoFondo.play();
     }
 }

@@ -24,6 +24,10 @@ import shield from '../assets/sprites/bandera_azul.png'
 import chest from '../assets/sprites/cofre_pequenyo.png'
 import chestjson from '../assets/sprites/cofre_pequenyo.json'
 import berry from '../assets/sprites/baya_curativa.png'
+import musicaFondo from '../assets/sounds/musicaFondo.mp3'
+import musicaGameOver from '../assets/sounds/game-over.mp3'
+import musicaGetItem from '../assets/sounds/item-obtained.mp3'
+import musicaEnemiesPunch from '../assets/sounds/enemies-punch.mp3'
 
 
 /**
@@ -50,6 +54,10 @@ export default class Boot extends Phaser.Scene {
     /*this.load.image('platform', platform);
     this.load.image('base', base);
     this.load.image('star', star);*/
+    this.load.audio('musicaFondo', musicaFondo);
+    this.load.audio('musicaGameOver', musicaGameOver);
+    this.load.audio('musicaGetItem', musicaGetItem);
+    this.load.audio('enemiesPunch', musicaEnemiesPunch);
 
     this.load.image('background', background);
 
@@ -81,6 +89,13 @@ export default class Boot extends Phaser.Scene {
     this.anims.createFromAseprite('chest');
     this.scene.launch('ui');
     this.scene.start('bosque', {x: 251, y: 381, actualHealth : 6 });
+
+    //musica
+    this.musicaFondo = this.sound.add('musicaFondo');
+    this.musicaFondo.play();
+    this.musicaFondo.setLoop(true);
+
+
     //this.scene.start('mainmenu', { globals : this.globals});
   }
 }

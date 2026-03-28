@@ -17,7 +17,19 @@ export default class GameOver extends Phaser.Scene {
    * Creación de la escena. Tan solo contiene el texto que indica que el juego se ha acabado
    */
   create() {
-    this.add.text(160, 90, 'GAME OVER!\nPerdiste todos tus corazones\nPulsa cualquier tecla para volver a jugar', {fontSize : 10})
+    const config = {
+      mute: false,
+      volume: 1.5,
+      rate: 1,
+      detune: 0,
+      seek: 0,
+      loop: false,
+      delay: 0,
+    }; 
+    this.musicaGameOver = this.sound.add('musicaGameOver', config);
+    this.musicaGameOver.play()
+
+    this.add.text(160, 90, 'GAME OVER!\nPerdiste todos tus corazones\nPulsa cualquier tecla\n para volver a jugar', {fontSize : 15})
         .setOrigin(0.5, 0.5)  // Colocamos el pivote en el centro de cuadro de texto 
         .setAlign('center');  // Centramos el texto dentro del cuadro de texto
 

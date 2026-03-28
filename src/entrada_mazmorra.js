@@ -11,6 +11,8 @@ import cofre_rojo from '../assets/sprites/cofre_rojo.png'
 import bandera_roja from '../assets/sprites/bandera_roja.png'
 import GameScene from "./game-scene.js";
 
+import sonidoPuerta from '../assets/sounds/sonidoPuerta.mp3'
+
 
 export default class Entrada_mazmorra extends GameScene{
 
@@ -33,6 +35,8 @@ export default class Entrada_mazmorra extends GameScene{
         this.load.image('bandera_roja', bandera_roja);
 
         this.load.tilemapTiledJSON('mazmorra_inicial', mazmorra_inicial);
+
+        this.load.audio('sonidoPuerta', sonidoPuerta);
     }
 
 
@@ -64,7 +68,7 @@ export default class Entrada_mazmorra extends GameScene{
        this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2], this.datos[3], this.datos[4], this.datos[5]);
 
         //COLISIONES CON PLATAFORMAS Y ESCALERAS
-        plataformas.setCollisionByExclusion([-1], true);
+      //  plataformas.setCollisionByExclusion([-1], true);
 
         this.escalerasFisicas = this.physics.add.staticGroup();
         this.objetosEscaleras = map.getObjectLayer('Objetos_Escaleras'); 

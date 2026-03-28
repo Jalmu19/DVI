@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"mazmorra.json"
+        }
+    },
  "height":20,
  "infinite":false,
  "layers":[
@@ -354,15 +362,15 @@
          "name":"Salidas",
          "objects":[
                 {
-                 "height":33,
+                 "height":29.2511389768733,
                  "id":20,
                  "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":16.5,
-                 "x":0,
-                 "y":16
+                 "width":11.5015186358311,
+                 "x":0.833080227361479,
+                 "y":16.8330802273615
                 }],
          "opacity":1,
          "type":"objectgroup",
