@@ -22,6 +22,12 @@ export default class Health {
         this.scene.game.events.emit('health-changed', { heartNum: this.maxHearts, actualHealth: this.actualHealth });
     }
 
+    /** Recupera puntos de vida */
+    increaseHealth(points) {
+        this.actualHealth + points < this.maxHearts*2 ? this.actualHealth += points : this.actualHealth = this.maxHearts*2;
+        this.scene.game.events.emit('health-changed', { heartNum: this.maxHearts, actualHealth: this.actualHealth });
+    }
+
     /**
      * Comprueba si esta muerto
      */
