@@ -1,69 +1,77 @@
 import Phaser from "phaser";
 import Inventory from '.././inventory.js';
 
+/** Clase para la interfaz grafica del inventario */
 export default class InventoryScene extends Phaser.Scene {
     /**
-    @param {Phaser.Scene} backgroundScene
+    @param {Phaser.Scene} backgroundScene       //Escena actual
     */
 
     constructor() {
-        super({ key: 'InventoryScene' });
-        this.positions = [];
-        this.cursor = 0;
+        super({ key: 'InventoryScene' });       //Nombre de la escena para llamarla
+        this.positions = [];                    // Array para guardar las coordenadas X e Y de cada hueco 
     }
 
+    /** Guarda la escena que estaba activa antes de abrir el inventario, para poder volver a ella. */
     init(data){
         this.backgroundScene = data.backgroundScene
     }
 
     create() {
-        this.inventoryLogic = Inventory;
-        this.add.rectangle(0, 0, 800, 600, 0x000000, 0.7).setOrigin(0);
         this.paintInventory();
-
-        this.input.keyboard.on('keydown-F', () => {
+        this.input.keyboard.on('keydown-F', () => {     //Registra la accion pulsar F para cerrar el inventario
             this.game.events.emit('inventoryMenu', this.backgroundScene);
         });
     }
 
-    paintInventory() {
+    paintInventory(){
+        this.children.removeAll();                                          //Borra todo lo anterior
+        this.add.rectangle(0, 0, 800, 600, 0x000000, 0.7).setOrigin(0);     //Pinta el fondo
+        this.paintItems();
+    }
+
+    paintItems() {
         const columns = 5;
         const size = 60;
 
-        this.inventoryLogic.getItems().forEach((item, index) => {
+        Inventory.getItems().forEach((item, index) => {
             const x = 100 + (index % columns) * (size + 10);
             const y = 100 + Math.floor(index / columns) * (size + 10);
 
-            
-            const img = this.add.image(x, y, item.texture).setFrame(item.frame)
-                img.setInteractive();
+            const img = this.add.image(x, y, item.texture).setFrame(item.frame)     //Añade la imagen del item
+                img.setInteractive();                                               //Permite que se pueda hacer click en la imagen
             
                 let countText = null;
-                if (item.quantity > 1) {
-                
-                const countText = this.add.text(x + 15, y + 15, `x${item.quantity}`, {
-                    fontSize: '14px',
-                    fontFamily: 'Arial',
-                    fill: '#ffffff',
-                    stroke: '#000000',
-                    strokeThickness: 3
+                if (item.quantity > 1) {                                            //Pintar la cantidad del mismo item si hay mas de 1
+                    countText = this.add.text(x + 15, y + 15, `x${item.quantity}`, {
+                        fontSize: '14px',
+                        fontFamily: 'Arial',
+                        fill: '#ffffff',
+                        stroke: '#000000',
+                        strokeThickness: 3
                 });
-                countText.setOrigin(0.5); // Centrar el texto en su propia posición
+                countText.setOrigin(0.5);
             }
             
-
             this.positions.push({ x, y });
-            img.on('pointerdown', () => {
-                this.usarYDesaparecer(item, img, countText);
+
+            img.on('pointerdown', () => {       //Registra hacer click en el item para usarlo
+                this.useItem(item, img, countText);
             });
 
+            //Efecto de seleccionar el item cuando el raton esta encima
             img.on('pointerover', () => img.setTint(0xcccccc));
             img.on('pointerout', () => img.clearTint());
         });
     }
-    usarYDesaparecer(itemData, sprite, texto) {
-        // Lógica de datos
-        this.inventoryLogic.eliminateItem(itemData.id);
+
+    useItem(itemData, sprite, texto) {
+        if (itemData.id === 'berry') {
+            this.game.events.emit('healPlayer', 1); 
+            console.log("CURA");
+        }
+        
+        Inventory.eliminateItem(itemData.id);
 
         // Animación visual
         this.tweens.add({
@@ -71,23 +79,9 @@ export default class InventoryScene extends Phaser.Scene {
             alpha: 0,
             scale: 0.5,
             duration: 200,
-            onComplete: () => {
-                // Redibujar para que los espacios se reorganicen
-                this.children.removeAll(); // Borra todo lo anterior
-        this.add.rectangle(0, 0, 800, 600, 0x000000, 0.7).setOrigin(0);
-        this.paintInventory();
+            onComplete: () => {     //Tras la animacion de desaparecer el item actualiza la imagen del inventario
+                this.paintInventory();
             }
         });
     } 
-    updateCursorPosition() {
-        const target = this.positions[this.cursor];
-
-        this.tweens.add({
-            targets: this.cursor,
-            x: target.x,
-            y: target.y,
-            duration: 100,
-            ease: 'Power2'
-        });
-    }
 }
