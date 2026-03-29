@@ -20,9 +20,9 @@ class Inventory{
         const index = this.items.findIndex(item => item.id === id)
         
         if (index !== -1) {
-            this.items[index].cantidad--
+            this.items[index].quantity--
 
-            if (this.items[index].cantidad <= 0) this.items.splice(index, 1)
+            if (this.items[index].quantity <= 0) this.items.splice(index, 1)
         }
     }
 
