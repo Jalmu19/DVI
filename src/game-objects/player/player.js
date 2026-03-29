@@ -83,6 +83,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.on('destroy', () => {
             this.scene.game.events.off('spell-changed', this.onSpellChange);
         });
+
+        scene.game.events.on('healPlayer', (puntos) => {        //Evento para recuperar vida si toma item curativo
+            this.health.increaseHealth(puntos);
+            console.log("El jugador se curó");
+        });
     }
 
     /**
