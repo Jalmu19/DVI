@@ -1,6 +1,6 @@
 import Phaser from "phaser";
-import Salidas from './game-objects/enemy/salidas.js'
-import Player from './game-objects/player/player.js'
+import Salidas from '../game-objects/enemy/salidas.js'
+import Player from '../game-objects/player/player.js'
 import GameScene from "./game-scene.js";
 
 

@@ -1,13 +1,13 @@
 import Phaser from "phaser";
-import Player from './game-objects/player/player.js'
-import Cajas from './game-objects/items/cajas.js'
-import Banderas from './game-objects/items/banderas.js'
-import Puertas from './game-objects/items/puertas.js'
+import Player from '../game-objects/player/player.js'
+import Cajas from '../game-objects/items/cajas.js'
+import Banderas from '../game-objects/items/banderas.js'
+import Puertas from '../game-objects/items/puertas.js'
 import GameScene from "./game-scene.js";
 
-import habitacion_boss from '../assets/mapas/habitacion_boss.json'
-import suelo from '../assets/sprites/dungeon.png'
-import paredes from '../assets/sprites/dungeon.png'
+import habitacion_boss from '../../assets/mapas/habitacion_boss.json'
+import suelo from '../../assets/sprites/dungeon.png'
+import paredes from '../../assets/sprites/dungeon.png'
 
 
 export default class Mazmorra extends GameScene{

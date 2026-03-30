@@ -1,14 +1,12 @@
-import Boot from './boot.js';
-import End from './end.js';
-import Level from './level.js';
+import Boot from './scenes/boot.js';
 import Phaser from 'phaser';
-import Entrada_mazmorra from './entrada_mazmorra.js';
-import Bosque from './bosque.js';
-import MazmorraInicial from './mazmorra_inicial.js'
-import Mazmorra from './mazmorra.js'
-import HabitacionBoss from './habitacion_boss.js';
-import zBosque from './zonaBosque.js';
-import GameOver from './game-over.js';
+import Entrada_mazmorra from './scenes/entrada_mazmorra.js';
+import Bosque from './scenes/bosque.js';
+import MazmorraInicial from './scenes/mazmorra_inicial.js'
+import Mazmorra from './scenes/mazmorra.js'
+import HabitacionBoss from './scenes/habitacion_boss.js';
+import zBosque from './scenes/zonaBosque.js';
+import GameOver from './scenes/game-over.js';
 import MainMenu from './mainMenu.js';
 import UIScene from './ui/ui-scene.js'
 import InventoryScene from './ui/inventoryScene.js'
@@ -26,7 +24,7 @@ let config = {
         autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
     pixelArt: true,
-    scene: [Boot, /*MainMenu*/, Bosque,zBosque, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionBoss, Level, End, GameOver, UIScene, InventoryScene ],
+    scene: [Boot, /*MainMenu*/, Bosque,zBosque, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionBoss, GameOver, UIScene, InventoryScene ],
     physics: {
         default: 'arcade',
         arcade: {

@@ -1,21 +1,21 @@
 import Phaser from "phaser";
-import Player from './game-objects/player/player.js'
-import Salidas from './game-objects/enemy/salidas.js'
-import Spike from './game-objects/enemy/spike.js'
+import Player from '../game-objects/player/player.js'
+import Salidas from '../game-objects/enemy/salidas.js'
+import Spike from '../game-objects/enemy/spike.js'
 
-import entrada_mazmorra from '../assets/mapas/entrada-mazmorra-bosque.json'
-import cesped from '../assets/sprites/cesped.png'
-import plataforma_cesped from '../assets/sprites/plataforma_cesped.png'
-import puente from '../assets/sprites/Bridges.png'
-import seta from '../assets/sprites/seta.png'
-import tierra from '../assets/sprites/tierra.png'
-import piedras_tierra from '../assets/sprites/piedras_tierra.png'
-import escaleras from '../assets/sprites/escaleras.png'
-import pared_mazmorra from '../assets/sprites/pared_mazmorra.png'
-import puerta_mazmorra from '../assets/sprites/dungeon.png'
+import entrada_mazmorra from '../../assets/mapas/entrada-mazmorra-bosque.json'
+import cesped from '../../assets/sprites/cesped.png'
+import plataforma_cesped from '../../assets/sprites/plataforma_cesped.png'
+import puente from '../../assets/sprites/Bridges.png'
+import seta from '../../assets/sprites/seta.png'
+import tierra from '../../assets/sprites/tierra.png'
+import piedras_tierra from '../../assets/sprites/piedras_tierra.png'
+import escaleras from '../../assets/sprites/escaleras.png'
+import pared_mazmorra from '../../assets/sprites/pared_mazmorra.png'
+import puerta_mazmorra from '../../assets/sprites/dungeon.png'
 import GameScene from "./game-scene.js";
-import Item from "./game-objects/item.js";
-import Inventory from './inventory.js';
+import Item from "../game-objects/item.js";
+import Inventory from '../inventory.js';
 
 export default class Zona_bosque extends GameScene {
 

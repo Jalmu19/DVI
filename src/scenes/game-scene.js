@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import Salidas from "./game-objects/enemy/salidas";
+import Salidas from "../game-objects/enemy/salidas";
 
 /**
  * Escena de principal del juego. De esta heredan todas las demás

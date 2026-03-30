@@ -1,15 +1,15 @@
 import Phaser from "phaser";
-import Player from './game-objects/player/player.js'
-import Salidas from './game-objects/enemy/salidas.js'
+import Player from '../game-objects/player/player.js'
+import Salidas from '../game-objects/enemy/salidas.js'
 
 
-import villa from '../assets/sprites/villa1.png'
-import arbol from '../assets/sprites/arbol.png'
-import flor from '../assets/sprites/florAmarilla.png'
-import cuervo from '../assets/sprites/kirbo.png'
+import villa from '../../assets/sprites/villa1.png'
+import arbol from '../../assets/sprites/arbol.png'
+import flor from '../../assets/sprites/florAmarilla.png'
+import cuervo from '../../assets/sprites/kirbo.png'
 
-import zonaBosque from '../assets/mapas/zona_bosque.json'
-import hierba from "../assets/sprites/hierba.png";
+import zonaBosque from '../../assets/mapas/zona_bosque.json'
+import hierba from "../../assets/sprites/hierba.png";
 import GameScene from "./game-scene.js";
 
 export default class Bosque extends GameScene{

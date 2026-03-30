@@ -1,17 +1,17 @@
 import Phaser from "phaser";
-import Salidas from './game-objects/enemy/salidas.js'
-import Player from './game-objects/player/player.js'
+import Salidas from '../game-objects/enemy/salidas.js'
+import Player from '../game-objects/player/player.js'
 
-import mazmorra_inicial from '../assets/mapas/mazmorra_inicial.json'
-import suelo from '../assets/sprites/dungeon.png'
-import puerta from '../assets/sprites/puerta.png'
-import puerta_entrada from '../assets/sprites/dungeon.png'
-import paredes from '../assets/sprites/dungeon.png'
-import cofre_rojo from '../assets/sprites/cofre_rojo.png'
-import bandera_roja from '../assets/sprites/bandera_roja.png'
+import mazmorra_inicial from '../../assets/mapas/mazmorra_inicial.json'
+import suelo from '../../assets/sprites/dungeon.png'
+import puerta from '../../assets/sprites/puerta.png'
+import puerta_entrada from '../../assets/sprites/dungeon.png'
+import paredes from '../../assets/sprites/dungeon.png'
+import cofre_rojo from '../../assets/sprites/cofre_rojo.png'
+import bandera_roja from '../../assets/sprites/bandera_roja.png'
 import GameScene from "./game-scene.js";
 
-import sonidoPuerta from '../assets/sounds/sonidoPuerta.mp3'
+import sonidoPuerta from '../../assets/sounds/sonidoPuerta.mp3'
 
 
 export default class Entrada_mazmorra extends GameScene{
