@@ -20,6 +20,12 @@ export default class UIScene extends Phaser.Scene {
         this.game.events.on('open-menu', () => this.updateSpellsMenu());
         this.game.events.on('close-menu', () => this.updateSpell());
         this.game.events.on('inventoryMenu', (actualScene) => this.inventoryMenu(actualScene));
+
+        this.fsButton = this.add.image(SCENE.WIDTH - 20, SCENE.HEIGHT - 20, 'fullscreen');
+        this.fsButton.setInteractive().on('pointerdown', () =>{
+            if (this.scale.isFullscreen) this.scale.stopFullscreen();
+            else this.scale.startFullscreen();
+        });
     }
 
     /**

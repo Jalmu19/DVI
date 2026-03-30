@@ -18,6 +18,7 @@ import palo from '../assets/sprites/palo.png'
 import shoot from '../assets/sprites/basic-spell.png'
 import grimorioBasico from '../assets/sprites/grimorio-basico.png'
 import spike from '../assets/sprites/spikes-placeholder.png'
+import fullscreen from '../assets/sprites/fullscreen.png'
 
 import shield from '../assets/sprites/bandera_azul.png'
 
@@ -78,6 +79,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('grande', cGrande);
     this.load.image('pozo', pozo);
     this.load.image('berry', berry)
+    this.load.image('fullscreen', fullscreen);
   }
 
   /**
