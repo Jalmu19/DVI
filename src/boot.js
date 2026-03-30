@@ -29,7 +29,7 @@ import musicaFondo from '../assets/sounds/musicaFondo.mp3'
 import musicaGameOver from '../assets/sounds/game-over.mp3'
 import musicaGetItem from '../assets/sounds/item-obtained.mp3'
 import musicaEnemiesPunch from '../assets/sounds/enemies-punch.mp3'
-
+import musicInitialTown from '../assets/sounds/town.mp3'
 import inventoryBackground from '../assets/sprites/inventory.png'
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -59,7 +59,7 @@ export default class Boot extends Phaser.Scene {
     this.load.audio('musicaGameOver', musicaGameOver);
     this.load.audio('musicaGetItem', musicaGetItem);
     this.load.audio('enemiesPunch', musicaEnemiesPunch);
-
+    this.load.audio('musicInitialTown', musicInitialTown);
     this.load.image('background', background);
 
     this.load.aseprite('player', player, playerjson);
