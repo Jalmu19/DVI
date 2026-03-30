@@ -25,32 +25,33 @@ export default class InventoryScene extends Phaser.Scene {
     }
 
     paintInventory(){
-        this.children.removeAll();                                          //Borra todo lo anterior
-        this.add.rectangle(0, 0, 800, 600, 0x000000, 0.7).setOrigin(0);     //Pinta el fondo
+        this.children.removeAll();                                                                      //Borra todo lo anterior
+        this.add.image(this.cameras.main.centerX, this.cameras.main.centerY,'inventoryBackground');     //Pinta el fondo
         this.paintItems();
     }
 
     paintItems() {
-        const columns = 5;
-        const size = 60;
+        const columns = 3;
+        const size = 30;
 
         Inventory.getItems().forEach((item, index) => {
             const x = 100 + (index % columns) * (size + 10);
-            const y = 100 + Math.floor(index / columns) * (size + 10);
-
+            const y = 90 + Math.floor(index / columns) * (size + 10);
+            const box = this.add.rectangle(x, y, size, size, 0x000000, 0.5);
+            box.setStrokeStyle(2, 0xffffff);
             const img = this.add.image(x, y, item.texture).setFrame(item.frame)     //Añade la imagen del item
-                img.setInteractive();                                               //Permite que se pueda hacer click en la imagen
+            img.setInteractive();                                                   //Permite que se pueda hacer click en la imagen
             
-                let countText = null;
-                if (item.quantity > 1) {                                            //Pintar la cantidad del mismo item si hay mas de 1
-                    countText = this.add.text(x + 15, y + 15, `x${item.quantity}`, {
-                        fontSize: '14px',
-                        fontFamily: 'Arial',
-                        fill: '#ffffff',
-                        stroke: '#000000',
-                        strokeThickness: 3
-                });
-                countText.setOrigin(0.5);
+            let countText = null;
+            if (item.quantity > 1) {                                                //Pintar la cantidad del mismo item si hay mas de 1
+                countText = this.add.text(x + 15, y + 15, `x${item.quantity}`, {
+                    fontSize: '12px',
+                    fontFamily: 'Arial',
+                    fill: '#ffffff',
+                    stroke: '#000000',
+                    strokeThickness: 3
+            });
+            countText.setOrigin(0.5);
             }
             
             this.positions.push({ x, y });

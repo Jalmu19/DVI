@@ -30,7 +30,7 @@ import musicaGameOver from '../assets/sounds/game-over.mp3'
 import musicaGetItem from '../assets/sounds/item-obtained.mp3'
 import musicaEnemiesPunch from '../assets/sounds/enemies-punch.mp3'
 
-
+import inventoryBackground from '../assets/sprites/inventory.png'
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
  * Esta escena se puede mejorar añadiendo una imagen del juego y una 
@@ -80,6 +80,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('pozo', pozo);
     this.load.image('berry', berry)
     this.load.image('fullscreen', fullscreen);
+
+    this.load.image('inventoryBackground', inventoryBackground);
   }
 
   /**
