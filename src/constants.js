@@ -25,7 +25,11 @@ export const SPELLS = {
 
 export const ENEMY = {
     BASE_SPEED : 10,
-    BASE_HEALTH : 5
+    BASE_HEALTH : 5,
+    BOSS : {
+        HEALTH : 70,
+        SPEED : 30
+    }
 }
 
 export const UI = {

@@ -3,7 +3,8 @@ import Salidas from '../game-objects/enemy/salidas.js'
 import Player from '../game-objects/player/player.js'
 import GameScene from "./game-scene.js";
 
-
+import boss from '../../assets/sprites/dungeon1-boss.png'
+import FirstDungeonBoss from "../game-objects/enemy/firstDungeonBoss.js";
 
 export default class HabitacionBoss extends GameScene{
 
@@ -13,6 +14,10 @@ export default class HabitacionBoss extends GameScene{
 
     init(datos){
          this.datos = [datos.x, datos.y, datos.stats];
+    }
+
+    preload() {
+        this.load.image('boss', boss);
     }
 
     create(){
@@ -26,6 +31,8 @@ export default class HabitacionBoss extends GameScene{
 
         //this.player = new Player(this, 350, 112);
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
+        
+        this.boss = new FirstDungeonBoss(this, 100, 150, 'boss');
 
         //COLISIONES
         paredes.setCollisionByExclusion([-1], true);

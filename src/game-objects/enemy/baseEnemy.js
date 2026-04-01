@@ -11,7 +11,6 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this, false);
         this.body.setCollideWorldBounds(true);          //para que no se salga de los limites
-        this.body.setSize(10,9).setOffset(11, 12);
         this.speed = ENEMY.BASE_SPEED;
         this.dmgGiven = 0.5; 
         this.health = ENEMY.BASE_HEALTH;
