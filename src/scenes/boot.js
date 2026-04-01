@@ -31,6 +31,14 @@ import musicaGetItem from '../../assets/sounds/item-obtained.mp3'
 import musicaEnemiesPunch from '../../assets/sounds/enemies-punch.mp3'
 import musicInitialTown from '../../assets/sounds/town.mp3'
 import inventoryBackground from '../../assets/sprites/inventory.png'
+
+import churchjson from '../../assets/sprites/church.json'
+import demo_church from '../../assets/sprites/demo church.png'
+import lilith from '../../assets/sprites/lilith.png'
+import abuela from '../../assets/sprites/abuela.png'
+import abuelo from '../../assets/sprites/abuelo.png'
+import cura from '../../assets/sprites/cura.png'
+
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
  * Esta escena se puede mejorar añadiendo una imagen del juego y una 
@@ -82,6 +90,13 @@ export default class Boot extends Phaser.Scene {
     this.load.image('fullscreen', fullscreen);
 
     this.load.image('inventoryBackground', inventoryBackground);
+
+    this.load.image('demo_church', demo_church);
+    this.load.tilemapTiledJSON('churchjson', churchjson);
+    this.load.image('lilith', lilith);
+    this.load.image('abuela', abuela);
+    this.load.image('abuelo', abuelo);
+    this.load.image('cura', cura);
   }
 
   /**
@@ -92,7 +107,8 @@ export default class Boot extends Phaser.Scene {
     this.anims.createFromAseprite('player');
     this.anims.createFromAseprite('chest');
     this.scene.launch('ui');
-    this.scene.start('bosque', {x: 251, y: 381});
+    //this.scene.start('bosque', {x: 251, y: 381});
+    this.scene.start('IntroStoryScene');
 
     //musica
     this.musicaFondo = this.sound.add('musicaFondo');

@@ -10,6 +10,7 @@ import GameOver from './scenes/game-over.js';
 import MainMenu from './mainMenu.js';
 import UIScene from './ui/ui-scene.js'
 import InventoryScene from './ui/inventoryScene.js'
+import IntroStoryScene from './introStoryScene.js'
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
@@ -24,12 +25,15 @@ let config = {
         autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
     pixelArt: true,
-    scene: [Boot, /*MainMenu*/, Bosque,zBosque, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionBoss, GameOver, UIScene, InventoryScene ],
+    scene: [Boot, IntroStoryScene, /*MainMenu*/, Bosque,zBosque, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionBoss, GameOver, UIScene, InventoryScene ],
     physics: {
         default: 'arcade',
         arcade: {
             debug: false
         }
+    },
+    render: {
+        roundPixels: true // Evita que los elementos se dibujen en "medios píxeles"
     }
 };
 
