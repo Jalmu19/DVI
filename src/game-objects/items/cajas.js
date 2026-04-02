@@ -11,6 +11,9 @@ export default class Cajas extends Phaser.Physics.Arcade.Sprite  {
         this.body.setSize(12,12)
         this.setOffset(2, 2);
 
+        this.interactuable = true;
+
+        this.setDrag(2000);
         // false para poder hacer el overlap con la bandera
         this.setImmovable(false); 
          
@@ -18,6 +21,11 @@ export default class Cajas extends Phaser.Physics.Arcade.Sprite  {
         this.body.setAllowGravity(false);
         this.body.setCollideWorldBounds(true);
         this.properties = objeto.properties;
+    }
+
+    interact(player) {
+        if(player.cursors.interact.isDown)
+            this.setVelocity(player.body.velocity.x, player.body.velocity.y);
     }
 
 }

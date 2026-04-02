@@ -92,4 +92,20 @@ export default class GameScene extends Phaser.Scene {
             }
         })
     }
+    
+    interactWithInteractuable(player, rango) {
+        let obj = null;
+        let distMin = rango;
+        this.physics.world.bodies.each(body => {
+            let child = body.gameObject;
+            if(child && child.interactuable !== undefined && child.interactuable) {
+                let d = Phaser.Math.Distance.Between(player.x, player.y, child.x, child.y);
+                if(d < distMin) {
+                    distMin = d;
+                    obj= child;
+                }
+            }
+        })
+        return obj;
+    }
 }

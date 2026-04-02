@@ -44,6 +44,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         // Para comprobar si anteriormente se ha habierto el menu de hechizos. Así en cada preUpdate no mandara el evento de cerrar el menu
         this.menuOpened = false;
         this.inventoryOpened = false;
+        this.actualObj = null;
         //this.shoots = new Shoots(this.scene.physics.world, this.scene, { classType: Shoot, key: 'shoot', speed: 200 });
         //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
         //this.shoots = new Shoots(this.scene.physics.world, this.scene, { classType: FreezingShoot, key: 'shoot', speed: 150 });
@@ -241,6 +242,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
             if (Phaser.Input.Keyboard.JustDown(this.cursors.inventoryMenu)) {
                 this.scene.game.events.emit('inventoryMenu', this.scene);
+            }
+
+            if (Phaser.Input.Keyboard.JustDown(this.cursors.interact)) {
+                this.actualObj = this.scene.interactWithInteractuable(this, 10);
+            }
+
+            if(this.actualObj) {
+                this.actualObj.interact(this);
+                if (!this.cursors.interact.isDown) {
+                    this.objetoActual = null;
+                }
             }
         }
     }
