@@ -245,7 +245,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             }
 
             if (Phaser.Input.Keyboard.JustDown(this.cursors.interact)) {
-                this.actualObj = this.scene.interactWithInteractuable(this, 10);
+                this.actualObj = this.scene.interactWithInteractuable(this, 20);
             }
 
             if(this.actualObj) {
