@@ -22,8 +22,10 @@ export default class Chest extends Phaser.Physics.Arcade.Sprite {
     /**
      * Metodo que abre el cofre (cambiando dicho sprite) y dando al jugador el objeto en su interior
      */
-    openChest() {
-        if(!this.isOpened)
+    interact() {
+        if(!this.isOpened) {
             this.play('open');
+            this.isOpened  = true;
+        }
     }
 }
