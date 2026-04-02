@@ -24,7 +24,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.visionRange = 70;
         this.isRebounding = false;
         //Ejecuta una funcion cuando pase cierto tiempo
-        this.scene.time.addEvent({
+        this.movEvent = this.scene.time.addEvent({
             delay: Phaser.Math.Between(500, 1500),  //tiempo que espera (variado, entre 500-1500ms)
             callback: this.movement,                //funcion que llama cuando se acaba el tiempo
             callbackScope: this,                    //asegura que siga siendo la clase baseenemy
