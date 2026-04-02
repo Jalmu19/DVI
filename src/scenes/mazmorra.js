@@ -93,13 +93,23 @@ export default class Mazmorra extends GameScene{
 
     }
 
-    cambiarScene(){
+    cambiarScene(jugador, salidas){
         this.anims.createFromAseprite('player');
-        this.scene.start('habitacion_boss', {
+        if(salidas.tag === 'salidaBossFinal' ){
+           this.scene.start('habitacion_boss', {
                 x : 350,
                 y : 112,
                 stats : this.player.getStats()
-            });           
+            });  
+        }
+        else{
+            this.scene.start('mazmorra_inicial', {
+                x : 110,
+                y : 18,
+                stats : this.player.getStats()
+            });
+        }
+                
     }
 
     update() {

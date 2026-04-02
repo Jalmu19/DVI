@@ -229,6 +229,71 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
+         "visible":false,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":12,
+         "name":"Bayas",
+         "objects":[
+                {
+                 "height":0,
+                 "id":108,
+                 "name":"baya1",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"picked",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":55,
+                 "y":46
+                }, 
+                {
+                 "height":0,
+                 "id":109,
+                 "name":"baya3",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"picked",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":423.272727272727,
+                 "y":42.1818181818182
+                }, 
+                {
+                 "height":0,
+                 "id":110,
+                 "name":"baya2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"picked",
+                         "type":"bool",
+                         "value":false
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":198.5,
+                 "y":176
+                }],
+         "opacity":1,
+         "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
@@ -277,8 +342,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":12,
- "nextobjectid":108,
+ "nextlayerid":13,
+ "nextobjectid":112,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
