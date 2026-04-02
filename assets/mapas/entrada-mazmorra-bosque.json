@@ -401,6 +401,29 @@
         }, 
         {
          "draworder":"topdown",
+         "id":14,
+         "name":"Cofre",
+         "objects":[
+                {
+                 "height":0,
+                 "id":28,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":279.5,
+                 "y":44.75
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":13,
          "name":"Barandillas",
          "objects":[
@@ -476,8 +499,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":14,
- "nextobjectid":28,
+ "nextlayerid":15,
+ "nextobjectid":31,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

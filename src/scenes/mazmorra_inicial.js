@@ -5,6 +5,8 @@ import Banderas from '../game-objects/items/banderas.js'
 import Puertas from '../game-objects/items/puertas.js'
 import GameScene from "./game-scene.js";
 
+import Spike from '../game-objects/enemy/spike.js'
+
 
 import mazmorra from '../../assets/mapas/mazmorra.json'
 import suelo from '../../assets/sprites/dungeon.png'
@@ -94,7 +96,6 @@ export default class MazmorraInicial extends GameScene{
         this.physics.add.overlap(this.cajas, this.banderas,(caja, bandera) => {
             this.cajaSobreBandera(caja, bandera, this.puertas);
         }, null, this);
-
                 
         //SALIDAS
         this.salidas = this.physics.add.group();
@@ -104,6 +105,14 @@ export default class MazmorraInicial extends GameScene{
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
+        //Enemigos
+        this.enemigos = this.physics.add.group();
+        this.capaEnemigos = map.getObjectLayer('Enemigos');
+        
+        this.capaEnemigos.objects.forEach(obj => {
+            var a = new Spike(this, obj.x, obj.y, 'spike');
+            this.enemigos.add(a);
+        })
 
         
         this.logicaCajas(this.player, this.cajas);
@@ -113,6 +122,7 @@ export default class MazmorraInicial extends GameScene{
         this.physics.add.collider(this.cajas, this.puertas); //para que al empujar una caja no se desplace la puerta
         this.physics.add.collider(this.cajas, paredes_y_entrada); // También colisión entre las cajas y el escenario (paredes)
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
+
 
         //limites de camara
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
@@ -132,8 +142,8 @@ export default class MazmorraInicial extends GameScene{
         }
         else{
             this.scene.start('entrada_mazmorra', {
-                x : 406,
-                y : 36,
+                x : 398,
+                y : 20,
                 stats : this.player.getStats()
             });
         }
