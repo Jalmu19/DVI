@@ -32,12 +32,20 @@ import musicaEnemiesPunch from '../../assets/sounds/enemies-punch.mp3'
 import musicInitialTown from '../../assets/sounds/town.mp3'
 import inventoryBackground from '../../assets/sprites/inventory.png'
 
-import churchjson from '../../assets/sprites/church.json'
+import churchjson from '../../assets/mapas/church.json'
+import roomjson from '../../assets/mapas/room.json'
+import homejson from '../../assets/mapas/home.json'
 import demo_church from '../../assets/sprites/demo church.png'
+import doorsWindows from '../../assets/sprites/TopDownHouse_DoorsAndWindows.png'
+import floorsWalls from '../../assets/sprites/TopDownHouse_FloorsAndWalls.png'
+import greenFurniture from '../../assets/sprites/TopDownHouse_FurnitureState1.png'
+import brownFurniture from '../../assets/sprites/TopDownHouse_FurnitureState2.png'
+import smallItems from '../../assets/sprites/TopDownHouse_SmallItems.png'
 import lilith from '../../assets/sprites/lilith.png'
 import abuela from '../../assets/sprites/abuela.png'
 import abuelo from '../../assets/sprites/abuelo.png'
 import cura from '../../assets/sprites/cura.png'
+
 
 /**
  * Escena para la precarga de los assets que se usarán en el juego.
@@ -92,7 +100,14 @@ export default class Boot extends Phaser.Scene {
     this.load.image('inventoryBackground', inventoryBackground);
 
     this.load.image('demo_church', demo_church);
+    this.load.image('doorsWindows', doorsWindows);
+    this.load.image('floorsWalls', floorsWalls);
+    this.load.image('greenFurniture', greenFurniture);
+    this.load.image('brownFurniture', brownFurniture);
+    this.load.image('smallItems', smallItems);
     this.load.tilemapTiledJSON('churchjson', churchjson);
+    this.load.tilemapTiledJSON('roomjson', roomjson);
+    this.load.tilemapTiledJSON('homejson', homejson);
     this.load.image('lilith', lilith);
     this.load.image('abuela', abuela);
     this.load.image('abuelo', abuelo);
