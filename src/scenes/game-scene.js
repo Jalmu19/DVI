@@ -88,7 +88,7 @@ export default class GameScene extends Phaser.Scene {
                 // Si la puerta tiene esa propiedad y coincide con lo que manda la caja/bandera
                 if (propGrupo && propGrupo.value === valor) {     
                     puerta.disableBody(true, true); // Se desactivan todas las del grupo
-                }
+/                }
             }
         })
     }
