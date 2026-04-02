@@ -18,8 +18,8 @@ export default class Bosque extends GameScene{
         super({key:'bosque'});
     }
 
-    init(datos){
-        this.datos = [datos.x, datos.y];
+    init(datos){        
+        this.datos = [datos.x, datos.y, datos.stats];
     }
 
     preload(){
@@ -49,7 +49,7 @@ export default class Bosque extends GameScene{
         var arboles = map.createLayer('Arboleda', [img3, img4, img7], 0,0);
         var casas = map.createLayer('Casas', [img1,img2, img5, img6], 0,0);
 
-        this.player = new Player(this, this.datos[0],this.datos[1]);
+        this.player = new Player(this, this.datos[0],this.datos[1], this.datos[2]);
 
         var tejado = map.createLayer('Tejados', [img1,img5,img6],0,0);
        

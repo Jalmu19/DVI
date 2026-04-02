@@ -151,8 +151,16 @@ export default class IntroStoryScene extends Phaser.Scene {
                 this.cameras.main.pan(this.centerX, this.centerY + 100, 1000, 'Power2');
             }
 
-            if (this.n < STORY.length) this.nextScene();
-            else this.scene.start('bosque', {x: 251, y: 381});
+            if (this.n < STORY.length) 
+                this.nextScene();
+            else {
+                this.scene.launch('ui');
+                this.musicaFondo = this.sound.add('musicaFondo');
+                this.musicaFondo.play();
+                this.musicaFondo.setLoop(true); 
+                this.scene.start('bosque', {x: 251, y: 381, stats : null});
+            }
+                
         }
     }
 }
