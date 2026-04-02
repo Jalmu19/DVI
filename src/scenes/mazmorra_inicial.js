@@ -5,6 +5,8 @@ import Banderas from '../game-objects/items/banderas.js'
 import Puertas from '../game-objects/items/puertas.js'
 import GameScene from "./game-scene.js";
 
+import Spike from '../game-objects/enemy/spike.js'
+
 
 import mazmorra from '../../assets/mapas/mazmorra.json'
 import suelo from '../../assets/sprites/dungeon.png'
@@ -74,17 +76,36 @@ export default class MazmorraInicial extends GameScene{
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
 
+
+        //Recuperar datos
+        const datosGuardados = this.registry.get('estado_mazmorra_inicial');
+
+        //Cajas
+        this.cajas = this.physics.add.group();
+        this.capaCajas = map.getObjectLayer('Caja');
+
+        if (datosGuardados && datosGuardados.cajas.length > 0) {
+            // Si hay datos, creamos las cajas en la posición donde se quedaron
+            datosGuardados.cajas.forEach(c => {
+                let nuevaCaja = new Cajas(this, c.x, c.y, c);
+                nuevaCaja.setTexture(c.textureKey);
+                this.cajas.add(nuevaCaja);
+            });
+        } else {
+            // Si es la primera vez, usamos el mapa de Tiled
+            this.crearObjeto(this.cajas, this.capaCajas, Cajas);
+        }
+
+
         //puertas
         this.puertas = this.physics.add.group();
         this.capaPuertas = map.getObjectLayer('Puertas');
         this.crearObjeto(this.puertas, this.capaPuertas, Puertas);
-
-
-        //cajas
-        this.cajas = this.physics.add.group();
-        this.capaCajas = map.getObjectLayer('Caja');      
-        this.crearObjeto(this.cajas, this.capaCajas, Cajas);
-        
+        if (this.registry.get('mazmorra_inicial_puerta_abierta')) {
+            this.puertas.children.iterate(p => {
+                p.disableBody(true, true);
+            });
+        }
 
 
         //banderas
@@ -94,7 +115,6 @@ export default class MazmorraInicial extends GameScene{
         this.physics.add.overlap(this.cajas, this.banderas,(caja, bandera) => {
             this.cajaSobreBandera(caja, bandera, this.puertas);
         }, null, this);
-
                 
         //SALIDAS
         this.salidas = this.physics.add.group();
@@ -105,6 +125,21 @@ export default class MazmorraInicial extends GameScene{
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
 
+        // Enemigos
+        this.enemigos = this.physics.add.group();
+        this.capaEnemigos = map.getObjectLayer('Enemigos');
+
+        if (datosGuardados) {
+            datosGuardados.enemigos.forEach(e => {
+                let spike = new Spike(this, e.x, e.y, 'spike');
+                this.enemigos.add(spike);
+            });
+        } else {
+            this.capaEnemigos.objects.forEach(obj => {
+                var a = new Spike(this, obj.x, obj.y, 'spike');
+                this.enemigos.add(a);
+            });
+        }
         
         this.logicaCajas(this.player, this.cajas);
         this.physics.add.collider(this.player, paredes_y_entrada);  
@@ -114,20 +149,59 @@ export default class MazmorraInicial extends GameScene{
         this.physics.add.collider(this.cajas, paredes_y_entrada); // También colisión entre las cajas y el escenario (paredes)
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
+
         //limites de camara
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);     
 
     }
 
-    cambiarScene(){
+          
+       cambiarScene(jugador, salidas) {
+        this.guardarEstado();
+
+
         this.anims.createFromAseprite('player');
-        this.scene.start('mazmorra', {
+        if(salidas.tag === 'salidaSigHab' ){
+           this.scene.start('mazmorra', {
             x : 48,
             y : 292,
             stats : this.player.getStats()
+            });
+        }
+        else{
+            this.scene.start('entrada_mazmorra', {
+                x : 398,
+                y : 20,
+                stats : this.player.getStats()
+            });
+        }
+    }
+        
+    guardarEstado(){
+        //Guardar pos de las cajas
+        let estadoCajas = [];
+        this.cajas.children.iterate(caja => {
+            estadoCajas.push({ x: caja.x, 
+                                y: caja.y, 
+                                textureKey: caja.texture.key, 
+                                properties: caja.properties, 
+                                name:caja.name }); 
         });
-           
+
+        //Guardar enemigos vivos
+        let enemigosVivos = [];
+        this.enemigos.children.iterate(enemigo => {
+            if (enemigo.active) {
+                enemigosVivos.push({ x: enemigo.x, y: enemigo.y, id: enemigo.name });
+            }
+        });
+
+        //Guardamos todo en el registry bajo un ID único para esta habitación
+        this.registry.set('estado_mazmorra_inicial', {
+            cajas: estadoCajas,
+            enemigos: enemigosVivos,
+        });
     }
 
 

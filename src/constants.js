@@ -28,7 +28,7 @@ export const ENEMY = {
     BASE_HEALTH : 5,
     BOSS : {
         HEALTH : 70,
-        SPEED : 30
+        SPEED : 70
     }
 }
 

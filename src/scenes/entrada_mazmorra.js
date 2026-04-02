@@ -12,6 +12,7 @@ import bandera_roja from '../../assets/sprites/bandera_roja.png'
 import GameScene from "./game-scene.js";
 
 import sonidoPuerta from '../../assets/sounds/sonidoPuerta.mp3'
+import Chest from "../game-objects/items/chest.js";
 
 
 export default class Entrada_mazmorra extends GameScene{
@@ -63,6 +64,14 @@ export default class Entrada_mazmorra extends GameScene{
         var arboles = map.createLayer('arboles', img3, 0,0);
         map.createLayer('capa_puente', img4, 0,0);
         map.createLayer('escaleras', img9, 0,0);
+
+        //Cofre
+        this.capaCofre = map.getObjectLayer('Cofre');
+        this.cofre = this.physics.add.staticGroup();
+        this.capaCofre.objects.forEach(obj => {
+            var a = new Chest(this, obj.x, obj.y)
+            this.cofre.add(a)
+        })
 
 
         //this.player = new Player(this, 50, 20);

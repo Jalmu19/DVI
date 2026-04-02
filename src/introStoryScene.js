@@ -285,8 +285,21 @@ next() {
                 this.ejecutarTextoConDelay(actualText);
             }
 
+<<<<<<< HEAD
         } else {
             this.scene.start('bosque', {x: 251, y: 381});
+=======
+            if (this.n < STORY.length) 
+                this.nextScene();
+            else {
+                this.scene.launch('ui');
+                this.musicaFondo = this.sound.add('musicaFondo');
+                this.musicaFondo.play();
+                this.musicaFondo.setLoop(true); 
+                this.scene.start('bosque', {x: 251, y: 381, stats : null});
+            }
+                
+>>>>>>> 6e2abaf7f03f2f28e662f71587ee4d1925f5565b
         }
     }
 }
