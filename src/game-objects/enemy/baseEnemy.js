@@ -38,11 +38,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.setVelocity(0,0);
         if(!this.freezed){
             this.scene.time.delayedCall(200, () => {       //para que haga pausas mientras se mueve
-                const randomDirection = Phaser.Math.Between(0, 3);
-                if(randomDirection === 0) this.setVelocity(0, -this.speed);
-                else if(randomDirection === 1) this.setVelocity(0, this.speed);
-                else if(randomDirection === 2) this.setVelocity(-this.speed, 0);
-                else this.setVelocity(this.speed, 0);
+                this.setRandomVelocity()
 
                 this.scene.time.addEvent({
                 delay: Phaser.Math.Between(500, 1500),  
@@ -52,6 +48,14 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
             })
             })
         }
+    }
+
+    setRandomVelocity() {
+        const randomDirection = Phaser.Math.Between(0, 3);
+        if(randomDirection === 0) this.setVelocity(0, -this.speed);
+        else if(randomDirection === 1) this.setVelocity(0, this.speed);
+        else if(randomDirection === 2) this.setVelocity(-this.speed, 0);
+        else this.setVelocity(this.speed, 0);
     }
 
     takeDamage(spell, dmg = 1){
