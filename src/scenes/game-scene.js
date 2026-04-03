@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import Salidas from "../game-objects/enemy/salidas";
 import Cajas from '../game-objects/items/cajas.js'
-
+import Inventory from '../inventory.js'
 
 /**
  * Escena de principal del juego. De esta heredan todas las demás
@@ -111,7 +111,7 @@ export default class GameScene extends Phaser.Scene {
         return obj;
     }
 
-        manageItems(player, items){
+    manageItems(player, items){
         
         this.physics.add.overlap(player, this.items, (player, item) => {
             console.log("COGIDO")
