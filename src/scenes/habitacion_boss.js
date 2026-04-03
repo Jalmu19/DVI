@@ -58,7 +58,11 @@ export default class HabitacionBoss extends GameScene{
 
     cambiarScene(jugador, salidas){
         this.anims.createFromAseprite('player');
-        this.scene.start('mazmorra');     
+         this.scene.start('mazmorra', {
+            x : 25,
+            y : 40,
+            stats : this.player.getStats()
+        }); 
     } 
 
 }

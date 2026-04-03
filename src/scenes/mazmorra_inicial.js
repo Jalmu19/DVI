@@ -126,7 +126,7 @@ export default class MazmorraInicial extends GameScene{
 
 
         // Enemigos
-     /*   this.enemigos = this.physics.add.group();
+        this.enemigos = this.physics.add.group();
         this.capaEnemigos = map.getObjectLayer('Enemigos');
 
         if (datosGuardados) {
@@ -140,7 +140,7 @@ export default class MazmorraInicial extends GameScene{
                 this.enemigos.add(a);
             });
         }
-        */
+        
         this.logicaCajas(this.player, this.cajas);
         this.physics.add.collider(this.player, paredes_y_entrada);  
         this.physics.add.collider(this.player, this.puertas); 
@@ -190,17 +190,17 @@ export default class MazmorraInicial extends GameScene{
         });
 
         //Guardar enemigos vivos
-      /*  let enemigosVivos = [];
+        let enemigosVivos = [];
         this.enemigos.children.iterate(enemigo => {
             if (enemigo.active) {
                 enemigosVivos.push({ x: enemigo.x, y: enemigo.y, id: enemigo.name });
             }
-        });*/
+        });
 
         //Guardamos todo en el registry bajo un ID único para esta habitación
         this.registry.set('estado_mazmorra_inicial', {
             cajas: estadoCajas,
-           // enemigos: enemigosVivos,
+            enemigos: enemigosVivos,
         });
     }
 
