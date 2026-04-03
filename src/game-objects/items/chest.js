@@ -12,7 +12,8 @@ export default class Chest extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, 'chest');
         scene.add.existing(this);
         scene.physics.add.existing(this);
-        this.body.setAllowGravity(true);
+        this.body.setAllowGravity(false);
+        this.body.setImmovable(true); 
         this.body.setCollideWorldBounds(true);
         this.interactuable = true;
         this.isOpened = false;
