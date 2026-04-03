@@ -251,7 +251,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             if(this.actualObj) {
                 this.actualObj.interact(this);
                 if (!this.cursors.interact.isDown) {
-                    this.objetoActual = null;
+                    this.actualObj = null;
                 }
             }
         }
