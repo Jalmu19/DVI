@@ -31,7 +31,6 @@ export default class GameScene extends Phaser.Scene {
     }
 
     crearObjeto(grupoObjeto, capaObjeto, tipoObjeto){
-        console.log("Capa recibida:", capaObjeto);
         capaObjeto.objects.forEach(objeto => {
             var aux =  new tipoObjeto(this, objeto.x, objeto.y, objeto);
             grupoObjeto.add(aux);  

@@ -6,8 +6,10 @@ import Puertas from '../game-objects/items/puertas.js'
 import GameScene from "./game-scene.js";
 
 import habitacion_boss from '../../assets/mapas/habitacion_boss.json'
+import habitacion_cofre from '../../assets/mapas/habitacion_cofre.json'
 import suelo from '../../assets/sprites/dungeon.png'
 import paredes from '../../assets/sprites/dungeon.png'
+import puerta_lateral from '../../assets/sprites/puerta_lateral.png'
 
 
 export default class Mazmorra extends GameScene{
@@ -24,7 +26,10 @@ export default class Mazmorra extends GameScene{
     preload(){
         this.load.image('suelo', suelo);
         this.load.image('paredes', paredes);
+         this.load.image('puerta_lateral', puerta_lateral);
         this.load.tilemapTiledJSON('habitacion_boss', habitacion_boss);
+        this.load.tilemapTiledJSON('habitacion_cofre', habitacion_cofre);
+
     }
 
 
@@ -116,12 +121,19 @@ export default class Mazmorra extends GameScene{
                 stats : this.player.getStats()
             });  
         }
-        else{
+        else if(salidas.tag === 'salidaHabAnterior'){
             this.scene.start('mazmorra_inicial', {
                 x : 110,
                 y : 18,
                 stats : this.player.getStats()
             });
+        }
+        else if(salidas.tag === 'salidaHabCofre'){
+           this.scene.start('habitacion_cofre', {
+                x : 23,
+                y : 96,
+                stats : this.player.getStats()
+            }); 
         }
                 
     }
