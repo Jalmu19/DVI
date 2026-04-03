@@ -8,16 +8,24 @@ export default class Chest extends Phaser.Physics.Arcade.Sprite {
      * @param {number} y Coordenada Y
      */
 
-    constructor(scene, x, y) {
+    constructor(scene, x, y, id) {
         super(scene, x, y, 'chest');
         scene.add.existing(this);
         scene.physics.add.existing(this);
+        this.scene = scene;
+        this.id = id;
         this.body.setAllowGravity(false);
         this.body.setImmovable(true); 
         this.body.setCollideWorldBounds(true);
         this.interactuable = true;
-        this.isOpened = false;
-        this.play('closed');
+        if (scene.registry.get('openedChests').includes(this.scene.scene.key + "_" + this.id)) {
+            this.isOpened = true;
+            this.play('open');
+        }
+        else {
+            this.isOpened = false;
+            this.play('closed');
+        }
     }
 
     /**
@@ -27,6 +35,9 @@ export default class Chest extends Phaser.Physics.Arcade.Sprite {
         if(!this.isOpened) {
             this.play('open');
             this.isOpened  = true;
+            let openedChests = this.scene.registry.get('openedChests');
+            openedChests.push(this.scene.scene.key + "_" + this.id);
+            this.scene.registry.set('openedChests',openedChests);
         }
     }
 }

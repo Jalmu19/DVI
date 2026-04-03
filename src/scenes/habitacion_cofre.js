@@ -43,7 +43,7 @@ export default class HabitacionCofre extends GameScene{
                     immovable: true,
                     allowGravity: false });
         this.capaCofre.objects.forEach(obj => {
-            var a = new Chest(this, obj.x, obj.y)
+            var a = new Chest(this, obj.x, obj.y, obj.id)
             this.cofre.add(a)
         })
 
