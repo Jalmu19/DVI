@@ -2,7 +2,7 @@ import Phaser from "phaser";
 
 const STORY = [
     { 
-        text: 'Hasta aquí el encuentro de hoy. Podéis marchar.' 
+        text: 'Hasta aquí el encuentro de hoy. Podéis marchar.'
     },
     { 
         text: 'Nos vemos la siguiente semana.' 
@@ -84,17 +84,21 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.layersChurch = {};
         this.layersChurch = this.loadChurchMap();
         
+        
         this.layersRoom = {};
         this.layersRoom = this.loadRoomMap();
+        //this.lilith = this.physics.add.sprite(120, 80, 'lilith');
         
         this.layersHome= {};
         this.layersHome = this.loadHomeMap();
+        
         
         Object.values(this.layersHome).forEach(layer => {
             layer.setVisible(false);
         });
         
         
+       
         Object.values(this.layersRoom).forEach(layer => {
             layer.setVisible(false);
         });
@@ -105,7 +109,12 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.abuela = this.physics.add.sprite(70, 210, 'abuela');
         this.abuelo = this.physics.add.sprite(50, 210, 'abuelo');
         
-       //this.lilith = this.physics.add.sprite(100, 100, 'lilith');
+       /*
+       this.lilith = this.physics.add.sprite(30, 50, 'lilith');
+       this.abuelo = this.physics.add.sprite(250, 100, 'abuelo');
+       this.abuela = this.physics.add.sprite(250, 120, 'abuela');
+        */
+
         this.dialog();
         this.input.on('pointerdown', () => {
             this.next();
@@ -173,8 +182,8 @@ export default class IntroStoryScene extends Phaser.Scene {
 
         const suelo = map.createLayer('suelo', tileset, 0, 0);
         const alfombra = map.createLayer('alfombra', tileset, 0, 0);
-        const ventanas = map.createLayer('ventanas', tileset, 0, 0);
         const pared = map.createLayer('pared', tileset, 0, 0);
+        const ventanas = map.createLayer('ventanas', tileset, 0, 0);
         const escalera = map.createLayer('escalera', tileset, 0, 0);
         const bordes = map.createLayer('bordes', tileset, 0, 0);
         const muebles = map.createLayer('muebles', tileset, 0, 0);
@@ -202,11 +211,6 @@ export default class IntroStoryScene extends Phaser.Scene {
 
         this.cameras.main.centerOn(this.centerX, this.centerY);
         this.cameras.main.setZoom(1);
-
-        this.cura = this.physics.add.sprite(159, 155, 'cura');
-        this.lilith = this.physics.add.sprite(100, 210, 'lilith');
-        this.abuela = this.physics.add.sprite(70, 210, 'abuela');
-        this.abuelo = this.physics.add.sprite(50, 210, 'abuelo');
         
         return layers;
     }
@@ -251,7 +255,7 @@ toggleDialog(visible) {
         if (this.timerText) this.timerText.remove();
 
         this.timerText = this.time.addEvent({
-            delay: 1,
+            delay: 50,
             callback: () => {
                 this.dialogText.text += text[charIndex];
                 charIndex++;
@@ -273,7 +277,7 @@ next() {
                 this.isWriting = true; // Bloqueamos para que no pasen texto mientras la cámara se mueve
                 this.dialogText.setText(''); // Limpiamos el texto para que no estorbe el movimiento
                 this.toggleDialog(false); // <--- OCULTAMOS TODO
-                this.cameras.main.pan(this.centerX, this.centerY + 100, 0, 'Power2', false, (camera, progress) => {
+                this.cameras.main.pan(this.centerX, this.centerY + 100, 3000, 'Power2', false, (camera, progress) => {
                     // Solo cuando el movimiento de cámara termina (progress === 1)
                     if (progress === 1) {
                         this.ejecutarTextoConDelay(actualText);
@@ -343,6 +347,107 @@ handleAction(actionName) {
                 }
             ]).play();
         break;
+        case 'lilith_move':
+            // Creamos la línea de tiempo
+            
+            this.time.delayedCall(25000, () => {
+                /*
+                this.cameras.main.fadeOut(5000, 0, 0, 0);
+            });
+            */
+            //this.cameras.main.once('camerafadeoutcomplete', () => {
+            
+                Object.values(this.layersRoom).forEach(layer => {
+                    layer.setVisible(false);
+                });
+                this.abuela.setVisible(true);
+            this.abuelo.setVisible(true);
+            Object.values(this.layersHome).forEach(layer => {
+                layer.setVisible(true);
+                });
+            this.lilith = this.physics.add.sprite(150, 80, 'lilith');
+                });
+
+                 
+        
+
+
+            this.add.timeline([
+                {
+                    at: 3000, // Empieza de inmediato
+                    tween: {
+                        targets: this.lilith,
+                        x: '+=33', // Baja 50 píxeles desde donde esté
+                        duration: 1500
+                    }
+                },
+                {
+                    at: 10000, // Empieza de inmediato
+                    tween: {
+                        targets: this.lilith,
+                        y: '+=50', // Baja 50 píxeles desde donde esté
+                        duration: 1500
+                    }
+                },
+                {
+                    at: 13000, // Empieza de inmediato
+                    tween: {
+                        targets: this.lilith,
+                        x: '-=45', // Baja 50 píxeles desde donde esté
+                        duration: 1500
+                    }
+                },
+                {
+                    at: 20000, // Empieza de inmediato
+                    tween: {
+                        targets: this.lilith,
+                        y: '-=35', // Baja 50 píxeles desde donde esté
+                        duration: 1500
+                    }
+                },
+                {
+                    at: 23000, // Empieza de inmediato
+                    tween: {
+                        targets: this.lilith,
+                        x: '-=45', // Baja 50 píxeles desde donde esté
+                        duration: 1500
+                    }
+                },
+                {
+                    
+                    at: 26000, // Empieza de inmediato
+                    tween: {
+                        targets: this.lilith,
+                        y: '+=60', // Baja 50 píxeles desde donde esté
+                        duration: 1500
+                    }
+                }
+                
+            ]).play();
+            
+        break;
+        case 'home_move':
+            // Creamos la línea de tiempo
+            this.add.timeline([
+                {
+                    at: 0, // Empieza de inmediato
+                    tween: {
+                        targets: this.lilith,
+                        y: '+=60', // Baja 50 píxeles desde donde esté
+                        duration: 1500
+                    }
+                },
+                {
+                    at: 3000, // Empieza justo cuando termina el anterior (a los 1000ms)
+                    tween: {
+                        targets: this.lilith,
+                        x: '+=200', // Se mueve a la derecha 100 píxeles
+                        duration: 4500
+                    }
+                }
+                
+            ]).play();
+        break;
         case 'changeRoomScene':
             console.log(this.n);
             this.isWriting = true;
@@ -362,7 +467,7 @@ handleAction(actionName) {
         Object.values(this.layersRoom).forEach(layer => {
             layer.setVisible(true);
         });
-        this.lilith = this.physics.add.sprite(100, 210, 'lilith');
+        this.lilith = this.physics.add.sprite(150, 80, 'lilith');
        this.cameras.main.setScroll(0, 0);
             this.time.delayedCall(5000, () => {
             // Vuelves a mostrar la cámara
