@@ -137,12 +137,9 @@ export default class Mazmorra extends GameScene{
                                 name:caja.name }); 
         });
 
-        let posJugador=({x: this.player.x, y: this.player.y})
-
         //Guardamos todo en el registry bajo un ID único para esta habitación
         this.registry.set('estado_mazmorra', {
             cajas: estadoCajas,
-            player: posJugador,
         });
     }
 
