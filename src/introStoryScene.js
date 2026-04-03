@@ -301,9 +301,13 @@ export default class IntroStoryScene extends Phaser.Scene {
                             this.cameras.main.fadeIn(5000, 0, 0, 0);
 
                             this.cameras.main.once('camerafadeincomplete', () => {
-                                this.visibilityDialog(true);
-                                this.isWriting = false;
                                 this.lilithMove();
+                                this.time.delayedCall(17000, () => {
+                                    this.visibilityDialog(true);
+                                    this.time.delayedCall(6000, () => {
+                                        this.next();
+                                    });
+                                });
                             });
                         });
                     });
@@ -314,8 +318,8 @@ export default class IntroStoryScene extends Phaser.Scene {
                     this.cameras.main.fadeOut(5000, 0, 0, 0);
 
                     this.cameras.main.once('camerafadeoutcomplete', () => {
+                        this.tweens.killTweensOf(this.lilith);
                         this.prepareHomeScene();
-                        this.cameras.main.setScroll(0, 0);
 
                         this.time.delayedCall(5000, () => {
                             this.cameras.main.fadeIn(5000, 0, 0, 0);
@@ -375,7 +379,8 @@ export default class IntroStoryScene extends Phaser.Scene {
             layer.setVisible(true);
         });
 
-        this.lilith = this.physics.add.sprite(120, 80, 'lilith');
+        this.lilith.setPosition(120, 80);
+        this.lilith.setVisible(true);
         this.cameras.main.setScroll(0, 0);
     }
 
@@ -443,9 +448,12 @@ export default class IntroStoryScene extends Phaser.Scene {
             layer.setVisible(true);
         });
 
-        this.lilith = this.physics.add.sprite(30, 50, 'lilith');
-        this.abuelo = this.physics.add.sprite(250, 100, 'abuelo');
-        this.abuela = this.physics.add.sprite(250, 120, 'abuela');       
+        this.lilith.setPosition(30, 50);
+        this.lilith.setVisible(true);
+        this.abuelo.setPosition(250, 120);
+        this.abuelo.setVisible(true);
+        this.abuela.setPosition(250, 100);
+        this.abuela.setVisible(true);       
     }
 
     lilithMoveHome(){
