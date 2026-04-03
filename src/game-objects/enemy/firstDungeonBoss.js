@@ -26,21 +26,17 @@ export default class FirstDungeonBoss extends BaseEnemy {
         this.setupBossCollisions();
     }
 
+    setupCollisions() { }
+
     setupBossCollisions() {
-        this.scene.physics.add.overlap(
-            this.scene.player.getHechizo(),
-            this.weakSpot,
-            (spell, zone) => {
-                this.handleWeakSpotCollision(spell);
-            },
-            null,
-            this
-        );
+        this.scene.physics.add.overlap(this.weakSpot, this.scene.player.getHechizo(), (self,spell) => { 
+            this.handleBossCollision(spell, true);
+        });
     }
 
-    handleWeakSpotCollision(spell) {
+    handleBossCollision(spell, weak) {
         if (spell.active) {
-            this.takeDamage(spell); // Llama al takeDamage de BaseEnemy
+            this.takeDamage(spell, 5); // Llama al takeDamage de BaseEnemy
             spell.setActive(false).setVisible(false);
             spell.body.setEnable(false);
         }

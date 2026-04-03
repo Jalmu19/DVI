@@ -67,7 +67,9 @@ export default class Entrada_mazmorra extends GameScene{
 
         //Cofre
         this.capaCofre = map.getObjectLayer('Cofre');
-        this.cofre = this.physics.add.staticGroup();
+        this.cofre = this.physics.add.group({classType: Chest,
+            immovable: true,
+            allowGravity: false });
         this.capaCofre.objects.forEach(obj => {
             var a = new Chest(this, obj.x, obj.y)
             this.cofre.add(a)
@@ -76,6 +78,9 @@ export default class Entrada_mazmorra extends GameScene{
 
         //this.player = new Player(this, 50, 20);
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
+
+        //COLISION CON COFRES
+        this.physics.add.collider(this.player, this.cofre);
 
         //COLISIONES CON PLATAFORMAS Y ESCALERAS
         plataformas.setCollisionByExclusion([-1], true);

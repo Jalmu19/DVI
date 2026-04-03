@@ -54,8 +54,8 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         }
     }
 
-    takeDamage(spell){
-        this.health = this.health - 1;
+    takeDamage(spell, dmg = 1){
+        this.health = this.health - dmg;
         console.log("ENEMIGO HERIDO, HP: ", this.health);
 
         if(this.health <= 0){
