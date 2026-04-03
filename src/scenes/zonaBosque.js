@@ -123,19 +123,4 @@ export default class Zona_bosque extends GameScene {
         }
     }
 
-    manageItems(player, items){
-        
-        this.physics.add.overlap(player, this.items, (player, item) => {
-            console.log("COGIDO")
-            const added = Inventory.addItem(
-                item.itemData.id, 
-                item.itemData.name, 
-                item.itemData.frame,
-                item.itemData.quantity,
-                item.itemData.texture
-            );
-
-            if (added) item.destroy()
-        });
-    }
 }
