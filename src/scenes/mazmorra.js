@@ -52,20 +52,30 @@ export default class Mazmorra extends GameScene{
         this.capaSalidas = map.getObjectLayer('Salidas');
         this.cargarSalidas(this.capaSalidas, this.salidas);
 
+
+         //Recuperar datos
+        const datosGuardados = this.registry.get('estado_mazmorra');
+
         //puertas
         this.puertas = this.physics.add.group();
         this.capaPuertas = map.getObjectLayer('Puertas');
         this.crearObjeto(this.puertas, this.capaPuertas, Puertas);
 
+
         //cajas
         this.cajas = this.physics.add.group();
         this.capaCajas = map.getObjectLayer('Cajas');
-        this.crearObjeto(this.cajas, this.capaCajas, Cajas);
-       
-
-
-        // También colisión entre las cajas y el escenario (paredes)
-        this.physics.add.collider(this.cajas, paredes_y_entrada);
+        if (datosGuardados && datosGuardados.cajas.length > 0) {
+            // Si hay datos, creamos las cajas en la posición donde se quedaron
+            datosGuardados.cajas.forEach(c => {
+                let nuevaCaja = new Cajas(this, c.x, c.y, c);
+                nuevaCaja.setTexture(c.textureKey);
+                this.cajas.add(nuevaCaja);
+            });
+        } else {
+            // Si es la primera vez, usamos el mapa de Tiled
+            this.crearObjeto(this.cajas, this.capaCajas, Cajas);
+        }
 
 
         //banderas
@@ -79,10 +89,12 @@ export default class Mazmorra extends GameScene{
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
+        //colisiones
         this.logicaCajas(this.player, this.cajas);
         this.physics.add.collider(this.player, paredes_y_entrada);  
         this.physics.add.collider(this.player, this.puertas); 
         this.physics.add.collider(this.puertas, paredes_y_entrada);
+        this.physics.add.collider(this.cajas, paredes_y_entrada);
         this.physics.add.collider(this.cajas, this.puertas); //para que al empujar una caja no se desplace la puerta
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
@@ -94,6 +106,8 @@ export default class Mazmorra extends GameScene{
     }
 
     cambiarScene(jugador, salidas){
+        this.guardarEstado();
+
         this.anims.createFromAseprite('player');
         if(salidas.tag === 'salidaBossFinal' ){
            this.scene.start('habitacion_boss', {
@@ -110,6 +124,26 @@ export default class Mazmorra extends GameScene{
             });
         }
                 
+    }
+
+    guardarEstado(){
+        //Guardar pos de las cajas
+        let estadoCajas = [];
+        this.cajas.children.iterate(caja => {
+            estadoCajas.push({ x: caja.x, 
+                                y: caja.y, 
+                                textureKey: caja.texture.key, 
+                                properties: caja.properties, 
+                                name:caja.name }); 
+        });
+
+        let posJugador=({x: this.player.x, y: this.player.y})
+
+        //Guardamos todo en el registry bajo un ID único para esta habitación
+        this.registry.set('estado_mazmorra', {
+            cajas: estadoCajas,
+            player: posJugador,
+        });
     }
 
     update() {

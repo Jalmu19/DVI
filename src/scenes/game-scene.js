@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 import Salidas from "../game-objects/enemy/salidas";
+import Cajas from '../game-objects/items/cajas.js'
+
 
 /**
  * Escena de principal del juego. De esta heredan todas las demás
@@ -28,8 +30,8 @@ export default class GameScene extends Phaser.Scene {
 
     }
 
-
     crearObjeto(grupoObjeto, capaObjeto, tipoObjeto){
+        console.log("Capa recibida:", capaObjeto);
         capaObjeto.objects.forEach(objeto => {
             var aux =  new tipoObjeto(this, objeto.x, objeto.y, objeto);
             grupoObjeto.add(aux);  
@@ -92,7 +94,8 @@ export default class GameScene extends Phaser.Scene {
             }
         })
     }
-    
+
+
     interactWithInteractuable(player, rango) {
         let obj = null;
         let distMin = rango;
