@@ -38,6 +38,7 @@ export default class HabitacionBoss extends GameScene{
         paredes.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, paredes);
 
+        this.physics.add.collider(this.boss, paredes);
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         

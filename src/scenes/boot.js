@@ -119,6 +119,7 @@ export default class Boot extends Phaser.Scene {
    * nivel del juego
    */
   create() {   
+    this.registry.set('openedChests', []);
     this.anims.createFromAseprite('player');
     this.anims.createFromAseprite('chest');
     //this.scene.start('bosque', {x: 251, y: 381, stats: null});
