@@ -11,9 +11,8 @@ import Spike from '../game-objects/enemy/spike.js'
 import mazmorra from '../../assets/mapas/mazmorra.json'
 import suelo from '../../assets/sprites/dungeon.png'
 import puertas from '../../assets/sprites/puerta.png'
-import puertas_laterales from '../../assets/sprites/puerta_lateral.png'
-import puertas_salida from '../../assets/sprites/puerta_salida.png'
-import puerta_entrada from '../../assets/sprites/dungeon.png'
+import paredesMazmorra from '../../assets/sprites/paredesMazmorra.png'
+import puertasLaterales from '../../assets/sprites/puertasLaterales.png'
 import cofre_verde from '../../assets/sprites/cofre_verde.png'
 import cofre_azul from '../../assets/sprites/cofre_azul.png'
 import cofre_amarillo from '../../assets/sprites/cofre_amarillo.png'
@@ -22,7 +21,6 @@ import bandera_verde from '../../assets/sprites/bandera_verde.png'
 import bandera_morada from '../../assets/sprites/bandera_morada.png'
 import bandera_azul from '../../assets/sprites/bandera_azul.png'
 import bandera_amarilla from '../../assets/sprites/bandera_amarilla.png'
-import paredes from '../../assets/sprites/dungeon.png'
 import antorchas from '../../assets/sprites/dungeon.png'
 
 
@@ -40,10 +38,9 @@ export default class MazmorraInicial extends GameScene{
     //preload de la escena siguiente    
     preload(){
         this.load.image('suelo', suelo);
+        this.load.image('paredesMazmorra', paredesMazmorra);
         this.load.image('puerta', puertas);
-        this.load.image('puerta_lateral', puertas_laterales);
-        this.load.image('puerta_salida', puertas_salida);
-        this.load.image('puerta_entrada', puerta_entrada);
+        this.load.image('puertasLaterales', puertasLaterales);
         this.load.image('caja_verde', cofre_verde);
         this.load.image('caja_morada', cofre_morado);
         this.load.image('caja_azul', cofre_azul);
@@ -52,7 +49,6 @@ export default class MazmorraInicial extends GameScene{
         this.load.image('bandera_morada', bandera_morada);
         this.load.image('bandera_azul', bandera_azul);
         this.load.image('bandera_amarilla', bandera_amarilla);
-        this.load.image('paredes', paredes);
         this.load.image('antorchas', antorchas);
 
         this.load.tilemapTiledJSON('mazmorra', mazmorra);
@@ -101,12 +97,7 @@ export default class MazmorraInicial extends GameScene{
         this.puertas = this.physics.add.group();
         this.capaPuertas = map.getObjectLayer('Puertas');
         this.crearObjeto(this.puertas, this.capaPuertas, Puertas);
-        if (this.registry.get('mazmorra_inicial_puerta_abierta')) {
-            this.puertas.children.iterate(p => {
-                p.disableBody(true, true);
-            });
-        }
-
+ 
 
         //banderas
         this.banderas = this.physics.add.group();

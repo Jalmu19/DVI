@@ -9,7 +9,6 @@ import habitacion_boss from '../../assets/mapas/habitacion_boss.json'
 import habitacion_cofre from '../../assets/mapas/habitacion_cofre.json'
 import suelo from '../../assets/sprites/dungeon.png'
 import paredes from '../../assets/sprites/dungeon.png'
-import puerta_lateral from '../../assets/sprites/puerta_lateral.png'
 
 
 export default class Mazmorra extends GameScene{
@@ -26,7 +25,6 @@ export default class Mazmorra extends GameScene{
     preload(){
         this.load.image('suelo', suelo);
         this.load.image('paredes', paredes);
-         this.load.image('puerta_lateral', puerta_lateral);
         this.load.tilemapTiledJSON('habitacion_boss', habitacion_boss);
         this.load.tilemapTiledJSON('habitacion_cofre', habitacion_cofre);
 
@@ -37,14 +35,13 @@ export default class Mazmorra extends GameScene{
         var map = this.make.tilemap({key : 'mazmorra'});
         this.sonidoAbrirPuerta = this.sound.add('sonidoPuerta'); 
 
-        var img12 = map.addTilesetImage('paredes', 'paredes');
+        var img12 = map.addTilesetImage('paredesMazmorra', 'paredesMazmorra');
         var img13 = map.addTilesetImage('antorchas', 'antorchas');
-        var img14 = map.addTilesetImage('puerta_entrada', 'puerta_entrada');
         var img15 = map.addTilesetImage('suelo', 'suelo');
 
 
         map.createLayer('Suelo', img15, 0,0);
-        var paredes_y_entrada = map.createLayer('ParedesYEntrada', [img12, img14], 0,0);
+        var paredes_y_entrada = map.createLayer('ParedesYEntrada', [img12], 0,0);
         map.createLayer('Antorchas', img13, 0,0); //antorchas
 
 
