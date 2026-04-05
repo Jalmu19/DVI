@@ -5,7 +5,7 @@ import Shoots from '../spells/shoots';
 import FreezingShoot from '../spells/freezingShoot';
 import Shield from '../spells/shield';
 import Shoot from '../spells/shoot';
-import { PLAYER } from '../../constants';
+import { PLAYER, SPELLS } from '../../constants';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
@@ -63,8 +63,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             this.actualSpell = this.mapOfSpells[stats.actualSpell];
         }
         else {
-            this.añadirHechizo('shoot');
-            //this.actualSpell = /*new Shield(this.scene, x, y, this);
+            this.añadirHechizo(SPELLS.SHOOT.KEY);
             this.actualSpell = this.mapOfSpells['shoot'];
         }
 
@@ -98,7 +97,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     añadirHechizo(spell, emit = true) {
         let aux;
         if (spell !== 'shield') aux = new Shoots(this.scene.physics.world, this.scene, { classType: Shoot, key: spell });
-        else aux = new Shield(this.scene, x, y, this);
+        else aux = new Shield(this.scene, 0, 0, this);
         this.mapOfSpells[spell] = aux;
         if (emit) this.scene.game.events.emit('spell-gained', spell);
     }

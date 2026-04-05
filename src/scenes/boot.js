@@ -17,6 +17,9 @@ import health from '../../assets/sprites/health.png'
 import palo from '../../assets/sprites/palo.png'
 import shoot from '../../assets/sprites/basic-spell.png'
 import grimorioBasico from '../../assets/sprites/grimorio-basico.png'
+import grimorioShoot from '../../assets/sprites/grimorio-shoot.png'
+import grimorioFrezShoot from '../../assets/sprites/grimorio-freezing_shoot.png'
+import grimorioShield from '../../assets/sprites/grimorio-shield.png'
 import spike from '../../assets/sprites/spikes-placeholder.png'
 import fullscreen from '../../assets/sprites/fullscreen.png'
 
@@ -85,6 +88,9 @@ export default class Boot extends Phaser.Scene {
     this.load.image('palo', palo);
     this.load.image('shoot', shoot);
     this.load.image('grimorio-basico', grimorioBasico);
+    this.load.image('grimorio-shoot', grimorioShoot);
+    this.load.image('grimorio-freezing_shoot', grimorioFrezShoot);
+    this.load.image('grimorio-shield', grimorioShield);
     this.load.image('spike',spike);
     this.load.image('shield', shield);
     this.load.image('plantilla', villa);
