@@ -15,10 +15,19 @@ export default class GameScene extends Phaser.Scene {
 
     slowTime() {
         this.physics.world.timeScale = 15;
+        // Aplicarle slow-mo tambien a las animaciones
+        this.physics.world.bodies.each(body => {
+            let child = body.gameObject;
+            if(child instanceof Phaser.GameObjects.Sprite) child.anims.timeScale = 0.25;
+        })
     }
     
     resetTime() {
         this.physics.world.timeScale = 1;
+        this.physics.world.bodies.each(body => {
+            let child = body.gameObject;
+            if(child instanceof Phaser.GameObjects.Sprite) child.anims.timeScale = 1;
+        })
     }
     
     cargarSalidas(capa, grupo){
