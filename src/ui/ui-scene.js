@@ -69,9 +69,13 @@ export default class UIScene extends Phaser.Scene {
      * Método que dibuja los grimorios del menú de hechizos
      */
     drawGrimores() {
-        this.spellsMenu.iterate((child) => {
-            if (child instanceof Phaser.GameObjects.Image) child.destroy();
-        });
+        let i = this.spellsMenu.list.length;
+        while(i >= 0) {
+            const objeto = this.spellsMenu.list[i];
+            if (objeto instanceof Phaser.GameObjects.Image)
+                this.spellsMenu.remove(objeto, true); // true = lo destruye de la memoria
+            --i;
+        }
 
         const radius = 40;
 
@@ -80,7 +84,7 @@ export default class UIScene extends Phaser.Scene {
             let x = Math.cos(rad) * radius;
             let y = Math.sin(rad) * radius;
 
-            let icon = this.add.image(x, y, 'grimorio-basico');
+            let icon = this.add.image(x, y, 'grimorio-' + this.spells[i]);
             icon.setData('id', this.spells[i]);
             this.spellsMenu.add(icon);
         }
