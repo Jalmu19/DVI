@@ -262,12 +262,14 @@ export default class IntroStoryScene extends Phaser.Scene {
                 else this.waitWrite(actualText);
 
             } else {
-                this.scene.start('bosque', {x: 251, y: 381, stats : null});
-                this.scene.launch('ui');
-                const music = this.sound.add('musicaFondo');
-                music.play();
-                music.setLoop(true); 
-                
+                this.cameras.main.fadeOut(5000, 0, 0, 0);
+                this.cameras.main.once('camerafadeoutcomplete', () => {
+                    this.scene.start('bosque', {x: 251, y: 381, stats : null});
+                    this.scene.launch('ui');
+                    const music = this.sound.add('musicaFondo');
+                    music.play();
+                    music.setLoop(true); 
+                });
             }
         }
     }
@@ -290,6 +292,7 @@ export default class IntroStoryScene extends Phaser.Scene {
                     this.lilithGoes();
                 break;
                 case 'changeRoomScene':
+                    this.input.enabled = false;
                     this.isWriting = true;
                     this.visibilityDialog(false);
                     this.cameras.main.fadeOut(5000, 0, 0, 0);
@@ -302,9 +305,13 @@ export default class IntroStoryScene extends Phaser.Scene {
 
                             this.cameras.main.once('camerafadeincomplete', () => {
                                 this.lilithMove();
+
                                 this.time.delayedCall(17000, () => {
                                     this.visibilityDialog(true);
+
                                     this.time.delayedCall(6000, () => {
+                                        this.isWriting = false;
+                                        this.input.enabled = true;
                                         this.next();
                                     });
                                 });
@@ -313,6 +320,7 @@ export default class IntroStoryScene extends Phaser.Scene {
                     });
                 break;
                 case 'changeHomeScene':
+                    this.input.enabled = false;
                     this.isWriting = true;
                     this.visibilityDialog(false);
                     this.cameras.main.fadeOut(5000, 0, 0, 0);
@@ -324,10 +332,18 @@ export default class IntroStoryScene extends Phaser.Scene {
                         this.time.delayedCall(5000, () => {
                             this.cameras.main.fadeIn(5000, 0, 0, 0);
 
-                            this.cameras.main.once('camerafadeincomplete', () => {
-                                this.visibilityDialog(true);
-                                this.isWriting = false;
+                            this.time.delayedCall(1000, () => {
                                 this.lilithMoveHome();
+                            });
+                            this.cameras.main.once('camerafadeincomplete', () => {
+                                
+
+                                this.time.delayedCall(10000, () => {
+                                    this.input.enabled = true;
+                                    this.visibilityDialog(true);
+                                    this.isWriting = false;
+                                });
+                                
                             });
                         });
                     });
@@ -358,8 +374,8 @@ export default class IntroStoryScene extends Phaser.Scene {
                 at: 8000, 
                 run: () => {
                     this.lilith.anims.stop();
-                    this.lilith.setFrame(0); // Se queda quieta
                     this.lilith.setVisible(false);
+                    this.isWriting = true;
                 }
             }
         ]).play();
@@ -382,6 +398,7 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.lilith.setPosition(120, 80);
         this.lilith.setVisible(true);
         this.cameras.main.setScroll(0, 0);
+        this.isWriting = true;
     }
 
     lilithMove(){
@@ -454,6 +471,7 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.abuelo.setVisible(true);
         this.abuela.setPosition(250, 100);
         this.abuela.setVisible(true);       
+        this.isWriting = true;
     }
 
     lilithMoveHome(){
