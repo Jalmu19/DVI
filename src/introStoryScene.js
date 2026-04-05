@@ -100,7 +100,8 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.lilith = this.physics.add.sprite(100, 210, 'lilith');
         this.abuela = this.physics.add.sprite(70, 210, 'abuela');
         this.abuelo = this.physics.add.sprite(50, 210, 'abuelo');
-        
+        this.createLilithAnimations();
+
         this.dialog();
 
         this.input.on('pointerdown', () => {
@@ -353,13 +354,14 @@ export default class IntroStoryScene extends Phaser.Scene {
     }
 
     lilithGoes(){
-                this.add.timeline([
+        this.add.timeline([
             {
                 at: 0, 
                 tween: {
                     targets: this.lilith,
                     x: '+=60', 
-                    duration: 1500
+                    duration: 1500,
+                    onStart: () => { this.lilith.play('lilith_walk-rside'); },
                 }
             },
             {
@@ -367,7 +369,9 @@ export default class IntroStoryScene extends Phaser.Scene {
                 tween: {
                     targets: this.lilith,
                     y: '+=200', 
-                    duration: 2500
+                    duration: 2500,
+                    onStart: () => { this.lilith.play('lilith_walk-front'); },
+                    onComplete: () => {this.lilith.anims.stop(); this.lilith.setFrame(23);}
                 }
             },
             {
@@ -375,7 +379,6 @@ export default class IntroStoryScene extends Phaser.Scene {
                 run: () => {
                     this.lilith.anims.stop();
                     this.lilith.setVisible(false);
-                    this.isWriting = true;
                 }
             }
         ]).play();
@@ -408,7 +411,10 @@ export default class IntroStoryScene extends Phaser.Scene {
                 tween: {
                     targets: this.lilith,
                     x: '+=33',
-                    duration: 1500
+                    duration: 1500,
+                    onStart: () => { this.lilith.play('lilith_walk-rside'); },
+                    onComplete: () => {this.lilith.anims.stop(); this.lilith.setFrame(23)}
+                    
                 }
             },
             {
@@ -416,7 +422,8 @@ export default class IntroStoryScene extends Phaser.Scene {
                 tween: {
                     targets: this.lilith,
                     y: '+=50', 
-                    duration: 1500
+                    duration: 1500,
+                    onStart: () => { this.lilith.play('lilith_walk-front'); }
                 }
             },
             {
@@ -424,7 +431,9 @@ export default class IntroStoryScene extends Phaser.Scene {
                 tween: {
                     targets: this.lilith,
                     x: '-=45', 
-                    duration: 1500
+                    duration: 1500,
+                    onStart: () => { this.lilith.play('lilith_walk-lside'); },
+                    onComplete: () => {this.lilith.anims.stop(); this.lilith.setFrame(22)}
                 }
             },
             {
@@ -432,7 +441,9 @@ export default class IntroStoryScene extends Phaser.Scene {
                 tween: {
                     targets: this.lilith,
                     y: '-=35', 
-                    duration: 1500
+                    duration: 1500,
+                    onStart: () => { this.lilith.play('lilith_walk-back'); }
+
                 }
             },
             {
@@ -440,7 +451,8 @@ export default class IntroStoryScene extends Phaser.Scene {
                 tween: {
                     targets: this.lilith,
                     x: '-=45', 
-                    duration: 1500
+                    duration: 1500,
+                    onStart: () => { this.lilith.play('lilith_walk-lside'); }
                 }
             },
             {
@@ -448,7 +460,8 @@ export default class IntroStoryScene extends Phaser.Scene {
                 tween: {
                     targets: this.lilith,
                     y: '+=60', 
-                    duration: 1500
+                    duration: 1500,
+                    onStart: () => { this.lilith.play('lilith_walk-front'); }
                 }
             }
         ]).play();
@@ -481,7 +494,8 @@ export default class IntroStoryScene extends Phaser.Scene {
                 tween: {
                     targets: this.lilith,
                     y: '+=60', 
-                    duration: 1500
+                    duration: 1500,
+                    onStart: () => { this.lilith.play('lilith_walk-front'); }
                 }
             },
             {
@@ -489,9 +503,53 @@ export default class IntroStoryScene extends Phaser.Scene {
                 tween: {
                     targets: this.lilith,
                     x: '+=200', 
-                    duration: 4500
+                    duration: 4500,
+                    onStart: () => { this.lilith.play('lilith_walk-rside'); },
+                    onComplete: () => {this.lilith.anims.stop(); this.lilith.setFrame(7)}
                 }
             }
         ]).play();
+    }
+
+    createLilithAnimations(){
+        this.anims.create({
+            key: 'lilith_walk-rside',
+            frames: this.anims.generateFrameNames('player', {
+                start: 7,
+                end: 12,
+            }),
+            frameRate: 5,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'lilith_walk-front',
+            frames: this.anims.generateFrameNames('player', {
+                start: 0,
+                end: 6,
+            }),
+            frameRate: 5,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'lilith_walk-lside',
+            frames: this.anims.generateFrameNames('player', {
+                start: 15,
+                end: 21,
+            }),
+            frameRate: 5,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'lilith_walk-back',
+            frames: this.anims.generateFrameNames('player', {
+                start: 23,
+                end: 30,
+            }),
+            frameRate: 5,
+            repeat: -1
+        });
     }
 }
