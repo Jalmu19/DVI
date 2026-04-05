@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import Player from '../game-objects/player/player.js'
 import Salidas from '../game-objects/enemy/salidas.js'
+import Ladron from '../game-objects/npcs/ladron.js'
 import Spike from '../game-objects/enemy/spike.js'
 
 import entrada_mazmorra from '../../assets/mapas/entrada-mazmorra-bosque.json'
@@ -50,7 +51,6 @@ export default class Zona_bosque extends GameScene {
         var img3 = map.addTilesetImage('flor1', 'flor');
         var img4 = map.addTilesetImage('Hierba', 'hierba');
 
-
         map.createLayer('fondo', img4, 0, 0);
         map.createLayer('Detalles', [img3, img1], 0, 0);
         var arboles = map.createLayer('Arboles', img2, 0, 0);
@@ -73,6 +73,7 @@ export default class Zona_bosque extends GameScene {
         this.salidas = this.physics.add.group();
         this.capaSalidas = map.getObjectLayer('Salidas');
 
+        //Salidas
         this.cargarSalidas(this.capaSalidas, this.salidas);
         
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
@@ -80,10 +81,25 @@ export default class Zona_bosque extends GameScene {
         this.enemigos = this.physics.add.group();
         this.capaEnemigos = map.getObjectLayer('Enemigos');
         this.capaEnemigos.objects.forEach(obj => {
-            var a = new Spike(this, obj.x, obj.y, 'spike');
+            var a = new Spike(this, obj.x, obj.y,'spike');
             this.enemigos.add(a);
         })
-        //this.physics.add.collider(this.enemigos, arboles);
+
+        //Ladron
+        this.ladron = this.physics.add.group({immovable: true, allowGravity: false });
+        this.capaLadron = map.getObjectLayer('Ladron');
+        this.capaLadron.objects.forEach(obj => {
+            var a ;
+            if(obj.name === "Kirbo"){
+                a = new Ladron(this, obj.x, obj.y);
+            }               
+            else{
+                a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
+            }               
+            this.ladron.add(a);
+        })
+        
+        this.colision = this.physics.add.collider(this.player, this.ladron, this.mostrarDialogo, null, this);
     
         this.items = this.physics.add.staticGroup()
         this.capaBayas = map.getObjectLayer('Bayas')
@@ -101,6 +117,35 @@ export default class Zona_bosque extends GameScene {
         this.manageItems(this.player, this.items)
 
         
+    }
+    mostrarDialogo(){
+        /*console.log("MOSTRAR DIALOGO")
+                
+        // 1. Crear el fondo (un rectángulo negro con borde blanco)
+        let a =this.add.rectangle(this.cameras.main.centerX, this.cameras.main.centerY + 60, 300, 50, 0x000000, 0.7
+        ).setStrokeStyle(2, 0xffffff).setScrollFactor(0);
+        // this es una Scene
+        let text = this.add.text(this.cameras.main.centerX +15, this.cameras.main.centerY + 100, 'Texto que escribe').setInteractive();
+        text.setOrigin(this.cameras.main.getBounds().x ,this.cameras.main.getBounds().x);
+        
+        // alineación del texto
+        text.setAlign('center');
+        // Font style
+        text.setFont('Monospace');
+        text.setFontSize(10);
+
+        //Color del reborde de la letra y grosor.
+        text.setStroke('#000000', 0)
+        
+        a.destroy()
+        text.destroy() */
+
+        this.ladron.setVisible(false);
+        this.colision.destroy()
+       
+        //this.scene.start('dialogoLadron')
+       
+    
     }
 
     cambiarScene(jugador, salidas) {

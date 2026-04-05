@@ -87,50 +87,37 @@
          "objects":[
                 {
                  "gid":803,
-                 "height":36.5,
+                 "height":32,
                  "id":68,
                  "name":"Kirbo",
-                 "properties":[
-                        {
-                         "name":"valla1_relacion",
-                         "type":"object",
-                         "value":70
-                        }, 
-                        {
-                         "name":"valla2_relacion",
-                         "type":"object",
-                         "value":69
-                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":37,
-                 "x":375.667,
-                 "y":208.325
+                 "width":32,
+                 "x":376,
+                 "y":192
                 }, 
                 {
-                 "gid":2147483970,
                  "height":16,
-                 "id":69,
-                 "name":"Valla2",
+                 "id":113,
+                 "name":"murallaInvisible",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":80,
+                 "x":352,
+                 "y":192
+                }, 
+                {
+                 "height":64,
+                 "id":115,
+                 "name":"murallaInvisible2",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":16,
-                 "x":415.667,
-                 "y":209
-                }, 
-                {
-                 "gid":322,
-                 "height":16,
-                 "id":70,
-                 "name":"Valla1",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":354,
-                 "y":209
+                 "x":432,
+                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -178,58 +165,10 @@
                  "width":0,
                  "x":259.333,
                  "y":136.667
-                }, 
-                {
-                 "height":0,
-                 "id":102,
-                 "name":"",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":448.667,
-                 "y":145.333
-                }, 
-                {
-                 "height":0,
-                 "id":103,
-                 "name":"",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":448.667,
-                 "y":160.667
-                }, 
-                {
-                 "height":0,
-                 "id":104,
-                 "name":"",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":449.333,
-                 "y":173.333
-                }, 
-                {
-                 "height":0,
-                 "id":105,
-                 "name":"",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":448.667,
-                 "y":190
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -271,8 +210,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":423.272727272727,
-                 "y":42.1818181818182
+                 "x":423.273,
+                 "y":42.1818
                 }, 
                 {
                  "height":0,
@@ -343,7 +282,7 @@
          "y":0
         }],
  "nextlayerid":13,
- "nextobjectid":112,
+ "nextobjectid":116,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

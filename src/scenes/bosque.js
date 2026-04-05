@@ -28,7 +28,7 @@ export default class Bosque extends GameScene{
         this.load.image('arbol', arbol);
         this.load.image('flor', flor);
         this.load.image('hierba', hierba);
-
+       
         this.load.tilemapTiledJSON('zBosque', zonaBosque);
 
     }

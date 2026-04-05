@@ -10,6 +10,7 @@ import zBosque from './scenes/zonaBosque.js';
 import GameOver from './scenes/game-over.js';
 import MainMenu from './mainMenu.js';
 import UIScene from './ui/ui-scene.js'
+import dialogoLadron from './ui/dialogoLadron.js';
 import InventoryScene from './ui/inventoryScene.js'
 import IntroStoryScene from './introStoryScene.js'
 /**
@@ -26,7 +27,7 @@ let config = {
         autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
     pixelArt: true,
-    scene: [Boot, IntroStoryScene, /*MainMenu*/, Bosque,zBosque, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss, GameOver, UIScene, InventoryScene ],
+    scene: [Boot, IntroStoryScene, /*MainMenu*/,dialogoLadron, Bosque,zBosque, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss, GameOver, UIScene, InventoryScene ],
     physics: {
         default: 'arcade',
         arcade: {
