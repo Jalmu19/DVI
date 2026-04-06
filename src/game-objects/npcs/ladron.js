@@ -1,11 +1,10 @@
 import Phaser from 'phaser';
-import BaseNpc from './baseNpc';
 
 
 /**
  * Clase que representa el ladron del inicio del juego. El ladron unicamente le roba al jugador y salta un diálogo entre ellos
  */
-export default class Ladron extends BaseNpc {
+export default class Ladron extends Phaser.Physics.Arcade.Sprite {
 
     /**
      * Constructor del jugador
@@ -16,11 +15,21 @@ export default class Ladron extends BaseNpc {
     constructor(scene, x, y) {
         super(scene, x, y, 'kirbo');
 
+        this.scene.add.existing(this);
+        this.scene.physics.add.existing(this);
+        // Cambiar hitbox para chocar con el entorno
         this.body.setSize(14, 15);
-        this.name = "Ladron"
         this.setScale(1.5,1.5);
         this.setPosition(390, 178);
-        this.texto = [{text : "Hola"},{text : "Pepsi cola"},{text : "caracola"}];
 
+        /*this.on('destroy', () => {
+            this.scene.game.events.off('spell-changed', this.onSpellChange);
+        });
+
+        scene.game.events.on('healPlayer', (puntos) => {        //Evento para recuperar vida si toma item curativo
+            this.health.increaseHealth(puntos);
+            console.log("El jugador se curó");
+        });
+        */
     }
 }
