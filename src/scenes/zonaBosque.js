@@ -24,7 +24,19 @@ export default class Zona_bosque extends GameScene {
         super({ key: 'zonaBosque' });
     }
     init(datos){
+        console.log(datos.stats)
         this.datos = [datos.x, datos.y, datos.stats];
+
+        if(datos.backgroundScene === undefined){ // hacemos al ladron
+            console.log("No tiene backgroundScene")
+            this.hasDialog = false;
+        }       
+        else{
+            console.log("Tiene backgroundScene")
+            this.hasDialog = true
+        }
+        
+           
     }
 
     preload() {
@@ -98,8 +110,13 @@ export default class Zona_bosque extends GameScene {
             }               
             this.ladron.add(a);
         })
-        
+
         this.colision = this.physics.add.collider(this.player, this.ladron, this.mostrarDialogo, null, this);
+        
+        if(this.hasDialog){
+            this.colision.destroy()
+            this.ladron.setVisible(false)
+        }
     
         this.items = this.physics.add.staticGroup()
         this.capaBayas = map.getObjectLayer('Bayas')
@@ -115,37 +132,19 @@ export default class Zona_bosque extends GameScene {
         this.items.add(berry2)
         this.items.add(berry3) */
         this.manageItems(this.player, this.items)
-
         
     }
+
     mostrarDialogo(){
-        /*console.log("MOSTRAR DIALOGO")
-                
-        // 1. Crear el fondo (un rectángulo negro con borde blanco)
-        let a =this.add.rectangle(this.cameras.main.centerX, this.cameras.main.centerY + 60, 300, 50, 0x000000, 0.7
-        ).setStrokeStyle(2, 0xffffff).setScrollFactor(0);
-        // this es una Scene
-        let text = this.add.text(this.cameras.main.centerX +15, this.cameras.main.centerY + 100, 'Texto que escribe').setInteractive();
-        text.setOrigin(this.cameras.main.getBounds().x ,this.cameras.main.getBounds().x);
-        
-        // alineación del texto
-        text.setAlign('center');
-        // Font style
-        text.setFont('Monospace');
-        text.setFontSize(10);
+        console.log("MOSTRAR DIALOGO")
+        this.scene.stop('ui');
 
-        //Color del reborde de la letra y grosor.
-        text.setStroke('#000000', 0)
+        this.scene.start('dialogoLadron', {backgroundScene : this, 
+            x : this.player.x,
+            y : this.player.y,
+            stats : this.player.getStats()
         
-        a.destroy()
-        text.destroy() */
-
-        this.ladron.setVisible(false);
-        this.colision.destroy()
-       
-        //this.scene.start('dialogoLadron')
-       
-    
+        });    
     }
 
     cambiarScene(jugador, salidas) {

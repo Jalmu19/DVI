@@ -169,13 +169,15 @@ export default class Entrada_mazmorra extends GameScene{
                 x : 133,
                 y : 252,
                 stats : this.player.getStats()
+                
             });
         }
         else{
             this.scene.start('zonaBosque', {
                 x : 393,
                 y : 210,
-                stats : this.player.getStats()
+                stats : this.player.getStats(),
+                backgroundScene : this
             });
         }
     } 
