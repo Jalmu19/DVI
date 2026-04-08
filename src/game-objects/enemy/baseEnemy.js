@@ -19,6 +19,14 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.freezed = false;
         this.canBeFreezed = false;
 
+        this.onNewSpell = (newGroup) => {
+            if (newGroup instanceof Phaser.Physics.Arcade.Group) {
+                this.setupCollisions(newGroup);
+            }
+        };
+
+        this.scene.events.on('to-set-up-colliders', this.onNewSpell);
+
         //PERSIGUE AL JUGADOR
         this.isChasing = true;
         this.target = new Phaser.Math.Vector2();
@@ -32,7 +40,18 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
             loop: false,                            //se mueven todo el rato
         })
 
-        this.setupCollisions();
+        // REVISAR ESTO
+        if (this.scene.player && this.scene.player.mapOfSpells) {
+            Object.values(this.scene.player.mapOfSpells).forEach(group => {
+                if (group instanceof Phaser.Physics.Arcade.Group) {
+                    this.setupCollisions(group);
+                }
+            });
+        }
+
+        this.on('destroy', () => {
+            this.scene.events.off('to-set-up-colliders', this.onNewSpell);
+        });
     }
 
     movement(){
@@ -94,8 +113,8 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         }
     }
 
-    setupCollisions() {
-        this.scene.physics.add.overlap(this, this.scene.player.getHechizo(), (self,spell) => {
+    setupCollisions(spellRecieved) {
+        this.spellCollider = this.scene.physics.add.overlap(this, spellRecieved, (self,spell) => {
             this.handleSpellCollision(spell);
         });
     }
