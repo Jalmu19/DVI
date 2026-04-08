@@ -25,6 +25,7 @@ export default class Shoots extends Phaser.Physics.Arcade.Group {
             if (shoot) {
                 shoot.fire(x, y, rotation);
                 this.ammo--;
+                this.emitUi();
 
                 if (this.ammo <= 0) {
                     this.startReload();
@@ -42,6 +43,11 @@ export default class Shoots extends Phaser.Physics.Arcade.Group {
         this.scene.time.delayedCall(this.cooldownTime, () => {
             this.ammo = this.maxAmmo;
             this.isReloading = false;
+            this.emitUi();
         });
+    }
+
+    emitUi(){
+        this.scene.game.events.emit('ammo-changed', { maxAmmo: this.maxAmmo, actualAmmo: this.ammo });
     }
 }

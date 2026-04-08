@@ -101,6 +101,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         }
         else aux = new Shield(this.scene, 0, 0, this);
         this.scene.events.emit('to-set-up-colliders', aux);
+        aux.emitUi();
         this.mapOfSpells[spell] = aux;
         if (emit) this.scene.game.events.emit('spell-gained', spell);
     }
@@ -112,7 +113,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     changeSpell(spell) {
         if (spell !== this.actualSpell.key) {
             let aux = this.mapOfSpells[spell];
-            this.actualSpell = aux;;
+            this.actualSpell = aux;
+            this.actualSpell.emitUi();
         }
     }
 
