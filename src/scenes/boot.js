@@ -22,6 +22,7 @@ import grimorioFrezShoot from '../../assets/sprites/grimorio-freezing_shoot.png'
 import grimorioShield from '../../assets/sprites/grimorio-shield.png'
 import spike from '../../assets/sprites/spikes-placeholder.png'
 import oruga from '../../assets/sprites/oruga.png'
+import rata from '../../assets/sprites/rata.png'
 import fullscreen from '../../assets/sprites/fullscreen.png'
 
 import shield from '../../assets/sprites/bandera_azul.png'
@@ -94,6 +95,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('grimorio-shield', grimorioShield);
     this.load.image('spike',spike);
     this.load.image('oruga', oruga);
+    this.load.image('rata', rata);
     this.load.image('shield', shield);
     this.load.image('plantilla', villa);
     this.load.tilemapTiledJSON('mapa', mapa);

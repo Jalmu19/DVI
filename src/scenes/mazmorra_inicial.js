@@ -6,7 +6,7 @@ import Puertas from '../game-objects/items/puertas.js'
 import GameScene from "./game-scene.js";
 
 import Spike from '../game-objects/enemy/spike.js'
-
+import Rata from '../game-objects/enemy/rata.js'
 
 import mazmorra from '../../assets/mapas/mazmorra.json'
 import suelo from '../../assets/sprites/dungeon.png'
@@ -122,12 +122,12 @@ export default class MazmorraInicial extends GameScene{
 
         if (datosGuardados) {
             datosGuardados.enemigos.forEach(e => {
-                let spike = new Spike(this, e.x, e.y, 'spike');
+                let spike = new Rata(this, e.x, e.y, 'rata');
                 this.enemigos.add(spike);
             });
         } else {
             this.capaEnemigos.objects.forEach(obj => {
-                var a = new Spike(this, obj.x, obj.y, 'spike');
+                var a = new Rata(this, obj.x, obj.y, 'rata');
                 this.enemigos.add(a);
             });
         }
