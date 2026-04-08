@@ -47,7 +47,7 @@ export default class Mazmorra extends GameScene{
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-        paredes_y_entrada.setCollisionByExclusion([-1], true);
+        //paredes_y_entrada.setCollisionByExclusion([-1], true);
         
         //salidas  
         this.salidas = this.physics.add.group();
@@ -93,7 +93,7 @@ export default class Mazmorra extends GameScene{
 
         //colisiones
         this.logicaCajas(this.player, this.cajas);
-        this.physics.add.collider(this.player, paredes_y_entrada);  
+        //this.physics.add.collider(this.player, paredes_y_entrada);  
         this.physics.add.collider(this.player, this.puertas); 
         this.physics.add.collider(this.puertas, paredes_y_entrada);
         this.physics.add.collider(this.cajas, paredes_y_entrada);
