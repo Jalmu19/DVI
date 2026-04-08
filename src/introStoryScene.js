@@ -1,14 +1,14 @@
 import Phaser from "phaser";
 
 const STORY = [
-    { 
+    {
         text: 'Hasta aquí el encuentro de hoy. Podéis marchar.'
     },
-    { 
-        text: 'Nos vemos la siguiente semana.' 
+    {
+        text: 'Nos vemos la siguiente semana.'
     },
-    { 
-        text: 'Bien. Volvamos a casa.', delay: 1500 
+    {
+        text: 'Bien. Volvamos a casa.', delay: 1500
     },
     {
         text: '¿Eh? ¿Qué pasa Lilith?', delay: 1000
@@ -77,25 +77,26 @@ export default class IntroStoryScene extends Phaser.Scene {
         super({ key: 'IntroStoryScene' });
         this.n = 0;
         this.isWriting = false;
+        this.sceneChanging = false;
     }
 
     create() {
-        
+
         this.layersChurch = {};
         this.layersChurch = this.loadChurchMap();
         this.layersRoom = {};
         this.layersRoom = this.loadRoomMap();
-        this.layersHome= {};
+        this.layersHome = {};
         this.layersHome = this.loadHomeMap();
-        
+
         Object.values(this.layersHome).forEach(layer => {
             layer.setVisible(false);
         });
-        
+
         Object.values(this.layersRoom).forEach(layer => {
             layer.setVisible(false);
         });
-        
+
         this.cura = this.physics.add.sprite(159, 155, 'cura');
         this.lilith = this.physics.add.sprite(100, 210, 'lilith');
         this.abuela = this.physics.add.sprite(70, 210, 'abuela');
@@ -105,23 +106,23 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.dialog();
 
         this.input.on('pointerdown', () => {
-            this.next();
+            if(!this.sceneChanging) this.next();
         });
 
         this.nextScene();
 
         this.skipKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-        this.skipKey.on('down', () => {
+        this.skipKey.once('down', () => {
             this.skipIntro();
         });
     }
 
-    loadHomeMap(){
+    loadHomeMap() {
         const map = this.make.tilemap({ key: 'homejson' });
         const doorWindowsTileset = map.addTilesetImage('TopDownHouse_DoorsAndWindows', 'doorsWindows');
         const floorWallsTileset = map.addTilesetImage('TopDownHouse_FloorsAndWalls', 'floorsWalls');
-            const furniture1Tileset = map.addTilesetImage('TopDownHouse_FurnitureState1', 'greenFurniture');
+        const furniture1Tileset = map.addTilesetImage('TopDownHouse_FurnitureState1', 'greenFurniture');
         const furniture2Tileset = map.addTilesetImage('TopDownHouse_FurnitureState2', 'brownFurniture');
         const smallItemsTileset = map.addTilesetImage('TopDownHouse_SmallItems', 'smallItems');
         const tileset = [doorWindowsTileset, floorWallsTileset, furniture2Tileset, furniture1Tileset, smallItemsTileset];
@@ -135,12 +136,12 @@ export default class IntroStoryScene extends Phaser.Scene {
         const muebles = map.createLayer('muebles', tileset, 0, 0);
         const escalera = map.createLayer('escalera', tileset, 0, 0);
         const objetos = map.createLayer('objetos', tileset, 0, 0);
-        const layers = {suelo, alfombra, pared, bordes, silla, muebles, objetos, escalera, bordespared};
-        
+        const layers = { suelo, alfombra, pared, bordes, silla, muebles, objetos, escalera, bordespared };
+
         return layers;
     }
 
-    loadRoomMap(){
+    loadRoomMap() {
         const map = this.make.tilemap({ key: 'roomjson' });
         const doorWindowsTileset = map.addTilesetImage('TopDownHouse_DoorsAndWindows', 'doorsWindows');
         const floorWallsTileset = map.addTilesetImage('TopDownHouse_FloorsAndWalls', 'floorsWalls');
@@ -156,39 +157,39 @@ export default class IntroStoryScene extends Phaser.Scene {
         const bordes = map.createLayer('bordes', tileset, 0, 0);
         const muebles = map.createLayer('muebles', tileset, 0, 0);
         const objetos = map.createLayer('objetos', tileset, 0, 0);
-        const layers = {suelo, alfombra, ventanas, pared, escalera, bordes, muebles, objetos};
-        
+        const layers = { suelo, alfombra, ventanas, pared, escalera, bordes, muebles, objetos };
+
         return layers;
 
     }
 
-    loadChurchMap(){
+    loadChurchMap() {
         const map = this.make.tilemap({ key: 'churchjson' });
         const tileset = map.addTilesetImage('demo church', 'demo_church');
-        
+
         const suelo = map.createLayer('suelo', tileset, 0, 0);
         const ladrillo = map.createLayer('ladrillo', tileset, 0, 0);
         const ventanas = map.createLayer('ventanas', tileset, 0, 0);
         const pared = map.createLayer('pared', tileset, 0, 0);
         const decoraciones = map.createLayer('decoraciones', tileset, 0, 0);
         const bordes = map.createLayer('bordes', tileset, 0, 0);
-        const layers = {suelo, ladrillo, ventanas, pared, decoraciones, bordes};
+        const layers = { suelo, ladrillo, ventanas, pared, decoraciones, bordes };
 
         this.centerX = map.widthInPixels / 2;
         this.centerY = map.heightInPixels / 2 - 120;
         this.cameras.main.centerOn(this.centerX, this.centerY);
-        
+
         return layers;
     }
 
     dialog() {
         this.dialogBox = this.add.rectangle(this.cameras.main.centerX, this.cameras.main.centerY + 60, 300, 50, 0x000000, 0.7
         ).setStrokeStyle(2, 0xffffff).setScrollFactor(0);
-        
-        this.dialogText = this.add.text(this.cameras.main.centerX - 145, this.cameras.main.centerY + 40, '', { 
-            fontSize: '10px', 
-            fontFamily: 'monospace', 
-            wordWrap: { width: 300 } 
+
+        this.dialogText = this.add.text(this.cameras.main.centerX - 145, this.cameras.main.centerY + 40, '', {
+            fontSize: '10px',
+            fontFamily: 'monospace',
+            wordWrap: { width: 300 }
         }
         ).setScrollFactor(0);
 
@@ -196,19 +197,19 @@ export default class IntroStoryScene extends Phaser.Scene {
     }
 
     skipIntro() {
-    if (this.timerText) this.timerText.remove();
-    
-    this.cameras.main.stopFollow();
-    this.cameras.main.resetFX(); 
-    this.cameras.main.fadeOut(500, 0, 0, 0);
-    
-    this.cameras.main.once('camerafadeoutcomplete', () => {
-        this.scene.start('bosque', { x: 251, y: 381 });
-        this.scene.launch('ui');
-        const music = this.sound.add('musicaFondo');
-        music.play();
-        music.setLoop(true); 
-    });
+        if (this.timerText) this.timerText.remove();
+
+        this.cameras.main.stopFollow();
+        this.cameras.main.resetFX();
+        this.cameras.main.fadeOut(500, 0, 0, 0);
+
+        this.cameras.main.once('camerafadeoutcomplete', () => {
+            this.scene.start('bosque', { x: 251, y: 381 });
+            this.scene.launch('ui');
+            const music = this.sound.add('musicaFondo');
+            music.play();
+            music.setLoop(true);
+        });
     }
 
     visibilityDialog(visible) {
@@ -228,7 +229,7 @@ export default class IntroStoryScene extends Phaser.Scene {
         const actualEntry = STORY[this.n];
 
         if (actualEntry.action) this.handleAction(actualEntry.action);
-    
+
         let charIndex = 0;
 
         if (this.timerText) this.timerText.remove();
@@ -259,17 +260,18 @@ export default class IntroStoryScene extends Phaser.Scene {
                     this.cameras.main.pan(this.centerX, this.centerY + 100, 3000, 'Power2', false, (camera, progress) => {
                         if (progress === 1) this.waitWrite(actualText);
                     });
-                } 
+                }
                 else this.waitWrite(actualText);
 
             } else {
+                this.sceneChanging = true;
                 this.cameras.main.fadeOut(5000, 0, 0, 0);
                 this.cameras.main.once('camerafadeoutcomplete', () => {
-                    this.scene.start('bosque', {x: 251, y: 381, stats : null});
+                    this.scene.start('bosque', { x: 251, y: 381, stats: null });
                     this.scene.launch('ui');
                     const music = this.sound.add('musicaFondo');
                     music.play();
-                    music.setLoop(true); 
+                    music.setLoop(true);
                 });
             }
         }
@@ -287,11 +289,11 @@ export default class IntroStoryScene extends Phaser.Scene {
     }
 
     handleAction(actionName) {
-        if (actionName){
+        if (actionName) {
             switch (actionName) {
                 case 'lilith_goes':
                     this.lilithGoes();
-                break;
+                    break;
                 case 'changeRoomScene':
                     this.input.enabled = false;
                     this.isWriting = true;
@@ -319,7 +321,7 @@ export default class IntroStoryScene extends Phaser.Scene {
                             });
                         });
                     });
-                break;
+                    break;
                 case 'changeHomeScene':
                     this.input.enabled = false;
                     this.isWriting = true;
@@ -337,45 +339,45 @@ export default class IntroStoryScene extends Phaser.Scene {
                                 this.lilithMoveHome();
                             });
                             this.cameras.main.once('camerafadeincomplete', () => {
-                                
+
 
                                 this.time.delayedCall(10000, () => {
                                     this.input.enabled = true;
                                     this.visibilityDialog(true);
                                     this.isWriting = false;
                                 });
-                                
+
                             });
                         });
                     });
-                break;
+                    break;
             }
         }
     }
 
-    lilithGoes(){
+    lilithGoes() {
         this.add.timeline([
             {
-                at: 0, 
+                at: 0,
                 tween: {
                     targets: this.lilith,
-                    x: '+=60', 
+                    x: '+=60',
                     duration: 1500,
                     onStart: () => { this.lilith.play('lilith_walk-rside'); },
                 }
             },
             {
-                at: 3000, 
+                at: 3000,
                 tween: {
                     targets: this.lilith,
-                    y: '+=200', 
+                    y: '+=200',
                     duration: 2500,
                     onStart: () => { this.lilith.play('lilith_walk-front'); },
-                    onComplete: () => {this.lilith.anims.stop(); this.lilith.setFrame(23);}
+                    onComplete: () => { this.lilith.anims.stop(); this.lilith.setFrame(23); }
                 }
             },
             {
-                at: 8000, 
+                at: 8000,
                 run: () => {
                     this.lilith.anims.stop();
                     this.lilith.setVisible(false);
@@ -385,7 +387,7 @@ export default class IntroStoryScene extends Phaser.Scene {
 
     }
 
-    prepareRoomScene(){
+    prepareRoomScene() {
         Object.values(this.layersChurch).forEach(layer => {
             layer.setVisible(false);
         });
@@ -404,43 +406,43 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.isWriting = true;
     }
 
-    lilithMove(){
+    lilithMove() {
         this.add.timeline([
             {
-                at: 3000, 
+                at: 3000,
                 tween: {
                     targets: this.lilith,
                     x: '+=33',
                     duration: 1500,
                     onStart: () => { this.lilith.play('lilith_walk-rside'); },
-                    onComplete: () => {this.lilith.anims.stop(); this.lilith.setFrame(23)}
-                    
+                    onComplete: () => { this.lilith.anims.stop(); this.lilith.setFrame(23) }
+
                 }
             },
             {
-                at: 10000, 
+                at: 10000,
                 tween: {
                     targets: this.lilith,
-                    y: '+=50', 
+                    y: '+=50',
                     duration: 1500,
                     onStart: () => { this.lilith.play('lilith_walk-front'); }
                 }
             },
             {
-                at: 13000, 
+                at: 13000,
                 tween: {
                     targets: this.lilith,
-                    x: '-=45', 
+                    x: '-=45',
                     duration: 1500,
                     onStart: () => { this.lilith.play('lilith_walk-lside'); },
-                    onComplete: () => {this.lilith.anims.stop(); this.lilith.setFrame(22)}
+                    onComplete: () => { this.lilith.anims.stop(); this.lilith.setFrame(22) }
                 }
             },
             {
-                at: 20000, 
+                at: 20000,
                 tween: {
                     targets: this.lilith,
-                    y: '-=35', 
+                    y: '-=35',
                     duration: 1500,
                     onStart: () => { this.lilith.play('lilith_walk-back'); }
 
@@ -450,16 +452,16 @@ export default class IntroStoryScene extends Phaser.Scene {
                 at: 23000,
                 tween: {
                     targets: this.lilith,
-                    x: '-=45', 
+                    x: '-=45',
                     duration: 1500,
                     onStart: () => { this.lilith.play('lilith_walk-lside'); }
                 }
             },
             {
-                at: 26000, 
+                at: 26000,
                 tween: {
                     targets: this.lilith,
-                    y: '+=60', 
+                    y: '+=60',
                     duration: 1500,
                     onStart: () => { this.lilith.play('lilith_walk-front'); }
                 }
@@ -467,13 +469,13 @@ export default class IntroStoryScene extends Phaser.Scene {
         ]).play();
     }
 
-    prepareHomeScene(){
+    prepareHomeScene() {
         Object.values(this.layersRoom).forEach(layer => {
             layer.setVisible(false);
         });
 
         this.lilith.setVisible(false)
-        
+
         Object.values(this.layersHome).forEach(layer => {
             layer.setVisible(true);
         });
@@ -483,35 +485,35 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.abuelo.setPosition(250, 120);
         this.abuelo.setVisible(true);
         this.abuela.setPosition(250, 100);
-        this.abuela.setVisible(true);       
+        this.abuela.setVisible(true);
         this.isWriting = true;
     }
 
-    lilithMoveHome(){
+    lilithMoveHome() {
         this.add.timeline([
             {
-                at: 0, 
+                at: 0,
                 tween: {
                     targets: this.lilith,
-                    y: '+=60', 
+                    y: '+=60',
                     duration: 1500,
                     onStart: () => { this.lilith.play('lilith_walk-front'); }
                 }
             },
             {
-                at: 3000, 
+                at: 3000,
                 tween: {
                     targets: this.lilith,
-                    x: '+=200', 
+                    x: '+=200',
                     duration: 4500,
                     onStart: () => { this.lilith.play('lilith_walk-rside'); },
-                    onComplete: () => {this.lilith.anims.stop(); this.lilith.setFrame(7)}
+                    onComplete: () => { this.lilith.anims.stop(); this.lilith.setFrame(7) }
                 }
             }
         ]).play();
     }
 
-    createLilithAnimations(){
+    createLilithAnimations() {
         this.anims.create({
             key: 'lilith_walk-rside',
             frames: this.anims.generateFrameNames('player', {
