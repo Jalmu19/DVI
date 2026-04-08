@@ -45,11 +45,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.menuOpened = false;
         this.inventoryOpened = false;
         this.actualObj = null;
-        //this.shoots = new Shoots(this.scene.physics.world, this.scene, { classType: Shoot, key: 'shoot', speed: 200 });
-        //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
-        //this.shoots = new Shoots(this.scene.physics.world, this.scene, { classType: FreezingShoot, key: 'shoot', speed: 150 });
-        //this.shoots.createMultiple({key: 'shoot', quantity: 10, active: false, visible: false});
-        //this.actualSpell = this.shoots;
+
         this.mapOfSpells = [];
         this.protected = false;
         if(stats) {
@@ -64,7 +60,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         }
         else {
             this.añadirHechizo(SPELLS.SHOOT.KEY);
-            this.actualSpell = this.mapOfSpells['shoot'];
+            this.añadirHechizo(SPELLS.FREEZE_SHOOT.KEY);
+            this.actualSpell = this.mapOfSpells[SPELLS.SHOOT.KEY];
         }
 
         this.onSpellChange = (data) => { this.changeSpell(data) };
@@ -96,7 +93,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      */
     añadirHechizo(spell, emit = true) {
         let aux;
-        if (spell !== 'shield') aux = new Shoots(this.scene.physics.world, this.scene, { classType: Shoot, key: spell });
+        if (spell !== 'shield') {
+            if(spell === 'shoot')
+                aux = new Shoots(this.scene.physics.world, this.scene, { classType: Shoot, key: spell });
+            else 
+                aux = new Shoots(this.scene.physics.world, this.scene, { classType: FreezingShoot, key: spell });
+        }
         else aux = new Shield(this.scene, 0, 0, this);
         this.mapOfSpells[spell] = aux;
         if (emit) this.scene.game.events.emit('spell-gained', spell);
@@ -109,7 +111,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     changeSpell(spell) {
         if (spell !== this.actualSpell.key) {
             let aux = this.mapOfSpells[spell];
-            if (spell !== 'shield') aux.createMultiple({ key: 'shoot', quantity: 10, active: false, visible: false });
             this.actualSpell = aux;
         }
     }
