@@ -76,7 +76,10 @@ export default class Bosque extends GameScene{
         this.physics.add.overlap(this.player, tejado,null,null,this);    
         this.physics.add.collider(this.player,casas);            
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
-        
+
+        this.music = this.sound.add('townMusic');
+        this.music.play();
+        this.music.setLoop(true);
     }
 
     cambiarScene(){
@@ -85,6 +88,8 @@ export default class Bosque extends GameScene{
             x : 80,
             y : 210,
             stats : this.player.getStats()
-        });           
+        });   
+        
+        this.music.stop();
     }
 }

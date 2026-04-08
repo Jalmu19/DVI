@@ -31,7 +31,9 @@ import chest from '../../assets/sprites/cofre_pequenyo.png'
 import chestjson from '../../assets/sprites/cofre_pequenyo.json'
 import berry from '../../assets/sprites/baya_curativa.png'
 import kirbo from '../../assets/sprites/kirbo.png'
-import musicaFondo from '../../assets/sounds/musicaFondo.mp3'
+import introMusic from '../../assets/sounds/introStory.wav'
+import townMusic from '../../assets/sounds/town.wav'
+import forestMusic from '../../assets/sounds/forest.wav'
 import musicaGameOver from '../../assets/sounds/game-over.mp3'
 import musicaGetItem from '../../assets/sounds/item-obtained.mp3'
 import musicaEnemiesPunch from '../../assets/sounds/enemies-punch.mp3'
@@ -77,7 +79,9 @@ export default class Boot extends Phaser.Scene {
     /*this.load.image('platform', platform);
     this.load.image('base', base);
     this.load.image('star', star);*/
-    this.load.audio('musicaFondo', musicaFondo);
+    this.load.audio('introMusic', introMusic);
+    this.load.audio('townMusic', townMusic);
+    this.load.audio('forestMusic', forestMusic);
     this.load.audio('musicaGameOver', musicaGameOver);
     this.load.audio('musicaGetItem', musicaGetItem);
     this.load.audio('enemiesPunch', musicaEnemiesPunch);

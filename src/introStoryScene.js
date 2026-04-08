@@ -116,7 +116,12 @@ export default class IntroStoryScene extends Phaser.Scene {
 
         this.skipKey.once('down', () => {
             this.skipIntro();
+            this.music.stop();
         });
+
+        this.music = this.sound.add('introMusic');
+        this.music.play();
+        this.music.setLoop(true);
     }
 
     loadHomeMap() {
@@ -207,9 +212,7 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.cameras.main.once('camerafadeoutcomplete', () => {
             this.scene.start('bosque', { x: 251, y: 381 });
             this.scene.launch('ui');
-            const music = this.sound.add('musicaFondo');
-            music.play();
-            music.setLoop(true);
+           this.music.stop();
         });
     }
 
@@ -270,9 +273,7 @@ export default class IntroStoryScene extends Phaser.Scene {
                 this.cameras.main.once('camerafadeoutcomplete', () => {
                     this.scene.start('bosque', { x: 251, y: 381, stats: null });
                     this.scene.launch('ui');
-                    const music = this.sound.add('musicaFondo');
-                    music.play();
-                    music.setLoop(true);
+                    this.music.stop();
                 });
             }
         }

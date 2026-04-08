@@ -159,6 +159,10 @@ export default class Entrada_mazmorra extends GameScene{
 
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
+        this.music = this.sound.add('forestMusic');
+        this.music.play();
+        this.music.setLoop(true);
+
     }
 
     cambiarScene(jugador, salidas){
@@ -171,6 +175,8 @@ export default class Entrada_mazmorra extends GameScene{
                 stats : this.player.getStats()
                 
             });
+
+            this.music.stop();
         }
         else{
             this.scene.start('zonaBosque', {
@@ -179,6 +185,7 @@ export default class Entrada_mazmorra extends GameScene{
                 stats : this.player.getStats(),
                 backgroundScene : this
             });
+            this.music.stop();
         }
     } 
 
