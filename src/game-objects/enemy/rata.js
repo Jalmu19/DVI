@@ -6,4 +6,6 @@ export default class Rata extends BaseEnemy {
         super(scene, x, y, key);
         this.body.setSize(12,12).setOffset(10, 10);
     }
+
+    movement() {}
 }
