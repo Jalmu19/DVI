@@ -15,6 +15,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.dmgGiven = 0.5; 
         this.health = ENEMY.BASE_HEALTH;
 
+        this.offset = 1.5707963267948966;
         this.freezed = false;
         this.canBeFreezed = false;
 
@@ -128,7 +129,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
                 const distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
                 if (distance < this.visionRange){
                     this.isChasing = true;
-                    this.rotation = this.scene.physics.moveToObject(this, this.target, this.speed) + 1.5707963267948966;
+                    this.rotation = this.scene.physics.moveToObject(this, this.target, this.speed) + this.offset;
                 }
                 else {
                     this.isChasing = false;
