@@ -1,25 +1,47 @@
 import Shoot from "./shoot";
 
-export default class Shoots extends Phaser.Physics.Arcade.Group{
-    constructor(world, scene, config){
+export default class Shoots extends Phaser.Physics.Arcade.Group {
+    constructor(world, scene, config) {
         scene.currentShootKey = config.key;
         scene.currentShootSpeed = config.speed;
 
         super(world, scene,
-            {...config, classType: config.classType, createCallback: config.classType.prototype.onCreate}
+            { ...config, classType: config.classType, createCallback: config.classType.prototype.onCreate }
         );
         this.key = config.key;
 
-        this.createMultiple({key: 'shoot', frameQuantity: 1, active: false, visible: false});
+        this.maxAmmo = 10;
+        this.ammo = this.maxAmmo;
+        this.isReloading = false;
+        this.cooldownTime = 2000;
+
+        this.createMultiple({ key: this.key, frameQuantity: this.maxAmmo, active: false, visible: false });
     }
 
-    fire(x, y, rotation){
-        const shoot = this.getFirstDead(false);
+    fire(x, y, rotation) {
+        if (!this.isReloading && this.ammo > 0) {
+            const shoot = this.getFirstDead(false);
 
-        if(shoot) shoot.fire(x, y, rotation);
+            if (shoot) {
+                shoot.fire(x, y, rotation);
+                this.ammo--;
+
+                if (this.ammo <= 0) {
+                    this.startReload();
+                }
+            }
+        }
     }
 
-    onCreate(shoot){
+    onCreate(shoot) {
         shoot.onCreate();
+    }
+
+    startReload() {
+        this.isReloading = true;
+        this.scene.time.delayedCall(this.cooldownTime, () => {
+            this.ammo = this.maxAmmo;
+            this.isReloading = false;
+        });
     }
 }
