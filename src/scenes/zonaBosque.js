@@ -17,6 +17,7 @@ import puerta_mazmorra from '../../assets/sprites/dungeon.png'
 import GameScene from "./game-scene.js";
 import Item from "../game-objects/item.js";
 import Inventory from '../inventory.js';
+import Oruga from "../game-objects/enemy/oruga.js";
 
 export default class Zona_bosque extends GameScene {
 
@@ -93,7 +94,7 @@ export default class Zona_bosque extends GameScene {
         this.enemigos = this.physics.add.group();
         this.capaEnemigos = map.getObjectLayer('Enemigos');
         this.capaEnemigos.objects.forEach(obj => {
-            var a = new Spike(this, obj.x, obj.y,'spike');
+            var a = new Oruga(this, obj.x, obj.y,'oruga');
             this.enemigos.add(a);
         })
 

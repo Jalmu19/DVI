@@ -5,6 +5,7 @@ import Ladron from '../game-objects/npcs/ladron.js'
 import Spike from '../game-objects/enemy/spike.js'
 import Item from "../game-objects/item.js";
 import GameScene from "../scenes/game-scene.js";
+import Oruga from "../game-objects/enemy/oruga.js";
 
 
 export default class DialogoLadron extends GameScene {
@@ -113,7 +114,7 @@ export default class DialogoLadron extends GameScene {
         this.enemigos = this.physics.add.group();
         this.capaEnemigos = map.getObjectLayer('Enemigos');
         this.capaEnemigos.objects.forEach(obj => {
-            var a = new Spike(this, obj.x, obj.y,'spike');
+            var a = new Oruga(this, obj.x, obj.y,'oruga');
             this.enemigos.add(a);
         })
 
