@@ -25,8 +25,7 @@ export default class DialogoLadron extends GameScene {
     create(){
         //Parando escenas anteriores
         this.scene.pause(this.background)
-        this.scene.stop('ui')
-
+        
         //Nueva escena con diálogos
         console.log("Cargando escena")
         this.crearEscena();
@@ -45,7 +44,7 @@ export default class DialogoLadron extends GameScene {
     }
     next(){
         if(this.numLines >= this.STORY.length){           
-            this.scene.launch('ui')
+            
             this.scene.start('zonaBosque', {
                 x : this.player.x, 
                 y : this.player.y,

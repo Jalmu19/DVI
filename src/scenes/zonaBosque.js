@@ -115,7 +115,7 @@ export default class Zona_bosque extends GameScene {
         this.colision = this.physics.add.collider(this.player, this.ladron, this.mostrarDialogo, null, this);
         
         if(this.hasDialog){
-            this.colision.destroy()
+            this.physics.world.removeCollider(this.colision)
             this.ladron.setVisible(false)
         }
     
@@ -138,8 +138,7 @@ export default class Zona_bosque extends GameScene {
 
     mostrarDialogo(){
         console.log("MOSTRAR DIALOGO")
-        this.scene.stop('ui');
-
+        
         this.scene.start('dialogoLadron', {backgroundScene : this, 
             x : this.player.x,
             y : this.player.y,
