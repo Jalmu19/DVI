@@ -48,8 +48,8 @@ import greenFurniture from '../../assets/sprites/TopDownHouse_FurnitureState1.pn
 import brownFurniture from '../../assets/sprites/TopDownHouse_FurnitureState2.png'
 import smallItems from '../../assets/sprites/TopDownHouse_SmallItems.png'
 import lilith from '../../assets/sprites/lilith.png'
-import abuela from '../../assets/sprites/abuela.png'
-import abuelo from '../../assets/sprites/abuelo.png'
+import abuela from '../../assets/sprites/abuela_detras.png'
+import abuelo from '../../assets/sprites/abuelo_detras.png'
 import cura from '../../assets/sprites/cura.png'
 
 

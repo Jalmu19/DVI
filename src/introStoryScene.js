@@ -99,6 +99,7 @@ export default class IntroStoryScene extends Phaser.Scene {
 
         this.cura = this.physics.add.sprite(159, 155, 'cura');
         this.lilith = this.physics.add.sprite(100, 210, 'lilith');
+        this.lilith.play('idle-back');
         this.abuela = this.physics.add.sprite(70, 210, 'abuela');
         this.abuelo = this.physics.add.sprite(50, 210, 'abuelo');
         this.createLilithAnimations();
