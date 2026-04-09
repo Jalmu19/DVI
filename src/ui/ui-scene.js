@@ -30,6 +30,15 @@ export default class UIScene extends Phaser.Scene {
             if (this.scale.isFullscreen) this.scale.stopFullscreen();
             else this.scale.startFullscreen();
         });
+
+        this.events.once('shutdown', () => {
+            this.game.events.off('health-changed');
+            this.game.events.off('spell-gained');
+            this.game.events.off('open-menu');
+            this.game.events.off('close-menu');
+            this.game.events.off('inventoryMenu');
+            this.game.events.off('ammo-changed');
+        });
     }
 
     /**
@@ -144,7 +153,7 @@ export default class UIScene extends Phaser.Scene {
      * @param {number} actualHealth La vida real sobre heartNum*2 
      */
     updateProyectiles(maxAmmo, actualAmmo) {
-        //if (maxAmmo > this.ammo.length) this.drawProyectiles(maxAmmo);
+        if (maxAmmo > this.ammo.length) this.drawProyectiles(maxAmmo);
 
         let children = this.ammo.getChildren();
         for (let i = 0; i < children.length; ++i) {

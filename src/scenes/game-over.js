@@ -13,6 +13,10 @@ export default class GameOver extends Phaser.Scene {
     super({ key: 'game-over' });
   }
 
+  init(datos) {
+    this.datos = [datos.stats];
+  }
+
   /**
    * Creación de la escena. Tan solo contiene el texto que indica que el juego se ha acabado
    */
@@ -37,8 +41,11 @@ export default class GameOver extends Phaser.Scene {
     // lleguemos a ver el mensaje porque veníamos con una tecla pulsada del juego (al 
     // ir moviendo al jugador). Se puede mejorar añadiendo un temporizador que 
     // añada este listener pasado un segundo
+    this.datos[0].health.actualHealth = this.datos[0].health.maxHearts * 2; // TODO generalizar esto
     this.input.keyboard.on('keydown', function (_event) { 
-      this.scene.start('boot');
+      //this.scene.wake('ui');
+      this.scene.launch('ui');
+      this.scene.start('bosque', { x: 251, y: 381, stats: null });
     }, this);
   }
 
