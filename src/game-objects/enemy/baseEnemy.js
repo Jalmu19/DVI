@@ -14,6 +14,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.speed = ENEMY.BASE_SPEED;
         this.dmgGiven = 0.5; 
         this.health = ENEMY.BASE_HEALTH;
+        this.dmgRecieved = 1;
 
         this.offset = 1.5707963267948966;
         this.freezed = false;
@@ -51,6 +52,9 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
 
         this.on('destroy', () => {
             this.scene.events.off('to-set-up-colliders', this.onNewSpell);
+
+            if (this.movEvent) this.movEvent.destroy();
+            if (this.weakSpot) this.weakSpot.destroy();
         });
     }
 
@@ -114,9 +118,18 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
     }
 
     setupCollisions(spellRecieved) {
-        this.spellCollider = this.scene.physics.add.overlap(this, spellRecieved, (self,spell) => {
+        const target = this.getCollisionTarget();
+
+        // Si el target no existe o no tiene cuerpo físico todavía, abortamos
+        if (!target || !spellRecieved) return;
+
+        this.spellCollider = this.scene.physics.add.overlap(this.getCollisionTarget(), spellRecieved, (self,spell) => {
             this.handleSpellCollision(spell);
         });
+    }
+
+    getCollisionTarget() {
+        return this; 
     }
 
     handleSpellCollision(spell) {
@@ -130,7 +143,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
             });
         } 
         else {
-            this.takeDamage(spell);
+            this.takeDamage(spell,this.dmgRecieved);
             spell.setActive(false).setVisible(false);
             spell.body.setEnable(false);
         }
