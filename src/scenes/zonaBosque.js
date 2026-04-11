@@ -26,17 +26,7 @@ export default class Zona_bosque extends GameScene {
     }
     init(datos){
         console.log(datos.stats)
-        this.datos = [datos.x, datos.y, datos.stats];
-
-        if(datos.backgroundScene === undefined){ // hacemos al ladron
-            console.log("No tiene backgroundScene")
-            this.hasDialog = false;
-        }       
-        else{
-            console.log("Tiene backgroundScene")
-            this.hasDialog = true
-        }
-        
+        this.datos = [datos.x, datos.y, datos.stats];  
            
     }
 
@@ -98,26 +88,39 @@ export default class Zona_bosque extends GameScene {
             this.enemigos.add(a);
         })
 
-        //Ladron
-        this.ladron = this.physics.add.group({immovable: true, allowGravity: false });
-        this.capaLadron = map.getObjectLayer('Ladron');
-        this.capaLadron.objects.forEach(obj => {
-            var a ;
-            if(obj.name === "Kirbo"){
-                a = new Ladron(this, obj.x, obj.y);
-            }               
-            else{
-                a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
-            }               
-            this.ladron.add(a);
-        })
+        //Ladron        
+        if (!this.registry.get('dialogLadron')){// si no hemos interactuado con el ladron antes
+            this.ladron = this.physics.add.group({immovable: true, allowGravity: false });
+            this.capaLadron = map.getObjectLayer('Ladron');
+            this.capaLadron.objects.forEach(obj => {
+                var a ;
+                if(obj.name === "Kirbo"){
+                    a = new Ladron(this, obj.x, obj.y);
+                }               
+                else{
+                    a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
+                }               
+                this.ladron.add(a);
+            })
 
-        this.colision = this.physics.add.collider(this.player, this.ladron, this.mostrarDialogo, null, this);
-        
-        if(this.hasDialog){
-            this.physics.world.removeCollider(this.colision)
-            this.ladron.setVisible(false)
+            this.colision = this.physics.add.collider(this.player, this.ladron, this.mostrarDialogo, null, this);
         }
+
+        //Capa de bloqueo   
+        if(this.registry.get('passedDungeons') <= 0){
+            this.capaMuralla = map.getObjectLayer('Bloqueo')
+            this.capaMuralla.objects.forEach(obj =>{
+                var a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
+                this.muro = a
+                this.muro.setImmovable(true)
+            })
+
+            this.physics.add.collider(this.player, this.muro);
+        }     
+        
+        
+
+        
     
         this.items = this.physics.add.staticGroup()
         this.capaBayas = map.getObjectLayer('Bayas')
@@ -135,10 +138,10 @@ export default class Zona_bosque extends GameScene {
         this.manageItems(this.player, this.items)
         
     }
-
+   
     mostrarDialogo(){
-        console.log("MOSTRAR DIALOGO")
-        
+        this.registry.set('dialogLadron', true);
+
         this.scene.start('dialogoLadron', {backgroundScene : this, 
             x : this.player.x,
             y : this.player.y,

@@ -107,17 +107,6 @@
                  "width":80,
                  "x":352,
                  "y":192
-                }, 
-                {
-                 "height":64,
-                 "id":115,
-                 "name":"murallaInvisible2",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":432,
-                 "y":128
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -199,7 +188,7 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":240,
+                 "x":224,
                  "y":64
                 }, 
                 {
@@ -225,42 +214,6 @@
                  "width":0,
                  "x":368,
                  "y":80
-                }, 
-                {
-                 "height":0,
-                 "id":132,
-                 "name":"",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":448,
-                 "y":144
-                }, 
-                {
-                 "height":0,
-                 "id":133,
-                 "name":"",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":448,
-                 "y":160
-                }, 
-                {
-                 "height":0,
-                 "id":134,
-                 "name":"",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":448,
-                 "y":176
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -376,8 +329,30 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":13,
+         "name":"Bloqueo",
+         "objects":[
+                {
+                 "height":64,
+                 "id":115,
+                 "name":"murallaInvisible2",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":432,
+                 "y":128
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":13,
+ "nextlayerid":14,
  "nextobjectid":135,
  "orientation":"orthogonal",
  "renderorder":"right-down",

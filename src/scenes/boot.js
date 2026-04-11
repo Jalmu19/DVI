@@ -140,6 +140,9 @@ export default class Boot extends Phaser.Scene {
    */
   create() {   
     this.registry.set('openedChests', []);
+    this.registry.set('dialogLadron', false);
+    this.registry.set('passedDungeons', 0);//contador de mazmorras pasadas
+
     this.anims.createFromAseprite('player');
     this.anims.createFromAseprite('chest');
     //this.scene.start('bosque', {x: 251, y: 381, stats: null});

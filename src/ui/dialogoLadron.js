@@ -48,8 +48,7 @@ export default class DialogoLadron extends GameScene {
             this.scene.start('zonaBosque', {
                 x : this.player.x, 
                 y : this.player.y,
-                stats : this.player.getStats(),
-                backgroundScene : this
+                stats : this.player.getStats()
             })
         }
         else{
