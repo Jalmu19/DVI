@@ -11,12 +11,14 @@ import Oruga from "../game-objects/enemy/oruga.js";
 export default class DialogoLadron extends GameScene {
 
     constructor() {
-    super({ key: 'dialogoLadron' });
-    this.STORY = ["Jijijijijijijijiji",
-        "Has perdido: colgante de metal",
-        "¿No eres una hechicera de verdad? Demuestramelo completando la mazmorra que hay siguiendo el camino de a mi espalda"]
-    
+        super({ key: 'dialogoLadron' });
+        this.STORY = ["Jijijijijijijijiji",
+            "...",
+            "Has perdido: colgante de metal",
+            "¿No eres una hechicera de verdad? Demuestramelo completando la mazmorra que hay siguiendo el camino de a mi espalda"]
+        
     }
+
     init(data){
         this.background = data.backgroundScene;
         this.datos = [data.x, data.y, data.stats]
@@ -29,14 +31,16 @@ export default class DialogoLadron extends GameScene {
         //Nueva escena con diálogos
         console.log("Cargando escena")
         this.crearEscena();
-
+        
         //Crear el rectangulo con texto
         console.log("Cargando rectángulo y texto")
         this.crearGrafico();
-        
+
+
+        //TODO: Hacer animacion de las letras, como en introStoryScene
         this.numLines = 1;//lineas leidas hasta ahora
         this.input.on('pointerdown', ()=>{
-            this.dialogText.setText("...");
+            this.dialogText.setText("");
             this.next()
         })
 
@@ -44,7 +48,7 @@ export default class DialogoLadron extends GameScene {
     }
     next(){
         if(this.numLines >= this.STORY.length){           
-            
+            this.registry.set('dialogLadron', true);
             this.scene.start('zonaBosque', {
                 x : this.player.x, 
                 y : this.player.y,
@@ -52,7 +56,7 @@ export default class DialogoLadron extends GameScene {
             })
         }
         else{
-            this.time.delayedCall(1000, () => {//delay de cuanto tarda en salir el texto
+            this.time.delayedCall(100, () => {//delay de cuanto tarda en salir el texto
                 this.dialogText.setText(this.STORY[this.numLines])
                 this.numLines++;
             });
@@ -76,7 +80,7 @@ export default class DialogoLadron extends GameScene {
     }
     crearEscena(){
         var map = this.make.tilemap({ key: 'zBosque' });
-        
+
         var img1 = map.addTilesetImage('Villa1', 'plantilla');
         var img2 = map.addTilesetImage('Arbol', 'arbol');
         var img3 = map.addTilesetImage('flor1', 'flor');
@@ -94,7 +98,8 @@ export default class DialogoLadron extends GameScene {
 
         
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
-                
+        
+        
         //Añadiendo colision a las fisicas
         this.physics.add.collider(this.player, arboles);
         //limites de camara
@@ -116,21 +121,39 @@ export default class DialogoLadron extends GameScene {
             this.enemigos.add(a);
         })
 
-        //Ladron
-        this.ladron = this.physics.add.group({immovable: true, allowGravity: false });
-        this.capaLadron = map.getObjectLayer('Ladron');
-        this.capaLadron.objects.forEach(obj => {
-            var a ;
-            if(obj.name === "Kirbo"){
-                a = new Ladron(this, obj.x, obj.y);
-            }               
-            else{
-                a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
-            }               
-            this.ladron.add(a);
-        })
+        //Ladron        
+        if (!this.registry.get('dialogLadron')){// si no hemos interactuado con el ladron antes
+            this.ladron = this.physics.add.group({immovable: true, allowGravity: false });
+            this.capaLadron = map.getObjectLayer('Ladron');
+            this.capaLadron.objects.forEach(obj => {
+                var a ;
+                if(obj.name === "Kirbo"){
+                    a = new Ladron(this, obj.x, obj.y);
+                }               
+                else{
+                    a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
+                }               
+                this.ladron.add(a);
+            })
 
-        this.colision = this.physics.add.collider(this.player, this.ladron, this.mostrarDialogo, null, this);
+            this.colision = this.physics.add.collider(this.player, this.ladron, this.mostrarDialogo, null, this);
+        }
+
+        //Capa de bloqueo   
+        if(this.registry.get('passedDungeons') <= 0){
+            this.capaMuralla = map.getObjectLayer('Bloqueo')
+            this.capaMuralla.objects.forEach(obj =>{
+                var a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
+                this.muro = a
+                this.muro.setImmovable(true)
+            })
+
+            this.physics.add.collider(this.player, this.muro);
+        }     
+        
+        
+
+        
     
         this.items = this.physics.add.staticGroup()
         this.capaBayas = map.getObjectLayer('Bayas')
@@ -139,6 +162,14 @@ export default class DialogoLadron extends GameScene {
             this.items.add(a)
 
         })
+        /*const berry1 = new Item(this, 100, 100, 'berry', 0, { id: 'berry', name: 'berry1', quantity: 1});
+        const berry2 = new Item(this, 150, 100, 'berry', 0, { id: 'berry2', name: 'berry2',  quantity: 3});
+        const berry3 = new Item(this, 200, 100, 'berry', 0, { id: 'berry', name: 'berry3', quantity: 1});
+        this.items.add(berry1)
+        this.items.add(berry2)
+        this.items.add(berry3) */
+        this.manageItems(this.player, this.items)
+        
 
     }
     

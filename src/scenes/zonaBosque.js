@@ -2,11 +2,12 @@ import Phaser from "phaser";
 import Player from '../game-objects/player/player.js'
 import Salidas from '../game-objects/enemy/salidas.js'
 import Ladron from '../game-objects/npcs/ladron.js'
-import Spike from '../game-objects/enemy/spike.js'
-
-import laberinto from '../../assets/mapas/laberinto.json'
+import GameScene from "./game-scene.js";
+import Item from "../game-objects/item.js";
 
 import entrada_mazmorra from '../../assets/mapas/entrada-mazmorra-bosque.json'
+import zonaLago from '../../assets/mapas/zona_lago.json'
+
 import cesped from '../../assets/sprites/cesped.png'
 import plataforma_cesped from '../../assets/sprites/plataforma_cesped.png'
 import puente from '../../assets/sprites/Bridges.png'
@@ -16,8 +17,11 @@ import piedras_tierra from '../../assets/sprites/piedras_tierra.png'
 import escaleras from '../../assets/sprites/escaleras.png'
 import pared_mazmorra from '../../assets/sprites/pared_mazmorra.png'
 import puerta_mazmorra from '../../assets/sprites/dungeon.png'
-import GameScene from "./game-scene.js";
-import Item from "../game-objects/item.js";
+import islotes from '../../assets/sprites/islotesLago.png'
+import agua from '../../assets/sprites/agua.png'
+import detalleAgua from '../../assets/sprites/detalleAgua.png'
+
+
 import Inventory from '../inventory.js';
 import Oruga from "../game-objects/enemy/oruga.js";
 
@@ -33,6 +37,29 @@ export default class Zona_bosque extends GameScene {
     }
 
     preload() {
+        //Carga de elementos de entrada_mazmorra
+        this.cargaEntrada_mazmorra()
+
+        //Carga de elementos de zonaLago, si hemos pasado la dungeon
+        this.cargaZonaLago()
+
+
+
+    }
+    
+
+    cargaZonaLago(){
+         this.load.tilemapTiledJSON('zonaLago', zonaLago)
+         //Villa1 cargado de antes
+         //arbol y flores tambien
+         this.load.image('agua', agua)
+         this.load.image('islotesAgua', islotes);
+         this.load.image('detalleAgua', detalleAgua);
+        // this.load.image()
+
+    }
+
+    cargaEntrada_mazmorra(){
         this.load.tilemapTiledJSON('entrada-mazmorra-bosque', entrada_mazmorra)
         this.load.image('cesped', cesped);
         this.load.image('plataforma_cesped', plataforma_cesped);
@@ -44,9 +71,7 @@ export default class Zona_bosque extends GameScene {
         this.load.image('pared_mazmorra', pared_mazmorra);
         this.load.image('puerta_mazmorra', puerta_mazmorra);
 
-        this.load.tilemapTiledJSON('laberinto', laberinto);
     }
-
 
 
     create() {
@@ -110,7 +135,7 @@ export default class Zona_bosque extends GameScene {
         }
 
         //Capa de bloqueo   
-        if(this.registry.get('passedDungeons') <= 0){
+        /*if(this.registry.get('passedDungeons') <= 0){
             this.capaMuralla = map.getObjectLayer('Bloqueo')
             this.capaMuralla.objects.forEach(obj =>{
                 var a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
@@ -119,10 +144,7 @@ export default class Zona_bosque extends GameScene {
             })
 
             this.physics.add.collider(this.player, this.muro);
-        } 
-        
-        
-
+        }  */   
         
     
         this.items = this.physics.add.staticGroup()
@@ -143,8 +165,7 @@ export default class Zona_bosque extends GameScene {
     }
    
     mostrarDialogo(){
-        this.registry.set('dialogLadron', true);
-
+        
         this.scene.start('dialogoLadron', {backgroundScene : this, 
             x : this.player.x,
             y : this.player.y,
@@ -162,7 +183,11 @@ export default class Zona_bosque extends GameScene {
             });
         }
         else if(salidas.tag === 'salidaLago'){
-            //this.scene.start("zonaLago")
+            //cambiar posiciones
+            this.scene.start('zonaLago', { 
+                x : 37,
+                y : 233,
+                stats : this.player.getStats()})
         }
         else{
             this.scene.switch('bosque', {
