@@ -4,6 +4,8 @@ import Salidas from '../game-objects/enemy/salidas.js'
 import Ladron from '../game-objects/npcs/ladron.js'
 import Spike from '../game-objects/enemy/spike.js'
 
+import laberinto from '../../assets/mapas/laberinto.json'
+
 import entrada_mazmorra from '../../assets/mapas/entrada-mazmorra-bosque.json'
 import cesped from '../../assets/sprites/cesped.png'
 import plataforma_cesped from '../../assets/sprites/plataforma_cesped.png'
@@ -51,6 +53,14 @@ export default class Zona_bosque extends GameScene {
         this.load.image('escaleras', escaleras);
         this.load.image('pared_mazmorra', pared_mazmorra);
         this.load.image('puerta_mazmorra', puerta_mazmorra);
+
+
+        //this.load.image('cesped', cesped);
+        //this.load.image('tierra', tierra);
+        //this.load.image('arbol', arbol);
+
+        this.load.tilemapTiledJSON('laberinto', laberinto);
+
 
     }
 
@@ -157,6 +167,11 @@ export default class Zona_bosque extends GameScene {
         }
         else if(salidas.tag === 'salidaLago'){
             //this.scene.start("zonaLago")
+            this.scene.start('laberinto', {
+                x : 143,
+                y : 30,
+                stats : this.player.getStats()
+            });
         }
         else{
             this.scene.switch('bosque', {

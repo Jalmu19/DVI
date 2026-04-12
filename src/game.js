@@ -7,6 +7,8 @@ import Mazmorra from './scenes/mazmorra.js'
 import HabitacionCofre from './scenes/habitacion_cofre.js'
 import HabitacionBoss from './scenes/habitacion_boss.js';
 import zBosque from './scenes/zonaBosque.js';
+import Laberinto from './scenes/laberinto.js';
+import LaberintoFinal from './scenes/laberinto_final.js';
 import GameOver from './scenes/game-over.js';
 import MainMenu from './mainMenu.js';
 import UIScene from './ui/ui-scene.js'
@@ -27,7 +29,7 @@ let config = {
         autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
     pixelArt: true,
-    scene: [Boot, IntroStoryScene, /*MainMenu*/,dialogoLadron, Bosque,zBosque, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss, GameOver, UIScene, InventoryScene ],
+    scene: [Boot, IntroStoryScene, /*MainMenu*/,dialogoLadron, Bosque,zBosque, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, GameOver, UIScene, InventoryScene ],
     physics: {
         default: 'arcade',
         arcade: {
