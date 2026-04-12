@@ -19,31 +19,30 @@ export default class FirstDungeonBoss extends BaseEnemy {
         this.weakSpot = scene.add.zone(x, y, 13, 15);
         scene.physics.add.existing(this.weakSpot);
 
+        this.dmgRecieved = 5;
+
         //NO PERSIGUE AL JUGADOR
         this.isChasing = false;
         this.visionRange = 0;
 
         this.setBounce(1);
-        this.setupBossCollisions();
-    }
 
-    setupCollisions() { }
-
-    setupBossCollisions() {
-        this.scene.physics.add.overlap(this.weakSpot, this.scene.player.getHechizo(), (self, spell) => {
-            this.handleBossCollision(spell, true);
-        });
-    }
-
-    handleBossCollision(spell, weak) {
-        if (spell.active) {
-            this.takeDamage(spell, 5); // Llama al takeDamage de BaseEnemy
-            spell.setActive(false).setVisible(false);
-            spell.body.setEnable(false);
+        if (this.scene.player && this.scene.player.mapOfSpells) {
+            Object.values(this.scene.player.mapOfSpells).forEach(group => {
+                if (group instanceof Phaser.Physics.Arcade.Group) {
+                    this.setupCollisions(group);
+                }
+            });
         }
     }
 
+    getCollisionTarget() {
+        return this.weakSpot ? this.weakSpot : null;
+    }
+
     movement() {
+        if (!this.active || !this.scene) return;
+
         const r = Phaser.Math.Between(0, 10);
 
         if (r < 6) {

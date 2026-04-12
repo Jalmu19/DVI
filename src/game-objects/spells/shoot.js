@@ -6,7 +6,7 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
         const key = scene.currentShootKey;
         super(scene, x, y, key);
         this.speed = SPELLS.SHOOT.SPEED; 
-        this.setDisplaySize(16, 16);
+       
         
         this.freeze = false;
     }

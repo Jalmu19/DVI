@@ -14,8 +14,10 @@ import pozo from '../../assets/sprites/pozo.png'
 import player from '../../assets/sprites/player.png'
 import playerjson from '../../assets/sprites/player.json'
 import health from '../../assets/sprites/health.png'
+import proyectiles from '../../assets/sprites/proyectiles.png'
 import palo from '../../assets/sprites/palo.png'
 import shoot from '../../assets/sprites/basic-spell.png'
+import freezing_shoot from '../../assets/sprites/freeze-spell.png'
 import grimorioBasico from '../../assets/sprites/grimorio-basico.png'
 import grimorioShoot from '../../assets/sprites/grimorio-shoot.png'
 import grimorioFrezShoot from '../../assets/sprites/grimorio-freezing_shoot.png'
@@ -31,7 +33,9 @@ import chest from '../../assets/sprites/cofre_pequenyo.png'
 import chestjson from '../../assets/sprites/cofre_pequenyo.json'
 import berry from '../../assets/sprites/baya_curativa.png'
 import kirbo from '../../assets/sprites/kirbo.png'
-import musicaFondo from '../../assets/sounds/musicaFondo.mp3'
+import introMusic from '../../assets/sounds/introStory.wav'
+import townMusic from '../../assets/sounds/town.wav'
+import forestMusic from '../../assets/sounds/forest.wav'
 import musicaGameOver from '../../assets/sounds/game-over.mp3'
 import musicaGetItem from '../../assets/sounds/item-obtained.mp3'
 import musicaEnemiesPunch from '../../assets/sounds/enemies-punch.mp3'
@@ -48,8 +52,8 @@ import greenFurniture from '../../assets/sprites/TopDownHouse_FurnitureState1.pn
 import brownFurniture from '../../assets/sprites/TopDownHouse_FurnitureState2.png'
 import smallItems from '../../assets/sprites/TopDownHouse_SmallItems.png'
 import lilith from '../../assets/sprites/lilith.png'
-import abuela from '../../assets/sprites/abuela.png'
-import abuelo from '../../assets/sprites/abuelo.png'
+import abuela from '../../assets/sprites/abuela_detras.png'
+import abuelo from '../../assets/sprites/abuelo_detras.png'
 import cura from '../../assets/sprites/cura.png'
 
 
@@ -77,7 +81,9 @@ export default class Boot extends Phaser.Scene {
     /*this.load.image('platform', platform);
     this.load.image('base', base);
     this.load.image('star', star);*/
-    this.load.audio('musicaFondo', musicaFondo);
+    this.load.audio('introMusic', introMusic);
+    this.load.audio('townMusic', townMusic);
+    this.load.audio('forestMusic', forestMusic);
     this.load.audio('musicaGameOver', musicaGameOver);
     this.load.audio('musicaGetItem', musicaGetItem);
     this.load.audio('enemiesPunch', musicaEnemiesPunch);
@@ -86,9 +92,11 @@ export default class Boot extends Phaser.Scene {
 
     this.load.aseprite('player', player, playerjson);
     this.load.spritesheet('health', health, { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('proyectiles', proyectiles, { frameWidth: 32, frameHeight: 32 });
     this.load.aseprite('chest', chest, chestjson);
     this.load.image('palo', palo);
     this.load.image('shoot', shoot);
+    this.load.image('freezing_shoot', freezing_shoot);
     this.load.image('grimorio-basico', grimorioBasico);
     this.load.image('grimorio-shoot', grimorioShoot);
     this.load.image('grimorio-freezing_shoot', grimorioFrezShoot);
@@ -132,6 +140,9 @@ export default class Boot extends Phaser.Scene {
    */
   create() {   
     this.registry.set('openedChests', []);
+    this.registry.set('dialogLadron', false);
+    this.registry.set('passedDungeons', 0);//contador de mazmorras pasadas
+
     this.anims.createFromAseprite('player');
     this.anims.createFromAseprite('chest');
     //this.scene.start('bosque', {x: 251, y: 381, stats: null});

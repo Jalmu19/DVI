@@ -12,20 +12,27 @@ export default class Staff extends Phaser.GameObjects.Sprite {
         this.setOrigin(0.21875,0.75)
         this.player = player;
         this.scene.input.mouse.disableContextMenu();
-        this.scene.input.on('pointerdown', pointer => {
+        this.onPointerDown = pointer => {
             if(pointer.isDown){
                 if(pointer.rightButtonDown()) {
                     this.setActive(true).setVisible(true);
                     if(pointer.leftButtonDown()) this.player.lanzarHechizo(this.x,this.y, this.rotation - Phaser.Math.DegToRad(45));
                 }
             }  
-        })
-        this.scene.input.on('pointerup', pointer => {
+        }
+        this.onPointerUp = pointer => {
             if(pointer.rightButtonReleased()) {
                 this.setActive(false).setVisible(false);
                 console.log("SUELTA");
             }
-        })
+        }
+        this.scene.input.on('pointerup', this.onPointerUp)
+        this.scene.input.on('pointerdown', this.onPointerDown);
+
+        this.once('destroy', () => {
+            this.scene.input.off('pointerdown', this.onPointerDown);
+            this.scene.input.off('pointerup', this.onPointerUp);
+        });
     }
 
     preUpdate(t,dt) {
@@ -33,6 +40,7 @@ export default class Staff extends Phaser.GameObjects.Sprite {
         this.x = this.player.x;
         this.y = this.player.y + 5;
         const pointer = this.scene.input.activePointer;
-        this.rotation = Phaser.Math.Angle.Between(this.x, this.y, pointer.worldX, pointer.worldY) + Phaser.Math.DegToRad(45);
+        const worldPoint = this.scene.cameras.main.getWorldPoint(pointer.x, pointer.y);
+        this.rotation = Phaser.Math.Angle.Between(this.x, this.y, worldPoint.x, worldPoint.y) + Phaser.Math.DegToRad(45);
     }
 }

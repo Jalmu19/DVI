@@ -14,9 +14,19 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.speed = ENEMY.BASE_SPEED;
         this.dmgGiven = 0.5; 
         this.health = ENEMY.BASE_HEALTH;
+        this.dmgRecieved = 1;
 
+        this.offset = 1.5707963267948966;
         this.freezed = false;
         this.canBeFreezed = false;
+
+        this.onNewSpell = (newGroup) => {
+            if (newGroup instanceof Phaser.Physics.Arcade.Group) {
+                this.setupCollisions(newGroup);
+            }
+        };
+
+        this.scene.events.on('to-set-up-colliders', this.onNewSpell);
 
         //PERSIGUE AL JUGADOR
         this.isChasing = true;
@@ -31,7 +41,21 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
             loop: false,                            //se mueven todo el rato
         })
 
-        this.setupCollisions();
+        // REVISAR ESTO
+        if (this.scene.player && this.scene.player.mapOfSpells) {
+            Object.values(this.scene.player.mapOfSpells).forEach(group => {
+                if (group instanceof Phaser.Physics.Arcade.Group) {
+                    this.setupCollisions(group);
+                }
+            });
+        }
+
+        this.on('destroy', () => {
+            this.scene.events.off('to-set-up-colliders', this.onNewSpell);
+
+            if (this.movEvent) this.movEvent.destroy();
+            if (this.weakSpot) this.weakSpot.destroy();
+        });
     }
 
     movement(){
@@ -93,10 +117,19 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         }
     }
 
-    setupCollisions() {
-        this.scene.physics.add.overlap(this, this.scene.player.getHechizo(), (self,spell) => {
+    setupCollisions(spellRecieved) {
+        const target = this.getCollisionTarget();
+
+        // Si el target no existe o no tiene cuerpo físico todavía, abortamos
+        if (!target || !spellRecieved) return;
+
+        this.spellCollider = this.scene.physics.add.overlap(this.getCollisionTarget(), spellRecieved, (self,spell) => {
             this.handleSpellCollision(spell);
         });
+    }
+
+    getCollisionTarget() {
+        return this; 
     }
 
     handleSpellCollision(spell) {
@@ -110,7 +143,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
             });
         } 
         else {
-            this.takeDamage(spell);
+            this.takeDamage(spell,this.dmgRecieved);
             spell.setActive(false).setVisible(false);
             spell.body.setEnable(false);
         }
@@ -128,7 +161,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
                 const distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
                 if (distance < this.visionRange){
                     this.isChasing = true;
-                    this.rotation = this.scene.physics.moveToObject(this, this.target, this.speed) + 1.5707963267948966;
+                    this.rotation = this.scene.physics.moveToObject(this, this.target, this.speed) + this.offset;
                 }
                 else {
                     this.isChasing = false;

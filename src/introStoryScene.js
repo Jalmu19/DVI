@@ -99,6 +99,7 @@ export default class IntroStoryScene extends Phaser.Scene {
 
         this.cura = this.physics.add.sprite(159, 155, 'cura');
         this.lilith = this.physics.add.sprite(100, 210, 'lilith');
+        this.lilith.play('idle-back');
         this.abuela = this.physics.add.sprite(70, 210, 'abuela');
         this.abuelo = this.physics.add.sprite(50, 210, 'abuelo');
         this.createLilithAnimations();
@@ -115,7 +116,12 @@ export default class IntroStoryScene extends Phaser.Scene {
 
         this.skipKey.once('down', () => {
             this.skipIntro();
+            this.music.stop();
         });
+
+        this.music = this.sound.add('introMusic');
+        this.music.play();
+        this.music.setLoop(true);
     }
 
     loadHomeMap() {
@@ -206,9 +212,7 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.cameras.main.once('camerafadeoutcomplete', () => {
             this.scene.start('bosque', { x: 251, y: 381 });
             this.scene.launch('ui');
-            const music = this.sound.add('musicaFondo');
-            music.play();
-            music.setLoop(true);
+           this.music.stop();
         });
     }
 
@@ -269,9 +273,7 @@ export default class IntroStoryScene extends Phaser.Scene {
                 this.cameras.main.once('camerafadeoutcomplete', () => {
                     this.scene.start('bosque', { x: 251, y: 381, stats: null });
                     this.scene.launch('ui');
-                    const music = this.sound.add('musicaFondo');
-                    music.play();
-                    music.setLoop(true);
+                    this.music.stop();
                 });
             }
         }

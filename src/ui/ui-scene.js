@@ -21,10 +21,23 @@ export default class UIScene extends Phaser.Scene {
         this.game.events.on('close-menu', () => this.updateSpell());
         this.game.events.on('inventoryMenu', (actualScene) => this.inventoryMenu(actualScene));
 
+        this.ammo = this.add.group();
+        this.drawProyectiles(10);
+        this.game.events.on('ammo-changed', (data) => this.updateProyectiles(data.maxAmmo ,data.actualAmmo));
+
         this.fsButton = this.add.image(SCENE.WIDTH - 20, SCENE.HEIGHT - 20, 'fullscreen');
         this.fsButton.setInteractive().on('pointerdown', () =>{
             if (this.scale.isFullscreen) this.scale.stopFullscreen();
             else this.scale.startFullscreen();
+        });
+
+        this.events.once('shutdown', () => {
+            this.game.events.off('health-changed');
+            this.game.events.off('spell-gained');
+            this.game.events.off('open-menu');
+            this.game.events.off('close-menu');
+            this.game.events.off('inventoryMenu');
+            this.game.events.off('ammo-changed');
         });
     }
 
@@ -123,6 +136,30 @@ export default class UIScene extends Phaser.Scene {
     updateSpell() {
         this.spellsMenu.setVisible(false)
         this.game.events.emit('spell-changed', this.chosenSpell);
+    }
+
+    /**
+     * Método que dibuja el número de proyectiles del hechizo 
+     * @param {number} maxAmmo Número de máximo de proyectiles 
+     */
+    drawProyectiles(maxAmmo) {
+        for (let i = 0; i < maxAmmo; ++i)
+            this.ammo.add(this.add.sprite(SCENE.WIDTH - 60 + i * 5, 15, 'proyectiles'));
+    }
+
+    /**
+     * Actualiza la vida que se muestra con los corazones
+     * @param {number} maxAmmo Número de corazones máximo
+     * @param {number} actualHealth La vida real sobre heartNum*2 
+     */
+    updateProyectiles(maxAmmo, actualAmmo) {
+        if (maxAmmo > this.ammo.length) this.drawProyectiles(maxAmmo);
+
+        let children = this.ammo.getChildren();
+        for (let i = 0; i < children.length; ++i) {
+            if(i < actualAmmo) children[i].setFrame(0);
+            else children[i].setFrame(1);
+        }
     }
 
     inventoryMenu(actualScene){
