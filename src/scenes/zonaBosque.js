@@ -44,14 +44,7 @@ export default class Zona_bosque extends GameScene {
         this.load.image('pared_mazmorra', pared_mazmorra);
         this.load.image('puerta_mazmorra', puerta_mazmorra);
 
-
-        //this.load.image('cesped', cesped);
-        //this.load.image('tierra', tierra);
-        //this.load.image('arbol', arbol);
-
         this.load.tilemapTiledJSON('laberinto', laberinto);
-
-
     }
 
 
@@ -126,7 +119,7 @@ export default class Zona_bosque extends GameScene {
             })
 
             this.physics.add.collider(this.player, this.muro);
-        }     
+        } 
         
         
 
@@ -170,11 +163,6 @@ export default class Zona_bosque extends GameScene {
         }
         else if(salidas.tag === 'salidaLago'){
             //this.scene.start("zonaLago")
-            this.scene.start('laberinto', {
-                x : 143,
-                y : 30,
-                stats : this.player.getStats()
-            });
         }
         else{
             this.scene.switch('bosque', {

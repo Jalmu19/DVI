@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import Salidas from '../game-objects/enemy/salidas.js'
+import Chest from '../game-objects/items/chest.js'
 import Player from '../game-objects/player/player.js'
 import GameScene from "./game-scene.js";
 
@@ -44,14 +44,21 @@ export default class Laberinto extends GameScene{
         arboles.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, arboles);
 
-
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        this.scale.resize(map.widthInPixels, map.heightInPixels);
         
         //limites de camara
-        this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
-        this.cameras.main.startFollow(this.player); 
-       
+        //this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);        
+        //this.cameras.main.startFollow(this.player); 
 
+        //ESTRELLAS
+        this.estrellas = this.physics.add.group();
+        this.capaEstrellas = map.getObjectLayer('Estrellas');
+        this.capaEstrellas.objects.forEach(objeto => {
+            var aux =  new Chest(this, objeto.x, objeto.y, objeto.id);
+            this.estrellas.add(aux);  
+        });
+       
         //SALIDA Y CAMBIO DE MAPA
         this.salidas = this.physics.add.group();
         this.capaSalidas = map.getObjectLayer('Salidas');
@@ -71,41 +78,18 @@ export default class Laberinto extends GameScene{
                 stats : this.player.getStats()
             }); 
         }
-        else if(salidas.tag === "salida1"){
-            this.scene.start('laberinto', {
-                x : 143,
-                y : 45,
-                stats : this.player.getStats()
-            }); 
-        }
-        else if(salidas.tag === "salida2"){
-            this.scene.start('laberinto', {
-                x : 593,
-                y : 365,
-                stats : this.player.getStats()
-            }); 
-        }
-        else if(salidas.tag === "salida3"){
-            this.scene.start('laberinto', {
-                x : 590,
-                y : 260,
-                stats : this.player.getStats()
-            }); 
-        }
-        else if(salidas.tag === "salida4"){
-            this.scene.start('laberinto', {
-                x : 159,
-                y : 526,
-                stats : this.player.getStats()
-            }); 
-        }
-        else if(salidas.tag === "salida5"){
-            this.scene.start('laberinto', {
-                x : 34,
-                y : 440,
-                stats : this.player.getStats()
-            }); 
-        }
+        else if(salidas.tag === "entrada1") this.start(618, 538, this.player);
+        else if(salidas.tag === "entrada2") this.start(22, 489, this.player);
+        else if(salidas.tag === "entrada3") this.start(366, 147, this.player);
+        else if(salidas.tag === "entrada4") this.start(560, 385, this.player);
+        else if(salidas.tag === "entrada5") this.start(52, 574, this.player);
+        else if(salidas.tag === "entrada6") this.start(390, 686, this.player);
+        else if(salidas.tag === "salida1") this.start(23, 96, this.player);
+        else if(salidas.tag === "salida2") this.start(617, 296, this.player);
+        else if(salidas.tag === "salida3") this.start(210, 147, this.player);
+        else if(salidas.tag === "salida4") this.start(241, 526, this.player);
+        else if(salidas.tag === "salida5") this.start(123, 244, this.player);
+        else if(salidas.tag === "salida6") this.start(198, 722, this.player);
         else if(salidas.tag === "salida"){
             this.scene.start('laberinto_final', {
                 x : 71,
@@ -114,5 +98,13 @@ export default class Laberinto extends GameScene{
             }); 
         }
     } 
+
+    start(x, y, player){
+        this.scene.start('laberinto', {
+                x : x,
+                y : y,
+                stats : player.getStats()
+            }); 
+    }
 
 }
