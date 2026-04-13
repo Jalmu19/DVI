@@ -40,8 +40,9 @@ export default class Zona_Lago extends GameScene {
 
 
         map.createLayer('fondo', [img1, img3], 0, 0);
-        map.createLayer('Agua',[img6, img4, img1] ,0,0)
+        map.createLayer('Agua',[img4, img1] ,0,0)
         map.createLayer('DetallesAgua', img5, 0, 0)
+        map.createLayer('islotes', [img1,img6], 0,0);
         map.createLayer('Camino',img1, 0 ,0)
         
         var arboles = map.createLayer('Arboles', img2, 0, 0);
