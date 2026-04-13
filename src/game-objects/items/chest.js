@@ -16,6 +16,7 @@ export default class Chest extends Phaser.Physics.Arcade.Sprite {
         this.scene = scene;
         this.id = id;
         this.itemIn = itemData;
+        this.body.setSize(16, 17).setOffset(8, 8);
         this.body.setAllowGravity(false);
         this.body.setImmovable(true); 
         this.body.setCollideWorldBounds(true);
