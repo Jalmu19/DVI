@@ -14,11 +14,17 @@ export default class Laberinto extends GameScene{
 
     constructor(){
         super({key:'laberinto'}); 
-        this.estrellasRecogidas=0;
     }
 
     init(datos){
          this.datos = [datos.x, datos.y, datos.stats];
+
+        if (!this.registry.has('estrellasRecogidas')) {
+            this.registry.set('estrellasRecogidas', []);
+        }
+        if (!this.registry.has('numEstrellasRecogidas')) {
+            this.registry.set('numEstrellasRecogidas', 0);
+        }
     }
 
     preload() {
@@ -44,7 +50,7 @@ export default class Laberinto extends GameScene{
 
         //COLISIONES
         arboles.setCollisionByExclusion([-1], true);
-        this.physics.add.collider(this.player, arboles);
+        //this.physics.add.collider(this.player, arboles);
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         this.scale.resize(map.widthInPixels, map.heightInPixels);
@@ -54,11 +60,17 @@ export default class Laberinto extends GameScene{
         //this.cameras.main.startFollow(this.player); 
 
         //ESTRELLAS
+        // Obtenemos la lista del registry
+        var recogidas = this.registry.get('estrellasRecogidas') || [];
+
         this.estrellas = this.physics.add.group();
         this.capaEstrellas = map.getObjectLayer('Estrellas');
         this.capaEstrellas.objects.forEach(objeto => {
-            var aux =  new Estrella(this, objeto.x, objeto.y, 'star');
-            this.estrellas.add(aux);  
+            const id = `estrella_${objeto.x}_${objeto.y}`;
+            if (!recogidas.includes(id)) {
+                let star = new Estrella(this, objeto.x, objeto.y, 'star');
+                this.estrellas.add(star);
+            }
         });
         this.physics.add.overlap(this.player, this.estrellas, this.collectStar, null, this);
        
@@ -86,7 +98,7 @@ export default class Laberinto extends GameScene{
         else if(salidas.tag === "entrada3") this.changePosition(this.player, 366, 147);
         else if(salidas.tag === "entrada4") this.changePosition(this.player, 560, 385);
         //si hemos recogido todas las estrellas, dejamos que pase
-        else if(salidas.tag === "entrada5" && this.estrellasRecogidas === 3) this.changePosition(this.player, 52, 574);
+        else if(salidas.tag === "entrada5" && this.registry.get('numEstrellasRecogidas')===3) this.changePosition(this.player, 52, 574);
         else if(salidas.tag === "entrada6") this.changePosition(this.player, 390, 686);
         else if(salidas.tag === "salida1") this.changePosition(this.player, 23, 96);
         else if(salidas.tag === "salida2") this.changePosition(this.player, 617, 296);
@@ -96,7 +108,6 @@ export default class Laberinto extends GameScene{
         else if(salidas.tag === "salida6") this.changePosition(this.player, 198, 722);
 
         else if(salidas.tag === "salida"){
-        
             this.scene.start('laberinto_final', {
                 x : 71,
                 y : 30,
@@ -110,10 +121,22 @@ export default class Laberinto extends GameScene{
     }
 
     collectStar(player, star) {
-        if(star){
-            star.disableBody(true, true); //que ya no se vea
-            console.log("¡Estrella recogida!");
-            this.estrellasRecogidas++;
+        if (star) {
+            const id = `estrella_${star.x}_${star.y}`;
+            let recogidas = this.registry.get('estrellasRecogidas') || [];
+
+            if (!recogidas.includes(id)) {
+                star.disableBody(true, true);
+                
+                // Guardar ID
+                recogidas.push(id);
+                this.registry.set('estrellasRecogidas', recogidas);
+
+                // Sumar al contador global
+                let total = this.registry.get('numEstrellasRecogidas') || 0;
+                this.registry.set('numEstrellasRecogidas', total + 1);
+
+            }
         }
     }
 
