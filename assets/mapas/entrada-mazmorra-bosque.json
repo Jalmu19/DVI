@@ -409,8 +409,24 @@
                  "id":28,
                  "name":"",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"id",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"cofre_entrada"
+                        }, 
+                        {
+                         "name":"quantity",
+                         "type":"int",
+                         "value":1
+                        }],
                  "rotation":0,
-                 "type":"",
+                 "type":"Chest",
                  "visible":true,
                  "width":0,
                  "x":279.5,
