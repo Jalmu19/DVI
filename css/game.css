@@ -1,3 +1,107 @@
-h1 {
-  text-align: center;
+:root {
+    --nav-color: #414141;
+    --text-color: #e0e0e0;
+    --highlight: #00f2ff;
+}
+
+body {
+    margin: 0;
+    padding: 0; 
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(400deg, #65afcd 30%, #feffd6 100%);
+    color: var(--text-color);
+    
+}
+
+.navbar {
+    background-color: #326072;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #ffffff;
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-title {
+    font-size: 30px;
+    color: #ecfc5c;
+    font-family: 'Sekuya';
+    text-shadow: 
+        -2px -2px 0 #a58b2c,  
+         2px -2px 0 #a58b2c,
+        -2px  2px 0 #705d19,
+         2px  2px 0 #705d19;
+}
+
+.github-link {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    background: #f4f4f4;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+
+#juego {
+    display: block;
+    margin: 20px auto;
+    width: 1100px; 
+    height: 600px;
+    background: #000;
+}
+
+#juego canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.game-info {
+    max-width: 800px;
+    width: 100%;
+    margin-top: 50px;
+    background-color: #326072;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+    padding: 25px;
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    background: var(--nav-color);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.spells-grid {
+    margin-top: 30px;
+    gap: 20px;
+    background: var(--nav-color);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.control-item { display: flex; align-items: center; gap: 5px; }
+
+kbd {
+    background: #34342a;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: var(--highlight);
+    font-family: monospace;
 }

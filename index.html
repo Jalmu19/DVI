@@ -7,15 +7,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
     <link rel="stylesheet" href="./css/game.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&family=Sekuya&display=swap" rel="stylesheet">
+
     <title>Enchantments</title>
 </head>
 
 <body>
-    <h1>ENCHANTMENTS</h1>
-    <script src="./src/game.js" type="module"></script>
-    <!-- El juego irá dentro de este <div> por la propiedad `parent` que pasamos `new Phaser.Game` -->
-    <div id="juego"></div>
-    <p><center><a href="https://github.com/Jalmu19/DVI">Repositorio de GitHub</a></center></p>
-</body>
 
+    <nav class="navbar">
+        <div class="nav-container">
+            <span class="game-title">ENCHANTMENTS</span>
+            <a href="https://github.com/Jalmu19/DVI" target="_blank" class="github-link">
+                GitHub
+            </a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div id="juego"></div>
+
+        <section class="game-info">
+            <div class="description">
+                <h2>ENCHANTMENTS</h2>
+                <p>Adéntrate a explorar el mundo mágico y ayuda a Lilith a convertirse en la mejor hechicera. Aprende hechizos, derrota enemigos y usa tu ingenio para avanzar. ¿Podrás conseguirlo? ¡Adelante!</p>
+            </div>
+
+            <div class="controls-section">
+                <h2>Controles</h2>
+                <div class="controls-grid">
+                    <div class="control-item"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span>Moverse</span></div>
+                    <div class="control-item"><kbd>E</kbd> <span>Interactuar</span></div>
+                    <div class="control-item"><kbd>F</kbd> <span>Inventario</span></div>
+                    
+                </div>
+                 <div class="spells-grid">
+                <h3>Usar hechizos:</h3>
+                <p>Click derecho pulsado para apuntar + Click izquierdo para activar</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./src/game.js" type="module"></script>
+</body>
 </html>
