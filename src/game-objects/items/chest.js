@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import Inventory from '../../inventory'
 
 export default class Chest extends Phaser.Physics.Arcade.Sprite {
     /**
@@ -8,12 +9,13 @@ export default class Chest extends Phaser.Physics.Arcade.Sprite {
      * @param {number} y Coordenada Y
      */
 
-    constructor(scene, x, y, id) {
+    constructor(scene, x, y, id, itemData) {
         super(scene, x, y, 'chest');
         scene.add.existing(this);
         scene.physics.add.existing(this);
         this.scene = scene;
         this.id = id;
+        this.itemIn = itemData;
         this.body.setAllowGravity(false);
         this.body.setImmovable(true); 
         this.body.setCollideWorldBounds(true);
@@ -31,13 +33,14 @@ export default class Chest extends Phaser.Physics.Arcade.Sprite {
     /**
      * Metodo que abre el cofre (cambiando dicho sprite) y dando al jugador el objeto en su interior
      */
-    interact() {
+    interact(player) {
         if(!this.isOpened) {
             this.play('open');
             this.isOpened  = true;
             let openedChests = this.scene.registry.get('openedChests');
             openedChests.push(this.scene.scene.key + "_" + this.id);
             this.scene.registry.set('openedChests',openedChests);
+            Inventory.addItem(this.itemIn.id, this.itemIn.name, this.itemIn.frame, this.itemIn.quantity, this.itemIn.texture);
         }
     }
 }
