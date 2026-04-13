@@ -7,6 +7,8 @@ import villa from '../../assets/sprites/villa1.png'
 import arbol from '../../assets/sprites/arbol.png'
 import flor from '../../assets/sprites/florAmarilla.png'
 
+import star from '../../assets/sprites/star.png'
+
 
 
 export default class Zona_Lago extends GameScene {
@@ -22,7 +24,8 @@ export default class Zona_Lago extends GameScene {
 
     preload() {
        this.load.tilemapTiledJSON('laberinto', laberinto);
-      
+       
+       this.load.image('star', star);
 
     }
 
