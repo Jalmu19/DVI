@@ -5,6 +5,8 @@ export default class Oruga extends BaseEnemy {
     constructor(scene, x, y, key){
         super(scene, x, y, key);
         this.body.setSize(28,10).setOffset(2, 10);
+
+        this.play({key : 'move', repeat: -1, delay: Phaser.Math.Between(0, 1000)}, true);
     }
     
     movement(){}

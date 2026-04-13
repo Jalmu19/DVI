@@ -24,6 +24,7 @@ import grimorioFrezShoot from '../../assets/sprites/grimorio-freezing_shoot.png'
 import grimorioShield from '../../assets/sprites/grimorio-shield.png'
 import spike from '../../assets/sprites/spikes-placeholder.png'
 import oruga from '../../assets/sprites/oruga.png'
+import orugajson from '../../assets/sprites/oruga.json'
 import rata from '../../assets/sprites/rata.png'
 import fullscreen from '../../assets/sprites/fullscreen.png'
 
@@ -102,7 +103,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('grimorio-freezing_shoot', grimorioFrezShoot);
     this.load.image('grimorio-shield', grimorioShield);
     this.load.image('spike',spike);
-    this.load.image('oruga', oruga);
+    this.load.aseprite('oruga', oruga, orugajson);
     this.load.image('rata', rata);
     this.load.image('shield', shield);
     this.load.image('plantilla', villa);
@@ -145,6 +146,7 @@ export default class Boot extends Phaser.Scene {
 
     this.anims.createFromAseprite('player');
     this.anims.createFromAseprite('chest');
+    this.anims.createFromAseprite('oruga');
     //this.scene.start('bosque', {x: 251, y: 381, stats: null});
     this.scene.start('IntroStoryScene');
 
