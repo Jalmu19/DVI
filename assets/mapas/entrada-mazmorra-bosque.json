@@ -411,19 +411,29 @@
                  "point":true,
                  "properties":[
                         {
-                         "name":"id",
+                         "name":"frame",
                          "type":"int",
-                         "value":1
+                         "value":0
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"berry"
                         }, 
                         {
                          "name":"name",
                          "type":"string",
-                         "value":"cofre_entrada"
+                         "value":"berry_chest"
                         }, 
                         {
                          "name":"quantity",
                          "type":"int",
                          "value":1
+                        }, 
+                        {
+                         "name":"texture",
+                         "type":"string",
+                         "value":"berry"
                         }],
                  "rotation":0,
                  "type":"Chest",
