@@ -41,3 +41,5 @@ export const UI = {
         ZERO_HEART : 4
     }
 }
+
+export const NUM_ESTRELLAS_LABERINTO = 3;

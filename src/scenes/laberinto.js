@@ -4,6 +4,8 @@ import Player from '../game-objects/player/player.js'
 import GameScene from "./game-scene.js";
 import Estrella from '../game-objects/items/estrella.js'
 
+import { NUM_ESTRELLAS_LABERINTO } from "../constants.js";
+
 import cesped from "../../assets/sprites/cesped.png"
 import tierra from "../../assets/sprites/tierra.png"
 import arbol from "../../assets/sprites/arbol.png"
@@ -73,7 +75,7 @@ export default class Laberinto extends GameScene{
             }
         });
         this.physics.add.overlap(this.player, this.estrellas, this.collectStar, null, this);
-       
+      
         //SALIDA Y CAMBIO DE MAPA
         this.salidas = this.physics.add.group();
         this.capaSalidas = map.getObjectLayer('Salidas');
@@ -98,7 +100,8 @@ export default class Laberinto extends GameScene{
         else if(salidas.tag === "entrada3") this.changePosition(this.player, 366, 147);
         else if(salidas.tag === "entrada4") this.changePosition(this.player, 560, 385);
         //si hemos recogido todas las estrellas, dejamos que pase
-        else if(salidas.tag === "entrada5" && this.registry.get('numEstrellasRecogidas')===3) this.changePosition(this.player, 52, 574);
+        else if(salidas.tag === "entrada5" && this.registry.get('numEstrellasRecogidas')===NUM_ESTRELLAS_LABERINTO) 
+            this.changePosition(this.player, 52, 574);
         else if(salidas.tag === "entrada6") this.changePosition(this.player, 390, 686);
         else if(salidas.tag === "salida1") this.changePosition(this.player, 23, 96);
         else if(salidas.tag === "salida2") this.changePosition(this.player, 617, 296);
@@ -135,7 +138,6 @@ export default class Laberinto extends GameScene{
                 // Sumar al contador global
                 let total = this.registry.get('numEstrellasRecogidas') || 0;
                 this.registry.set('numEstrellasRecogidas', total + 1);
-
             }
         }
     }
