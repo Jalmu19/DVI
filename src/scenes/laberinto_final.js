@@ -25,17 +25,18 @@ export default class Laberinto extends GameScene{
         map.createLayer('suelo', [img1, img2], 0,0);
         var arboles = map.createLayer('arboles', [img3], 0,0);
 
-        this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);     
         
-        //Cofre
+       //Cofre
         this.capaCofre = map.getObjectLayer('Cofre');
         this.cofre = this.physics.add.group({classType: Chest,
-                    immovable: true,
-                    allowGravity: false });
-        this.capaCofre.objects.forEach(obj => {
-            var a = new Chest(this, obj.x, obj.y, obj.id)
-            this.cofre.add(a)
-        })
+                                                immovable: true,
+                                                allowGravity: false });
+
+        this.llenarCofre(this.capaCofre, this.cofre);
+
+        this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);     
+
+
         //COLISION CON COFRES
         this.physics.add.collider(this.player, this.cofre);
 

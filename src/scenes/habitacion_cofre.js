@@ -37,22 +37,17 @@ export default class HabitacionCofre extends GameScene{
         this.cargarSalidas(this.capaSalidas, this.salidas);
 
 
-        //Cofre
+       //Cofre
         this.capaCofre = map.getObjectLayer('Cofre');
         this.cofre = this.physics.add.group({classType: Chest,
-                    immovable: true,
-                    allowGravity: false });
-        this.capaCofre.objects.forEach(obj => {
-            var a = new Chest(this, obj.x, obj.y, obj.id)
-            this.cofre.add(a)
-        })
-
+                                                immovable: true,
+                                                allowGravity: false });
+        this.llenarCofre(this.capaCofre, this.cofre);
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
-        //COLISION CON COFRES
-        this.physics.add.collider(this.player, this.cofre);
-
+        
+        this.physics.add.collider(this.player, this.cofre); //COLISION CON COFRES
         this.physics.add.collider(this.player, paredes);  
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 

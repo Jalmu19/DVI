@@ -60,8 +60,34 @@
                  "id":2,
                  "name":"",
                  "point":true,
+                 "properties":[
+                        {
+                         "name":"frame",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"berry"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"berry_chest2"
+                        }, 
+                        {
+                         "name":"quantity",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"texture",
+                         "type":"string",
+                         "value":"berry"
+                        }],
                  "rotation":0,
-                 "type":"",
+                 "type":"Chest",
                  "visible":true,
                  "width":0,
                  "x":216,

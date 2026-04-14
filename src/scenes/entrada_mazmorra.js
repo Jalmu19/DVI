@@ -65,33 +65,14 @@ export default class Entrada_mazmorra extends GameScene{
         map.createLayer('capa_puente', img4, 0,0);
         map.createLayer('escaleras', img9, 0,0);
 
+
         //Cofre
         this.capaCofre = map.getObjectLayer('Cofre');
         this.cofre = this.physics.add.group({classType: Chest,
             immovable: true,
             allowGravity: false });
-        this.capaCofre.objects.forEach(obj => {
+        this.llenarCofre(this.capaCofre, this.cofre);
 
-            // Saca las propiedades si es que tiene
-            const props = obj.properties ? obj.properties.reduce((acc, p) => {
-                acc[p.name] = p.value;
-                return acc;
-            }, {}) : {};
-
-            const itemData = props.id ? {
-                id: props.id,
-                name: props.name,
-                quantity: props.quantity || 1,
-                texture: props.texture,
-                frame: props.frame || 0
-            } : null;
-
-            var a = new Chest(this, obj.x, obj.y, obj.id, itemData)
-            this.cofre.add(a)
-        })
-
-
-        //this.player = new Player(this, 50, 20);
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
         //COLISION CON COFRES

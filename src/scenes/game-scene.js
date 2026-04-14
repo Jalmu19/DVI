@@ -2,6 +2,8 @@ import Phaser from "phaser";
 import Salidas from "../game-objects/enemy/salidas";
 import Cajas from '../game-objects/items/cajas.js'
 import Inventory from '../inventory.js'
+import Chest from "../game-objects/items/chest.js";
+
 
 /**
  * Escena de principal del juego. De esta heredan todas las demás
@@ -47,6 +49,26 @@ export default class GameScene extends Phaser.Scene {
         });
     }
 
+    llenarCofre(capaCofre, cofre){
+        capaCofre.objects.forEach(obj => {
+            // Saca las propiedades si es que tiene
+            const props = obj.properties ? obj.properties.reduce((acc, p) => {
+                acc[p.name] = p.value;
+                return acc;
+            }, {}) : {};
+
+            const itemData = props.id ? {
+                id: props.id,
+                name: props.name,
+                quantity: props.quantity || 1,
+                texture: props.texture,
+                frame: props.frame || 0
+            } : null;
+
+            var a = new Chest(this, obj.x, obj.y, obj.id, itemData)
+            cofre.add(a)
+        });   
+    }
 
 
     logicaCajas(player, cajas){
