@@ -26,6 +26,9 @@ export const SPELLS = {
 export const ENEMY = {
     BASE_SPEED : 10,
     BASE_HEALTH : 5,
+    RAT: {
+        SPEED : 40 
+    },
     BOSS : {
         HEALTH : 70,
         SPEED : 70
