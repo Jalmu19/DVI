@@ -70,12 +70,12 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
             this.scene.time.delayedCall(200, () => {       //para que haga pausas mientras se mueve
                 this.setRandomVelocity()
 
-                this.scene.time.addEvent({
-                delay: Phaser.Math.Between(500, 1500),  
-                callback: this.movement,                
-                callbackScope: this,                   
-                loop: false,                            
-            })
+                this.movEvent = this.scene.time.addEvent({
+                    delay: Phaser.Math.Between(500, 1500),  
+                    callback: this.movement,                
+                    callbackScope: this,                   
+                    loop: false,                            
+                })
             })
         }
     }
