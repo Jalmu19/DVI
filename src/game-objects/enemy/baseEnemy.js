@@ -15,6 +15,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.dmgGiven = 0.5; 
         this.health = ENEMY.BASE_HEALTH;
         this.dmgRecieved = 1;
+        this.isBoss = false;
 
         this.offset = 1.5707963267948966;
         this.freezed = false;
@@ -53,6 +54,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite{
         this.on('destroy', () => {
             this.scene.events.off('to-set-up-colliders', this.onNewSpell);
 
+            if(this.isBoss) this.scene.registry.set('passedDungeons',this.scene.registry.get('passedDungeons') + 1);
             if (this.movEvent) this.movEvent.destroy();
             if (this.weakSpot) this.weakSpot.destroy();
         });
