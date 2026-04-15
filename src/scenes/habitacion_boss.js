@@ -40,40 +40,60 @@ export default class HabitacionBoss extends GameScene{
             this.boss.add(aux);  
         });
 
-        
-        //Cofre solo cuando se mata al boss
-        this.events.once('boss_dead', ()=>{
-            this.capaCofre = map.getObjectLayer('Cofre');
-            this.cofre = this.physics.add.group({classType: Chest,
+
+        //COFRE
+        this.capaCofre = map.getObjectLayer('Cofre');
+        this.cofre = this.physics.add.group({classType: Chest,
                                                     immovable: true,
                                                     allowGravity: false });
-            this.llenarCofre(this.capaCofre, this.cofre);
-            this.physics.add.collider(this.player, this.cofre); //COLISION CON COFRE
+        this.llenarCofre(this.capaCofre, this.cofre);
+        //hasta que no se mate al boss, no aparece
+        this.cofre.getChildren().forEach(c => {
+            c.setVisible(false);
+            c.body.enable = false; // Desactiva la colisión
         });
 
+
+        //Cofre y salida solo cuando se mata al boss
+        this.events.once('boss_dead', ()=>{
+            this.cofre.getChildren().forEach(c => {
+                c.setVisible(true);
+                c.body.enable = true;
+            });
+
+            // Activamos las salidas: visual y físicamente
+            this.salidas.getChildren().forEach(s => {
+                s.setVisible(true);
+                s.body.enable = true;
+            });
+        });
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
         //COLISIONES
         paredes.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, paredes);
-
         this.physics.add.collider(this.boss, paredes);
+        this.physics.add.collider(this.player, this.cofre); //COLISION CON COFRE
+
+
+
+         //SALIDA Y CAMBIO DE MAPA
+        this.salidas = this.physics.add.group();
+        this.capaSalidas = map.getObjectLayer('Salidas');    
+        this.cargarSalidas(this.capaSalidas, this.salidas);
+        this.salidas.getChildren().forEach(s => {
+            s.setVisible(false);
+            s.body.enable = false; // Desactiva la colisión
+        });
+        this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
+
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         
         //limites de camara
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player); 
-
-
-        //SALIDA Y CAMBIO DE MAPA
-        this.salidas = this.physics.add.group();
-        this.capaSalidas = map.getObjectLayer('Salidas');
-        
-        this.cargarSalidas(this.capaSalidas, this.salidas);
-
-        this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
     }
 

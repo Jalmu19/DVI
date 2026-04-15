@@ -73,17 +73,6 @@
                  "width":12.6666666666666,
                  "x":386.5,
                  "y":112.166666666667
-                }, 
-                {
-                 "height":48,
-                 "id":2,
-                 "name":"bloqueo",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":21,
-                 "x":378,
-                 "y":112
                 }],
          "opacity":1,
          "type":"objectgroup",
