@@ -8,6 +8,7 @@ import arbol from '../../assets/sprites/arbol.png'
 import flor from '../../assets/sprites/florAmarilla.png'
 
 import star from '../../assets/sprites/star.png'
+import Rata from "../game-objects/enemy/rata.js";
 
 
 
@@ -43,16 +44,13 @@ export default class Zona_Lago extends GameScene {
 
 
         map.createLayer('fondo', [img1, img3], 0, 0);
-        map.createLayer('Agua',[img4, img1] ,0,0)
+        var lago = map.createLayer('Agua',[img4, img1] ,0,0)
         map.createLayer('DetallesAgua', img5, 0, 0)
         map.createLayer('islotes', [img1,img6], 0,0);
         map.createLayer('Camino',img1, 0 ,0)
         
         var arboles = map.createLayer('Arboles', img2, 0, 0);
 
-        //Crear capa de salidas, pero no configuradas
-
-        arboles.setCollisionByExclusion([-1], true);
         //Tamaño del mundo fisico
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
@@ -60,7 +58,12 @@ export default class Zona_Lago extends GameScene {
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
         
         //Añadiendo colision a las fisicas
+        arboles.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, arboles);
+       
+        //lago.setCollisionByExclusion([-1],true);
+        //this.physics.add.collider(this.player, lago);
+
         //limites de camara
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);
@@ -74,7 +77,30 @@ export default class Zona_Lago extends GameScene {
 
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
+        //Cofre islote
+
+        this.cofre = this.physics.add.group()
+        this.capaCofre = map.getObjectLayer('Cofre');
+
+        this.llenarCofre(this.capaCofre, this.cofre);  
         
+        this.physics.add.collider(this.player, this.capaCofre);
+
+        //Enemigos
+        this.enemigos = this.physics.add.group();
+        this.capaEnemigos = map.getObjectLayer('Enemigos');
+        this.capaEnemigos.objects.forEach(obj =>{
+            var a;
+            if(obj.name === "Oruga"){
+                a = new Oruga(this, obj.x, obj.y,'oruga');
+            }
+            else{
+                a = new Rata(this, obj.x, obj.y,'rata');
+            }
+            
+            this.enemigos.add(a);
+
+        })
         
         
     }
@@ -90,7 +116,6 @@ export default class Zona_Lago extends GameScene {
         }
         else{
             this.scene.switch('zonaBosque', {
-                //cambiar posicion de x e y
                 x : 453,
                 y : 160,
                 stats : this.player.getStats()
