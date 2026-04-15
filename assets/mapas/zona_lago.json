@@ -237,7 +237,7 @@
                         {
                          "name":"id",
                          "type":"string",
-                         "value":"chest"
+                         "value":"berry"
                         }, 
                         {
                          "name":"name",
@@ -273,76 +273,124 @@
          "name":"Enemigos",
          "objects":[
                 {
-                 "gid":656,
-                 "height":32.25,
-                 "id":2,
-                 "name":"Slime1",
-                 "properties":[
-                        {
-                         "name":"vida",
-                         "type":"int",
-                         "value":15
-                        }],
+                 "height":0,
+                 "id":11,
+                 "name":"",
+                 "point":true,
                  "rotation":0,
-                 "type":"Enemigo",
+                 "type":"",
                  "visible":true,
-                 "width":32,
-                 "x":160.25,
-                 "y":160.5
+                 "width":0,
+                 "x":176,
+                 "y":144
                 }, 
                 {
-                 "gid":2147484304,
-                 "height":31.5,
-                 "id":4,
-                 "name":"Slime3",
-                 "properties":[
-                        {
-                         "name":"vida",
-                         "type":"int",
-                         "value":15
-                        }],
+                 "height":0,
+                 "id":12,
+                 "name":"Oruga",
+                 "point":true,
                  "rotation":0,
-                 "type":"Enemigo",
+                 "type":"",
                  "visible":true,
-                 "width":29.75,
-                 "x":770,
-                 "y":114.167
+                 "width":0,
+                 "x":496,
+                 "y":256
                 }, 
                 {
-                 "gid":656,
-                 "height":31.75,
-                 "id":5,
-                 "name":"Slime2",
-                 "properties":[
-                        {
-                         "name":"vida",
-                         "type":"int",
-                         "value":15
-                        }],
+                 "height":0,
+                 "id":13,
+                 "name":"Oruga",
+                 "point":true,
                  "rotation":0,
-                 "type":"Enemigo",
+                 "type":"",
                  "visible":true,
-                 "width":32.75,
-                 "x":606.667,
-                 "y":192.417
+                 "width":0,
+                 "x":544,
+                 "y":352
                 }, 
                 {
-                 "gid":2147484304,
-                 "height":31.4545,
-                 "id":6,
-                 "name":"Slime4",
-                 "properties":[
-                        {
-                         "name":"vida",
-                         "type":"int",
-                         "value":15
-                        }],
+                 "height":0,
+                 "id":14,
+                 "name":"Oruga",
+                 "point":true,
                  "rotation":0,
-                 "type":"Enemigo",
+                 "type":"",
                  "visible":true,
-                 "width":31.8182,
-                 "x":799.758,
-                 "y":159.455
+                 "width":0,
+                 "x":608,
+                 "y":352
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":752,
+                 "y":64
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":816,
+                 "y":80
+                }, 
+                {
+                 "height":0,
+                 "id":17,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":768,
+                 "y":112
+                }, 
+                {
+                 "height":0,
+                 "id":18,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":832,
+                 "y":144
+                }, 
+                {
+                 "height":0,
+                 "id":19,
+                 "name":"",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":608,
+                 "y":144
+                }, 
+                {
+                 "height":0,
+                 "id":20,
+                 "name":"Oruga",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":64,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -384,7 +432,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":10,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
