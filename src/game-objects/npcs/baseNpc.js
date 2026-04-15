@@ -2,7 +2,7 @@
 
 
 
- export default class Ladron extends Phaser.Physics.Arcade.Sprite {
+ export default class BaseNpc extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y,sprite) {
 
             super(scene, x, y, sprite);
