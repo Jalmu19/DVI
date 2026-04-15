@@ -29,10 +29,16 @@ export default class Zona_bosque extends GameScene {
 
     constructor() {
         super({ key: 'zonaBosque' });
+        this.numLines = 0;
+        
     }
     init(datos){
-        console.log(datos.stats)
-        this.datos = [datos.x, datos.y, datos.stats];  
+        this.datos = [datos.x, datos.y, datos.stats]; 
+        this.STORY = ["Jijijijijijijijiji",
+            "...",
+            "Has perdido: colgante de metal",
+            "¿No eres una hechicera de verdad? Demuestramelo completando la mazmorra que hay siguiendo el camino de a mi espalda"];
+         
            
     }
 
@@ -131,7 +137,7 @@ export default class Zona_bosque extends GameScene {
                 this.ladron.add(a);
             })
 
-            this.colision = this.physics.add.collider(this.player, this.ladron, this.mostrarDialogo, null, this);
+            this.colision = this.physics.add.collider(this.player, this.ladron, this.cambiarVisibilidad, null, this);
         }
 
         //Capa de bloqueo   
@@ -161,18 +167,58 @@ export default class Zona_bosque extends GameScene {
         this.items.add(berry2)
         this.items.add(berry3) */
         this.manageItems(this.player, this.items)
+
+        this.crearGrafico();
+        this.numLines = 1;
         
     }
    
-    mostrarDialogo(){
+
+    next(){
         
-        this.scene.start('dialogoLadron', {backgroundScene : this, 
-            x : this.player.x,
-            y : this.player.y,
-            stats : this.player.getStats()
-        
-        });    
+        if(this.numLines === this.STORY.length){  
+            this.registry.set('dialogLadron', true);
+            this.cambiarVisibilidad(false)
+        }
+        else{
+            this.time.delayedCall(100, () => {//delay de cuanto tarda en salir el texto
+                this.dialogText.setText(this.STORY[this.numLines])
+                this.numLines += 1;
+                
+            });
+           
+        }
     }
+    cambiarVisibilidad(boleano){
+       this.dialogBox.setVisible(boleano);
+       this.dialogText.setVisible(boleano)
+    }
+
+    crearGrafico(){
+       this.dialogBox = this.add.rectangle(this.cameras.main.centerX, this.cameras.main.centerY + 60, 300, 50, 0x000000, 0.7
+        ).setStrokeStyle(2, 0xffffff).setScrollFactor(0).setVisible(false);
+
+        this.dialogText = this.add.text(this.cameras.main.centerX - 145, this.cameras.main.centerY + 40, '', { 
+            fontSize: '10px', 
+            fontFamily: 'monospace', 
+            wordWrap: { width: 300 } 
+        }
+        ).setScrollFactor(0).setVisible(false);
+
+
+
+        this.dialogText.setText(this.STORY[0])
+
+        this.input.on('pointerdown', ()=>{
+            this.dialogText.setText("");
+            this.next()
+           
+        })
+
+    }
+
+
+
 
     cambiarScene(jugador, salidas) {
         if(salidas.tag === 'salidaMazmorra' ){

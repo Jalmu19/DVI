@@ -12,8 +12,7 @@ import Laberinto from './scenes/laberinto.js';
 import LaberintoFinal from './scenes/laberinto_final.js';
 import GameOver from './scenes/game-over.js';
 import MainMenu from './mainMenu.js';
-import UIScene from './ui/ui-scene.js'
-import dialogoLadron from './ui/dialogoLadron.js';
+import UIScene from './ui/ui-scene.js';
 import InventoryScene from './ui/inventoryScene.js'
 import IntroStoryScene from './introStoryScene.js'
 /**
@@ -30,11 +29,11 @@ let config = {
         autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
     },
     pixelArt: true,
-    scene: [Boot, IntroStoryScene, /*MainMenu*/,dialogoLadron, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, GameOver, UIScene, InventoryScene ],
+    scene: [Boot, IntroStoryScene, /*MainMenu*/, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, GameOver, UIScene, InventoryScene ],
     physics: {
         default: 'arcade',
         arcade: {
-            debug: true
+            debug: false
         }
     },
     render: {
