@@ -69,12 +69,12 @@
                         {
                          "name":"id",
                          "type":"string",
-                         "value":"berry"
+                         "value":"health_container"
                         }, 
                         {
                          "name":"name",
                          "type":"string",
-                         "value":"berry_chest2"
+                         "value":"dungeon_chest"
                         }, 
                         {
                          "name":"quantity",
@@ -84,7 +84,7 @@
                         {
                          "name":"texture",
                          "type":"string",
-                         "value":"berry"
+                         "value":"health_container"
                         }],
                  "rotation":0,
                  "type":"Chest",
