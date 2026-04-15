@@ -14,6 +14,7 @@ export default class FirstDungeonBoss extends BaseEnemy {
         this.dmgGiven = 1;
         this.health = ENEMY.BOSS.HEALTH;
         this.state = 'STILL';
+        this.isBoss = true;
         this.body.setSize(45, 45).setOffset(11, 12);
 
         this.weakSpot = scene.add.zone(x, y, 13, 15);
