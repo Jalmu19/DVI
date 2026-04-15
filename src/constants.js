@@ -6,7 +6,7 @@ export const SCENE = {
 export const PLAYER = {
     SPEED : 100,
     MAX_HEALTH_CONTAINER : 3,
-    HEALTH_PIECE : 2 
+    HEALTH_PIECE : 1 
 }
 
 export const SPELLS = {
