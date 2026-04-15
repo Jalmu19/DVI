@@ -25,8 +25,7 @@ let config = {
     height: 180,
     parent: 'juego',
     scale: {
-        mode: Phaser.Scale.FIT,  
-        autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
+        mode: Phaser.Scale.FIT
     },
     pixelArt: true,
     scene: [Boot, IntroStoryScene, /*MainMenu*/, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, GameOver, UIScene, InventoryScene ],
