@@ -73,6 +73,89 @@
                  "width":12.6666666666666,
                  "x":386.5,
                  "y":112.166666666667
+                }, 
+                {
+                 "height":48,
+                 "id":2,
+                 "name":"bloqueo",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":21,
+                 "x":378,
+                 "y":112
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":4,
+         "name":"Cofre",
+         "objects":[
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"chest_boss",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"frame",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"id",
+                         "type":"string",
+                         "value":"freezing_shoot"
+                        }, 
+                        {
+                         "name":"name",
+                         "type":"string",
+                         "value":"chest_boss"
+                        }, 
+                        {
+                         "name":"quantity",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"texture",
+                         "type":"string",
+                         "value":"freezing_shoot"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":104.5,
+                 "y":124.5
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":5,
+         "name":"Boss",
+         "objects":[
+                {
+                 "height":0,
+                 "id":4,
+                 "name":"boss",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":142,
+                 "y":127
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -80,8 +163,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":4,
- "nextobjectid":2,
+ "nextlayerid":6,
+ "nextobjectid":5,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

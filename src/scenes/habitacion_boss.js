@@ -2,6 +2,8 @@ import Phaser from "phaser";
 import Salidas from '../game-objects/enemy/salidas.js'
 import Player from '../game-objects/player/player.js'
 import GameScene from "./game-scene.js";
+import Chest from '../game-objects/items/chest.js'
+
 
 import boss from '../../assets/sprites/dungeon1-boss.png'
 import FirstDungeonBoss from "../game-objects/enemy/firstDungeonBoss.js";
@@ -29,10 +31,28 @@ export default class HabitacionBoss extends GameScene{
         map.createLayer('suelo', [img1], 0,0);
         var paredes = map.createLayer('paredes', [img2], 0,0);
 
-        //this.player = new Player(this, 350, 112);
-        this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
         
-        this.boss = new FirstDungeonBoss(this, 100, 150, 'boss');
+        //BOSS
+        this.boss = this.physics.add.group();
+        this.capaBoss = map.getObjectLayer('Boss');
+        this.capaBoss.objects.forEach(objeto => {
+            var aux =  new FirstDungeonBoss(this, objeto.x, objeto.y, 'boss');
+            this.boss.add(aux);  
+        });
+
+        
+        //Cofre solo cuando se mata al boss
+        this.events.once('boss_dead', ()=>{
+            this.capaCofre = map.getObjectLayer('Cofre');
+            this.cofre = this.physics.add.group({classType: Chest,
+                                                    immovable: true,
+                                                    allowGravity: false });
+            this.llenarCofre(this.capaCofre, this.cofre);
+            this.physics.add.collider(this.player, this.cofre); //COLISION CON COFRE
+        });
+
+
+        this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
         //COLISIONES
         paredes.setCollisionByExclusion([-1], true);

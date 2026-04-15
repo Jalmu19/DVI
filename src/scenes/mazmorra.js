@@ -94,7 +94,7 @@ export default class Mazmorra extends GameScene{
         //colisiones
         this.logicaCajas(this.player, this.cajas);
         //this.physics.add.collider(this.player, paredes_y_entrada);  
-        this.physics.add.collider(this.player, this.puertas); 
+       // this.physics.add.collider(this.player, this.puertas); 
         this.physics.add.collider(this.puertas, paredes_y_entrada);
         this.physics.add.collider(this.cajas, paredes_y_entrada);
         this.physics.add.collider(this.cajas, this.puertas); //para que al empujar una caja no se desplace la puerta
