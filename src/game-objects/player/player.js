@@ -5,6 +5,7 @@ import Shoots from '../spells/shoots';
 import FreezingShoot from '../spells/freezingShoot';
 import Shield from '../spells/shield';
 import Shoot from '../spells/shoot';
+import Inventory from '../../inventory';
 import { PLAYER, SPELLS } from '../../constants';
 
 /**
@@ -129,6 +130,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     lanzarHechizo(x, y, rotation) {
         if (this.actualSpell) {
             this.actualSpell.fire(x, y, rotation);
+        }
+    }
+
+    acquireFromChest(item) {
+        if(item.id !== 'container' && item.id !== SPELLS.SHOOT.KEY && item.id !== SPELLS.FREEZE_SHOOT.KEY && item.id !== SPELLS.SHIELD)Inventory.addItem(item.id, item.name, item.frame, item.quantity, item.texture);
+        else {
+            if(item.id === 'container') this.health.addContainer();
+            else this.añadirHechizo(item.id);
         }
     }
 

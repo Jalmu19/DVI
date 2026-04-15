@@ -1,5 +1,4 @@
 import Phaser from "phaser";
-import Inventory from '../../inventory'
 
 export default class Chest extends Phaser.Physics.Arcade.Sprite {
     /**
@@ -41,7 +40,7 @@ export default class Chest extends Phaser.Physics.Arcade.Sprite {
             let openedChests = this.scene.registry.get('openedChests');
             openedChests.push(this.scene.scene.key + "_" + this.id);
             this.scene.registry.set('openedChests',openedChests);
-            Inventory.addItem(this.itemIn.id, this.itemIn.name, this.itemIn.frame, this.itemIn.quantity, this.itemIn.texture);
+            player.acquireFromChest(this.itemIn);
         }
     }
 }
