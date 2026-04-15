@@ -47,9 +47,8 @@ export default class Zona_bosque extends GameScene {
         this.cargaEntrada_mazmorra()
 
         //Carga de elementos de zonaLago, si hemos pasado la dungeon
-        this.cargaZonaLago()
-
-
+        if(this.registry.get('passedDungeons') > 0)
+            this.cargaZonaLago()
 
     }
     
@@ -141,7 +140,7 @@ export default class Zona_bosque extends GameScene {
         }
 
         //Capa de bloqueo   
-        /*if(this.registry.get('passedDungeons') <= 0){
+        if(this.registry.get('passedDungeons') <= 0){
             this.capaMuralla = map.getObjectLayer('Bloqueo')
             this.capaMuralla.objects.forEach(obj =>{
                 var a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
@@ -150,7 +149,7 @@ export default class Zona_bosque extends GameScene {
             })
 
             this.physics.add.collider(this.player, this.muro);
-        }  */   
+        }  
         
     
         this.items = this.physics.add.staticGroup()
@@ -178,6 +177,8 @@ export default class Zona_bosque extends GameScene {
         
         if(this.numLines === this.STORY.length){  
             this.registry.set('dialogLadron', true);
+            
+            this.limpiarEscena();
             this.cambiarVisibilidad(false)
         }
         else{
@@ -189,6 +190,18 @@ export default class Zona_bosque extends GameScene {
            
         }
     }
+
+    limpiarEscena(){
+        this.cambiarVisibilidad(false);
+       
+        if(this.ladron)
+            this.ladron.clear(true , true)
+
+        if(this.colision)
+            this.colision.destroy()
+
+    }
+
     cambiarVisibilidad(boleano){
        this.dialogBox.setVisible(boleano);
        this.dialogText.setVisible(boleano)
@@ -229,7 +242,7 @@ export default class Zona_bosque extends GameScene {
             });
         }
         else if(salidas.tag === 'salidaLago'){
-            //cambiar posiciones
+            
             this.scene.start('zonaLago', { 
                 x : 37,
                 y : 233,
