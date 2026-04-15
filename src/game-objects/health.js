@@ -41,7 +41,8 @@ export default class Health {
     addContainer() {
         if(++this.containers === PLAYER.HEALTH_PIECE){
             this.maxHearts++;
-            this.actualHealth = this.maxHearts*2;   
+            this.actualHealth = this.maxHearts*2;
+            this.scene.game.events.emit('health-changed', { heartNum: this.maxHearts, actualHealth: this.actualHealth });
         }
     }
 

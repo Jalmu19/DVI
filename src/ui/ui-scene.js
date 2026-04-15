@@ -46,6 +46,7 @@ export default class UIScene extends Phaser.Scene {
      * @param {number} heartNum Número de corazones máximo 
      */
     drawHearts(heartNum) {
+        this.hearts.clear(true, true);
         for (let i = 0; i < heartNum; ++i)
             this.hearts.add(this.add.sprite(20 + i * 20, 15, 'health'));
     }
@@ -56,7 +57,7 @@ export default class UIScene extends Phaser.Scene {
      * @param {number} actualHealth La vida real sobre heartNum*2 
      */
     updateHearts(heartNum, actualHealth) {
-        if (heartNum > this.hearts.length) this.drawHearts(heartNum);
+        if (heartNum > this.hearts.getLength()) this.drawHearts(heartNum);
 
         let children = this.hearts.getChildren();
         for (let i = 0; i < children.length; ++i) {
