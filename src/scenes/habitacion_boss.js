@@ -31,15 +31,6 @@ export default class HabitacionBoss extends GameScene{
         map.createLayer('suelo', [img1], 0,0);
         var paredes = map.createLayer('paredes', [img2], 0,0);
 
-        
-        //BOSS
-        this.boss = this.physics.add.group();
-        this.capaBoss = map.getObjectLayer('Boss');
-        this.capaBoss.objects.forEach(objeto => {
-            var aux =  new FirstDungeonBoss(this, objeto.x, objeto.y, 'boss');
-            this.boss.add(aux);  
-        });
-
 
         //COFRE
         this.capaCofre = map.getObjectLayer('Cofre');
@@ -47,45 +38,46 @@ export default class HabitacionBoss extends GameScene{
                                                     immovable: true,
                                                     allowGravity: false });
         this.llenarCofre(this.capaCofre, this.cofre);
-        //hasta que no se mate al boss, no aparece
-        this.cofre.getChildren().forEach(c => {
-            c.setVisible(false);
-            c.body.enable = false; // Desactiva la colisión
-        });
+        this.hacerVisible(this.cofre, false);
 
+        
+         //SALIDA Y CAMBIO DE MAPA
+        this.salidas = this.physics.add.group();
+        this.capaSalidas = map.getObjectLayer('Salidas');    
+        this.cargarSalidas(this.capaSalidas, this.salidas);
+        this.hacerVisible(this.salidas, false);
 
-        //Cofre y salida solo cuando se mata al boss
+        
+
+        //Cofre y salida aparecen solo cuando se mata al boss
         this.events.once('boss_dead', ()=>{
-            this.cofre.getChildren().forEach(c => {
-                c.setVisible(true);
-                c.body.enable = true;
-            });
-
-            // Activamos las salidas: visual y físicamente
-            this.salidas.getChildren().forEach(s => {
-                s.setVisible(true);
-                s.body.enable = true;
-            });
+            this.hacerVisible(this.cofre, true);
+            this.hacerVisible(this.salidas, true);
         });
+
+        //BOSS
+        if(this.registry.get('passedDungeons') <= 0){ //si es la primera vez
+            this.boss = this.physics.add.group();
+            this.capaBoss = map.getObjectLayer('Boss');
+            this.capaBoss.objects.forEach(objeto => {
+                var aux =  new FirstDungeonBoss(this, objeto.x, objeto.y, 'boss');
+                this.boss.add(aux);  
+            });
+            this.physics.add.collider(this.boss, paredes);
+        }
+        else if(this.registry.get('passedDungeons') == 1){ //si ya he derrotado al boss
+            this.hacerVisible(this.cofre, true);
+            this.hacerVisible(this.salidas, true);
+        }
+
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
         //COLISIONES
         paredes.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, paredes);
-        this.physics.add.collider(this.boss, paredes);
         this.physics.add.collider(this.player, this.cofre); //COLISION CON COFRE
 
-
-
-         //SALIDA Y CAMBIO DE MAPA
-        this.salidas = this.physics.add.group();
-        this.capaSalidas = map.getObjectLayer('Salidas');    
-        this.cargarSalidas(this.capaSalidas, this.salidas);
-        this.salidas.getChildren().forEach(s => {
-            s.setVisible(false);
-            s.body.enable = false; // Desactiva la colisión
-        });
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
 
@@ -105,5 +97,12 @@ export default class HabitacionBoss extends GameScene{
             stats : this.player.getStats()
         }); 
     } 
+
+    hacerVisible(grupo, valor){
+        grupo.getChildren().forEach(g => {
+            g.setVisible(valor);
+            g.body.enable = valor;
+        });
+    }
 
 }
