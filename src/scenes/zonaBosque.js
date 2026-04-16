@@ -174,7 +174,7 @@ export default class Zona_bosque extends GameScene {
    
 
     next(){
-        
+ 
         if(this.numLines === this.STORY.length){  
             this.registry.set('dialogLadron', true);
             
@@ -187,8 +187,9 @@ export default class Zona_bosque extends GameScene {
                 this.numLines += 1;
                 
             });
-           
+        
         }
+        
     }
 
     limpiarEscena(){
@@ -223,8 +224,10 @@ export default class Zona_bosque extends GameScene {
         this.dialogText.setText(this.STORY[0])
 
         this.input.on('pointerdown', ()=>{
-            this.dialogText.setText("");
-            this.next()
+            if (this.dialogBox.visible) {
+                this.dialogText.setText("");
+                this.next()
+            }
            
         })
 
