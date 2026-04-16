@@ -5,7 +5,6 @@ import GameScene from "./game-scene.js";
 import Chest from '../game-objects/items/chest.js'
 
 
-import boss from '../../assets/sprites/dungeon1-boss.png'
 import FirstDungeonBoss from "../game-objects/enemy/firstDungeonBoss.js";
 
 export default class HabitacionBoss extends GameScene{
@@ -16,10 +15,6 @@ export default class HabitacionBoss extends GameScene{
 
     init(datos){
          this.datos = [datos.x, datos.y, datos.stats];
-    }
-
-    preload() {
-        this.load.image('boss', boss);
     }
 
     create(){
