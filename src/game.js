@@ -28,7 +28,7 @@ let config = {
         mode: Phaser.Scale.FIT
     },
     pixelArt: true,
-    scene: [Boot, IntroStoryScene, /*MainMenu*/, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, GameOver, UIScene, InventoryScene ],
+    scene: [Boot, MainMenu, IntroStoryScene, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, GameOver, UIScene, InventoryScene ],
     physics: {
         default: 'arcade',
         arcade: {

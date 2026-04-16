@@ -49,7 +49,7 @@ export default class MainMenu extends Phaser.Scene
 
     changeScene()
     {
-        this.scene.start("bosque",{ globals : this.globals});
+        this.scene.start("IntroStoryScene");
         this.sonidoFondo.play();
     }
 }
