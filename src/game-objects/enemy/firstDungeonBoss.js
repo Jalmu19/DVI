@@ -15,9 +15,9 @@ export default class FirstDungeonBoss extends BaseEnemy {
         this.health = ENEMY.BOSS.HEALTH;
         this.state = 'STILL';
         this.isBoss = true;
-        this.body.setSize(45, 45).setOffset(11, 12);
+        this.body.setSize(45, 52).setOffset(11, 12);
 
-        this.weakSpot = scene.add.zone(x, y, 13, 15);
+        this.weakSpot = scene.add.zone(x, y, 12, 10);
         scene.physics.add.existing(this.weakSpot);
 
         this.dmgRecieved = 5;
@@ -35,6 +35,8 @@ export default class FirstDungeonBoss extends BaseEnemy {
                 }
             });
         }
+
+        this.play('front-idle');
     }
 
     getCollisionTarget() {
@@ -58,6 +60,7 @@ export default class FirstDungeonBoss extends BaseEnemy {
     }
 
     applyStateBehavior() {
+        if (!this.active || !this.scene) return;
         let nextDecisionDelay = Phaser.Math.Between(1000, 2000);
 
         if (this.state === 'WANDER') {
@@ -109,13 +112,85 @@ export default class FirstDungeonBoss extends BaseEnemy {
         this.setVelocity(dirX * this.speed, dirY * this.speed);
     }
 
+    updateAnimation() {
+        const vX = this.body.velocity.x;
+        const vY = this.body.velocity.y;
+        let currentConfig = ENEMY.BOSS.FIRST.HITBOX.front;
+
+        // Prioridad: Animación lateral
+        if (Math.abs(vX) > Math.abs(vY)) {
+            this.play('side-idle', true); // 'true' hace que no se reinicie si ya está sonando
+            this.flipX = vX < 0;
+            if(this.flipX) this.weakSpot.x = this.x - ENEMY.BOSS.FIRST.HITBOX.side.weak.offsetX;
+            else this.weakSpot.x = this.x + ENEMY.BOSS.FIRST.HITBOX.side.weak.offsetX;
+            this.weakSpot.y = this.y + ENEMY.BOSS.FIRST.HITBOX.side.weak.offsetY;
+            currentConfig = ENEMY.BOSS.FIRST.HITBOX.side;
+        }
+        // Animación vertical
+        else if (vY > 0) {
+            this.play('front-idle', true);
+            this.weakSpot.x = this.x + ENEMY.BOSS.FIRST.HITBOX.front.weak.offsetX;
+            this.weakSpot.y = this.y + ENEMY.BOSS.FIRST.HITBOX.front.weak.offsetY;
+            currentConfig = ENEMY.BOSS.FIRST.HITBOX.front;
+        } else if (vY < 0) {
+            this.play('back-idle', true);
+            this.weakSpot.x = this.x + ENEMY.BOSS.FIRST.HITBOX.back.weak.offsetX;
+            this.weakSpot.y = this.y + ENEMY.BOSS.FIRST.HITBOX.back.weak.offsetY;
+            currentConfig = ENEMY.BOSS.FIRST.HITBOX.back;
+        }
+        // Si está quieto
+        else {
+            // Intentar determinar qué idle poner según el último movimiento
+            if (this.anims.currentAnim) {
+                const lastKey = this.anims.currentAnim.key;
+                if (lastKey.includes('side')) this.play('side-idle', true);
+                else if (lastKey.includes('back')) this.play('back-idle', true);
+                else this.play('front-idle', true);
+            }
+        }
+
+        /*
+        // Lógica de ROTACIÓN (Inclinación dinámica)
+        if (this.body.velocity.length() > 0) {
+            // Calculamos cuánto inclinarlo. Por ejemplo, un máximo de 15 grados (0.26 radianes)
+            // Si vX es positivo, inclina a la derecha, si es negativo, a la izquierda.
+            const targetAngle = vX * 0.002; // Ajusta el 0.002 para más o menos inclinación
+
+            // Suavizamos la rotación para que no sea brusca
+            this.rotation = Phaser.Math.Interpolation.Linear([this.rotation, targetAngle], 0.1);
+        } else {
+            // Volver a posición vertical si se detiene
+            this.rotation = Phaser.Math.Interpolation.Linear([this.rotation, 0], 0.1);
+        }
+        */
+
+        this.applyDynamicHitbox(currentConfig);
+    }
+
+    applyDynamicHitbox(config) {
+        const { width, height, offsetX, offsetY } = config.normal;
+        
+        // Ajuste para el flipX:
+        // Si el sprite está volteado, el offset horizontal debe invertirse
+        let finalOffsetX = offsetX;
+        if (this.flipX) {
+            // Fórmula: AnchoTotalSprite - AnchoHitbox - OffsetOriginal
+            finalOffsetX = this.width - width - offsetX;
+        }
+    
+        // Solo aplicar si el tamaño ha cambiado para ahorrar rendimiento
+        if (this.body.width !== width || this.body.height !== height || this.body.offset.x !== finalOffsetX) {
+            this.body.setSize(width, height);
+            this.body.setOffset(finalOffsetX, offsetY);
+        }
+    }
+
     preUpdate(t, dt) {
         Phaser.Physics.Arcade.Sprite.prototype.preUpdate.call(this, t, dt);
         if (this.scene.physics.overlap(this.scene.player.hurtbox, this)) {
             this.scene.player.takeDamage(this.dmgGiven, this.x, this.y);
         }
 
-        this.weakSpot.x = this.x + 5;
-        this.weakSpot.y = this.y - 12;
+        this.updateAnimation();
     }
 }
