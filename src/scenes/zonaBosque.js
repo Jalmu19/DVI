@@ -140,7 +140,7 @@ export default class Zona_bosque extends GameScene {
         }
 
         //Capa de bloqueo   
-        if(this.registry.get('passedDungeons') <= 0){
+        /*if(this.registry.get('passedDungeons') <= 0){
             this.capaMuralla = map.getObjectLayer('Bloqueo')
             this.capaMuralla.objects.forEach(obj =>{
                 var a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
@@ -149,7 +149,7 @@ export default class Zona_bosque extends GameScene {
             })
 
             this.physics.add.collider(this.player, this.muro);
-        }  
+        }  */
         
     
         this.items = this.physics.add.staticGroup()
