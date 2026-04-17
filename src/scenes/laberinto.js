@@ -27,6 +27,8 @@ export default class Laberinto extends GameScene{
         if (!this.registry.has('numEstrellasRecogidas')) {
             this.registry.set('numEstrellasRecogidas', 0);
         }
+
+        this.isDialogOpen = false;
     }
 
     preload() {
@@ -87,6 +89,8 @@ export default class Laberinto extends GameScene{
     }
 
     cambiarScene(jugador, salidas){
+        var estrellas = this.registry.get('numEstrellasRecogidas');
+
         this.anims.createFromAseprite('player');
         if(salidas.tag === "entrada"){
             this.scene.start('entrada_ciudad', {
@@ -100,8 +104,12 @@ export default class Laberinto extends GameScene{
         else if(salidas.tag === "entrada3") this.changePosition(this.player, 366, 147);
         else if(salidas.tag === "entrada4") this.changePosition(this.player, 560, 385);
         //si hemos recogido todas las estrellas, dejamos que pase
-        else if(salidas.tag === "entrada5" && this.registry.get('numEstrellasRecogidas')===NUM_ESTRELLAS_LABERINTO) 
-            this.changePosition(this.player, 52, 574);
+        else if(salidas.tag === "entrada5"){
+            if(estrellas===NUM_ESTRELLAS_LABERINTO)
+                this.changePosition(this.player, 52, 574);
+            else if(!this.isDialogOpen)
+                this.dialogo("Salida bloqueada\nRecoge primero todas las estrellas.\nTe quedan: " + (NUM_ESTRELLAS_LABERINTO-estrellas) + " estrellas.")
+        }
         else if(salidas.tag === "entrada6") this.changePosition(this.player, 390, 686);
         else if(salidas.tag === "salida1") this.changePosition(this.player, 23, 96);
         else if(salidas.tag === "salida2") this.changePosition(this.player, 617, 296);
@@ -138,8 +146,15 @@ export default class Laberinto extends GameScene{
                 // Sumar al contador global
                 let total = this.registry.get('numEstrellasRecogidas') || 0;
                 this.registry.set('numEstrellasRecogidas', total + 1);
+                
+                console.log(total);
+
+                if(total === NUM_ESTRELLAS_LABERINTO-1){
+                    this.dialogo("¡Enhorabuena! Salida desbloqueada.");
+                }
             }
         }
     }
+
 
 }

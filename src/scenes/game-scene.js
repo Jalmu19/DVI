@@ -161,6 +161,7 @@ export default class GameScene extends Phaser.Scene {
 
 
     dialogo(dialog_text) {
+        
         this.dialogBox = this.add.rectangle(this.cameras.main.centerX, this.cameras.main.centerY + 60, 300, 50, 0x000000, 0.7
         ).setStrokeStyle(2, 0xffffff).setScrollFactor(0);
 
@@ -173,9 +174,12 @@ export default class GameScene extends Phaser.Scene {
 
         this.dialogText.setText(dialog_text);
         this.visibilityDialog(true);
+        this.isDialogOpen = true;
+
 
         this.input.on('pointerdown', ()=>{
-           this.visibilityDialog(false);      
+           this.visibilityDialog(false); 
+           this.isDialogOpen = false;     
         });
 
     }

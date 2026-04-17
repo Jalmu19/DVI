@@ -335,28 +335,6 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":5,
-         "name":"Bloqueo",
-         "objects":[
-                {
-                 "height":13.6842105263158,
-                 "id":35,
-                 "name":"bloqueo",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":49.4736842105263,
-                 "x":95.7894736842105,
-                 "y":256.842105263158
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
         }],
  "nextlayerid":6,
  "nextobjectid":36,
