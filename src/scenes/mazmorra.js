@@ -178,7 +178,7 @@ export default class Mazmorra extends GameScene{
         //Guardamos todo en el registry bajo un ID único para esta habitación
         this.registry.set('estado_mazmorra', {
             cajas: estadoCajas,
-           // enemigos: enemigosVivos,
+            enemigos: enemigosVivos,
         });
     }
 

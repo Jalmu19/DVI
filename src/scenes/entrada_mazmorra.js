@@ -23,7 +23,8 @@ export default class Entrada_mazmorra extends GameScene{
     }
 
     init(datos){
-         this.datos = [datos.x, datos.y, datos.stats];
+        this.datos = [datos.x, datos.y, datos.stats];
+        this.dialog_text = ["Has recibido: "];
     }
 
 

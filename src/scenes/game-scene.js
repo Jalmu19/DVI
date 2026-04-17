@@ -159,4 +159,31 @@ export default class GameScene extends Phaser.Scene {
         });
     }
 
+
+    dialogo(dialog_text) {
+        this.dialogBox = this.add.rectangle(this.cameras.main.centerX, this.cameras.main.centerY + 60, 300, 50, 0x000000, 0.7
+        ).setStrokeStyle(2, 0xffffff).setScrollFactor(0);
+
+        this.dialogText = this.add.text(this.cameras.main.centerX - 145, this.cameras.main.centerY + 40, '', {
+            fontSize: '10px',
+            fontFamily: 'monospace',
+            wordWrap: { width: 300 }
+        }
+        ).setScrollFactor(0);
+
+        this.dialogText.setText(dialog_text);
+        this.visibilityDialog(true);
+
+        this.input.on('pointerdown', ()=>{
+           this.visibilityDialog(false);      
+        });
+
+    }
+
+    visibilityDialog(visible) {
+        this.dialogBox.setVisible(visible);
+        this.dialogText.setVisible(visible);
+    } 
+    
+
 }
