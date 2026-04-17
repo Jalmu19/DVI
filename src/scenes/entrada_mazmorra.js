@@ -49,7 +49,6 @@ export default class Entrada_mazmorra extends GameScene{
         var img2 = map.addTilesetImage('plataforma_cesped', 'plataforma_cesped');
         var img3 = map.addTilesetImage('arbol', 'arbol');
         var img4 = map.addTilesetImage('Bridges', 'Bridges');
-        var img5 = map.addTilesetImage('seta', 'seta');
         var img6 = map.addTilesetImage('florAmarilla', 'flor');
         var img7 = map.addTilesetImage('tierra', 'tierra');
         var img8 = map.addTilesetImage('piedras_tierra', 'piedras_tierra');
@@ -60,7 +59,7 @@ export default class Entrada_mazmorra extends GameScene{
         map.createLayer('Suelo', [img1, img7, img8], 0,0);
         var dungeon = map.createLayer('mazmorra', [img10, img11], 0,0);
         var plataformas = map.createLayer('Plataformas', img2, 0,0);
-        map.createLayer('setitas y flores', [img5,img6 ], 0,0);
+        map.createLayer('setitas y flores', img6, 0,0);
         var arboles = map.createLayer('arboles', img3, 0,0);
         map.createLayer('capa_puente', img4, 0,0);
         map.createLayer('escaleras', img9, 0,0);

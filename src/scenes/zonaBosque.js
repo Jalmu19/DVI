@@ -11,7 +11,6 @@ import zonaLago from '../../assets/mapas/zona_lago.json'
 import cesped from '../../assets/sprites/cesped.png'
 import plataforma_cesped from '../../assets/sprites/plataforma_cesped.png'
 import puente from '../../assets/sprites/Bridges.png'
-import seta from '../../assets/sprites/seta.png'
 import tierra from '../../assets/sprites/tierra.png'
 import piedras_tierra from '../../assets/sprites/piedras_tierra.png'
 import escaleras from '../../assets/sprites/escaleras.png'
@@ -69,7 +68,6 @@ export default class Zona_bosque extends GameScene {
         this.load.image('cesped', cesped);
         this.load.image('plataforma_cesped', plataforma_cesped);
         this.load.image('Bridges', puente);
-        this.load.image('seta', seta);
         this.load.image('tierra', tierra);
         this.load.image('piedras_tierra', piedras_tierra);
         this.load.image('escaleras', escaleras);
