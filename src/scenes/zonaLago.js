@@ -26,7 +26,7 @@ export default class Zona_Lago extends GameScene {
     preload() {
        this.load.tilemapTiledJSON('laberinto', laberinto);
        
-       this.load.image('star', star);
+       this.load.spritesheet('star', star, { frameWidth: 32, frameHeight: 32 });
 
     }
 

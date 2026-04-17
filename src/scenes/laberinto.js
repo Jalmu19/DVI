@@ -72,7 +72,7 @@ export default class Laberinto extends GameScene{
         this.capaEstrellas.objects.forEach(objeto => {
             const id = `estrella_${objeto.x}_${objeto.y}`;
             if (!recogidas.includes(id)) {
-                let star = new Estrella(this, objeto.x, objeto.y, 'star');
+                let star = new Estrella(this, objeto.x, objeto.y, 'star', [0,1, 8, 9]);
                 this.estrellas.add(star);
             }
         });
