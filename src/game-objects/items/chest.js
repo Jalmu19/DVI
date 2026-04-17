@@ -43,7 +43,7 @@ export default class Chest extends Phaser.Physics.Arcade.Sprite {
             player.acquireFromChest(this.itemIn);
 
             // Obtenemos el nombre del item o un genérico si no tiene
-            let itemName = this.itemIn ? this.itemIn.id : "Objeto desconocido";
+            let itemName = this.itemIn ? this.itemIn.name : "Objeto desconocido";
             this.scene.dialogo("Has recibido: " + itemName);
         }
     }
