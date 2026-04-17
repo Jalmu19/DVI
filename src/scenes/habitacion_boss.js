@@ -1,5 +1,6 @@
 import Phaser from "phaser";
-import Salidas from '../game-objects/enemy/salidas.js'
+
+import Puertas from '../game-objects/items/puertas.js'
 import Player from '../game-objects/player/player.js'
 import GameScene from "./game-scene.js";
 import Chest from '../game-objects/items/chest.js'
@@ -26,6 +27,11 @@ export default class HabitacionBoss extends GameScene{
         map.createLayer('suelo', [img1], 0,0);
         var paredes = map.createLayer('paredes', [img2], 0,0);
 
+        //puertas
+        this.puertas = this.physics.add.group();
+        this.capaPuertas = map.getObjectLayer('Puertas');
+        this.crearObjeto(this.puertas, this.capaPuertas, Puertas);
+
 
         //COFRE
         this.capaCofre = map.getObjectLayer('Cofre');
@@ -48,6 +54,7 @@ export default class HabitacionBoss extends GameScene{
         this.events.once('boss_dead', ()=>{
             this.hacerVisible(this.cofre, true);
             this.hacerVisible(this.salidas, true);
+            this.hacerVisible(this.puertas, false); //desactivamos la puerta
         });
 
         //BOSS
@@ -86,11 +93,20 @@ export default class HabitacionBoss extends GameScene{
 
     cambiarScene(jugador, salidas){
         this.anims.createFromAseprite('player');
-         this.scene.start('mazmorra', {
-            x : 25,
-            y : 40,
-            stats : this.player.getStats()
-        }); 
+         if(salidas.tag === 'atras' ){
+            this.scene.start('mazmorra', {
+                x : 25,
+                y : 40,
+                stats : this.player.getStats()
+            });
+        }
+        else if(salidas.tag === "salida_bosque"){
+            this.scene.start('entrada_mazmorra', {
+                x : 394,
+                y : 46,
+                stats : this.player.getStats()
+            });
+        }
     } 
 
     hacerVisible(grupo, valor){
