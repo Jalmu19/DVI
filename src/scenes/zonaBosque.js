@@ -47,7 +47,7 @@ export default class Zona_bosque extends GameScene {
         this.cargaEntrada_mazmorra()
 
         //Carga de elementos de zonaLago, si hemos pasado la dungeon
-        if(this.registry.get('passedDungeons') > 0)
+       // if(this.registry.get('passedDungeons') > 0)
             this.cargaZonaLago()
 
     }
