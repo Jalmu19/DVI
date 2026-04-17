@@ -166,8 +166,8 @@ export default class Entrada_mazmorra extends GameScene{
         
         if(salidas.tag === 'salidaMazmorra' ){
             this.scene.start('mazmorra_inicial', {
-                x : 133,
-                y : 252,
+                x : 122,
+                y : 138,
                 stats : this.player.getStats()
                 
             });

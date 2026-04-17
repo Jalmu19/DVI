@@ -5,9 +5,6 @@ import Banderas from '../game-objects/items/banderas.js'
 import Puertas from '../game-objects/items/puertas.js'
 import GameScene from "./game-scene.js";
 
-import Spike from '../game-objects/enemy/spike.js'
-import Rata from '../game-objects/enemy/rata.js'
-
 import mazmorra from '../../assets/mapas/mazmorra.json'
 import suelo from '../../assets/sprites/dungeon.png'
 import puertas from '../../assets/sprites/puerta.png'
@@ -116,21 +113,6 @@ export default class MazmorraInicial extends GameScene{
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
 
-        // Enemigos
-        this.enemigos = this.physics.add.group();
-        this.capaEnemigos = map.getObjectLayer('Enemigos');
-
-        if (datosGuardados) {
-            datosGuardados.enemigos.forEach(e => {
-                let spike = new Rata(this, e.x, e.y, 'rata');
-                this.enemigos.add(spike);
-            });
-        } else {
-            this.capaEnemigos.objects.forEach(obj => {
-                var a = new Rata(this, obj.x, obj.y, 'rata');
-                this.enemigos.add(a);
-            });
-        }
         
         this.logicaCajas(this.player, this.cajas);
         this.physics.add.collider(this.player, paredes_y_entrada);  
@@ -138,8 +120,6 @@ export default class MazmorraInicial extends GameScene{
         this.physics.add.collider(this.puertas, paredes_y_entrada);
         this.physics.add.collider(this.cajas, this.puertas); //para que al empujar una caja no se desplace la puerta
         this.physics.add.collider(this.cajas, paredes_y_entrada); // También colisión entre las cajas y el escenario (paredes)
-        this.physics.add.collider(this.enemigos, paredes_y_entrada);
-        this.physics.add.collider(this.enemigos, this.enemigos);
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
 
@@ -182,18 +162,9 @@ export default class MazmorraInicial extends GameScene{
                                 name:caja.name }); 
         });
 
-        //Guardar enemigos vivos
-        let enemigosVivos = [];
-        this.enemigos.children.iterate(enemigo => {
-            if (enemigo.active) {
-                enemigosVivos.push({ x: enemigo.x, y: enemigo.y, id: enemigo.name });
-            }
-        });
-
         //Guardamos todo en el registry bajo un ID único para esta habitación
         this.registry.set('estado_mazmorra_inicial', {
             cajas: estadoCajas,
-            enemigos: enemigosVivos,
         });
     }
 
