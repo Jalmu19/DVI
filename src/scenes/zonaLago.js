@@ -10,7 +10,8 @@ import flor from '../../assets/sprites/florAmarilla.png'
 import star from '../../assets/sprites/star.png'
 import Rata from "../game-objects/enemy/rata.js";
 
-
+import hielo from '../../assets/sprites/hielo.png'
+import {SPELLS } from '../constants';
 
 export default class Zona_Lago extends GameScene {
 
@@ -34,6 +35,7 @@ export default class Zona_Lago extends GameScene {
 
     create() {
         var map = this.make.tilemap({ key: 'zonaLago' });
+    console.log(map.tilesets.map(t => t.name));
 
         var img1 = map.addTilesetImage('Villa1', 'plantilla');
         var img2 = map.addTilesetImage('Arbol', 'arbol');
@@ -41,10 +43,10 @@ export default class Zona_Lago extends GameScene {
         var img4 = map.addTilesetImage('agua', 'agua');
         var img5 = map.addTilesetImage('detalleAgua', 'detalleAgua');
         var img6 = map.addTilesetImage('elevacionAgua', 'islotesAgua')
-
+        var img7 = map.addTilesetImage('hielo', 'hielo')
 
         map.createLayer('fondo', [img1, img3], 0, 0);
-        var lago = map.createLayer('Agua',[img4, img1] ,0,0)
+        this.lago = map.createLayer('Agua',[img4, img1] ,0,0)
         map.createLayer('DetallesAgua', img5, 0, 0)
         map.createLayer('islotes', [img1,img6], 0,0);
         map.createLayer('Camino',img1, 0 ,0)
@@ -61,8 +63,8 @@ export default class Zona_Lago extends GameScene {
         arboles.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, arboles);
        
-        //lago.setCollisionByExclusion([-1],true);
-        //this.physics.add.collider(this.player, lago);
+        this.lago.setCollisionByExclusion([-1],true);
+        this.physics.add.collider(this.player, this.lago);
 
         //limites de camara
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
@@ -102,9 +104,37 @@ export default class Zona_Lago extends GameScene {
 
         })
         
+    Object.values(this.player.mapOfSpells).forEach(group => {
+        if (group instanceof Phaser.Physics.Arcade.Group) {
+            this.physics.add.overlap(group, this.lago, (shoot, tile) => {
+                    console.log("a");
+                    console.log(shoot.spellKey);
+                    this.freezeWater(shoot, tile);
+                }, 
+                (shoot, tile) => {
+                    return shoot.active && shoot.visible && tile.index !== -1;
+                }, 
+                this
+            );
+        }
+    });
+        
         
     }
    
+    freezeWater(shoot, tile) {
+        if (shoot.spellKey === SPELLS.FREEZE_SHOOT.KEY) {
+            console.log("congelado");
+            const tilesetHielo = this.lago.layer.tilemapLayer.tilemap.getTileset('hielo');
+            const idHielo = tilesetHielo.firstgid;
+
+            this.lago.putTileAt(idHielo, tile.x, tile.y);
+
+            shoot.setActive(false);
+            shoot.setVisible(false);
+            if (shoot.body) shoot.body.stop();
+        }
+    }
 
     cambiarScene(jugador, salidas) {
         if(salidas.tag === 'salidaLaberinto' ){

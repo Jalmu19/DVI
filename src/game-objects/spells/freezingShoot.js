@@ -7,7 +7,7 @@ export default class FreezingShoot extends Shoot{
         const key = scene.currentShootKey;
         super(scene, x, y, key);
         this.speed = SPELLS.FREEZE_SHOOT.SPEED;
-        
+        this.spellKey = SPELLS.FREEZE_SHOOT.KEY;
         this.freeze = true;
     }
 

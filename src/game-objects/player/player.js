@@ -61,6 +61,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         }
         else {
             this.añadirHechizo(SPELLS.SHOOT.KEY);
+            this.añadirHechizo(SPELLS.FREEZE_SHOOT.KEY);
             this.actualSpell = this.mapOfSpells[SPELLS.SHOOT.KEY];
         }
 
