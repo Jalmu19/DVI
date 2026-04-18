@@ -1,5 +1,7 @@
 import Phaser from 'phaser'
 
+import playSound from '../../assets/sounds/play.wav'
+
 import background from '../../assets/sprites/background.jpg'
 import villa from '../../assets/sprites/villa1.png'
 import mapa from '../../assets/mapas/mapaVilla.json'
@@ -84,6 +86,7 @@ export default class Boot extends Phaser.Scene {
     /*this.load.image('platform', platform);
     this.load.image('base', base);
     this.load.image('star', star);*/
+    this.load.audio('playSound', playSound);
     this.load.audio('introMusic', introMusic);
     this.load.audio('townMusic', townMusic);
     this.load.audio('forestMusic', forestMusic);

@@ -30,20 +30,18 @@ export default class MainMenu extends Phaser.Scene
 
         botonJugar.on('pointerover', () => botonJugar.setStyle({ fill: 'rgb(255, 255, 255)' })); 
         botonJugar.on('pointerout', () => botonJugar.setStyle({ fill: '#c92efd' }));  
-
+        const playSound = this.sound.add('playSound');
         botonJugar.on('pointerdown', () => {
             this.tweens.add({
             targets: botonJugar,
             scale: 0.9,
             duration: 100,
             yoyo: true
-        });
-
-        // 1. Iniciamos el efecto de desvanecimiento
-        // Sintaxis: fadeOut(duración_ms, rojo, verde, azul)
-        // 1000ms (1 segundo), 0, 0, 0 es desvanecimiento a NEGRO
-        this.cameras.main.fadeOut(1000, 0, 0, 0);
-            
+            });
+            playSound.play();
+           
+            this.cameras.main.fadeOut(1000, 0, 0, 0);
+                
         }); 
 
         this.cameras.main.once('camerafadeoutcomplete', (camera, effect) => {
