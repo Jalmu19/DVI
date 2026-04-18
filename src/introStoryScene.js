@@ -550,7 +550,7 @@ export default class IntroStoryScene extends Phaser.Scene {
             key: 'lilith_walk-back',
             frames: this.anims.generateFrameNames('player', {
                 start: 23,
-                end: 30,
+                end: 29,
             }),
             frameRate: 5,
             repeat: -1

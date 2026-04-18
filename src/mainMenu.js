@@ -5,15 +5,7 @@ export default class MainMenu extends Phaser.Scene
         super({ key: 'mainmenu' });
     }
 
-    init(datos) {
-        this.globals = datos.globals
-        console.log("init");
-        console.log(datos.globals);
-    }
-
-    create()
-    {
-        
+    create(){
         let bg = this.add.image(0, 0, 'background');
         bg.displayHeight = this.sys.game.config.height;
         bg.scaleX = bg.scaleY;
@@ -50,6 +42,5 @@ export default class MainMenu extends Phaser.Scene
     changeScene()
     {
         this.scene.start("IntroStoryScene");
-        this.sonidoFondo.play();
     }
 }
