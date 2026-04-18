@@ -28,13 +28,16 @@ let config = {
         mode: Phaser.Scale.FIT
     },
     pixelArt: true,
-    scene: [Boot, /*MainMenu*/, IntroStoryScene, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, GameOver, UIScene, InventoryScene ],
+    scene: [Boot, MainMenu, IntroStoryScene, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, GameOver, UIScene, InventoryScene ],
     physics: {
         default: 'arcade',
         arcade: {
             debug: false
         }
     },
+    audio: {
+        disableWebAudio: false
+    }
 };
 
 new Phaser.Game(config);

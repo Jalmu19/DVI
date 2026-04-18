@@ -152,8 +152,8 @@ export default class Boot extends Phaser.Scene {
     this.anims.createFromAseprite('oruga');
     this.anims.createFromAseprite('boss1');
     //this.scene.start('bosque', {x: 251, y: 381, stats: null});
-    this.scene.start('IntroStoryScene');
-    //this.scene.start('mainmenu');
+    //this.scene.start('IntroStoryScene');
+    this.scene.start('mainmenu');
 
     //musica
 

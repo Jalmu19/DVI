@@ -18,29 +18,37 @@ export default class MainMenu extends Phaser.Scene
         title.setScrollFactor(0);
         title.setFontFamily('"Press Start 2P"');
 
-        var start  = this.add.text(80, 150, "Press any key to start");
-        start.setFontSize(20);
-        start.setFill('#ffffff');
-        start.setScrollFactor(0);
-        start.setFontFamily('"Press Start 2P"');
 
-        /*
-        let buttonPlay = this.add.image(300, 180, 'button');
-        buttonPlay.setInteractive({ useHandCursor: true });
-        var buttonText  = this.add.text(275, 170, "Play");
-        buttonText.setFontSize(20);
-        buttonPlay.on('pointerover', () => { buttonPlay.setTint(0xff00ff, 0xffff00, 0x0000ff, 0xff0000); } );
-        buttonPlay.on('pointerdown',this.changeScene, this);
-        buttonPlay.on('pointerout',() => {buttonPlay.setTint(0xffffff, 0xffffff, 0xffffff, 0xffffff);});
-        */
+        const botonJugar = this.add.text(160, 120, 'JUGAR', {
+            fontSize: '15px',
+            fill: '#c92efd',
+            backgroundColor: '#fff64f',
+            padding: { x: 5, y: 5 }
+        }).setOrigin(0.5);
 
-        this.input.keyboard.on('keydown', function (_event) { 
-            this.changeScene();
-        },  this);
+        botonJugar.setInteractive({ useHandCursor: true });
+
+        botonJugar.on('pointerover', () => botonJugar.setStyle({ fill: 'rgb(255, 255, 255)' })); 
+        botonJugar.on('pointerout', () => botonJugar.setStyle({ fill: '#c92efd' }));  
+
+        botonJugar.on('pointerdown', () => {
+            this.tweens.add({
+            targets: botonJugar,
+            scale: 0.9,
+            duration: 100,
+            yoyo: true
+        });
+
+        // 1. Iniciamos el efecto de desvanecimiento
+        // Sintaxis: fadeOut(duración_ms, rojo, verde, azul)
+        // 1000ms (1 segundo), 0, 0, 0 es desvanecimiento a NEGRO
+        this.cameras.main.fadeOut(1000, 0, 0, 0);
+            
+        }); 
+
+        this.cameras.main.once('camerafadeoutcomplete', (camera, effect) => {
+            this.scene.start('IntroStoryScene'); 
+        });
     }
 
-    changeScene()
-    {
-        this.scene.start("IntroStoryScene");
-    }
 }
