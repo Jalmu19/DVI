@@ -46,6 +46,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.menuOpened = false;
         this.inventoryOpened = false;
         this.actualObj = null;
+        this.inDialog = false; // Para impedir su movimiento si esta en dialogo
 
         this.mapOfSpells = [];
         this.protected = false;
@@ -222,29 +223,32 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             let anim;
             let vY = 0;
             let vX = 0;
-
-            if (this.cursors.up.isDown) {
-                vY = -this.speed;
-                anim = 'walk-back';
-                this.lastDir = 'back';
+            
+            if(!this.inDialog) {
+                if (this.cursors.up.isDown) {
+                    vY = -this.speed;
+                    anim = 'walk-back';
+                    this.lastDir = 'back';
+                }
+                if (this.cursors.down.isDown) {
+                    vY = this.speed;
+                    anim = 'walk-front';
+                    this.lastDir = 'front';
+                }
+                if (this.cursors.left.isDown) {
+                    vX = -this.speed;
+                    anim = 'walk-lside';
+                    this.lastDir = 'lside';
+                }
+                if (this.cursors.right.isDown) {
+                    vX = this.speed;
+                    anim = 'walk-rside';
+                    this.lastDir = 'rside';
+                }
+    
+                this.body.setVelocity(vX, vY);
             }
-            if (this.cursors.down.isDown) {
-                vY = this.speed;
-                anim = 'walk-front';
-                this.lastDir = 'front';
-            }
-            if (this.cursors.left.isDown) {
-                vX = -this.speed;
-                anim = 'walk-lside';
-                this.lastDir = 'lside';
-            }
-            if (this.cursors.right.isDown) {
-                vX = this.speed;
-                anim = 'walk-rside';
-                this.lastDir = 'rside';
-            }
-
-            this.body.setVelocity(vX, vY);
+            
 
             if (vX === 0 && vY === 0) {
                 let idle = 'idle-' + this.lastDir;

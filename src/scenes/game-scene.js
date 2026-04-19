@@ -189,11 +189,13 @@ export default class GameScene extends Phaser.Scene {
         this.dialogText.setText(dialog_text);
         this.visibilityDialog(true);
         this.isDialogOpen = true;
+        this.player.inDialog = true;
 
 
         this.input.on('pointerdown', () => {
             this.visibilityDialog(false);
             this.isDialogOpen = false;
+            this.player.inDialog = false;
         });
 
     }
