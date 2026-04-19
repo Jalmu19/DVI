@@ -49,6 +49,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.inDialog = false; // Para impedir su movimiento si esta en dialogo
         this.openingChest = false;
         this.displayedItem = null // El item que muestra cuando coge de un cofre
+        this.pushing = false;
 
         this.mapOfSpells = [];
         this.protected = false;
@@ -232,22 +233,26 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             if(!this.inDialog) {
                 if (this.cursors.up.isDown) {
                     vY = -this.speed;
-                    anim = 'walk-back';
+                    if(!this.pushing) anim = 'walk-back';
+                    else anim = 'idle-push-back';
                     this.lastDir = 'back';
                 }
                 if (this.cursors.down.isDown) {
                     vY = this.speed;
-                    anim = 'walk-front';
+                    if(!this.pushing) anim = 'walk-front';
+                    else anim = 'idle-push-front';
                     this.lastDir = 'front';
                 }
                 if (this.cursors.left.isDown) {
                     vX = -this.speed;
-                    anim = 'walk-lside';
+                    if(!this.pushing) anim = 'walk-lside';
+                    else anim = 'idle-push-lside';
                     this.lastDir = 'lside';
                 }
                 if (this.cursors.right.isDown) {
                     vX = this.speed;
-                    anim = 'walk-rside';
+                    if(!this.pushing) anim = 'walk-rside';
+                    else anim = 'idle-push-rside';
                     this.lastDir = 'rside';
                 }
     
@@ -277,6 +282,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                     this.actualObj = null;
                 }
             }
+
+            this.pushing = false;
         }
     }
 

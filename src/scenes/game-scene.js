@@ -77,9 +77,10 @@ export default class GameScene extends Phaser.Scene {
             // Solo permitimos que la caja se mueva si el jugador está caminando hacia ella
             // Reducimos la velocidad a 0.4 (40% de la velocidad del jugador) para que se sienta pesada
             const factorEmpuje = 0.4;
-
+            
             // Empujar a la DERECHA (Jugador a la izquierda de la caja)
             if (player.body.touching.right) {
+                player.pushing = true;
                 // Solo movemos si la caja NO está bloqueada por la derecha (pared)
                 if (!caja.body.blocked.right && !caja.body.touching.right) {
                     caja.setVelocityX(player.body.velocity.x * factorEmpuje);
@@ -87,18 +88,21 @@ export default class GameScene extends Phaser.Scene {
             }
             // Empujar a la IZQUIERDA
             else if (player.body.touching.left) {
+                player.pushing = true;
                 if (!caja.body.blocked.left && !caja.body.touching.left) {
                     caja.setVelocityX(player.body.velocity.x * factorEmpuje);
                 }
             }
             // Empujar ABAJO
             else if (player.body.touching.down) {
+                player.pushing = true;
                 if (!caja.body.blocked.down && !caja.body.touching.down) {
                     caja.setVelocityY(player.body.velocity.y * factorEmpuje);
                 }
             }
             // Empujar ARRIBA
             else if (player.body.touching.up) {
+                player.pushing = true;
                 if (!caja.body.blocked.up && !caja.body.touching.up) {
                     caja.setVelocityY(player.body.velocity.y * factorEmpuje);
                 }
