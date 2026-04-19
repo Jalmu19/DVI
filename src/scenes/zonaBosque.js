@@ -204,6 +204,7 @@ export default class Zona_bosque extends GameScene {
     cambiarVisibilidad(boleano){
        this.dialogBox.setVisible(boleano);
        this.dialogText.setVisible(boleano)
+       this.player.inDialog = boleano;
     }
 
     crearGrafico(){
