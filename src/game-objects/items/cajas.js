@@ -39,6 +39,8 @@ export default class Cajas extends Phaser.Physics.Arcade.Sprite  {
         }
 
         if (player.cursors.interact.isDown && this.ejeBloqueado) {
+
+            let anim;
             
             if (this.ejeBloqueado === 'x') {
                 // Bloqueamos el movimiento vertical tanto del player como de la caja
@@ -46,6 +48,8 @@ export default class Cajas extends Phaser.Physics.Arcade.Sprite  {
                 this.setVelocity(player.body.velocity.x * this.pesoFactor, 0);
                 
                 player.body.velocity.x *= this.pesoFactor;
+
+                anim = (player.x < this.x) ? 'rside' : 'lside';
             } 
             else if (this.ejeBloqueado === 'y') {
                 // Bloqueamos el movimiento horizontal tanto del player como de la caja
@@ -53,7 +57,11 @@ export default class Cajas extends Phaser.Physics.Arcade.Sprite  {
                 this.setVelocity(0, player.body.velocity.y * this.pesoFactor);
                 
                 player.body.velocity.y *= this.pesoFactor;
+
+                anim = (player.y < this.y) ? 'front' : 'back';
             }
+
+            player.play('idle-pull-' + anim);
         }
 
         if (player.cursors.interact.isUp) {
