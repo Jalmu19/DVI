@@ -43,7 +43,7 @@ export default class MainMenu extends Phaser.Scene
             yoyo: true
             });
             playSound.play();
-           
+            botonJugar.disableInteractive();
             this.cameras.main.fadeOut(1000, 0, 0, 0);
                 
         }); 

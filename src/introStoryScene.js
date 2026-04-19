@@ -82,7 +82,7 @@ export default class IntroStoryScene extends Phaser.Scene {
 
     create() {
         this.sound.stopAll();
-
+        
         this.layersChurch = {};
         this.layersChurch = this.loadChurchMap();
         this.layersRoom = {};
@@ -104,6 +104,7 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.abuela = this.physics.add.sprite(70, 210, 'abuela');
         this.abuelo = this.physics.add.sprite(50, 210, 'abuelo');
         this.createLilithAnimations();
+        this.skipText();
 
         this.dialog();
 
@@ -113,7 +114,7 @@ export default class IntroStoryScene extends Phaser.Scene {
 
         this.nextScene();
 
-        this.skipKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        this.skipKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K);
 
         this.skipKey.once('down', () => {
             this.skipIntro();
@@ -230,24 +231,14 @@ export default class IntroStoryScene extends Phaser.Scene {
     writingAnimation(text) {
         this.isWriting = true;
         this.visibilityDialog(true);
-        this.dialogText.setText('');
+        this.dialogText.setText(text);
+        
         const actualEntry = STORY[this.n];
 
         if (actualEntry.action) this.handleAction(actualEntry.action);
-
-        let charIndex = 0;
-
         if (this.timerText) this.timerText.remove();
 
-        this.timerText = this.time.addEvent({
-            delay: 50,
-            callback: () => {
-                this.dialogText.text += text[charIndex];
-                charIndex++;
-                if (charIndex === text.length) this.isWriting = false;
-            },
-            repeat: text.length - 1
-        });
+        this.isWriting = false;
     }
 
     next() {
@@ -262,7 +253,7 @@ export default class IntroStoryScene extends Phaser.Scene {
                     this.dialogText.setText('');
                     this.visibilityDialog(false);
 
-                    this.cameras.main.pan(this.centerX, this.centerY + 100, 3000, 'Power2', false, (camera, progress) => {
+                    this.cameras.main.pan(this.centerX, this.centerY + 100, 2000, 'Power2', false, (camera, progress) => {
                         if (progress === 1) this.waitWrite(actualText);
                     });
                 }
@@ -270,7 +261,7 @@ export default class IntroStoryScene extends Phaser.Scene {
 
             } else {
                 this.sceneChanging = true;
-                this.cameras.main.fadeOut(5000, 0, 0, 0);
+                this.cameras.main.fadeOut(2000, 0, 0, 0);
                 this.cameras.main.once('camerafadeoutcomplete', () => {
                     this.scene.start('bosque', { x: 251, y: 381, stats: null });
                     this.scene.launch('ui');
@@ -301,21 +292,21 @@ export default class IntroStoryScene extends Phaser.Scene {
                     this.input.enabled = false;
                     this.isWriting = true;
                     this.visibilityDialog(false);
-                    this.cameras.main.fadeOut(5000, 0, 0, 0);
+                    this.cameras.main.fadeOut(3000, 0, 0, 0);
 
                     this.cameras.main.once('camerafadeoutcomplete', () => {
                         this.prepareRoomScene();
 
-                        this.time.delayedCall(5000, () => {
-                            this.cameras.main.fadeIn(5000, 0, 0, 0);
+                        this.time.delayedCall(3000, () => {
+                            this.cameras.main.fadeIn(3000, 0, 0, 0);
 
                             this.cameras.main.once('camerafadeincomplete', () => {
                                 this.lilithMove();
 
-                                this.time.delayedCall(17000, () => {
+                                this.time.delayedCall(5000, () => {
                                     this.visibilityDialog(true);
 
-                                    this.time.delayedCall(6000, () => {
+                                    this.time.delayedCall(1000, () => {
                                         this.isWriting = false;
                                         this.input.enabled = true;
                                         this.next();
@@ -329,22 +320,22 @@ export default class IntroStoryScene extends Phaser.Scene {
                     this.input.enabled = false;
                     this.isWriting = true;
                     this.visibilityDialog(false);
-                    this.cameras.main.fadeOut(5000, 0, 0, 0);
+                    this.cameras.main.fadeOut(1000, 0, 0, 0);
 
                     this.cameras.main.once('camerafadeoutcomplete', () => {
                         this.tweens.killTweensOf(this.lilith);
                         this.prepareHomeScene();
 
-                        this.time.delayedCall(5000, () => {
-                            this.cameras.main.fadeIn(5000, 0, 0, 0);
+                        this.time.delayedCall(1000, () => {
+                            this.cameras.main.fadeIn(2000, 0, 0, 0);
 
-                            this.time.delayedCall(1000, () => {
+                            this.time.delayedCall(100, () => {
                                 this.lilithMoveHome();
                             });
                             this.cameras.main.once('camerafadeincomplete', () => {
 
 
-                                this.time.delayedCall(10000, () => {
+                                this.time.delayedCall(4500, () => {
                                     this.input.enabled = true;
                                     this.visibilityDialog(true);
                                     this.isWriting = false;
@@ -365,22 +356,22 @@ export default class IntroStoryScene extends Phaser.Scene {
                 tween: {
                     targets: this.lilith,
                     x: '+=60',
-                    duration: 1500,
+                    duration: 1000,
                     onStart: () => { this.lilith.play('lilith_walk-rside'); },
                 }
             },
             {
-                at: 3000,
+                at: 1100,
                 tween: {
                     targets: this.lilith,
                     y: '+=200',
-                    duration: 2500,
+                    duration: 1500,
                     onStart: () => { this.lilith.play('lilith_walk-front'); },
                     onComplete: () => { this.lilith.anims.stop(); this.lilith.setFrame(23); }
                 }
             },
             {
-                at: 8000,
+                at: 5000,
                 run: () => {
                     this.lilith.anims.stop();
                     this.lilith.setVisible(false);
@@ -412,60 +403,60 @@ export default class IntroStoryScene extends Phaser.Scene {
     lilithMove() {
         this.add.timeline([
             {
-                at: 3000,
+                at: 0,
                 tween: {
                     targets: this.lilith,
                     x: '+=33',
-                    duration: 1500,
+                    duration: 1000,
                     onStart: () => { this.lilith.play('lilith_walk-rside'); },
                     onComplete: () => { this.lilith.anims.stop(); this.lilith.setFrame(23) }
 
                 }
             },
             {
-                at: 10000,
+                at: 1500,
                 tween: {
                     targets: this.lilith,
                     y: '+=50',
-                    duration: 1500,
+                    duration: 1000,
                     onStart: () => { this.lilith.play('lilith_walk-front'); }
                 }
             },
             {
-                at: 13000,
+                at: 3000,
                 tween: {
                     targets: this.lilith,
                     x: '-=45',
-                    duration: 1500,
+                    duration: 1000,
                     onStart: () => { this.lilith.play('lilith_walk-lside'); },
                     onComplete: () => { this.lilith.anims.stop(); this.lilith.setFrame(22) }
                 }
             },
             {
-                at: 20000,
+                at: 5500,
                 tween: {
                     targets: this.lilith,
                     y: '-=35',
-                    duration: 1500,
+                    duration: 1000,
                     onStart: () => { this.lilith.play('lilith_walk-back'); }
 
                 }
             },
             {
-                at: 23000,
+                at: 6500,
                 tween: {
                     targets: this.lilith,
                     x: '-=45',
-                    duration: 1500,
+                    duration: 1000,
                     onStart: () => { this.lilith.play('lilith_walk-lside'); }
                 }
             },
             {
-                at: 26000,
+                at: 7500,
                 tween: {
                     targets: this.lilith,
                     y: '+=60',
-                    duration: 1500,
+                    duration: 1000,
                     onStart: () => { this.lilith.play('lilith_walk-front'); }
                 }
             }
@@ -504,7 +495,7 @@ export default class IntroStoryScene extends Phaser.Scene {
                 }
             },
             {
-                at: 3000,
+                at: 1500,
                 tween: {
                     targets: this.lilith,
                     x: '+=200',
@@ -556,5 +547,30 @@ export default class IntroStoryScene extends Phaser.Scene {
             frameRate: 5,
             repeat: -1
         });
+    }
+
+    skipText(){
+        const x = 270;
+        const y = 20;
+        const width = 90;
+        const height = 20;
+
+        const fondo = this.add.rectangle(0, 0, width, height, 0x000080, 0.8);
+        
+
+        const estiloTexto = { 
+            fontSize: '10px', 
+            fontFamily: 'Arial', 
+            color: '#ffffff' 
+        };
+        const texto = this.add.text(0, 0, 'Saltar Escena : K', estiloTexto);
+
+        texto.setOrigin(0.5);
+
+
+        const miCaja = this.add.container(x, y, [fondo, texto]);
+        miCaja.setScrollFactor(0);
+      
+       
     }
 }
