@@ -13,7 +13,7 @@ export default class GameScene extends Phaser.Scene {
         this.sound.stopAll(); //paramos todos los sonidos
         this.scene.stop('ui');
         //this.scene.sleep('ui');
-        this.scene.start('game-over', {stats: this.player.getStats()});       
+        this.scene.start('game-over', { stats: this.player.getStats() });
     }
 
     slowTime() {
@@ -21,35 +21,35 @@ export default class GameScene extends Phaser.Scene {
         // Aplicarle slow-mo tambien a las animaciones
         this.physics.world.bodies.each(body => {
             let child = body.gameObject;
-            if(child instanceof Phaser.GameObjects.Sprite) child.anims.timeScale = 0.25;
+            if (child instanceof Phaser.GameObjects.Sprite) child.anims.timeScale = 0.25;
         })
     }
-    
+
     resetTime() {
         this.physics.world.timeScale = 1;
         this.physics.world.bodies.each(body => {
             let child = body.gameObject;
-            if(child instanceof Phaser.GameObjects.Sprite) child.anims.timeScale = 1;
+            if (child instanceof Phaser.GameObjects.Sprite) child.anims.timeScale = 1;
         })
     }
-    
-    cargarSalidas(capa, grupo){
 
-         capa.objects.forEach(objeto =>{            
+    cargarSalidas(capa, grupo) {
+
+        capa.objects.forEach(objeto => {
             var a = new Salidas(this, objeto.x, objeto.y, objeto.width, objeto.height, objeto.name);
             grupo.add(a)
         })
 
     }
 
-    crearObjeto(grupoObjeto, capaObjeto, tipoObjeto){
+    crearObjeto(grupoObjeto, capaObjeto, tipoObjeto) {
         capaObjeto.objects.forEach(objeto => {
-            var aux =  new tipoObjeto(this, objeto.x, objeto.y, objeto);
-            grupoObjeto.add(aux);  
+            var aux = new tipoObjeto(this, objeto.x, objeto.y, objeto);
+            grupoObjeto.add(aux);
         });
     }
 
-    llenarCofre(capaCofre, cofre){
+    llenarCofre(capaCofre, cofre) {
         capaCofre.objects.forEach(obj => {
             // Saca las propiedades si es que tiene
             const props = obj.properties ? obj.properties.reduce((acc, p) => {
@@ -67,28 +67,41 @@ export default class GameScene extends Phaser.Scene {
 
             var a = new Chest(this, obj.x, obj.y, obj.id, itemData)
             cofre.add(a)
-        });   
+        });
     }
 
 
-    logicaCajas(player, cajas){
-         this.physics.add.collider(player, cajas, (player, caja) => {
-            
+    logicaCajas(player, cajas) {
+        this.physics.add.collider(player, cajas, (player, caja) => {
+
             // Solo permitimos que la caja se mueva si el jugador está caminando hacia ella
             // Reducimos la velocidad a 0.4 (40% de la velocidad del jugador) para que se sienta pesada
             const factorEmpuje = 0.4;
 
-            if (player.body.touching.right && player.body.velocity.x > 0) {
-                caja.body.velocity.x = player.body.velocity.x * factorEmpuje;
-            } 
-            else if (player.body.touching.left && player.body.velocity.x < 0) {
-                caja.body.velocity.x = player.body.velocity.x * factorEmpuje;
+            // Empujar a la DERECHA (Jugador a la izquierda de la caja)
+            if (player.body.touching.right) {
+                // Solo movemos si la caja NO está bloqueada por la derecha (pared)
+                if (!caja.body.blocked.right && !caja.body.touching.right) {
+                    caja.setVelocityX(player.body.velocity.x * factorEmpuje);
+                }
             }
-            else if (player.body.touching.down && player.body.velocity.y > 0) {
-                caja.body.velocity.y = player.body.velocity.y * factorEmpuje;
+            // Empujar a la IZQUIERDA
+            else if (player.body.touching.left) {
+                if (!caja.body.blocked.left && !caja.body.touching.left) {
+                    caja.setVelocityX(player.body.velocity.x * factorEmpuje);
+                }
             }
-            else if (player.body.touching.up && player.body.velocity.y < 0) {
-                caja.body.velocity.y = player.body.velocity.y * factorEmpuje;
+            // Empujar ABAJO
+            else if (player.body.touching.down) {
+                if (!caja.body.blocked.down && !caja.body.touching.down) {
+                    caja.setVelocityY(player.body.velocity.y * factorEmpuje);
+                }
+            }
+            // Empujar ARRIBA
+            else if (player.body.touching.up) {
+                if (!caja.body.blocked.up && !caja.body.touching.up) {
+                    caja.setVelocityY(player.body.velocity.y * factorEmpuje);
+                }
             }
 
         }, null, this);
@@ -103,23 +116,24 @@ export default class GameScene extends Phaser.Scene {
         // Si la bandera y la caja abren la misma puerta
         if (abreCaja && abreBandera && abreCaja.value === abreBandera.value && !caja.abierto) {
             const distancia = Phaser.Math.Distance.Between(caja.x, caja.y, bandera.x, bandera.y);
-            if(distancia < 10){   
-                caja.abierto = true           
+            if (distancia < 10) {
+                caja.abierto = true
                 this.sonidoAbrirPuerta.play();
                 caja.body.setVelocity(0);
                 caja.x = bandera.x;
-                caja.y = bandera.y;      
+                caja.y = bandera.y;
+                caja.setImmovable(true);
                 this.abrirPuerta(abreCaja.value, puertas);
             }
         }
     }
 
     abrirPuerta(valor, puertas) {
-         puertas.children.iterate(puerta=> {
-            if(puerta){
+        puertas.children.iterate(puerta => {
+            if (puerta) {
                 const propGrupo = puerta.properties.find(p => p.name === "abreGrupo");
                 // Si la puerta tiene esa propiedad y coincide con lo que manda la caja/bandera
-                if (propGrupo && propGrupo.value === valor) {     
+                if (propGrupo && propGrupo.value === valor) {
                     puerta.disableBody(true, true); // Se desactivan todas las del grupo
                 }
             }
@@ -132,24 +146,24 @@ export default class GameScene extends Phaser.Scene {
         let distMin = rango;
         this.physics.world.bodies.each(body => {
             let child = body.gameObject;
-            if(child && child.interactuable !== undefined && child.interactuable) {
+            if (child && child.interactuable !== undefined && child.interactuable) {
                 let d = Phaser.Math.Distance.Between(player.x, player.y, child.x, child.y);
-                if(d < distMin) {
+                if (d < distMin) {
                     distMin = d;
-                    obj= child;
+                    obj = child;
                 }
             }
         })
         return obj;
     }
 
-    manageItems(player, items){
-        
+    manageItems(player, items) {
+
         this.physics.add.overlap(player, this.items, (player, item) => {
             console.log("COGIDO")
             const added = Inventory.addItem(
-                item.itemData.id, 
-                item.itemData.name, 
+                item.itemData.id,
+                item.itemData.name,
                 item.itemData.frame,
                 item.itemData.quantity,
                 item.itemData.texture
@@ -161,7 +175,7 @@ export default class GameScene extends Phaser.Scene {
 
 
     dialogo(dialog_text) {
-        
+
         this.dialogBox = this.add.rectangle(this.cameras.main.centerX, this.cameras.main.centerY + 60, 300, 50, 0x000000, 0.7
         ).setStrokeStyle(2, 0xffffff).setScrollFactor(0);
 
@@ -177,9 +191,9 @@ export default class GameScene extends Phaser.Scene {
         this.isDialogOpen = true;
 
 
-        this.input.on('pointerdown', ()=>{
-           this.visibilityDialog(false); 
-           this.isDialogOpen = false;     
+        this.input.on('pointerdown', () => {
+            this.visibilityDialog(false);
+            this.isDialogOpen = false;
         });
 
     }
@@ -187,7 +201,7 @@ export default class GameScene extends Phaser.Scene {
     visibilityDialog(visible) {
         this.dialogBox.setVisible(visible);
         this.dialogText.setVisible(visible);
-    } 
-    
+    }
+
 
 }

@@ -15,7 +15,9 @@ export default class Cajas extends Phaser.Physics.Arcade.Sprite  {
         this.pesoFactor = 0.4;
         this.ejeBloqueado = null;
 
-        this.setDrag(2000);
+        this.setDrag(10000);
+        this.setFriction(1,1);
+        this.setBounce(0);
         // false para poder hacer el overlap con la bandera
         this.setImmovable(false); 
          

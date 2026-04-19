@@ -186,7 +186,7 @@ export default class Mazmorra extends GameScene{
         // Recorremos todas las cajas y si no tienen a nadie empujando, velocidad 0
         this.cajas.children.iterate(caja => {
             // Si la caja se está moviendo, la frenamos
-            caja.setVelocity(0); 
+            if (caja.body.touching.none) caja.setVelocity(0); 
         });
     }
 
