@@ -17,7 +17,7 @@ export default class HabitacionCofre extends GameScene{
         this.datos = [datos.x, datos.y, datos.stats];
     }
 
-     create(){
+    create(){
         var map = this.make.tilemap({key : 'habitacion_cofre'});
 
         var img1 = map.addTilesetImage('paredes', 'paredes');
@@ -59,8 +59,7 @@ export default class HabitacionCofre extends GameScene{
     }
 
           
-       cambiarScene(jugador, salidas) {
-        this.anims.createFromAseprite('player');
+    cambiarScene(jugador, salidas) {
         if(salidas.tag === 'salidaMazmorra' ){
            this.scene.start('mazmorra', {
             x : 436,

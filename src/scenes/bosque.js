@@ -83,7 +83,6 @@ export default class Bosque extends GameScene{
     }
 
     cambiarScene(){
-        this.anims.createFromAseprite('player');
         this.scene.start('zonaBosque', {
             x : 80,
             y : 210,

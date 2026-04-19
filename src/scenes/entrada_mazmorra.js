@@ -162,7 +162,6 @@ export default class Entrada_mazmorra extends GameScene{
     }
 
     cambiarScene(jugador, salidas){
-        this.anims.createFromAseprite('player');
         
         if(salidas.tag === 'salidaMazmorra' ){
             this.scene.start('mazmorra_inicial', {

@@ -91,7 +91,6 @@ export default class Laberinto extends GameScene{
     cambiarScene(jugador, salidas){
         var estrellas = this.registry.get('numEstrellasRecogidas');
 
-        this.anims.createFromAseprite('player');
         if(salidas.tag === "entrada"){
             this.scene.start('entrada_ciudad', {
                 x : 25,

@@ -107,20 +107,20 @@ export default class Zona_Lago extends GameScene {
 
         })
         
-    Object.values(this.player.mapOfSpells).forEach(group => {
-        if (group instanceof Phaser.Physics.Arcade.Group) {
-            this.physics.add.overlap(group, this.lago, (shoot, tile) => {
-                    console.log("a");
-                    console.log(shoot.spellKey);
-                    this.freezeWater(shoot, tile);
-                }, 
-                (shoot, tile) => {
-                    return shoot.active && shoot.visible && tile.index !== -1;
-                }, 
-                this
-            );
-        }
-    });
+        Object.values(this.player.mapOfSpells).forEach(group => {
+            if (group instanceof Phaser.Physics.Arcade.Group) {
+                this.physics.add.overlap(group, this.lago, (shoot, tile) => {
+                        console.log("a");
+                        console.log(shoot.spellKey);
+                        this.freezeWater(shoot, tile);
+                    }, 
+                    (shoot, tile) => {
+                        return shoot.active && shoot.visible && tile.index !== -1;
+                    }, 
+                    this
+                );
+            }
+        });
         
         
     }

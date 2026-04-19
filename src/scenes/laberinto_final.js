@@ -62,7 +62,6 @@ export default class Laberinto extends GameScene{
     }
 
     cambiarScene(jugador, salidas){
-        this.anims.createFromAseprite('player');
         this.scene.start('laberinto', {
             x : 390,
             y : 774,
