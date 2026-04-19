@@ -123,9 +123,9 @@ export default class Zona_Lago extends GameScene {
     }
    
     freezeWater(shoot, tile) {
-        if (shoot.spellKey === SPELLS.FREEZE_SHOOT.KEY) {
+        if (shoot.spellKey === SPELLS.FREEZE_SHOOT.KEY && tile.properties.esAgua) {
             console.log("congelado");
-            const tilesetHielo = this.lago.layer.tilemapLayer.tilemap.getTileset('hielo');
+            const tilesetHielo = this.lago.layer.tilemapLayer.tilemap.getTileset('flor1');
             const idHielo = tilesetHielo.firstgid;
 
             this.lago.putTileAt(idHielo, tile.x, tile.y);
