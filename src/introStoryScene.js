@@ -81,6 +81,7 @@ export default class IntroStoryScene extends Phaser.Scene {
     }
 
     create() {
+        this.sound.stopAll();
 
         this.layersChurch = {};
         this.layersChurch = this.loadChurchMap();

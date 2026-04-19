@@ -6,6 +6,10 @@ export default class MainMenu extends Phaser.Scene
     }
 
     create(){
+        this.music = this.sound.add('menuSound');
+        this.music.loop = true;
+        this.music.play();
+
         let bg = this.add.image(0, 0, 'background');
         bg.displayHeight = this.sys.game.config.height;
         bg.scaleX = bg.scaleY;
