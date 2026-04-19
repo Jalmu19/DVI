@@ -19,7 +19,7 @@ import puerta_mazmorra from '../../assets/sprites/dungeon.png'
 import islotes from '../../assets/sprites/islotesLago.png'
 import agua from '../../assets/sprites/agua.png'
 import detalleAgua from '../../assets/sprites/detalleAgua.png'
-
+import hielo from '../../assets/sprites/hielo.png'
 
 import Inventory from '../inventory.js';
 import Oruga from "../game-objects/enemy/oruga.js";
@@ -54,8 +54,7 @@ export default class Zona_bosque extends GameScene {
 
     cargaZonaLago(){
          this.load.tilemapTiledJSON('zonaLago', zonaLago)
-         //Villa1 cargado de antes
-         //arbol y flores tambien
+         this.load.image('hielo', hielo);
          this.load.image('agua', agua)
          this.load.image('islotesAgua', islotes);
          this.load.image('detalleAgua', detalleAgua);
@@ -85,7 +84,7 @@ export default class Zona_bosque extends GameScene {
         var img3 = map.addTilesetImage('flor1', 'flor');
         var img4 = map.addTilesetImage('Hierba', 'hierba');
 
-        map.createLayer('fondo', img4, 0, 0);
+        map.createLayer('fondo', [img4, img1], 0, 0);
         map.createLayer('Detalles', [img3, img1], 0, 0);
         var arboles = map.createLayer('Arboles', img2, 0, 0);
 
