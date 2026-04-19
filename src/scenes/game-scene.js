@@ -196,6 +196,11 @@ export default class GameScene extends Phaser.Scene {
             this.visibilityDialog(false);
             this.isDialogOpen = false;
             this.player.inDialog = false;
+            if(this.player.displayedItem) {
+                this.player.displayedItem.destroy();
+                this.player.displayedItem = null;
+                this.player.openingChest = false;
+            }
         });
 
     }

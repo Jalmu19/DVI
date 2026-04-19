@@ -47,6 +47,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.inventoryOpened = false;
         this.actualObj = null;
         this.inDialog = false; // Para impedir su movimiento si esta en dialogo
+        this.openingChest = false;
+        this.displayedItem = null // El item que muestra cuando coge de un cofre
 
         this.mapOfSpells = [];
         this.protected = false;
@@ -140,6 +142,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             if(item.id === 'container') this.health.addContainer();
             else this.añadirHechizo(item.id);
         }
+        this.play('chest-find');
+        this.displayedItem = this.scene.add.image(this.x, this.y - 20, item.texture, item.frame);
+        this.openingChest = true;
     }
 
     /**
@@ -248,13 +253,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     
                 this.body.setVelocity(vX, vY);
             }
-            
 
-            if (vX === 0 && vY === 0) {
-                let idle = 'idle-' + this.lastDir;
-                this.play(idle, true);
+            if(!this.openingChest) {
+                if (vX === 0 && vY === 0) {
+                    let idle = 'idle-' + this.lastDir;
+                    this.play(idle, true);
+                }
+                else this.play(anim, true);
             }
-            else this.play(anim, true);
+        
 
             if (Phaser.Input.Keyboard.JustDown(this.cursors.inventoryMenu)) {
                 this.scene.game.events.emit('inventoryMenu', this.scene);
