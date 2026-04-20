@@ -42,6 +42,11 @@ export default class MainMenu extends Phaser.Scene
             duration: 100,
             yoyo: true
             });
+            this.tweens.add({
+            targets: this.music,
+            volume: 0,
+            duration: 1000 // Mismo tiempo que el fade de la cámara
+            });
             playSound.play();
             botonJugar.disableInteractive();
             this.cameras.main.fadeOut(1000, 0, 0, 0);

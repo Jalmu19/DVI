@@ -34,9 +34,6 @@ let config = {
         arcade: {
             debug: false
         }
-    },
-    audio: {
-        disableWebAudio: false
     }
 };
 
