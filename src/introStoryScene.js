@@ -20,9 +20,6 @@ const STORY = [
         text: '...'
     },
     {
-        text: '...'
-    },
-    {
         text: '¿QUE QUIERES IRTE A EXPLORAR EL MUNDO?'
     },
     {
@@ -81,7 +78,8 @@ export default class IntroStoryScene extends Phaser.Scene {
     }
 
     create() {
-        
+        this.cameras.main.fadeIn(2000, 0, 0, 0);
+
         this.layersChurch = {};
         this.layersChurch = this.loadChurchMap();
         this.layersRoom = {};
@@ -102,6 +100,10 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.lilith.play('idle-back');
         this.abuela = this.physics.add.sprite(70, 210, 'abuela');
         this.abuelo = this.physics.add.sprite(50, 210, 'abuelo');
+        this.abuela_perfil = this.physics.add.sprite(250, 100, 'abuela_perfil');
+        this.abuelo_perfil = this.physics.add.sprite(250, 120, 'abuelo_perfil');
+        this.abuela_perfil.setVisible(false);
+        this.abuelo_perfil.setVisible(false);
         this.createLilithAnimations();
         this.skipText();
 
@@ -208,8 +210,12 @@ export default class IntroStoryScene extends Phaser.Scene {
 
         this.cameras.main.stopFollow();
         this.cameras.main.resetFX();
-        this.cameras.main.fadeOut(500, 0, 0, 0);
-
+        this.cameras.main.fadeOut(2000, 0, 0, 0);
+         this.tweens.add({
+            targets: this.music,
+            volume: 0,
+            duration: 2000
+        });
         this.cameras.main.once('camerafadeoutcomplete', () => {
             this.scene.start('bosque', { x: 251, y: 381 });
             this.scene.launch('ui');
@@ -259,6 +265,11 @@ export default class IntroStoryScene extends Phaser.Scene {
                 else this.waitWrite(actualText);
 
             } else {
+                this.tweens.add({
+                targets: this.music,
+                volume: 0,
+                duration: 2000
+                });
                 this.sceneChanging = true;
                 this.cameras.main.fadeOut(2000, 0, 0, 0);
                 this.cameras.main.once('camerafadeoutcomplete', () => {
@@ -475,10 +486,9 @@ export default class IntroStoryScene extends Phaser.Scene {
 
         this.lilith.setPosition(30, 50);
         this.lilith.setVisible(true);
-        this.abuelo.setPosition(250, 120);
-        this.abuelo.setVisible(true);
-        this.abuela.setPosition(250, 100);
-        this.abuela.setVisible(true);
+       
+        this.abuela_perfil.setVisible(true);
+        this.abuelo_perfil.setVisible(true);
         this.isWriting = true;
     }
 

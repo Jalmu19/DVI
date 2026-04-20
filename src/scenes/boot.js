@@ -61,6 +61,8 @@ import lilith from '../../assets/sprites/lilith.png'
 import abuela from '../../assets/sprites/abuela_detras.png'
 import abuelo from '../../assets/sprites/abuelo_detras.png'
 import cura from '../../assets/sprites/cura.png'
+import abuela_perfil from '../../assets/sprites/abuela_perfil.png'
+import abuelo_perfil from '../../assets/sprites/abuelo_perfil.png'
 
 
 /**
@@ -141,6 +143,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image('abuela', abuela);
     this.load.image('abuelo', abuelo);
     this.load.image('cura', cura);
+    this.load.image('abuelo_perfil', abuelo_perfil);
+    this.load.image('abuela_perfil', abuela_perfil);
   }
 
   /**
