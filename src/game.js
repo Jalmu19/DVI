@@ -15,6 +15,7 @@ import MainMenu from './mainMenu.js';
 import UIScene from './ui/ui-scene.js';
 import InventoryScene from './ui/inventoryScene.js'
 import IntroStoryScene from './introStoryScene.js'
+import InteriorScene from './scenes/InteriorScene.js';
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
@@ -28,7 +29,7 @@ let config = {
         mode: Phaser.Scale.FIT
     },
     pixelArt: true,
-    scene: [Boot, MainMenu, IntroStoryScene, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, GameOver, UIScene, InventoryScene ],
+    scene: [Boot, MainMenu, IntroStoryScene, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, GameOver, UIScene, InventoryScene, InteriorScene ],
     physics: {
         default: 'arcade',
         arcade: {
