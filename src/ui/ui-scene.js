@@ -1,4 +1,4 @@
-import { SCENE, UI , PLAYER } from "../constants";
+import { SCENE, UI, PLAYER } from "../constants";
 
 export default class UIScene extends Phaser.Scene {
     constructor() {
@@ -23,10 +23,10 @@ export default class UIScene extends Phaser.Scene {
 
         this.ammo = this.add.group();
         this.drawProyectiles(10);
-        this.game.events.on('ammo-changed', (data) => this.updateProyectiles(data.maxAmmo ,data.actualAmmo));
+        this.game.events.on('ammo-changed', (data) => this.updateProyectiles(data.maxAmmo, data.actualAmmo));
 
         this.fsButton = this.add.image(SCENE.WIDTH - 20, SCENE.HEIGHT - 20, 'fullscreen');
-        this.fsButton.setInteractive().on('pointerdown', () =>{
+        this.fsButton.setInteractive().on('pointerdown', () => {
             if (this.scale.isFullscreen) this.scale.stopFullscreen();
             else this.scale.startFullscreen();
         });
@@ -75,6 +75,7 @@ export default class UIScene extends Phaser.Scene {
      */
     drawSpellsMenu() {
         let bg = this.add.circle(0, 0, 70, 0x000000, 0.7);
+        bg.setData('background');
         this.spellsMenu.add(bg);
         this.drawGrimores();
     }
@@ -84,7 +85,7 @@ export default class UIScene extends Phaser.Scene {
      */
     drawGrimores() {
         let i = this.spellsMenu.list.length;
-        while(i >= 0) {
+        while (i >= 0) {
             const objeto = this.spellsMenu.list[i];
             if (objeto instanceof Phaser.GameObjects.Image)
                 this.spellsMenu.remove(objeto, true); // true = lo destruye de la memoria
@@ -127,6 +128,21 @@ export default class UIScene extends Phaser.Scene {
         // Limitar el índice por si acaso
         index = Phaser.Math.Clamp(index, 0, this.spells.length - 1);
 
+        // Logica para mostrar por pantalla cual libro se va seleccionando
+        let icons = this.spellsMenu.list.filter(child => child.getData('id') !== undefined);
+
+        icons.forEach((icon, i) => {
+            if (i === index) {
+                // ELEMENTO SELECCIONADO
+                icon.setScale(1.2);
+                icon.setAlpha(2);
+            } else {
+                // ELEMENTOS NO SELECCIONADOS
+                icon.setScale(1);
+                icon.setAlpha(1);
+            }
+        });
+
         this.chosenSpell = this.spells[index];
 
     }
@@ -158,12 +174,12 @@ export default class UIScene extends Phaser.Scene {
 
         let children = this.ammo.getChildren();
         for (let i = 0; i < children.length; ++i) {
-            if(i < actualAmmo) children[i].setFrame(0);
+            if (i < actualAmmo) children[i].setFrame(0);
             else children[i].setFrame(1);
         }
     }
 
-    inventoryMenu(actualScene){
+    inventoryMenu(actualScene) {
         if (this.scene.isActive('InventoryScene')) {
             this.scene.stop('InventoryScene');
             this.scene.resume(actualScene);
