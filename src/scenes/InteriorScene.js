@@ -25,21 +25,29 @@ export default class InteriorScene extends GameScene {
             map.addTilesetImage('TopDownHouse_SmallItems', 'smallItems'),
             map.addTilesetImage('demo church', 'demo_church')
         ];
-
+      
+        this.player = new Player(this, this.spawnX, this.spawnY, /*this.playerStats*/);
+        this.player.setDepth(1);
+        this.player.body.setSize(13, 10);
+        this.player.body.setOffset(10, this.player.height - 10);
+        
         map.layers.forEach(layerData => {
             const layer = map.createLayer(layerData.name, tilesets, 0, 0);
             
+            
+
             // Si la capa tiene una propiedad en Tiled llamada "colision", activarla
             // O puedes hacerlo por nombre: if (layerData.name === 'Paredes')
-            /*
-            if (layerData.properties.some(p => p.name === 'collides' && p.value === true)) {
-                layer.setCollisionByExclusion([-1]);
+            layer.setCollisionByProperty({ colision: true });
+
+           
                 this.physics.add.collider(this.player, layer);
-            }
-                */
+               
+            
+                
         });
 
-        this.player = new Player(this, this.spawnX, this.spawnY, /*this.playerStats*/);
+        
 
         // 4. Configurar las salidas (siempre se debe llamar "Salidas" en Tiled)
         /*

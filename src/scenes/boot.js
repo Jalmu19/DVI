@@ -145,6 +145,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('cura', cura);
     this.load.image('abuelo_perfil', abuelo_perfil);
     this.load.image('abuela_perfil', abuela_perfil);
+    
   }
 
   /**
@@ -163,11 +164,12 @@ export default class Boot extends Phaser.Scene {
     
     
     this.scene.start('mainmenu');
+    
     /*
     this.scene.start('InteriorScene', { 
         mapaKey: 'homejson', // <--- Esta es la clave que cargaste en el Boot
         x: 100,                     
-        y: 150, 
+        y: 100, 
         
     });
     */
