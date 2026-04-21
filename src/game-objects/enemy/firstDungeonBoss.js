@@ -21,6 +21,7 @@ export default class FirstDungeonBoss extends BaseEnemy {
         scene.physics.add.existing(this.weakSpot);
 
         this.dmgRecieved = 5;
+        this.knockVel = 50;
 
         //NO PERSIGUE AL JUGADOR
         this.isChasing = false;
@@ -44,7 +45,7 @@ export default class FirstDungeonBoss extends BaseEnemy {
     }
 
     movement() {
-        if (!this.active || !this.scene) return;
+        if (!this.active || !this.scene ||this.knocked) return;
 
         const r = Phaser.Math.Between(0, 10);
 

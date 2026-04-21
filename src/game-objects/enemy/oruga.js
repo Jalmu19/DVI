@@ -11,6 +11,8 @@ export default class Oruga extends BaseEnemy {
     
     movement(){}
 
+    knockBack(){}
+
     preUpdate(t, dt) {
         Phaser.Physics.Arcade.Sprite.prototype.preUpdate.call(this, t, dt);
         if (this.scene.physics.overlap(this.scene.player.hurtbox, this)) {
