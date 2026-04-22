@@ -57,6 +57,7 @@ import floorsWalls from '../../assets/sprites/TopDownHouse_FloorsAndWalls.png'
 import greenFurniture from '../../assets/sprites/TopDownHouse_FurnitureState1.png'
 import brownFurniture from '../../assets/sprites/TopDownHouse_FurnitureState2.png'
 import smallItems from '../../assets/sprites/TopDownHouse_SmallItems.png'
+import colisiones from '../../assets/sprites/colisiones.png'
 import lilith from '../../assets/sprites/lilith.png'
 import abuela from '../../assets/sprites/abuela_detras.png'
 import abuelo from '../../assets/sprites/abuelo_detras.png'
@@ -136,6 +137,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('greenFurniture', greenFurniture);
     this.load.image('brownFurniture', brownFurniture);
     this.load.image('smallItems', smallItems);
+    this.load.image('colisiones', colisiones);
     this.load.tilemapTiledJSON('churchjson', churchjson);
     this.load.tilemapTiledJSON('roomjson', roomjson);
     this.load.tilemapTiledJSON('homejson', homejson);
@@ -167,7 +169,7 @@ export default class Boot extends Phaser.Scene {
     
     /*
     this.scene.start('InteriorScene', { 
-        mapaKey: 'homejson', // <--- Esta es la clave que cargaste en el Boot
+        mapaKey: 'homejson',
         x: 100,                     
         y: 100, 
         

@@ -23,31 +23,40 @@ export default class InteriorScene extends GameScene {
             map.addTilesetImage('TopDownHouse_FurnitureState1', 'greenFurniture'),
             map.addTilesetImage('TopDownHouse_FurnitureState2', 'brownFurniture'),
             map.addTilesetImage('TopDownHouse_SmallItems', 'smallItems'),
+            map.addTilesetImage('colisiones', 'colisiones'),
             map.addTilesetImage('demo church', 'demo_church')
         ];
       
         this.player = new Player(this, this.spawnX, this.spawnY, /*this.playerStats*/);
         this.player.setDepth(1);
-        this.player.body.setSize(13, 10);
-        this.player.body.setOffset(10, this.player.height - 10);
+        
         
         map.layers.forEach(layerData => {
-            const layer = map.createLayer(layerData.name, tilesets, 0, 0);
-            
-            
+            const layer = map.createLayer(layerData.name, tilesets, 0, 0); 
 
-            // Si la capa tiene una propiedad en Tiled llamada "colision", activarla
-            // O puedes hacerlo por nombre: if (layerData.name === 'Paredes')
-            layer.setCollisionByProperty({ colision: true });
-
-           
+            if (layerData.name === 'bordes') {
+                layer.setCollisionByExclusion([-1]);
                 this.physics.add.collider(this.player, layer);
-               
-            
-                
+            }
+
+            if (layerData.name === 'objetos2' || layerData.name === 'superposicion') {
+                layer.setDepth(2);
+            }
         });
 
-        
+        this.colisionesFisicas = this.physics.add.staticGroup();
+        this.colisionesObjetos = map.getObjectLayer('colisiones'); 
+
+        if(this.colisionesObjetos){
+            this.colisionesObjetos.objects.forEach( object => {
+                let zona = this.add.zone(object.x, object.y, object.width, object.height).setOrigin(0, 0);           
+                // Le damos cuerpo físico
+                this.physics.add.existing(zona, true); 
+                this.colisionesFisicas.add(zona);
+            })
+        }
+
+        this.physics.add.collider(this.player, this.colisionesFisicas);
 
         // 4. Configurar las salidas (siempre se debe llamar "Salidas" en Tiled)
         /*
