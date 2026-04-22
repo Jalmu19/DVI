@@ -165,15 +165,16 @@ export default class Boot extends Phaser.Scene {
     this.anims.createFromAseprite('boss1');
     
     
-    //this.scene.start('mainmenu');
+    this.scene.start('mainmenu');
     
-    
+    /*
     this.scene.start('InteriorScene', { 
         mapaKey: 'homejson',
         x: 100,                     
         y: 100, 
         
     });
+    */
     
   }
 }
