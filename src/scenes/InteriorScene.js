@@ -58,14 +58,31 @@ export default class InteriorScene extends GameScene {
 
         this.physics.add.collider(this.player, this.colisionesFisicas);
 
-        // 4. Configurar las salidas (siempre se debe llamar "Salidas" en Tiled)
-        /*
-        const capaSalidas = map.getObjectLayer('Salidas');
-        if (capaSalidas) {
-            this.salidas = this.physics.add.group();
-            this.cargarSalidas(capaSalidas, this.salidas);
-            this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
+        this.salidas = this.physics.add.group();
+        this.capaSalidas = map.getObjectLayer('salidas');
+        this.cargarSalidas(this.capaSalidas, this.salidas);
+        this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
+    }
+
+     cambiarScene(jugador, salidas){
+        console.log("cambiando")
+        if(salidas.tag === 'salida' ){
+            this.scene.start('bosque', {
+                x : 250,
+                y : 370,
+                stats : this.player.getStats()
+            })  
         }
-            */
+        else if(salidas.tag === 'salidaHabitacion' ){
+            console.log("room")
+            this.scene.start('InteriorScene', {
+                mapaKey: 'roomjson',
+                x : 100,
+                y : 100,
+                stats : this.player.getStats()
+            })  
+        }
+        
+        
     }
 }
