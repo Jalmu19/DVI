@@ -18,6 +18,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
         this.invicible = false;
         this.knocked = false;
         this.knockVel = 100;
+        this.lastDir = 'front'; // En base enemy de momento no se usa
         this.isBoss = false;
 
         this.offset = 1.5707963267948966;
@@ -100,7 +101,6 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
                 this.destroy();
             }
             else {
-                this.invicible = true;
                 if (spell.isFreezer()) {
                     console.log("ENEMIGO CONGELADO");
                     this.setTint(0x00ffff);
@@ -117,6 +117,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
                     })
                 }
                 else {
+                    this.invicible = true;
                     this.setTint(0xff0000);
                     this.knockBack(spell.x, spell.y);
                     this.scene.time.addEvent({

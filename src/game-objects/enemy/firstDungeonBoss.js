@@ -118,9 +118,13 @@ export default class FirstDungeonBoss extends BaseEnemy {
         const vY = this.body.velocity.y;
         let currentConfig = ENEMY.BOSS.FIRST.HITBOX.front;
 
+        if(this.knocked) {
+            this.play(this.lastDir + '-idle');
+        }
         // Prioridad: Animación lateral
-        if (Math.abs(vX) > Math.abs(vY)) {
+        else if (Math.abs(vX) > Math.abs(vY)) {
             this.play('side-idle', true); // 'true' hace que no se reinicie si ya está sonando
+            this.lastDir = 'side';
             this.flipX = vX < 0;
             if(this.flipX) this.weakSpot.x = this.x - ENEMY.BOSS.FIRST.HITBOX.side.weak.offsetX;
             else this.weakSpot.x = this.x + ENEMY.BOSS.FIRST.HITBOX.side.weak.offsetX;
@@ -130,11 +134,13 @@ export default class FirstDungeonBoss extends BaseEnemy {
         // Animación vertical
         else if (vY > 0) {
             this.play('front-idle', true);
+            this.lastDir = 'front';
             this.weakSpot.x = this.x + ENEMY.BOSS.FIRST.HITBOX.front.weak.offsetX;
             this.weakSpot.y = this.y + ENEMY.BOSS.FIRST.HITBOX.front.weak.offsetY;
             currentConfig = ENEMY.BOSS.FIRST.HITBOX.front;
         } else if (vY < 0) {
             this.play('back-idle', true);
+            this.lastDir = 'back';
             this.weakSpot.x = this.x + ENEMY.BOSS.FIRST.HITBOX.back.weak.offsetX;
             this.weakSpot.y = this.y + ENEMY.BOSS.FIRST.HITBOX.back.weak.offsetY;
             currentConfig = ENEMY.BOSS.FIRST.HITBOX.back;
