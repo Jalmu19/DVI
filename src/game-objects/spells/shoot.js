@@ -7,7 +7,7 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
         super(scene, x, y, key);
         this.speed = SPELLS.SHOOT.SPEED; 
        
-        
+        this.dmg = SPELLS.SHOOT.DMG;
         this.freeze = false;
     }
 

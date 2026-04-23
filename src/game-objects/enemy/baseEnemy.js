@@ -14,7 +14,6 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
         this.speed = ENEMY.BASE_SPEED;
         this.dmgGiven = 0.5;
         this.health = ENEMY.BASE_HEALTH;
-        this.dmgRecieved = 1;
         this.invicible = false;
         this.knocked = false;
         this.knockVel = 100;
@@ -92,9 +91,9 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
         else this.setVelocity(this.speed, 0);
     }
 
-    takeDamage(spell, dmg = 1) {
+    takeDamage(spell) {
         if (!this.invicible) {
-            this.health = this.health - dmg;
+            this.health = this.health - spell.dmg;
             console.log("ENEMIGO HERIDO, HP: ", this.health);
 
             if (this.health <= 0) {
@@ -176,7 +175,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
             });
         }
         else {
-            this.takeDamage(spell, this.dmgRecieved);
+            this.takeDamage(spell);
             spell.setActive(false).setVisible(false);
             spell.body.setEnable(false);
         }

@@ -8,6 +8,7 @@ export default class FreezingShoot extends Shoot{
         super(scene, x, y, key);
         this.speed = SPELLS.FREEZE_SHOOT.SPEED;
         this.spellKey = SPELLS.FREEZE_SHOOT.KEY;
+        this.dmg = SPELLS.FREEZE_SHOOT.DMG;
         this.freeze = true;
     }
 

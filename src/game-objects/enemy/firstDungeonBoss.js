@@ -20,7 +20,6 @@ export default class FirstDungeonBoss extends BaseEnemy {
         this.weakSpot = scene.add.zone(x, y, 12, 10);
         scene.physics.add.existing(this.weakSpot);
 
-        this.dmgRecieved = 5;
         this.knockVel = 50;
 
         //NO PERSIGUE AL JUGADOR

@@ -12,10 +12,12 @@ export const PLAYER = {
 export const SPELLS = {
     SHOOT: {
         SPEED: 200,
+        DMG: 1,
         KEY: 'shoot'
     },
     FREEZE_SHOOT: {
         SPEED: 150,
+        DMG: 0.5,
         KEY: 'freezing_shoot'
     },
     SHIELD: {
@@ -30,7 +32,7 @@ export const ENEMY = {
         SPEED: 40
     },
     BOSS: {
-        HEALTH: 70,
+        HEALTH: 25,
         SPEED: 70,
         FIRST: {
             HITBOX: {
