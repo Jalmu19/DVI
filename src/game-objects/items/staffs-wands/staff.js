@@ -11,6 +11,7 @@ export default class Staff extends Phaser.GameObjects.Sprite {
         this.setVisible(false);
         this.setOrigin(0.21875,0.75)
         this.player = player;
+        this.bonusDmg = 0;
         this.scene.input.mouse.disableContextMenu();
         this.onPointerDown = pointer => {
             if(pointer.isDown){
