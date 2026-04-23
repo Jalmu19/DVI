@@ -12,11 +12,11 @@ export default class GameScene extends Phaser.Scene {
     dies() {
         this.sound.stopAll(); //paramos todos los sonidos
         this.scene.stop('ui');
-        //this.scene.sleep('ui');
         this.scene.start('game-over', { stats: this.player.getStats() });
     }
 
     slowTime() {
+        this.time.timeScale = 0.1;
         this.physics.world.timeScale = 15;
         // Aplicarle slow-mo tambien a las animaciones
         this.physics.world.bodies.each(body => {
@@ -26,6 +26,7 @@ export default class GameScene extends Phaser.Scene {
     }
 
     resetTime() {
+        this.time.timeScale = 1;
         this.physics.world.timeScale = 1;
         this.physics.world.bodies.each(body => {
             let child = body.gameObject;
