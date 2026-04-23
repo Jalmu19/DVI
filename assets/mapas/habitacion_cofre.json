@@ -69,7 +69,7 @@
                         {
                          "name":"id",
                          "type":"string",
-                         "value":"container"
+                         "value":"health-container"
                         }, 
                         {
                          "name":"name",
@@ -84,7 +84,7 @@
                         {
                          "name":"texture",
                          "type":"string",
-                         "value":"container"
+                         "value":"health-container"
                         }],
                  "rotation":0,
                  "type":"Chest",
