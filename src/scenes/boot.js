@@ -38,6 +38,7 @@ import shield from '../../assets/sprites/bandera_azul.png'
 import chest from '../../assets/sprites/cofre_pequenyo.png'
 import chestjson from '../../assets/sprites/cofre_pequenyo.json'
 import berry from '../../assets/sprites/baya_curativa.png'
+import heartCont from '../../assets/sprites/health-container.png'
 import kirbo from '../../assets/sprites/kirbo.png'
 import introMusic from '../../assets/sounds/introStory.wav'
 import townMusic from '../../assets/sounds/town.wav'
@@ -126,6 +127,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('grande', cGrande);
     this.load.image('pozo', pozo);
     this.load.image('berry', berry)
+    this.load.image('health-container', heartCont);
     this.load.image('kirbo', kirbo)
     this.load.image('fullscreen', fullscreen);
 

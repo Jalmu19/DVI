@@ -138,9 +138,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     acquireFromChest(item) {
-        if(item.id !== 'container' && item.id !== SPELLS.SHOOT.KEY && item.id !== SPELLS.FREEZE_SHOOT.KEY && item.id !== SPELLS.SHIELD)Inventory.addItem(item.id, item.name, item.frame, item.quantity, item.texture);
+        if(item.id !== 'health-container' && item.id !== SPELLS.SHOOT.KEY && item.id !== SPELLS.FREEZE_SHOOT.KEY && item.id !== SPELLS.SHIELD)Inventory.addItem(item.id, item.name, item.frame, item.quantity, item.texture);
         else {
-            if(item.id === 'container') this.health.addContainer();
+            if(item.id === 'health-container') this.health.addContainer();
             else this.añadirHechizo(item.id);
         }
         this.play('chest-find');
