@@ -34,6 +34,20 @@ export default class GameScene extends Phaser.Scene {
         })
     }
 
+    setupSpellCollisions(spell) {
+        if(this.arboles) this.physics.add.collider(spell, this.arboles, (s) => s.impact());
+        if(this.paredes_y_entrada) this.physics.add.collider(spell, this.paredes_y_entrada, (s) => s.impact());
+        if(this.paredes) this.physics.add.collider(spell, this.paredes, (s) => s.impact());
+        if(this.cofre) this.physics.add.collider(spell, this.cofre, (s) => s.impact());
+        if(this.puertas) this.physics.add.collider(spell, this.puertas, (s) => s.impact());
+    }
+
+    initSpellEventListener() {
+        this.events.on('to-set-up-colliders', (nuevoHechizo) => {
+            this.setupSpellCollisions(nuevoHechizo);
+        });
+    }
+
     cargarSalidas(capa, grupo) {
 
         capa.objects.forEach(objeto => {

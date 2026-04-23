@@ -19,13 +19,14 @@ export default class HabitacionBoss extends GameScene{
     }
 
     create(){
+        this.initSpellEventListener();
         var map = this.make.tilemap({key : 'habitacion_boss'});
 
         var img1 = map.addTilesetImage('suelo', 'suelo');
         var img2 = map.addTilesetImage('paredes', 'paredes');
 
         map.createLayer('suelo', [img1], 0,0);
-        var paredes = map.createLayer('paredes', [img2], 0,0);
+        this.paredes = map.createLayer('paredes', [img2], 0,0);
 
         //puertas
         this.puertas = this.physics.add.group();
@@ -65,7 +66,7 @@ export default class HabitacionBoss extends GameScene{
                 var aux =  new FirstDungeonBoss(this, objeto.x, objeto.y, 'boss');
                 this.boss.add(aux);  
             });
-            this.physics.add.collider(this.boss, paredes);
+            this.physics.add.collider(this.boss, this.paredes);
         }
         else if(this.registry.get('passedDungeons') == 1){ //si ya he derrotado al boss
             this.hacerVisible(this.cofre, true);
@@ -76,8 +77,8 @@ export default class HabitacionBoss extends GameScene{
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
         //COLISIONES
-        paredes.setCollisionByExclusion([-1], true);
-        this.physics.add.collider(this.player, paredes);
+        this.paredes.setCollisionByExclusion([-1], true);
+        this.physics.add.collider(this.player, this.paredes);
         this.physics.add.collider(this.player, this.cofre); //COLISION CON COFRE
         this.physics.add.collider(this.player, this.puertas);
 

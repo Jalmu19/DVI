@@ -16,6 +16,7 @@ export default class Laberinto extends GameScene{
     }
 
     create(){
+        this.initSpellEventListener();
         var map = this.make.tilemap({key : 'laberinto_final'});
 
         var img1 = map.addTilesetImage('cesped', 'cesped');
@@ -23,7 +24,7 @@ export default class Laberinto extends GameScene{
         var img3 = map.addTilesetImage('arbol', 'arbol');
 
         map.createLayer('suelo', [img1, img2], 0,0);
-        var arboles = map.createLayer('arboles', [img3], 0,0);
+        this.arboles = map.createLayer('arboles', [img3], 0,0);
 
         
        //Cofre
@@ -42,8 +43,8 @@ export default class Laberinto extends GameScene{
 
 
         //COLISIONES
-        arboles.setCollisionByExclusion([-1], true);
-        this.physics.add.collider(this.player, arboles);
+        this.arboles.setCollisionByExclusion([-1], true);
+        this.physics.add.collider(this.player, this.arboles);
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         

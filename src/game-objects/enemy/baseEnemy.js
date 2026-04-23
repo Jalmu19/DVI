@@ -176,8 +176,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
         }
         else {
             this.takeDamage(spell);
-            spell.setActive(false).setVisible(false);
-            spell.body.setEnable(false);
+            spell.impact();
         }
     }
 

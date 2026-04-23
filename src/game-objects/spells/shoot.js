@@ -36,16 +36,21 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
         }
    
     }
+
+    impact() {
+        this.setActive(false)
+        this.setVisible(false);
+        this.body.setEnable(false);
+    }
     
-    isFreezer() { return this.freeze}
+    isFreezer() { return this.freeze; }
 
     preUpdate(time, delta){
         super.preUpdate(time, delta);
         const extra = 32;
         const bounds = this.scene.physics.world.bounds;
         if(this.y <= -extra || this.y >= bounds.height + extra || this.x >= bounds.width + extra || this.x <= -extra){
-            this.setActive(false);
-            this.setVisible(false);
+            this.impact();
         }
     }
 }

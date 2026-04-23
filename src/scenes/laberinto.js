@@ -40,6 +40,7 @@ export default class Laberinto extends GameScene{
     }
 
     create(){
+        this.initSpellEventListener();
         var map = this.make.tilemap({key : 'laberinto'});
 
         var img1 = map.addTilesetImage('cesped', 'cesped');
@@ -47,14 +48,14 @@ export default class Laberinto extends GameScene{
         var img3 = map.addTilesetImage('arbol', 'arbol');
 
         map.createLayer('suelo', [img1, img2], 0,0);
-        var arboles = map.createLayer('arboles', [img3], 0,0);
+        this.arboles = map.createLayer('arboles', [img3], 0,0);
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]); 
         console.log(this.player.x, this.player.y);
 
         //COLISIONES
-        arboles.setCollisionByExclusion([-1], true);
-        //this.physics.add.collider(this.player, arboles);
+        this.arboles.setCollisionByExclusion([-1], true);
+        //this.physics.add.collider(this.player, this.arboles);
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         this.scale.resize(map.widthInPixels, map.heightInPixels);

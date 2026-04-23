@@ -18,14 +18,15 @@ export default class HabitacionCofre extends GameScene{
     }
 
     create(){
+        this.initSpellEventListener();
         var map = this.make.tilemap({key : 'habitacion_cofre'});
 
         var img1 = map.addTilesetImage('paredes', 'paredes');
         var img2 = map.addTilesetImage('suelo', 'suelo');
 
         map.createLayer('Suelo', img2, 0,0);
-        var paredes = map.createLayer('paredes', [img1], 0,0);
-        paredes.setCollisionByExclusion([-1], true);
+        this.paredes = map.createLayer('paredes', [img1], 0,0);
+        this.paredes.setCollisionByExclusion([-1], true);
 
  
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
@@ -48,7 +49,7 @@ export default class HabitacionCofre extends GameScene{
 
         
         this.physics.add.collider(this.player, this.cofre); //COLISION CON COFRES
-        this.physics.add.collider(this.player, paredes);  
+        this.physics.add.collider(this.player, this.paredes);  
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
 
