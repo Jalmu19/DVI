@@ -166,15 +166,5 @@ export default class Boot extends Phaser.Scene {
     
     
     this.scene.start('mainmenu');
-    
-    /*
-    this.scene.start('InteriorScene', { 
-        mapaKey: 'homejson',
-        x: 100,                     
-        y: 100, 
-        
-    });
-    */
-    
   }
 }

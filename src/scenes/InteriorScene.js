@@ -11,7 +11,7 @@ export default class InteriorScene extends GameScene {
         this.mapName = data.mapaKey;
         this.spawnX = data.x;
         this.spawnY = data.y;
-        //this.playerStats = data.stats;
+        this.playerStats = data.stats;
     }
 
     create() {
@@ -27,7 +27,7 @@ export default class InteriorScene extends GameScene {
             map.addTilesetImage('demo church', 'demo_church')
         ];
       
-        this.player = new Player(this, this.spawnX, this.spawnY, /*this.playerStats*/);
+        //this.player = new Player(this, this.spawnX, this.spawnY, /*this.playerStats*/);
         this.player.setDepth(1);
         
         
@@ -62,10 +62,24 @@ export default class InteriorScene extends GameScene {
         this.capaSalidas = map.getObjectLayer('salidas');
         this.cargarSalidas(this.capaSalidas, this.salidas);
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
+
+        
+        this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+
+        if (map.widthInPixels > this.cameras.main.width || map.heightInPixels > this.cameras.main.height) {
+            this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+            this.player.setCollideWorldBounds(true);
+            this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
+        } else {
+            this.cameras.main.stopFollow();
+            
+        const xCentral = (map.widthInPixels / 2);
+        const yCentral = (map.heightInPixels / 2);
+        this.cameras.main.centerOn(xCentral, yCentral);
+        }
     }
 
-     cambiarScene(jugador, salidas){
-        console.log("cambiando")
+    cambiarScene(jugador, salidas){
         if(salidas.tag === 'salida' ){
             this.scene.start('bosque', {
                 x : 250,
@@ -74,15 +88,27 @@ export default class InteriorScene extends GameScene {
             })  
         }
         else if(salidas.tag === 'salidaHabitacion' ){
-            console.log("room")
             this.scene.start('InteriorScene', {
                 mapaKey: 'roomjson',
-                x : 100,
-                y : 100,
+                x : 60,
+                y : 140,
                 stats : this.player.getStats()
             })  
         }
-        
-        
+        else if(salidas.tag === 'salidaAbajo' ){
+            this.scene.start('InteriorScene', {
+                mapaKey: 'homejson',
+                x : 30,
+                y : 50,
+                stats : this.player.getStats()
+            })  
+        }
+        else if(salidas.tag === 'salidaIglesia' ){
+            this.scene.start('bosque', {
+                x : 65,
+                y : 200,
+                stats : this.player.getStats()
+            })  
+        }
     }
 }
