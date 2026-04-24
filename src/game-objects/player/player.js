@@ -255,6 +255,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                     else anim = 'idle-push-rside';
                     this.lastDir = 'rside';
                 }
+
+                // Normaliza para que no se mueva más rapido cuando va en diagonal
+                if (vX !== 0 && vY !== 0) {
+                    // Math.SQRT1_2 es aproximadamente 0.707
+                    vX *= Math.SQRT1_2;
+                    vY *= Math.SQRT1_2;
+                }
     
                 this.body.setVelocity(vX, vY);
             }
