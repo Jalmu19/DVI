@@ -5,6 +5,7 @@ import GameScene from "./game-scene.js";
 
 import Chest from "../game-objects/items/chest.js";
 import Rata from '../game-objects/enemy/rata.js'
+import Luminarias from '../game-objects/items/luminarias.js'
 
 
 export default class Cueva extends GameScene{
@@ -21,6 +22,7 @@ export default class Cueva extends GameScene{
     preload(){
         // Generar un círculo de luz
         this.crearCirculoLuz();
+
     }
 
 
@@ -63,11 +65,19 @@ export default class Cueva extends GameScene{
        // }
 
 
-       /* this.puntosLuz = this.physics.add.group();
-        this.capaPuntosLuz = map.getObjectLayer('PuntosLuz');
-        this.crearObjeto(this.puntosLuz, this.capaPuntosLuz, PuntosLuz);
+       //Puntos de luz
+        this.luminarias = this.physics.add.group();
+        this.capaLuminarias = map.getObjectLayer('Luminarias');
+        this.capaLuminarias.objects.forEach(objeto => {
+            var aux = new Luminarias(this, objeto.x, objeto.y);
+            aux.encendida = false;
+            this.luminarias.add(aux);
+        });
+        this.physics.add.overlap(this.player, this.luminarias, this.activarLuz, null, this);
 
-        this.rocas = this.physics.add.group();
+
+
+        /*this.rocas = this.physics.add.group();
         this.capaRocas = map.getObjectLayer('Rocas');
         this.crearObjeto(this.rocas, this.capaRocas, Roca);*/
 
@@ -98,14 +108,66 @@ export default class Cueva extends GameScene{
 
     }
 
+
+
     cambiarScene(jugador, salidas){    
-        this.scene.start('ciudad', {
+        this.scene.start('zonaLago', {
             x : 122,
             y : 138,
             stats : this.player.getStats()
             
         });     
     } 
+
+
+    activarLuz(player, luminaria) {
+        if (!luminaria.encendida) {
+            luminaria.encender();
+
+            this.tweens.add({
+                targets: this.capaNegra, // El objeto Graphics que cubre todo
+                alpha: 0.3,              
+                duration: 2000,          // En 2 segundos se ilumina
+                ease: 'Power2'
+            });
+
+            // para que el círculo del jugador crezca
+            this.tweens.add({
+                targets: this.lightCircle,
+                scale: 2.5,              //el foco se hace más grande
+                duration: 1000
+            });
+
+            // pasados 10 segundos (10000 ms), se apaga
+            this.time.delayedCall(10000, () => {
+                this.apagarLuz(luminaria);
+            }, [], this);
+        }
+    }
+
+
+    apagarLuz(luminaria){
+        if (luminaria.encendida) {
+            luminaria.apagar();
+
+            this.tweens.add({
+                targets: this.capaNegra, // El objeto Graphics que cubre todo
+                alpha: 0.3,              
+                duration: 5000,          
+                ease: 'Power2'
+            });
+
+            // para que el círculo del jugador vuelva a hacerse pequeño
+            this.tweens.add({
+                targets: this.lightCircle,
+                scale: 0.75,              //el foco se hace más pequeño
+                duration: 1000
+            });
+        }
+    }
+
+
+
 
     crearCirculoLuz(){
         let canvas = document.createElement('canvas');
@@ -143,10 +205,13 @@ export default class Cueva extends GameScene{
    }
 
 
+
+
    update() {
     if (this.lightCircle) {
         this.lightCircle.x = this.player.x;
         this.lightCircle.y = this.player.y;
         }
     }
+
 }

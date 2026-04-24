@@ -545,7 +545,7 @@
         {
          "draworder":"topdown",
          "id":11,
-         "name":"PuntosLuz",
+         "name":"Luminarias",
          "objects":[
                 {
                  "height":0,
@@ -562,7 +562,7 @@
                 {
                  "height":0,
                  "id":19,
-                 "name":"puntoLuz5",
+                 "name":"luminaria",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -574,7 +574,7 @@
                 {
                  "height":0,
                  "id":20,
-                 "name":"puntoLuz3",
+                 "name":"luminaria",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -586,19 +586,19 @@
                 {
                  "height":0,
                  "id":21,
-                 "name":"puntoLuz2",
+                 "name":"luminaria",
                  "point":true,
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":300.666666666667,
-                 "y":993.333333333333
+                 "x":303.333333333334,
+                 "y":969.333333333333
                 }, 
                 {
                  "height":0,
                  "id":22,
-                 "name":"puntoLuz1",
+                 "name":"luminaria",
                  "point":true,
                  "rotation":0,
                  "type":"",

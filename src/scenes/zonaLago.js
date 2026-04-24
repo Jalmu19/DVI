@@ -20,6 +20,7 @@ import tileCueva from '../../assets/sprites/cueva.png'
 
 
 
+
 export default class Zona_Lago extends GameScene {
 
     constructor() {
@@ -37,7 +38,7 @@ export default class Zona_Lago extends GameScene {
        this.load.spritesheet('star', star, { frameWidth: 32, frameHeight: 32 });
 
 
-        this.load.image('cueva', tileCueva);
+        this.load.spritesheet('cueva', tileCueva, {  frameWidth: 16,   frameHeight: 16, margin: 0, spacing: 0 });
         this.load.tilemapTiledJSON('mapaCueva', mapaCueva);
 
     }
