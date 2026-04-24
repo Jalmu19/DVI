@@ -18,6 +18,12 @@ export default class Cueva extends GameScene{
     }
 
 
+    preload(){
+        // Generar un círculo de luz
+        this.crearCirculoLuz();
+    }
+
+
     create(){
         var map = this.make.tilemap({key : 'mapaCueva'});
 
@@ -37,6 +43,7 @@ export default class Cueva extends GameScene{
         this.llenarCofre(this.capaCofre, this.cofre);
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
+        this.crearOscuridad(map);
 
 
         // Enemigos
@@ -100,10 +107,46 @@ export default class Cueva extends GameScene{
         });     
     } 
 
+    crearCirculoLuz(){
+        let canvas = document.createElement('canvas');
+        canvas.width = 300; // Tamaño del radio de luz
+        canvas.height = 300;
+        let ctx = canvas.getContext('2d');
+        let gradient = ctx.createRadialGradient(150, 150, 0, 150, 150, 150);
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 300, 300);
+        this.textures.addCanvas('luz-suave', canvas);
+    }
 
-    update() {
-    // Esto mostrará la posición X e Y cada frame
-    console.log(`X: ${this.player.x}, Y: ${this.player.y}`);
-}
 
+   crearOscuridad(map){
+        //capa negra que cubre todo el mapa
+        const oscuro = this.add.graphics();
+        oscuro.fillStyle(0x000000, 0.9); // Color negro, 90% de opacidad
+        oscuro.fillRect(0, 0, map.widthInPixels, map.heightInPixels);
+        oscuro.setDepth(10); // ponerlo por encima de todo
+
+        //crear el foco de luz
+        this.lightCircle = this.make.sprite({
+            x: this.player.x,
+            y: this.player.y,
+            key: 'luz-suave', 
+            add: false
+        });
+
+        //aplicar la máscara inversa
+        const mask = new Phaser.Display.Masks.BitmapMask(this, this.lightCircle);
+        mask.invertAlpha = true; // oculta lo negro donde está el círculo
+        oscuro.setMask(mask);
+   }
+
+
+   update() {
+    if (this.lightCircle) {
+        this.lightCircle.x = this.player.x;
+        this.lightCircle.y = this.player.y;
+        }
+    }
 }

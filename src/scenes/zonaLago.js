@@ -156,20 +156,20 @@ export default class Zona_Lago extends GameScene {
     }
 
     cambiarScene(jugador, salidas) {
-        if(salidas.tag === 'salidaLaberinto' ){
+       /* if(salidas.tag === 'salidaLaberinto' ){
             this.scene.start('laberinto', {
                 x : 143,
                 y : 30,
                 stats : this.player.getStats()
             });
-        }
-        /*if(salidas.tag === 'salidaLaberinto' ){
+        }*/
+        if(salidas.tag === 'salidaLaberinto' ){
             this.scene.start('escenaCueva', {
                 x : 985,
                 y : 928,
                 stats : this.player.getStats()
             });
-        }*/
+        }
         else{
             this.scene.switch('zonaBosque', {
                 x : 453,
