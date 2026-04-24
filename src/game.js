@@ -10,6 +10,7 @@ import zBosque from './scenes/zonaBosque.js';
 import zonaLago from './scenes/zonaLago.js'
 import Laberinto from './scenes/laberinto.js';
 import LaberintoFinal from './scenes/laberinto_final.js';
+import Cueva from './scenes/cueva.js';
 import GameOver from './scenes/game-over.js';
 import MainMenu from './mainMenu.js';
 import UIScene from './ui/ui-scene.js';
@@ -29,7 +30,7 @@ let config = {
         mode: Phaser.Scale.FIT
     },
     pixelArt: true,
-    scene: [Boot, MainMenu, IntroStoryScene, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, GameOver, UIScene, InventoryScene, InteriorScene ],
+    scene: [Boot, MainMenu, IntroStoryScene, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,Laberinto, LaberintoFinal, Cueva, GameOver, UIScene, InventoryScene, InteriorScene ],
     physics: {
         default: 'arcade',
         arcade: {

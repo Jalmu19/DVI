@@ -13,6 +13,12 @@ import Rata from "../game-objects/enemy/rata.js";
 import hielo from '../../assets/sprites/hielo.png'
 import {SPELLS } from '../constants';
 
+
+import mapaCueva from '../../assets/mapas/mapaCueva.json'
+import tileCueva from '../../assets/sprites/cueva.png'
+
+
+
 export default class Zona_Lago extends GameScene {
 
     constructor() {
@@ -28,6 +34,10 @@ export default class Zona_Lago extends GameScene {
        this.load.tilemapTiledJSON('laberinto', laberinto);
        
        this.load.spritesheet('star', star, { frameWidth: 32, frameHeight: 32 });
+
+
+        this.load.image('cueva', tileCueva);
+        this.load.tilemapTiledJSON('mapaCueva', mapaCueva);
 
     }
 
@@ -147,6 +157,13 @@ export default class Zona_Lago extends GameScene {
                 stats : this.player.getStats()
             });
         }
+        /*if(salidas.tag === 'salidaLaberinto' ){
+            this.scene.start('escenaCueva', {
+                x : 985,
+                y : 928,
+                stats : this.player.getStats()
+            });
+        }*/
         else{
             this.scene.switch('zonaBosque', {
                 x : 453,
