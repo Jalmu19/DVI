@@ -1,5 +1,6 @@
 import Oruga from "../game-objects/enemy/oruga.js";
 import Player from '../game-objects/player/player.js'
+import Chest from "../game-objects/items/chest.js";
 import laberinto from '../../assets/mapas/laberinto.json'
 import GameScene from "./game-scene.js";
 
@@ -44,8 +45,9 @@ export default class Zona_Lago extends GameScene {
 
 
     create() {
+        this.initSpellEventListener();
         var map = this.make.tilemap({ key: 'zonaLago' });
-    console.log(map.tilesets.map(t => t.name));
+        console.log(map.tilesets.map(t => t.name));
 
         var img1 = map.addTilesetImage('Villa1', 'plantilla');
         var img2 = map.addTilesetImage('Arbol', 'arbol');
@@ -64,17 +66,26 @@ export default class Zona_Lago extends GameScene {
         map.createLayer('Camino',img1, 0 ,0)
         
         
-        var arboles = map.createLayer('Arboles', img2, 0, 0);
+        this.arboles = map.createLayer('Arboles', img2, 0, 0);
 
         //Tamaño del mundo fisico
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+
+        //Cofre islote
+        
+        this.cofre = this.physics.add.group({classType: Chest,
+                                                        immovable: true,
+                                                        allowGravity: false })
+        this.capaCofre = map.getObjectLayer('Cofre');
+
+        this.llenarCofre(this.capaCofre, this.cofre);
 
       
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
         
         //Añadiendo colision a las fisicas
-        arboles.setCollisionByExclusion([-1], true);
-        this.physics.add.collider(this.player, arboles);
+        this.arboles.setCollisionByExclusion([-1], true);
+        this.physics.add.collider(this.player, this.arboles);
        
         this.lago.setCollisionByExclusion([-1],true);
         this.physics.add.collider(this.player, this.lago);
@@ -89,15 +100,10 @@ export default class Zona_Lago extends GameScene {
         this.capaSalidas = map.getObjectLayer('Salidas');
         
         this.cargarSalidas(this.capaSalidas, this.salidas);
-
+        
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
-
-        //Cofre islote
-
-        this.cofre = this.physics.add.group()
-        this.capaCofre = map.getObjectLayer('Cofre');
-
-        this.llenarCofre(this.capaCofre, this.cofre);  
+        
+        //Colision jugador y cofre
         
         this.physics.add.collider(this.player, this.capaCofre);
 

@@ -34,6 +34,7 @@ export default class Mazmorra extends GameScene{
 
 
     create(){
+        this.initSpellEventListener();
         var map = this.make.tilemap({key : 'mazmorra'});
         this.sonidoAbrirPuerta = this.sound.add('sonidoPuerta'); 
 
@@ -43,13 +44,13 @@ export default class Mazmorra extends GameScene{
 
 
         map.createLayer('Suelo', img15, 0,0);
-        var paredes_y_entrada = map.createLayer('ParedesYEntrada', [img12], 0,0);
+        this.paredes_y_entrada = map.createLayer('ParedesYEntrada', [img12], 0,0);
         map.createLayer('Antorchas', img13, 0,0); //antorchas
 
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-        paredes_y_entrada.setCollisionByExclusion([-1], true);
+        this.paredes_y_entrada.setCollisionByExclusion([-1], true);
         
         //salidas  
         this.salidas = this.physics.add.group();
@@ -112,12 +113,12 @@ export default class Mazmorra extends GameScene{
 
         //colisiones
         this.logicaCajas(this.player, this.cajas);
-        this.physics.add.collider(this.player, paredes_y_entrada);  
+        this.physics.add.collider(this.player, this.paredes_y_entrada);  
         this.physics.add.collider(this.player, this.puertas); 
-        this.physics.add.collider(this.puertas, paredes_y_entrada);
-        this.physics.add.collider(this.cajas, paredes_y_entrada);
+        this.physics.add.collider(this.puertas, this.paredes_y_entrada);
+        this.physics.add.collider(this.cajas, this.paredes_y_entrada);
         this.physics.add.collider(this.cajas, this.puertas); //para que al empujar una caja no se desplace la puerta
-        this.physics.add.collider(this.enemigos, paredes_y_entrada);
+        this.physics.add.collider(this.enemigos, this.paredes_y_entrada);
         this.physics.add.collider(this.enemigos, this.enemigos);
         this.physics.add.collider(this.enemigos, this.puertas);
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);

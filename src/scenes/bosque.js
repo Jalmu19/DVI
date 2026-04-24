@@ -35,6 +35,7 @@ export default class Bosque extends GameScene{
   
 
     create(){
+        this.initSpellEventListener();
         var map = this.make.tilemap({key : 'mapa'});
 
         var img1 = map.addTilesetImage('Casa', 'casa');
@@ -46,7 +47,7 @@ export default class Bosque extends GameScene{
         var img7 = map.addTilesetImage('Pozo', 'pozo');
 
         map.createLayer('Suelo', img2, 0,0);
-        var arboles = map.createLayer('Arboleda', [img3, img4, img7], 0,0);
+        this.arboles = map.createLayer('Arboleda', [img3, img4, img7], 0,0);
         var casas = map.createLayer('Casas', [img1,img2, img5, img6], 0,0);
 
         this.player = new Player(this, this.datos[0],this.datos[1], this.datos[2]);
@@ -55,7 +56,7 @@ export default class Bosque extends GameScene{
        
         //Crear capa de salidas, pero no configuradas
               
-        arboles.setCollisionByExclusion([-1], true);
+        this.arboles.setCollisionByExclusion([-1], true);
         casas.setCollisionByExclusion([-1], true);
          
         //Tamaño del mundo fisico
@@ -72,7 +73,7 @@ export default class Bosque extends GameScene{
         this.cameras.main.startFollow(this.player, true);
         
         //colision suelo-this.player
-        this.physics.add.collider(this.player,arboles);
+        this.physics.add.collider(this.player,this.arboles);
         this.physics.add.overlap(this.player, tejado,null,null,this);    
         this.physics.add.collider(this.player,casas);            
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);

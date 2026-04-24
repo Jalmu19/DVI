@@ -120,7 +120,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
                     this.setTint(0xff0000);
                     this.knockBack(spell.x, spell.y);
                     this.scene.time.addEvent({
-                        delay: 200 /*500*/,
+                        delay: 500,
                         callback: () => {
                             this.invicible = false;
                             this.clearTint();
@@ -176,8 +176,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
         }
         else {
             this.takeDamage(spell);
-            spell.setActive(false).setVisible(false);
-            spell.body.setEnable(false);
+            spell.impact();
         }
     }
 

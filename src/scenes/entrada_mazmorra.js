@@ -44,6 +44,7 @@ export default class Entrada_mazmorra extends GameScene{
 
 
     create(){
+        this.initSpellEventListener();
         var map = this.make.tilemap({key : 'entrada-mazmorra-bosque'});
 
         var img1 = map.addTilesetImage('cesped', 'cesped');

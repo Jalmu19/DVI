@@ -53,6 +53,7 @@ export default class MazmorraInicial extends GameScene{
 
 
     create(){
+        this.initSpellEventListener();
         var map = this.make.tilemap({key : 'mazmorra_inicial'});
 
         this.sonidoAbrirPuerta = this.sound.add('sonidoPuerta');
@@ -62,8 +63,8 @@ export default class MazmorraInicial extends GameScene{
         var img3 = map.addTilesetImage('puerta_entrada', 'puerta_entrada');
 
         map.createLayer('suelo', img2, 0,0);
-        var paredes_y_entrada = map.createLayer('paredesYpuerta', [img1, img3], 0,0);
-        paredes_y_entrada.setCollisionByExclusion([-1], true);
+        this.paredes_y_entrada = map.createLayer('paredesYpuerta', [img1, img3], 0,0);
+        this.paredes_y_entrada.setCollisionByExclusion([-1], true);
 
  
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
@@ -115,11 +116,11 @@ export default class MazmorraInicial extends GameScene{
 
         
         this.logicaCajas(this.player, this.cajas);
-        this.physics.add.collider(this.player, paredes_y_entrada);  
+        this.physics.add.collider(this.player, this.paredes_y_entrada);  
         this.physics.add.collider(this.player, this.puertas); 
-        this.physics.add.collider(this.puertas, paredes_y_entrada);
+        this.physics.add.collider(this.puertas, this.paredes_y_entrada);
         this.physics.add.collider(this.cajas, this.puertas); //para que al empujar una caja no se desplace la puerta
-        this.physics.add.collider(this.cajas, paredes_y_entrada); // También colisión entre las cajas y el escenario (paredes)
+        this.physics.add.collider(this.cajas, this.paredes_y_entrada); // También colisión entre las cajas y el escenario (paredes)
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
 

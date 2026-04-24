@@ -77,6 +77,7 @@ export default class Zona_bosque extends GameScene {
 
 
     create() {
+        this.initSpellEventListener();
         var map = this.make.tilemap({ key: 'zBosque' });
 
         var img1 = map.addTilesetImage('Villa1', 'plantilla');
@@ -86,19 +87,19 @@ export default class Zona_bosque extends GameScene {
 
         map.createLayer('fondo', [img4, img1], 0, 0);
         map.createLayer('Detalles', [img3, img1], 0, 0);
-        var arboles = map.createLayer('Arboles', img2, 0, 0);
+        this.arboles = map.createLayer('Arboles', img2, 0, 0);
 
         //Crear capa de salidas, pero no configuradas
 
-        arboles.setCollisionByExclusion([-1], true);
         //Tamaño del mundo fisico
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-
-      
+        
+        
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
         
         //Añadiendo colision a las fisicas
-        this.physics.add.collider(this.player, arboles);
+        this.arboles.setCollisionByExclusion([-1], true);
+        this.physics.add.collider(this.player, this.arboles);
         //limites de camara
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);
