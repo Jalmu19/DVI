@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"mapaCueva.json"
+        }
+    },
  "height":65,
  "infinite":false,
  "layers":[
@@ -342,7 +350,7 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":102,
+                 "x":175.333333333333,
                  "y":172
                 }, 
                 {
@@ -354,8 +362,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":992,
-                 "y":214
+                 "x":988,
+                 "y":200.666666666667
                 }, 
                 {
                  "height":0,
@@ -366,8 +374,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":571,
-                 "y":351
+                 "x":568.333333333333,
+                 "y":352.333333333333
                 }, 
                 {
                  "height":0,
@@ -426,13 +434,13 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":680,
-                 "y":125
+                 "x":694.666666666667,
+                 "y":126.333333333333
                 }, 
                 {
                  "height":0,
                  "id":10,
-                 "name":"toca8",
+                 "name":"roca8",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -473,8 +481,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":347,
-                 "y":891
+                 "x":317.666666666667,
+                 "y":877.666666666667
                 }, 
                 {
                  "height":0,
@@ -533,8 +541,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":268,
-                 "y":887
+                 "x":256,
+                 "y":795
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -580,8 +588,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":158.333333333333,
-                 "y":386
+                 "x":143.666666666666,
+                 "y":360.666666666667
                 }, 
                 {
                  "height":0,

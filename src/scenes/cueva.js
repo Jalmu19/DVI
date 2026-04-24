@@ -6,6 +6,7 @@ import GameScene from "./game-scene.js";
 import Chest from "../game-objects/items/chest.js";
 import Rata from '../game-objects/enemy/rata.js'
 import Luminarias from '../game-objects/items/luminarias.js'
+import Roca from '../game-objects/items/rocas.js'
 
 
 export default class Cueva extends GameScene{
@@ -49,8 +50,8 @@ export default class Cueva extends GameScene{
 
 
         // Enemigos
-        this.enemigos = this.physics.add.group();
-        this.capaEnemigos = map.getObjectLayer('Enemigos');
+      /*  this.enemigos = this.physics.add.group();
+        this.capaEnemigos = map.getObjectLayer('Enemigos');*/
 
         /*if (datosGuardados) {
             datosGuardados.enemigos.forEach(obj => {
@@ -58,10 +59,10 @@ export default class Cueva extends GameScene{
                 this.enemigos.add(a);
             });
         } else {*/
-            this.capaEnemigos.objects.forEach(obj => {
+        /*    this.capaEnemigos.objects.forEach(obj => {
                 var a = new Rata(this, obj.x, obj.y, 'rata');
                 this.enemigos.add(a);
-            });
+            });*/
        // }
 
 
@@ -77,10 +78,14 @@ export default class Cueva extends GameScene{
 
 
 
-        /*this.rocas = this.physics.add.group();
+        this.rocas = this.physics.add.group();
         this.capaRocas = map.getObjectLayer('Rocas');
-        this.crearObjeto(this.rocas, this.capaRocas, Roca);*/
-
+        this.capaRocas.objects.forEach(objeto => {
+            var aux = new Roca(this, objeto.x, objeto.y);
+            aux.setName(objeto.name);
+            this.rocas.add(aux);
+        });
+        
 
 
         //COLISION CON COFRES
@@ -91,6 +96,10 @@ export default class Cueva extends GameScene{
         this.physics.add.collider(this.player, detalles);
         paredes.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, paredes);
+        //colisión roca con paredes. Al chocar con la pared, el bounce(1) hará que cambie de dirección sola
+        this.physics.add.collider(this.rocas, paredes);
+        
+        
 
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);

@@ -67,3 +67,4 @@ export const UI = {
 export const NUM_ESTRELLAS_LABERINTO = 3;
 export const FRAME_APAGADO = 1361;
 export const FRAME_ENCENDIDO = 1305;
+export const FRAME_ROCA = 1332;
