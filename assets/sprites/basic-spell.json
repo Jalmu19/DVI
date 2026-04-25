@@ -1,0 +1,71 @@
+{ "frames": {
+   "0": {
+    "frame": { "x": 0, "y": 0, "w": 12, "h": 15 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 9, "y": 6, "w": 12, "h": 15 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 150
+   },
+   "1": {
+    "frame": { "x": 12, "y": 0, "w": 9, "h": 17 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 11, "y": 4, "w": 9, "h": 17 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 150
+   },
+   "2": {
+    "frame": { "x": 21, "y": 0, "w": 10, "h": 18 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 3, "w": 10, "h": 18 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 150
+   },
+   "3": {
+    "frame": { "x": 31, "y": 0, "w": 9, "h": 10 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 8, "w": 9, "h": 10 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "4": {
+    "frame": { "x": 40, "y": 0, "w": 6, "h": 4 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 13, "y": 14, "w": 6, "h": 4 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "5": {
+    "frame": { "x": 46, "y": 0, "w": 8, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 15, "w": 8, "h": 3 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "6": {
+    "frame": { "x": 54, "y": 0, "w": 10, "h": 5 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 10, "y": 13, "w": 10, "h": 5 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.x-dev",
+  "image": "basic-spell.png",
+  "format": "RGBA8888",
+  "size": { "w": 64, "h": 18 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "shoot", "from": 0, "to": 2, "direction": "forward", "color": "#000000ff" },
+   { "name": "impact", "from": 3, "to": 6, "direction": "forward", "color": "#000000ff" }
+  ]
+ }
+}
