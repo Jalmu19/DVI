@@ -6,7 +6,7 @@ import GameScene from "./game-scene.js";
 import Chest from "../game-objects/items/chest.js";
 import Rata from '../game-objects/enemy/rata.js'
 import Luminarias from '../game-objects/items/luminarias.js'
-import Roca from '../game-objects/items/rocas.js'
+import Barril from '../game-objects/items/barriles.js'
 
 
 export default class Cueva extends GameScene{
@@ -78,12 +78,12 @@ export default class Cueva extends GameScene{
 
 
 
-        this.rocas = this.physics.add.group();
-        this.capaRocas = map.getObjectLayer('Rocas');
-        this.capaRocas.objects.forEach(objeto => {
-            var aux = new Roca(this, objeto.x, objeto.y);
+        this.barriles = this.physics.add.group();
+        this.capaBarriles = map.getObjectLayer('Barriles');
+        this.capaBarriles.objects.forEach(objeto => {
+            var aux = new Barril(this, objeto.x, objeto.y);
             aux.setName(objeto.name);
-            this.rocas.add(aux);
+            this.barriles.add(aux);
         });
         
 
@@ -96,10 +96,9 @@ export default class Cueva extends GameScene{
         this.physics.add.collider(this.player, detalles);
         paredes.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, paredes);
-        //colisión roca con paredes. Al chocar con la pared, el bounce(1) hará que cambie de dirección sola
-        this.physics.add.collider(this.rocas, paredes);
-        
-        
+        //colisión barriles con paredes. Al chocar con la pared, el bounce(1) hará que cambie de dirección solo
+        this.physics.add.collider(this.barriles, paredes);
+                
 
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
