@@ -50,21 +50,13 @@ export default class Cueva extends GameScene{
 
 
         // Enemigos
-      /*  this.enemigos = this.physics.add.group();
-        this.capaEnemigos = map.getObjectLayer('Enemigos');*/
-
-        /*if (datosGuardados) {
-            datosGuardados.enemigos.forEach(obj => {
-                var a = new Rata(this, obj.x, obj.y, 'rata');
-                this.enemigos.add(a);
-            });
-        } else {*/
-        /*    this.capaEnemigos.objects.forEach(obj => {
-                var a = new Rata(this, obj.x, obj.y, 'rata');
-                this.enemigos.add(a);
-            });*/
-       // }
-
+        this.enemigos = this.physics.add.group();
+        this.capaEnemigos = map.getObjectLayer('Enemigos');
+        this.capaEnemigos.objects.forEach(obj => {
+            var a = new Rata(this, obj.x, obj.y, 'rata');
+            this.enemigos.add(a);
+        });
+        
 
        //Puntos de luz
         this.luminarias = this.physics.add.group();
