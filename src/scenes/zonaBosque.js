@@ -36,7 +36,7 @@ export default class Zona_bosque extends GameScene {
         this.STORY = ["Jijijijijijijijiji",
             "...",
             "Has perdido: colgante de metal",
-            "¿No eres una hechicera de verdad? Demuestramelo completando la mazmorra que hay siguiendo el camino de a mi espalda"];
+            "¿No eres una hechicera de verdad? Demuestramelo completando la mazmorra que hay siguiendo el camino a mi espalda"];
          
            
     }
@@ -138,7 +138,7 @@ export default class Zona_bosque extends GameScene {
         }
 
         //Capa de bloqueo   
-        /*if(this.registry.get('passedDungeons') <= 0){
+       /* if(this.registry.get('passedDungeons') <= 0){
             this.capaMuralla = map.getObjectLayer('Bloqueo')
             this.capaMuralla.objects.forEach(obj =>{
                 var a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
