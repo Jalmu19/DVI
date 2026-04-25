@@ -20,6 +20,7 @@ import health from '../../assets/sprites/health.png'
 import proyectiles from '../../assets/sprites/proyectiles.png'
 import palo from '../../assets/sprites/palo.png'
 import shoot from '../../assets/sprites/basic-spell.png'
+import shootjson from '../../assets/sprites/basic-spell.json'
 import freezing_shoot from '../../assets/sprites/freeze-spell.png'
 import grimorioBasico from '../../assets/sprites/grimorio-basico.png'
 import grimorioShoot from '../../assets/sprites/grimorio-shoot.png'
@@ -107,7 +108,7 @@ export default class Boot extends Phaser.Scene {
     this.load.spritesheet('proyectiles', proyectiles, { frameWidth: 32, frameHeight: 32 });
     this.load.aseprite('chest', chest, chestjson);
     this.load.image('palo', palo);
-    this.load.image('shoot', shoot);
+    this.load.aseprite('shoot', shoot, shootjson);
     this.load.image('freezing_shoot', freezing_shoot);
     this.load.image('grimorio-basico', grimorioBasico);
     this.load.image('grimorio-shoot', grimorioShoot);
@@ -162,6 +163,7 @@ export default class Boot extends Phaser.Scene {
     this.registry.set('passedDungeons', 0);//contador de mazmorras pasadas
 
     this.anims.createFromAseprite('player');
+    this.anims.createFromAseprite('shoot');
     this.anims.createFromAseprite('chest');
     this.anims.createFromAseprite('oruga');
     this.anims.createFromAseprite('boss1');

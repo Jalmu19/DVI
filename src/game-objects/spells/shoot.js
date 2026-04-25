@@ -23,6 +23,8 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
         this.enableBody(true, posX, posY, true, true);
         this.setVelocity(vx, vy);
         this.setBodySize(10, 10);
+
+        this.play({key : 'shoot', repeat: -1}, true);
     }
 
     onCreate(){
@@ -38,9 +40,13 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
     }
 
     impact() {
-        this.setActive(false)
-        this.setVisible(false);
-        this.body.setEnable(false);
+        this.setVelocity(0, 0);
+        this.play('impact');
+        this.body.setEnable(false);       
+        this.scene.time.delayedCall(200, () => {
+            this.setActive(false)
+            this.setVisible(false);
+        });
     }
     
     isFreezer() { return this.freeze; }
