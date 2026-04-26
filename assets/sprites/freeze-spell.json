@@ -1,0 +1,62 @@
+{ "frames": {
+   "0": {
+    "frame": { "x": 0, "y": 0, "w": 12, "h": 20 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 9, "y": 3, "w": 12, "h": 20 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 150
+   },
+   "1": {
+    "frame": { "x": 12, "y": 0, "w": 10, "h": 21 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 11, "y": 2, "w": 10, "h": 21 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 150
+   },
+   "2": {
+    "frame": { "x": 22, "y": 0, "w": 10, "h": 13 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 11, "y": 8, "w": 10, "h": 13 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "3": {
+    "frame": { "x": 32, "y": 0, "w": 6, "h": 4 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 13, "y": 17, "w": 6, "h": 4 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "4": {
+    "frame": { "x": 38, "y": 0, "w": 8, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 12, "y": 18, "w": 8, "h": 3 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   "5": {
+    "frame": { "x": 46, "y": 0, "w": 10, "h": 5 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 10, "y": 16, "w": 10, "h": 5 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.x-dev",
+  "format": "RGBA8888",
+  "size": { "w": 56, "h": 21 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "frshoot", "from": 0, "to": 1, "direction": "forward", "color": "#000000ff" },
+   { "name": "frimpact", "from": 2, "to": 5, "direction": "forward", "color": "#000000ff" }
+  ]
+ }
+}

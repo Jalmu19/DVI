@@ -30,6 +30,8 @@ export default class FreezingShoot extends Shoot{
             this.setVisible(false);
             this.disableBody(true, true);
         });
+
+        this.play({key : 'frshoot', repeat: -1}, true);
     }
     
 }

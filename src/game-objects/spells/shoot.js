@@ -41,7 +41,8 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
 
     impact() {
         this.setVelocity(0, 0);
-        this.play('impact');
+        let anim =  this.freeze ? 'frimpact' : 'impact';
+        this.play(anim);
         this.body.setEnable(false);       
         this.scene.time.delayedCall(200, () => {
             this.setActive(false)

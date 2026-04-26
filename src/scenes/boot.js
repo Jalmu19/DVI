@@ -22,6 +22,7 @@ import palo from '../../assets/sprites/palo.png'
 import shoot from '../../assets/sprites/basic-spell.png'
 import shootjson from '../../assets/sprites/basic-spell.json'
 import freezing_shoot from '../../assets/sprites/freeze-spell.png'
+import freezing_shootjson from '../../assets/sprites/freeze-spell.json'
 import grimorioBasico from '../../assets/sprites/grimorio-basico.png'
 import grimorioShoot from '../../assets/sprites/grimorio-shoot.png'
 import grimorioFrezShoot from '../../assets/sprites/grimorio-freezing_shoot.png'
@@ -109,7 +110,7 @@ export default class Boot extends Phaser.Scene {
     this.load.aseprite('chest', chest, chestjson);
     this.load.image('palo', palo);
     this.load.aseprite('shoot', shoot, shootjson);
-    this.load.image('freezing_shoot', freezing_shoot);
+    this.load.aseprite('freezing_shoot', freezing_shoot, freezing_shootjson);
     this.load.image('grimorio-basico', grimorioBasico);
     this.load.image('grimorio-shoot', grimorioShoot);
     this.load.image('grimorio-freezing_shoot', grimorioFrezShoot);
@@ -164,6 +165,7 @@ export default class Boot extends Phaser.Scene {
 
     this.anims.createFromAseprite('player');
     this.anims.createFromAseprite('shoot');
+    this.anims.createFromAseprite('freezing_shoot');
     this.anims.createFromAseprite('chest');
     this.anims.createFromAseprite('oruga');
     this.anims.createFromAseprite('boss1');
