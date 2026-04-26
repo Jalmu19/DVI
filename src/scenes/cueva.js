@@ -80,8 +80,6 @@ export default class Cueva extends GameScene{
         });
 
 
-
-
         //Pared que que permite bajar, no subir
         this.paredBajada = this.physics.add.staticGroup();
         this.objetoBajada = map.getObjectLayer('ParedBajada'); 

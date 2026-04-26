@@ -654,12 +654,12 @@
                         {
                          "name":"id",
                          "type":"string",
-                         "value":"berry"
+                         "value":"health-container"
                         }, 
                         {
                          "name":"name",
                          "type":"string",
-                         "value":"baya"
+                         "value":"vida extra"
                         }, 
                         {
                          "name":"quantity",
@@ -669,7 +669,7 @@
                         {
                          "name":"texture",
                          "type":"string",
-                         "value":"berry"
+                         "value":"health-container"
                         }],
                  "rotation":0,
                  "type":"",
