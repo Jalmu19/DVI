@@ -85,41 +85,19 @@ export default class Entrada_mazmorra extends GameScene{
 
         this.escalerasFisicas = this.physics.add.staticGroup();
         this.objetosEscaleras = map.getObjectLayer('Objetos_Escaleras'); 
+        this.crearZoneGameObject(this.escalerasFisicas, this.objetosEscaleras);
 
-        if(this.objetosEscaleras){
-            this.objetosEscaleras.objects.forEach( object => {
-                let zona = this.add.zone(object.x, object.y, object.width, object.height).setOrigin(0, 0);           
-                // Le damos cuerpo físico
-                this.physics.add.existing(zona, true); 
-                this.escalerasFisicas.add(zona);
-            })
-        }
 
         //COLISION CON EL PUENTE
         this.puenteFisico = this.physics.add.staticGroup();
         this.objetoPuente = map.getObjectLayer('Objeto_puente'); 
+        this.crearZoneGameObject(this.puenteFisico, this.objetoPuente);
 
-        if(this.objetoPuente){
-            this.objetoPuente.objects.forEach( object => {
-                let zona = this.add.zone(object.x, object.y, object.width, object.height).setOrigin(0, 0);           
-                // Le damos cuerpo físico
-                this.physics.add.existing(zona, true); 
-                this.puenteFisico.add(zona);
-            })
-        }
 
         //para que no se caiga del puente ni atraviese las plataformas al bajar la escalera
         this.barandillas= this.physics.add.staticGroup();
         this.objetoBarandillas = map.getObjectLayer('Barandillas'); 
-
-        if(this.objetoBarandillas){
-            this.objetoBarandillas.objects.forEach( object => {
-                let zona = this.add.zone(object.x, object.y, object.width, object.height).setOrigin(0, 0);           
-                // Le damos cuerpo físico
-                this.physics.add.existing(zona, true); 
-                this.barandillas.add(zona);
-            })
-        }
+        this.crearZoneGameObject(this.barandillas, this.objetoBarandillas);
         this.physics.add.collider(this.player, this.barandillas);
        
 

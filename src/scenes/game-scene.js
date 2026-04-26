@@ -64,6 +64,17 @@ export default class GameScene extends Phaser.Scene {
         });
     }
 
+    crearZoneGameObject(grupoObjeto, capaObjeto){
+        if(capaObjeto){
+            capaObjeto.objects.forEach( object => {
+                let zona = this.add.zone(object.x, object.y, object.width, object.height).setOrigin(0, 0);           
+                // Le damos cuerpo físico
+                this.physics.add.existing(zona, true); 
+                grupoObjeto.add(zona);
+            })
+        }
+    }
+
     llenarCofre(capaCofre, cofre) {
         capaCofre.objects.forEach(obj => {
             // Saca las propiedades si es que tiene
