@@ -13,6 +13,7 @@ export default class Cueva extends GameScene{
 
     constructor(){
         super({key:'escenaCueva'}); 
+        this.atravesarPlataforma = false; 
     }
 
     init(datos){
@@ -69,7 +70,7 @@ export default class Cueva extends GameScene{
         this.physics.add.overlap(this.player, this.luminarias, this.activarLuz, null, this);
 
 
-
+        //Barriles
         this.barriles = this.physics.add.group();
         this.capaBarriles = map.getObjectLayer('Barriles');
         this.capaBarriles.objects.forEach(objeto => {
@@ -77,17 +78,33 @@ export default class Cueva extends GameScene{
             aux.setName(objeto.name);
             this.barriles.add(aux);
         });
-        
+
+
+
+
+        //Pared que que permite bajar, no subir
+        this.paredBajada = this.physics.add.staticGroup();
+        this.objetoBajada = map.getObjectLayer('ParedBajada'); 
+        this.crearZoneGameObject(this.paredBajada, this.objetoBajada);
+
+        //colisones paredes y pared de bajada
+        paredes.setCollisionByExclusion([-1], true);
+        this.colisionParedes = this.physics.add.collider(this.player, paredes);
+        this.physics.add.overlap(this.player, this.paredBajada, () => {
+            // Si el jugador presiona ABAJO mientras está sobre el objeto 'paredBajada'
+            if (this.player.cursors.down.isDown) {
+                this.atravesarPlataforma = true;
+            }
+        }, null, this);
 
 
         //COLISION CON COFRES
         this.physics.add.collider(this.player, this.cofre);
 
-        //COLISIONES
         detalles.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, detalles);
-        paredes.setCollisionByExclusion([-1], true);
-        this.physics.add.collider(this.player, paredes);
+
+        
         //colisión barriles con paredes. Al chocar con la pared, el bounce(1) hará que cambie de dirección solo
         this.physics.add.collider(this.barriles, paredes);
                 
@@ -208,10 +225,18 @@ export default class Cueva extends GameScene{
 
 
    update() {
-    if (this.lightCircle) {
-        this.lightCircle.x = this.player.x;
-        this.lightCircle.y = this.player.y;
+        if (this.lightCircle) {
+            this.lightCircle.x = this.player.x;
+            this.lightCircle.y = this.player.y;
         }
+
+        if(this.atravesarPlataforma)
+            this.colisionParedes.active = false;       
+        else 
+            this.colisionParedes.active = true;
+
+        this.atravesarPlataforma = false; //reseteo para el próximo
     }
 
+        
 }
