@@ -46,20 +46,22 @@ Parámetros:
 - Velocidad horizontal: Velocidad (m/s) a la que se mueve el personaje.
 ### 3.2 Movimiento vertical
 El jugador se encarga de mover al personaje. Lilith se mueve a una velocidad constante de arriba a abajo y viceversa. En el caso en el que llegue al límite de la pantalla tanto por arriba como por abajo, se choca y deja de avanzar en esa dirección.
+### 3.2 Movimiento diagonal
+El jugador se encarga de mover al personaje. Lilith se mueve a una velocidad constante en diagonal. En el caso en el que llegue al límite de la pantalla por cualquier lado se choca y deja de avanzar en esa dirección.
 ### 3.3 Recolectar objetos
-Lilith puede recoger los objetos, ya sea de los cofres o de aquellos que se encuentre por el camino simplemente pasando por encima de ellos.
+Lilith puede recoger los objetos, ya sea de los cofres (pulsando la tecla E) o de aquellos que se encuentre por el camino (pasando por encima de ellos).
 ### 3.4 Atacar / Usar hechizos
 Para atacar a los enemigos o usar los hechizos de los que disponga se usará el botón izquierdo del ratón. Para apuntar hacia dónde lanzar el hechizo se usará el botón derecho del ratón.
 ### 3.5 Interactuar con NPCs
 Lilith podrá hablar con los personajes que se encuentre por el camino acercándose a ellos. Aparecerá un diálogo que el jugador podrá ir siguiendo y enterarse de la historia.
 ### 3.6 Empujar cosas
-Para empujar los objetos que haya bastará con ponerse en el lado opuesto del objeto hacia el que se quiera mover y desplazarse con los controles del movimiento vertical/horizontal. Si el objeto cae en una esquina se reseteará la posición del objeto a la posición original.
+Para empujar los objetos que haya, por ejemplo las cajas de la mazmorra, bastará con ponerse en el lado opuesto del objeto hacia el que se quiera mover y desplazarse con los controles del movimiento vertical/horizontal. Se podrá utilizar tambien la tecla E para "arrastrar" el objeto.
 
 <br>
 
 ## 4. Sistemas
 ### 4.1. Sistema de vida
-El jugador tiene 3 corazones al iniciar el juego, a medida que avanza en la aventura puede encontrarse objetos que, al agrupar 2 de estos, aumente los corazones totales del jugador en uno. Se perderá un cuarto, mitad o corazón entero cada vez que se reciba un ataque dependiendo del enemigo, si se pierde todos los corazones en una mazmorra se reiniciará el juego desde fuera de ésta o en la zona más cercana si mueres en un camino.
+El jugador tiene 3 corazones al iniciar el juego, a medida que avanza en la aventura puede encontrarse objetos que aumente los corazones totales del jugador en uno. Se perderá un cuarto, mitad o corazón entero cada vez que se reciba un ataque dependiendo del enemigo, si se pierde todos los corazones se reiniciará el juego.
 ### 4.2. Sistema de estadísticas
 El jugador tendrá una serie de estadísticas que puede aumentar o disminuir dependiendo de los objetos que lleve equipados y de los hechizos que use.
 
@@ -68,15 +70,22 @@ El jugador tendrá una serie de estadísticas que puede aumentar o disminuir dep
 ## 5. Interfaz
 ### 5.1 Controles
 - WASD Para movimiento multidireccional (en ejes cartesianos)
+- E para interaccionar con objetos
 - Mantener click derecho del ratón -> Apuntar
-- Click izquierdo del ratón -> lanzar hechizos
+- Click izquierdo del ratón -> Lanzar hechizos
 - Tabulador para abrir el menú de hechizos
 
 
 ### 5.2 Cámara
 Cámara top-down o cenital centrada en el protagonista.
 ### 5.3 HUD
+El HUD contiene información sobre:
+ - El numero de vidas del jugador
+ - El numero de hechizos que el jugador tiene disponible
+ - Botón para cambiar a pantalla completa
+
 ### 5.4 Menús
+El juego solo tiene un menú principal con la opción de iniciar el juego
 
 <br>
 
@@ -86,11 +95,27 @@ Cámara top-down o cenital centrada en el protagonista.
 Lilith es la protagonista del juego y es la representación del jugador dentro del juego. Su comportamiento se describe en la sección de mecánicas. Las dimensiones de Lilith son de 17x26
 #### 6.1.2 Enemigos
 Dentro del juego hay varios tipos de enemigos que pueden matar al jugador.
+##### 6.1.2.1 Oruga
+Es el primer enemigo que encuentra el jugador. No se mueve pero si el jugador la toca, le quita un cuarto de vida. Estas orugas tienen 5 vidas y, cada vez que el jugador las ataca pierden 1 vida. El jugador podrá encontrarlas en varias zonas del juego.
+##### 6.1.2.2 Rata
+Es el segundo enemigo que aparece. Cuando el jugador entra en su campo de visión, empieza a perseguirle y, si le ataca, el jugador pierde un cuarto de vida. Las ratas tienen 5 vidas y, cada vez que el jugador las ataca pierden 1 vida. El jugador las podrá encontrar en varias zonas del juego.
+##### 6.1.2.3 Jabalí
+Es el boss final de la mazmorra. Se mueve aleatoriamente y, cuando ataca al jugador, este pierde 1 vida. Tiene un punto débil en la cabeza al que habrá que apuntar para poder hacerle daño. Este enemigo tiene x vidas y, cada vez que el jugador le da en el punto débil, pierde x.
+Cuando muere, aparece un cofre que contiene el hechizo de hielo que podrá utilizar en la zona del lago para llegar hasta el cofre de esa zona.
+##### 6.1.2.4 Barril
+Aparece en la cueva que hay en la entrada a la ciudad. Estos barriles se mueven en horizontal o vertical a velocidad constante y rebotando con las paredes. Si el jugador se choca con ellos, perderá tres cuartos de una vida. No podrá eliminarlos y, por tanto deberá tratar de esquivarlos.
+
 ### 6.2 Objetos
+Dentro del juego hay varios objetos con los que el jugador puede interaccionar o usar.
+   - Bayas curativas: son bayas que se guardarán en el inventario y, al usarlas, se recargará la vida del jugador en medio corazón. Si se utiliza con todas las vidas recargadas, no aumenta nada. Para interactuar con ellas basta con pasar por encima.
+   - Cofres: aparecen en varias zonas del juego y tendrán un objeto en su interior. Dependiendo de la zona en la que se encuentre el cofre, el jugador podrá obtener bayas curativas, 1 corazón extra o hechizos nuevos que podrá utilizar. Para interactuar con ellos, el jugador debe situarse delante del cofre y pulsar la tecla E.
+   - Luminarias: aparecen en la cueva y ofrecen luz en la cueva ya que esta estará poco iluminada. Una vez que el jugador pasa por encima de ellas se ilumina la cueva por un tiempo de 10 segundos. Pasado ese tiempo, vuelve a estar oscuro.
+   - Hechizos??
 
-### 6.3 Niveles
-
-
+### 6.3 Zonas
+El jugador recorrerá distintas zonas.
+En las zonas de paso, deberá eliminar enemigos, recojer objetos o simplemente seguir el camino. 
+Las mazmorras deberá resolverlas para poder obtener nuevos hechizos que ayudarán al jugador a conseguir otros objetos.
 <br>
 
 ## 7. Estética y contenido
@@ -98,7 +123,20 @@ Dentro del juego hay varios tipos de enemigos que pueden matar al jugador.
 <br>
 
 ## 8. Experiencia de juego
+Para medir la experiencia del juego se realizó un play-test en el laboratorio con  los compañeros de clase.
+En este play-test el 100% de la gente resolvió la mazmorra.
 
+Cambios realizados:
+- Ampliación de las entradas
+- Simplificación de la mazmorra inicial. Ahora solo aparece la caja y la bandera que el jugador debe juntar para que se abra la puerta.
+- Aumento de la dificultad en la mazmorra. Ahora aparecen tambien enemigos (ratas) a los que deberá enfrentarse para que sea más dinámico.
+- Incorporación de una puerta en la habitación del boss de la mazmorra para que el jugador no tenga que volver a recorrer toda la mazmorra para poder salir. Ahora, cuando derrota al boss, se abre la puerta y el jugador puede salir a la zona donde está la entrada principal de la mazmorra.
+- Escena de intro. Ahora la tecla para saltar la introducción es la tecla K en vez de la tecla de espacio.
+- Simplificación de los mapas. Se han eliminado elementos como las setas que distraían al jugador o las flores en algunas zonas que sobrecargaban el mapa.
+- Señalización de los objetos obtenidos en los cofres. Se ha añadido una animación para saber lo que el jugador ha obtenido del cofre.
+- Incorporación del sprite para arrastrar cofres. Ahora el jugador sabe si está agarrando el cofre em la mazmorra.
+- Modificación de la posición de algunos enemigos.
+- Arreglo de los disparos. Ahora no atraviesan las paredes.
 <br>
 
 ## 9. Referencias
