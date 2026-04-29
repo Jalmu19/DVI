@@ -31,6 +31,9 @@ export const ENEMY = {
     RAT: {
         SPEED: 40
     },
+    SLIME: {
+        SPEED: 50
+    },
     BOSS: {
         HEALTH: 25,
         SPEED: 70,
