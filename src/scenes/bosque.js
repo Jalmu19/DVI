@@ -15,7 +15,7 @@ import GameScene from "./game-scene.js";
 import npc1 from '../../assets/sprites/npc-1.png'
 import npc2 from '../../assets/sprites/npc-2.png'
 import npc3 from '../../assets/sprites/npc-3.png'
-import npc4 from '../../assets/sprites/npc-4.png'
+
 
 import { NPCS } from "../constants.js";
 
@@ -36,9 +36,9 @@ export default class Bosque extends GameScene{
         this.load.image('flor', flor);
         this.load.image('hierba', hierba);
         this.load.spritesheet('npc1', npc1, { frameWidth: 32, frameHeight: 32 });
-        this.load.spritesheet('npc2', npc1, { frameWidth: 32, frameHeight: 32 });
-        this.load.spritesheet('npc3', npc1, { frameWidth: 32, frameHeight: 32 });
-        this.load.spritesheet('npc4', npc1, { frameWidth: 32, frameHeight: 32 });
+        this.load.spritesheet('npc2', npc2, { frameWidth: 32, frameHeight: 32 });
+        this.load.spritesheet('npc3', npc3, { frameWidth: 32, frameHeight: 32 });
+        
         this.load.tilemapTiledJSON('zBosque', zonaBosque);
 
     }
@@ -59,16 +59,12 @@ export default class Bosque extends GameScene{
         map.createLayer('Suelo', img2, 0,0);
         this.arboles = map.createLayer('Arboleda', [img3, img4, img7], 0,0);
         var casas = map.createLayer('Casas', [img1,img2, img5, img6], 0,0);
-
-        this.player = new Player(this, this.datos[0],this.datos[1], this.datos[2]);
-
-        var tejado = map.createLayer('Tejados', [img1,img5,img6],0,0);
+        
 
         const configuracionNPCs = [
-            { x: 100, y: 200, texture: 'npc1', frame: NPCS.VIEW.R_SIDE,  data: { nombre: 'NPC1', dialogos: ['hola'] } },
-            { x: 100, y: 150, texture: 'npc2', frame: NPCS.VIEW.FRONT, data: { nombre: 'NPC2', dialogos: ['lol'] } },
-            { x: 50, y: 150, texture: 'npc3', frame: NPCS.VIEW.L_SIDE, data: { nombre: 'NPC3', dialogos: ['xd'] } },
-            { x: 100, y: 50, texture: 'npc4', frame: NPCS.VIEW.R_SIDE, data: { nombre: 'NPC4', dialogos: ['crayola'] } },
+            { x: 60, y: 370, texture: 'npc1', frame: NPCS.VIEW.R_SIDE,  data: { nombre: 'NPC1', dialogos: ['No entiendo por qué a veces dices esas cosas... Ojála me dijeses cosas más románticas.'] } },
+            { x: 290, y: 200, texture: 'npc2', frame: NPCS.VIEW.FRONT, data: { nombre: 'NPC2', dialogos: ['Llevo toda mi vida viviendo en este pueblo. Puede que no tenga mucho pero se respira tranquilidad.'] } },
+            { x: 80, y: 370, texture: 'npc3', frame: NPCS.VIEW.L_SIDE, data: { nombre: 'NPC3', dialogos: ['¿Sabías que para lanzar hechizos tienes que mantener click derecho para apuntar y presionar click izquierdo para disparar?'] } },
         ];
         this.npcs = this.physics.add.group();
         configuracionNPCs.forEach(conf => {
@@ -76,7 +72,7 @@ export default class Bosque extends GameScene{
             npc.nombre = conf.data.nombre;
             npc.dialogos = conf.data.dialogos;
             npc.indiceDialogo = 0;
-
+            npc.setBodySize(20, 20);
             npc.obtenerSiguienteDialogo = function() {
                 const frase = this.dialogos[this.indiceDialogo];
                 this.indiceDialogo = (this.indiceDialogo + 1) % this.dialogos.length;
@@ -85,14 +81,10 @@ export default class Bosque extends GameScene{
 
             npc.setImmovable(true);
         });
-       this.physics.add.collider(this.player, this.npcs);
 
-        this.player.on('Interaccion', () => {
-            const npc = this.buscarNPCCercano(); 
-            if (npc) {
-                this.lanzarDialogo(npc);
-            }
-        });
+        this.player = new Player(this, this.datos[0],this.datos[1], this.datos[2]);
+        var tejado = map.createLayer('Tejados', [img1,img5,img6],0,0);
+       this.physics.add.collider(this.player, this.npcs);
 
         //Crear capa de salidas, pero no configuradas
         this.crearGrafico();
@@ -136,7 +128,7 @@ export default class Bosque extends GameScene{
     }
 
     buscarNPCCercano() {
-        const distanciaMaxima = 60; 
+        const distanciaMaxima = 20; 
         const npc = this.npcs.getChildren().find(n => {
             const d = Phaser.Math.Distance.Between(
                 this.player.x, this.player.y, 
@@ -153,12 +145,10 @@ export default class Bosque extends GameScene{
 
         this.hablando = true;
         this.npcActual = npc;
-        this.player.body.setVelocity(0);
+        this.player.inDialog = true;
         
-        
-
         const frase = npc.obtenerSiguienteDialogo();
-        this.dialogText.setText(npc.nombre, frase);
+        this.dialogText.setText(frase);
 
         this.dialogBox.setVisible(true);
         this.dialogText.setVisible(true);
@@ -183,13 +173,23 @@ export default class Bosque extends GameScene{
         }
         ).setScrollFactor(0).setVisible(false);
 
-        this.input.on('pointerdown', ()=>{
-            if (this.dialogBox.visible) {
-                this.dialogText.setText("");
-                this.next()
+        this.player.on('Interaccion', () => {
+            if (this.hablando && this.npcActual) {
+                const frase = this.npcActual.obtenerSiguienteDialogo();
+
+                if (this.npcActual.indiceDialogo === 0) {
+                    this.cerrarDialogo();
+                } else {
+                    this.dialogText.setText(frase);
+                }
+            } 
+            else {
+                const npc = this.buscarNPCCercano(); 
+                if (npc) {
+                    this.lanzarDialogo(npc);
+                }
             }
-           
-        })
+        });
 
     }
 
@@ -197,7 +197,7 @@ export default class Bosque extends GameScene{
         this.hablando = false;
         this.dialogBox.setVisible(false);
         this.dialogText.setVisible(false);
-        
+        this.player.inDialog = false;
         if (this.npcActual) {
             this.npcActual.indiceDialogo = 0;
             this.npcActual = null;
