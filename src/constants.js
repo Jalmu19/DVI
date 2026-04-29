@@ -64,6 +64,13 @@ export const UI = {
     }
 }
 
+export const NPCS = {
+    VIEW: {
+        FRONT: 0,
+        R_SIDE: 1,
+        L_SIDE: 2
+    }
+}
 export const NUM_ESTRELLAS_LABERINTO = 3;
 export const FRAME_APAGADO = 1361;
 export const FRAME_ENCENDIDO = 1305;
