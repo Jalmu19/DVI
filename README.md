@@ -85,7 +85,10 @@ El HUD contiene información sobre:
  - Botón para cambiar a pantalla completa
 
 ### 5.4 Menús
-El juego solo tiene un menú principal con la opción de iniciar el juego
+El juego tiene dos menús:
+	- Menú principal con la opción de iniciar el juego
+	- Menú de los hechizos para seleccionar el hechizo que quieres usar. Este menu aparece si pulsas el tabulador y, para seleccionar el hechizo simplemente debes posicionar el ratón encima del grimorio a utilizar.
+
 
 <br>
 
@@ -110,7 +113,7 @@ Dentro del juego hay varios objetos con los que el jugador puede interaccionar o
    - Bayas curativas: son bayas que se guardarán en el inventario y, al usarlas, se recargará la vida del jugador en medio corazón. Si se utiliza con todas las vidas recargadas, no aumenta nada. Para interactuar con ellas basta con pasar por encima.
    - Cofres: aparecen en varias zonas del juego y tendrán un objeto en su interior. Dependiendo de la zona en la que se encuentre el cofre, el jugador podrá obtener bayas curativas, 1 corazón extra o hechizos nuevos que podrá utilizar. Para interactuar con ellos, el jugador debe situarse delante del cofre y pulsar la tecla E.
    - Luminarias: aparecen en la cueva y ofrecen luz en la cueva ya que esta estará poco iluminada. Una vez que el jugador pasa por encima de ellas se ilumina la cueva por un tiempo de 10 segundos. Pasado ese tiempo, vuelve a estar oscuro.
-   - Hechizos??
+   - Hechizos: sirven para hacer daño a los enemigos o interactuar con el entorno, como el hechizo del hielo que, además de ralentizar a los enemigos, puede usarse para formar un camino helado sobre el agua.
 
 ### 6.3 Zonas
 El jugador recorrerá distintas zonas.
@@ -118,15 +121,26 @@ En las zonas de paso, deberá eliminar enemigos, recojer objetos o simplemente s
 Las mazmorras deberá resolverlas para poder obtener nuevos hechizos que ayudarán al jugador a conseguir otros objetos.
 <br>
 
-## 7. Estética y contenido
-
+## 7. Estética
+El juego es de estilo pixel-art de 16x16 pixeles. Está ambientado en un mundo fantástico tipo zelda.
 <br>
 
 ## 8. Experiencia de juego
-Para medir la experiencia del juego se realizó un play-test en el laboratorio con  los compañeros de clase.
+Para medir la experiencia del juego se realizó un play-test en el laboratorio con 8 compañeros de clase.
+La versión del juego probada incluyó las siquientes zonas: 
+	1. Pueblo (zona inicial) 
+	2. Bosque donde aparecen las orugas por primera vez.
+	3. Zona de las plataformas con las escaleras.
+	4. Habitación inicial de la mazmorra donde se enseña la dinámica para resolver la mazmorra y abrir las puertas.
+	5. Habitación grande de la mazmorra donde se encuentra a las ratas y debe mover las cajas debajo de las banderas.
+	6. Habitación del cofre en la mazmorra donde consigues un corazón extra.
+	7. Habitación del boss donde se enfrenta al jabalí y aparece un cofre con el hechizo del hielo cuando lo derrota.
+	8. Zona del lago	
+El proceso de prueba consistió en grabar la pantalla usando x y dejar que el jugador empezara a jugar. Hubo ocasiones en las que no sabían como disparar o cómo arrastrar las cajas y tuvimos que decirles los controles.
+	
 En este play-test el 100% de la gente resolvió la mazmorra.
 
-Cambios realizados:
+Cambios realizados a partir de los comentarios realizados por los que jugaron:
 - Ampliación de las entradas
 - Simplificación de la mazmorra inicial. Ahora solo aparece la caja y la bandera que el jugador debe juntar para que se abra la puerta.
 - Aumento de la dificultad en la mazmorra. Ahora aparecen tambien enemigos (ratas) a los que deberá enfrentarse para que sea más dinámico.
@@ -134,7 +148,7 @@ Cambios realizados:
 - Escena de intro. Ahora la tecla para saltar la introducción es la tecla K en vez de la tecla de espacio.
 - Simplificación de los mapas. Se han eliminado elementos como las setas que distraían al jugador o las flores en algunas zonas que sobrecargaban el mapa.
 - Señalización de los objetos obtenidos en los cofres. Se ha añadido una animación para saber lo que el jugador ha obtenido del cofre.
-- Incorporación del sprite para arrastrar cofres. Ahora el jugador sabe si está agarrando el cofre em la mazmorra.
+- Incorporación del sprite para arrastrar cofres. Ahora el jugador sabe si está agarrando el cofre en la mazmorra.
 - Modificación de la posición de algunos enemigos.
 - Arreglo de los disparos. Ahora no atraviesan las paredes.
 <br>
