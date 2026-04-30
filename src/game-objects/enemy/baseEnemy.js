@@ -180,25 +180,29 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
+    chasing(distance = null) {
+        this.isChasing = true;
+        this.rotation = this.scene.physics.moveToObject(this, this.target, this.speed) + this.offset;
+    }
+
+    notChasing() {
+        this.isChasing = false;
+        this.setVelocity(0, 0);
+    }
+
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
         //DAÑO AL JUGADOR
         if (this.scene.physics.overlap(this.scene.player.hurtbox, this))
             this.scene.player.takeDamage(this.dmgGiven, this.x, this.y);
 
-        if(!this.knocked) {
+        if (!this.knocked) {
             if (!this.isRebounding) {
                 if (!this.canBeFreezed || !this.freezed) {
                     this.scene.player.getPlayer(this.target);
                     const distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
-                    if (distance < this.visionRange) {
-                        this.isChasing = true;
-                        this.rotation = this.scene.physics.moveToObject(this, this.target, this.speed) + this.offset;
-                    }
-                    else {
-                        this.isChasing = false;
-                        this.setVelocity(0, 0);
-                    }
+                    if (distance < this.visionRange) this.chasing();
+                    else this.notChasing();
                 }
                 else if (this.canBeFreezed) this.setVelocity(0, 0);
             }
