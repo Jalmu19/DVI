@@ -32,7 +32,11 @@ export const ENEMY = {
         SPEED: 40
     },
     SLIME: {
-        SPEED: 50
+        SPEED: {
+            NORMAL: 50,
+            DASH: 100
+        },
+        DASH_COOLDOWN : 4000
     },
     BOSS: {
         HEALTH: 25,
