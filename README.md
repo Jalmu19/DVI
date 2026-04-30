@@ -34,8 +34,8 @@ El juego termina al llegar a la última zona y vencer en la liga mágica o si se
    1. Ir a ruta siguiente
    2. Llegar a zona
    3. Buscar mazmorra
-      a. Resolver mazmorra
-      b. Conseguir hechizo nuevo
+      <br> a. Resolver mazmorra
+      <br> b. Conseguir hechizo nuevo
 
 <br>
 
@@ -46,14 +46,18 @@ Parámetros:
 - Velocidad horizontal: Velocidad (m/s) a la que se mueve el personaje.
 ### 3.2 Movimiento vertical
 El jugador se encarga de mover al personaje. Lilith se mueve a una velocidad constante de arriba a abajo y viceversa. En el caso en el que llegue al límite de la pantalla tanto por arriba como por abajo, se choca y deja de avanzar en esa dirección.
+Parámetros:
+- Velocidad vertical: Velocidad (m/s) a la que se mueve el personaje.
 ### 3.2 Movimiento diagonal
 El jugador se encarga de mover al personaje. Lilith se mueve a una velocidad constante en diagonal. En el caso en el que llegue al límite de la pantalla por cualquier lado se choca y deja de avanzar en esa dirección.
+Parámetros:
+- Velocidad diagonal: Velocidad (m/s) a la que se mueve el personaje.
 ### 3.3 Recolectar objetos
 Lilith puede recoger los objetos, ya sea de los cofres (pulsando la tecla E) o de aquellos que se encuentre por el camino (pasando por encima de ellos).
 ### 3.4 Atacar / Usar hechizos
 Para atacar a los enemigos o usar los hechizos de los que disponga se usará el botón izquierdo del ratón. Para apuntar hacia dónde lanzar el hechizo se usará el botón derecho del ratón.
 ### 3.5 Interactuar con NPCs
-Lilith podrá hablar con los personajes que se encuentre por el camino acercándose a ellos. Aparecerá un diálogo que el jugador podrá ir siguiendo y enterarse de la historia.
+Lilith podrá hablar con los personajes que se encuentre por el camino acercándose a ellos y pulsando la tecla E. Aparecerá entonces un diálogo que el jugador podrá ir siguiendo y enterarse de la historia.
 ### 3.6 Empujar cosas
 Para empujar los objetos que haya, por ejemplo las cajas de la mazmorra, bastará con ponerse en el lado opuesto del objeto hacia el que se quiera mover y desplazarse con los controles del movimiento vertical/horizontal. Se podrá utilizar tambien la tecla E para "arrastrar" el objeto.
 
