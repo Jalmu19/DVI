@@ -10,7 +10,7 @@ import Chest from "../game-objects/items/chest.js";
  */
 export default class GameScene extends Phaser.Scene {
     dies() {
-        this.sound.stopAll(); //paramos todos los sonidos
+        this.sound.stopAll();
         this.scene.stop('ui');
         this.scene.start('game-over', { stats: this.player.getStats() });
     }

@@ -77,6 +77,11 @@ export default class Zona_bosque extends GameScene {
 
 
     create() {
+        this.registry.set('escenaActual', {
+            scene: 'zonaBosque', 
+            x: 80,               
+            y: 210               
+        });
         this.initSpellEventListener();
         var map = this.make.tilemap({ key: 'zBosque' });
 
