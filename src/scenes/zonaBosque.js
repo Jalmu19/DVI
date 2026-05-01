@@ -171,16 +171,20 @@ export default class Zona_bosque extends GameScene {
         if (!this.registry.get('tutorialHechizo')) {
             this.mostrarTutorialHechizo();
         }
-        this.registry.set('tutorialInventario', false);
+     
         this.events.once('ObjetoRecogido', () => {
         if (!this.registry.get('tutorialInventario')) {
             this.mostrarTutorialInventario();
         }
         });
 
-        this.music = this.sound.add('forestMusic');
-        this.music.play();
-        this.music.setLoop(true);
+        let existeMusica = this.sound.get('forestMusic');
+        if (!existeMusica) {
+            existeMusica = this.sound.add('forestMusic', { loop: true });
+            existeMusica.play();
+        } else if (!existeMusica.isPlaying) {
+            existeMusica.play();
+        }
     }
    
 
@@ -262,6 +266,7 @@ export default class Zona_bosque extends GameScene {
                 x : 37,
                 y : 233,
                 stats : this.player.getStats()})
+            this.sound.stopAll();
         }
         else{
             this.scene.switch('bosque', {
@@ -269,6 +274,7 @@ export default class Zona_bosque extends GameScene {
                 y : 26,
                 stats : this.player.getStats()
             });
+            this.sound.stopAll();
         }
     }
 
@@ -358,7 +364,7 @@ export default class Zona_bosque extends GameScene {
                 alpha: 0,
                 duration: 300,
                 onComplete: () => {
-                    this.registry.set('tutorialHechizo', true);
+                    this.registry.set('tutorialInventario', true);
                     contenedor.destroy();
                     zonaClick.destroy();
                 }
