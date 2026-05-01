@@ -168,6 +168,9 @@ export default class Zona_bosque extends GameScene {
         this.crearGrafico();
         this.numLines = 1;
         
+        if (!this.registry.get('tutorialHechizo')) {
+            this.mostrarTutorialHechizo();
+        }
     }
    
 
@@ -257,6 +260,37 @@ export default class Zona_bosque extends GameScene {
                 stats : this.player.getStats()
             });
         }
+    }
+
+    mostrarTutorialHechizo() {
+        const { width, height } = this.scale;
+        const contenedor = this.add.container(width / 2 + 70, height / 2 + 60).setScrollFactor(0);
+        const fondo = this.add.rectangle(0, 0, 170, 50, 0x000080, 0.8);
+        fondo.setStrokeStyle(2, 0xffffff);
+
+        const mensaje = this.add.text(0, -10, 'Apuntar: click derecho\nDisparar: click izquierdo.', {
+            fontSize: '10px',
+            fill: '#fff',
+        }).setOrigin(0.5);
+
+        const btnCerrar = this.add.text(0, 10, '[ CERRAR ]', {
+            fontSize: '10px',
+            fill: '#000000',
+            backgroundColor: '#fff'
+        })
+        .setOrigin(0.5)
+        .setPadding(5)
+        .setInteractive({ useHandCursor: true });
+
+        btnCerrar.on('pointerdown', () => {
+            this.registry.set('tutorialVisto', true);
+            contenedor.destroy();
+        });
+
+        btnCerrar.on('pointerover', () => btnCerrar.setStyle({ fill: '#f00' }));
+        btnCerrar.on('pointerout', () => btnCerrar.setStyle({ fill: '#ff0' }));
+        contenedor.add([fondo, mensaje, btnCerrar]);        
+        contenedor.setDepth(100);
     }
 
 }
