@@ -51,6 +51,13 @@ import musicaGameOver from '../../assets/sounds/game-over.mp3'
 import musicaGetItem from '../../assets/sounds/item-obtained.mp3'
 import musicaEnemiesPunch from '../../assets/sounds/enemies-punch.mp3'
 import musicInitialTown from '../../assets/sounds/town.mp3'
+
+import healthSound from '../../assets/sounds/health.wav'
+import hitHurtSound from '../../assets/sounds/hitHurt.wav'
+import orugasSound from '../../assets/sounds/orugas.wav'
+import pickupSound from '../../assets/sounds/pickup.wav'
+import shootSound from '../../assets/sounds/shoot.wav'
+
 import inventoryBackground from '../../assets/sprites/inventory.png'
 
 import churchjson from '../../assets/mapas/church.json'
@@ -104,6 +111,13 @@ export default class Boot extends Phaser.Scene {
     this.load.audio('musicaGetItem', musicaGetItem);
     this.load.audio('enemiesPunch', musicaEnemiesPunch);
     this.load.audio('musicInitialTown', musicInitialTown);
+
+    this.load.audio('healthSound', healthSound);
+    this.load.audio('hitHurtSound', hitHurtSound);
+    this.load.audio('orugasSound', orugasSound);
+    this.load.audio('pickupSound', pickupSound);
+    this.load.audio('shootSound', shootSound);
+
     this.load.image('background', background);
 
     this.load.aseprite('player', player, playerjson);

@@ -119,7 +119,6 @@ export default class IntroStoryScene extends Phaser.Scene {
 
         this.skipKey.once('down', () => {
             this.skipIntro();
-            this.music.stop();
         });
 
         this.music = this.sound.add('introMusic');

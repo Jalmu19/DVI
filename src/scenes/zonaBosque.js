@@ -176,7 +176,11 @@ export default class Zona_bosque extends GameScene {
         if (!this.registry.get('tutorialInventario')) {
             this.mostrarTutorialInventario();
         }
-    });
+        });
+
+        this.music = this.sound.add('forestMusic');
+        this.music.play();
+        this.music.setLoop(true);
     }
    
 

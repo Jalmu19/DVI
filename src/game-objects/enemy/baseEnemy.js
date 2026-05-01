@@ -65,6 +65,8 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
             if (this.movEvent) this.movEvent.destroy();
             if (this.weakSpot) this.weakSpot.destroy();
         });
+
+        this.dieSound = 'orugasSound';
     }
 
     movement() {
@@ -97,6 +99,8 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
             console.log("ENEMIGO HERIDO, HP: ", this.health);
 
             if (this.health <= 0) {
+                this.scene.sound.add(this.dieSound).play();
+
                 this.destroy();
             }
             else {
