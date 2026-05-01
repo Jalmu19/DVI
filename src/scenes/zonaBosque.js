@@ -199,17 +199,7 @@ export default class Zona_bosque extends GameScene {
     next(){
  
         if(this.numLines === this.STORY.length){  
-            this.registry.set('dialogLadron', true);
-                this.tweens.add({
-                targets: this.spriteLadron,
-                alpha: 0,
-                duration: 1500,
-                ease: 'Power2',
-                onComplete: () => {
-                    this.limpiarEscena();
-                }
-            });
-            
+            this.limpiarEscena();
             this.cambiarVisibilidad(false)
         }
         else{
@@ -225,9 +215,18 @@ export default class Zona_bosque extends GameScene {
 
     limpiarEscena(){
         this.cambiarVisibilidad(false);
-       
-        if(this.ladron)
-            this.ladron.clear(true , true)
+        this.registry.set('dialogLadron', true);
+            this.tweens.add({
+            targets: this.spriteLadron,
+            alpha: 0,
+            duration: 1500,
+            ease: 'Power2',
+            onComplete: () => {
+                if(this.ladron)
+                this.ladron.clear(true , true)
+            }
+        });
+        
 
         if(this.colision)
             this.colision.destroy()
