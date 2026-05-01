@@ -124,14 +124,17 @@ export default class Zona_bosque extends GameScene {
             this.ladron = this.physics.add.group({immovable: true, allowGravity: false });
             this.capaLadron = map.getObjectLayer('Ladron');
             this.capaLadron.objects.forEach(obj => {
-                var a ;
                 if(obj.name === "Kirbo"){
-                    a = new Ladron(this, obj.x, obj.y);
+                    this.spriteLadron = new Ladron(this, obj.x, obj.y);
+                    this.spriteLadron.setAlpha(0);
+                    this.ladron.add(this.spriteLadron);
                 }               
                 else{
-                    a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
+                    var a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
+                    this.ladron.add(a);
                 }               
-                this.ladron.add(a);
+                
+                
             })
 
             this.colision = this.physics.add.collider(this.player, this.ladron, this.cambiarVisibilidad, null, this);
@@ -192,8 +195,16 @@ export default class Zona_bosque extends GameScene {
  
         if(this.numLines === this.STORY.length){  
             this.registry.set('dialogLadron', true);
+                this.tweens.add({
+                targets: this.spriteLadron,
+                alpha: 0,
+                duration: 1500,
+                ease: 'Power2',
+                onComplete: () => {
+                    this.limpiarEscena();
+                }
+            });
             
-            this.limpiarEscena();
             this.cambiarVisibilidad(false)
         }
         else{
@@ -219,6 +230,16 @@ export default class Zona_bosque extends GameScene {
     }
 
     cambiarVisibilidad(boleano){
+        if(boleano){
+            this.tweens.add({
+                targets: this.spriteLadron,
+                alpha: 1,
+                duration: 1500,
+                ease: 'Power2',
+                onComplete: () => {
+                }
+            });
+        }
        this.dialogBox.setVisible(boleano);
        this.dialogText.setVisible(boleano)
        this.player.inDialog = boleano;
