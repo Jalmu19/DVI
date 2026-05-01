@@ -145,7 +145,7 @@ export default class Entrada_mazmorra extends GameScene{
                 
             });
 
-            this.music.stop();
+            this.music.stopAll();
         }
         else{
             this.scene.start('zonaBosque', {
