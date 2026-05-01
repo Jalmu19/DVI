@@ -171,6 +171,12 @@ export default class Zona_bosque extends GameScene {
         if (!this.registry.get('tutorialHechizo')) {
             this.mostrarTutorialHechizo();
         }
+        this.registry.set('tutorialInventario', false);
+        this.events.once('ObjetoRecogido', () => {
+        if (!this.registry.get('tutorialInventario')) {
+            this.mostrarTutorialInventario();
+        }
+    });
     }
    
 
@@ -265,32 +271,99 @@ export default class Zona_bosque extends GameScene {
     mostrarTutorialHechizo() {
         const { width, height } = this.scale;
         const contenedor = this.add.container(width / 2 + 70, height / 2 + 60).setScrollFactor(0);
-        const fondo = this.add.rectangle(0, 0, 170, 50, 0x000080, 0.8);
+        contenedor.setAlpha(0);
+
+        this.tweens.add({
+            targets: contenedor,
+            alpha: 1,         
+            duration: 500,    
+            ease: 'Power2'  
+        });
+
+        const fondo = this.add.rectangle(0, 0, 170, 30, 0x000080, 0.8);
         fondo.setStrokeStyle(2, 0xffffff);
 
-        const mensaje = this.add.text(0, -10, 'Apuntar: click derecho\nDisparar: click izquierdo.', {
+        const mensaje = this.add.text(0, 1, 'Apuntar: click derecho\nDisparar: click izquierdo.', {
             fontSize: '10px',
             fill: '#fff',
         }).setOrigin(0.5);
 
-        const btnCerrar = this.add.text(0, 10, '[ CERRAR ]', {
+        const btnCerrar = this.add.text(81, -15, 'X', {
             fontSize: '10px',
             fill: '#000000',
-            backgroundColor: '#fff'
+            backgroundColor: '#ff96ea'
         })
         .setOrigin(0.5)
-        .setPadding(5)
-        .setInteractive({ useHandCursor: true });
+        .setPadding(2)
 
-        btnCerrar.on('pointerdown', () => {
-            this.registry.set('tutorialVisto', true);
-            contenedor.destroy();
+       const zonaClick = this.add.zone(311, 135, 10, 10); 
+        zonaClick.setInteractive({ useHandCursor: true });
+        zonaClick.setScrollFactor(0);
+        zonaClick.on('pointerdown', () => {
+            this.tweens.add({
+                targets: contenedor,
+                alpha: 0,
+                duration: 300,
+                onComplete: () => {
+                    this.registry.set('tutorialHechizo', true);
+                    contenedor.destroy();
+                    zonaClick.destroy();
+                }
+            });
         });
 
-        btnCerrar.on('pointerover', () => btnCerrar.setStyle({ fill: '#f00' }));
-        btnCerrar.on('pointerout', () => btnCerrar.setStyle({ fill: '#ff0' }));
-        contenedor.add([fondo, mensaje, btnCerrar]);        
+        contenedor.add([fondo, mensaje, btnCerrar]);
         contenedor.setDepth(100);
+        this.input.enableDebug(zonaClick);
     }
 
+    mostrarTutorialInventario(){
+      const { width, height } = this.scale;
+        const contenedor = this.add.container(width / 2 + 70, height / 2 + 60).setScrollFactor(0);
+        contenedor.setAlpha(0);
+
+        this.tweens.add({
+            targets: contenedor,
+            alpha: 1,         
+            duration: 500,    
+            ease: 'Power2'  
+        });
+
+        const fondo = this.add.rectangle(0, 0, 170, 30, 0x000080, 0.8);
+        fondo.setStrokeStyle(2, 0xffffff);
+
+        const mensaje = this.add.text(0, 1, 'Abrir inventario : F.', {
+            fontSize: '12px',
+            fill: '#fff',
+        }).setOrigin(0.5);
+
+        const btnCerrar = this.add.text(81, -15, 'X', {
+            fontSize: '10px',
+            fill: '#000000',
+            backgroundColor: '#ff96ea'
+        })
+        .setOrigin(0.5)
+        .setPadding(2)
+
+       const zonaClick = this.add.zone(311, 135, 10, 10); 
+        zonaClick.setInteractive({ useHandCursor: true });
+        zonaClick.setScrollFactor(0);
+        zonaClick.on('pointerdown', () => {
+            this.tweens.add({
+                targets: contenedor,
+                alpha: 0,
+                duration: 300,
+                onComplete: () => {
+                    this.registry.set('tutorialHechizo', true);
+                    contenedor.destroy();
+                    zonaClick.destroy();
+                }
+            });
+        });
+
+        contenedor.add([fondo, mensaje, btnCerrar]);
+        contenedor.setDepth(100);
+        this.input.enableDebug(zonaClick);
+    }
+    
 }

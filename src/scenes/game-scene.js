@@ -200,9 +200,9 @@ export default class GameScene extends Phaser.Scene {
             );
 
             if (added) item.destroy()
+            this.events.emit('ObjetoRecogido');
         });
     }
-
 
     dialogo(dialog_text) {
 
