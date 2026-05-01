@@ -119,6 +119,11 @@ export default class Zona_Lago extends GameScene {
             this.enemigos.add(a);
 
         })
+
+        //Colisiones de enemigos
+        this.physics.add.collider(this.enemigos, this.lago);
+        this.physics.add.collider(this.enemigos, this.arboles);
+        this.physics.add.collider(this.enemigos, this.enemigos);
         
         Object.values(this.player.mapOfSpells).forEach(group => {
             if (group instanceof Phaser.Physics.Arcade.Group) {
