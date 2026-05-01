@@ -30,6 +30,8 @@ import grimorioShield from '../../assets/sprites/grimorio-shield.png'
 import spike from '../../assets/sprites/spikes-placeholder.png'
 import oruga from '../../assets/sprites/oruga.png'
 import orugajson from '../../assets/sprites/oruga.json'
+import slime from '../../assets/sprites/slime.png'
+import slimejson from '../../assets/sprites/slime.json'
 import rata from '../../assets/sprites/rata.png'
 import boss from '../../assets/sprites/dungeon1-boss.png'
 import bossjson from '../../assets/sprites/dungeon1-boss.json'
@@ -118,6 +120,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('spike',spike);
     this.load.aseprite('oruga', oruga, orugajson);
     this.load.image('rata', rata);
+    this.load.aseprite('slime', slime,slimejson);
     this.load.aseprite('boss1', boss, bossjson);
     this.load.image('shield', shield);
     this.load.image('plantilla', villa);
@@ -168,6 +171,7 @@ export default class Boot extends Phaser.Scene {
     this.anims.createFromAseprite('freezing_shoot');
     this.anims.createFromAseprite('chest');
     this.anims.createFromAseprite('oruga');
+    this.anims.createFromAseprite('slime');
     this.anims.createFromAseprite('boss1');
     
     

@@ -180,7 +180,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
-    chasing(distance = null) {
+    chasing(distance) {
         this.isChasing = true;
         this.rotation = this.scene.physics.moveToObject(this, this.target, this.speed) + this.offset;
     }
@@ -189,6 +189,8 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
         this.isChasing = false;
         this.setVelocity(0, 0);
     }
+
+    updateAnimation() { }
 
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
@@ -201,13 +203,13 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
                 if (!this.canBeFreezed || !this.freezed) {
                     this.scene.player.getPlayer(this.target);
                     const distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
-                    if (distance < this.visionRange) this.chasing();
+                    if (distance < this.visionRange) this.chasing(distance);
                     else this.notChasing();
                 }
                 else if (this.canBeFreezed) this.setVelocity(0, 0);
             }
         }
-
+        this.updateAnimation();
     }
 
 
