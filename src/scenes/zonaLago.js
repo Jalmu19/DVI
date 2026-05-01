@@ -16,6 +16,7 @@ import {SPELLS } from '../constants';
 import entrada_ciudad from '../../assets/mapas/entrada_ciudad.json'
 import muralla from '../../assets/sprites/muralla.png'
 import puerta from '../../assets/sprites/puerta_muralla.png'
+import Slime from "../game-objects/enemy/slime.js";
 
 
 
@@ -112,7 +113,7 @@ export default class Zona_Lago extends GameScene {
                 a = new Oruga(this, obj.x, obj.y,'oruga');
             }
             else{
-                a = new Rata(this, obj.x, obj.y,'rata');
+                a = new Slime(this, obj.x, obj.y,'slime');
             }
             
             this.enemigos.add(a);
