@@ -34,7 +34,7 @@ export const ENEMY = {
     SLIME: {
         SPEED: {
             NORMAL: 50,
-            DASH: 100
+            DASH: 200
         },
         DASH_COOLDOWN : 4000
     },
