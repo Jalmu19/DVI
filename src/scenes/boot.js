@@ -108,6 +108,8 @@ export default class Boot extends Phaser.Scene {
     /*this.load.image('platform', platform);
     this.load.image('base', base);
     this.load.image('star', star);*/
+    this.crearPantallaCarga();
+
     this.load.audio('playSound', playSound);
     this.load.audio('menuSound', menuSound);
     this.load.audio('introMusic', introMusic);
@@ -198,9 +200,36 @@ export default class Boot extends Phaser.Scene {
     this.anims.createFromAseprite('chest');
     this.anims.createFromAseprite('oruga');
     this.anims.createFromAseprite('slime');
-    this.anims.createFromAseprite('boss1');
-    
-    
-    this.scene.start('mainmenu');
+    this.anims.createFromAseprite('boss1');    
+  }
+
+  crearPantallaCarga(){
+    let progressBar = this.add.graphics();
+    let progressBox = this.add.graphics();
+    progressBox.fillStyle(0x87CEEB, 0.8);
+    progressBox.fillRect(30, 90, 250, 50);
+
+    let width = this.cameras.main.width;
+    let height = this.cameras.main.height;
+    let loadingText = this.make.text({
+        x: width / 2,
+        y: height / 2 - 30,
+        text: 'Cargando...',
+        style: { font: '20px monospace', fill: '#ffffff' }
+    });
+    loadingText.setOrigin(0.5, 0.5);
+
+    this.load.on('progress', (value) => {
+        progressBar.clear();
+        progressBar.fillStyle(0xFFFF00, 1);
+        progressBar.fillRect(30, 90, 250 * value, 50);
+    });
+
+    this.load.on('complete', () => {
+        progressBar.destroy();
+        progressBox.destroy();
+        loadingText.destroy();
+        this.scene.start('mainmenu');
+    });
   }
 }
