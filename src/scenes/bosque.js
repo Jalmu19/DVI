@@ -15,6 +15,15 @@ import GameScene from "./game-scene.js";
 import npc1 from '../../assets/sprites/npc-1.png'
 import npc2 from '../../assets/sprites/npc-2.png'
 import npc3 from '../../assets/sprites/npc-3.png'
+import churchjson from '../../assets/mapas/church.json'
+import roomjson from '../../assets/mapas/room.json'
+import homejson from '../../assets/mapas/home.json'
+import demo_church from '../../assets/sprites/demo church.png'
+import doorsWindows from '../../assets/sprites/TopDownHouse_DoorsAndWindows.png'
+import floorsWalls from '../../assets/sprites/TopDownHouse_FloorsAndWalls.png'
+import greenFurniture from '../../assets/sprites/TopDownHouse_FurnitureState1.png'
+import brownFurniture from '../../assets/sprites/TopDownHouse_FurnitureState2.png'
+import smallItems from '../../assets/sprites/TopDownHouse_SmallItems.png'
 
 
 import { NPCS } from "../constants.js";
@@ -40,6 +49,9 @@ export default class Bosque extends GameScene{
         this.load.spritesheet('npc3', npc3, { frameWidth: 32, frameHeight: 32 });
         
         this.load.tilemapTiledJSON('zBosque', zonaBosque);
+        this.load.tilemapTiledJSON('churchjson', churchjson);
+        this.load.tilemapTiledJSON('roomjson', roomjson);
+        this.load.tilemapTiledJSON('homejson', homejson);
 
     }
   
@@ -84,7 +96,7 @@ export default class Bosque extends GameScene{
 
         this.player = new Player(this, this.datos[0],this.datos[1], this.datos[2]);
         var tejado = map.createLayer('Tejados', [img1,img5,img6],0,0);
-       this.physics.add.collider(this.player, this.npcs);
+        this.physics.add.collider(this.player, this.npcs);
 
         //Crear capa de salidas, pero no configuradas
         this.crearGrafico();
@@ -117,12 +129,31 @@ export default class Bosque extends GameScene{
 
     }
 
-    cambiarScene(){
-        this.scene.start('zonaBosque', {
+    cambiarScene(jugador, salidas){
+        if(salidas.tag =="salidaBosque"){
+            this.scene.start('zonaBosque', {
             x : 80,
             y : 210,
             stats : this.player.getStats()
-        });   
+            });   
+        }
+        else if(salidas.tag == "casa"){
+            this.scene.start("InteriorScene", {
+                mapaKey: 'homejson',
+                x : 162,
+                y : 137,
+                stats : this.player.getStats()
+            })
+        }
+        else if(salidas.tag == "iglesia"){
+            this.scene.start("InteriorScene", {
+                mapaKey: 'churchjson',
+                x : 162,
+                y : 456,
+                stats : this.player.getStats()
+            })
+        }
+        
         
         this.music.stop();
     }
