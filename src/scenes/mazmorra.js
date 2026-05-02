@@ -34,6 +34,12 @@ export default class Mazmorra extends GameScene{
 
 
     create(){
+        this.registry.set('escenaActual', {
+            scene: 'mazmorra', 
+            x: 48,               
+            y: 292               
+        });
+
         this.initSpellEventListener();
         var map = this.make.tilemap({key : 'mazmorra'});
         this.sonidoAbrirPuerta = this.sound.add('sonidoPuerta'); 

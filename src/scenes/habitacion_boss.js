@@ -19,6 +19,12 @@ export default class HabitacionBoss extends GameScene{
     }
 
     create(){
+        this.registry.set('escenaActual', {
+            scene: 'habitacion_boss', 
+            x: 350,               
+            y: 112               
+        });
+
         this.initSpellEventListener();
         var map = this.make.tilemap({key : 'habitacion_boss'});
 
