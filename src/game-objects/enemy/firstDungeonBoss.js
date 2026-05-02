@@ -37,6 +37,8 @@ export default class FirstDungeonBoss extends BaseEnemy {
         }
 
         this.play('front-idle');
+        
+        this.dieSound = 'muereBossSound';
     }
 
     getCollisionTarget() {
@@ -79,6 +81,7 @@ export default class FirstDungeonBoss extends BaseEnemy {
                 this.clearTint();
                 this.speed = ENEMY.BOSS.SPEED * 2; // Velocidad de ataque
                 this.scene.physics.moveToObject(this, this.scene.player, this.speed);
+                this.scene.sound.add('embestidaSound').play();
             });
 
             nextDecisionDelay = prepareTime + chargeDuration;

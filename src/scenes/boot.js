@@ -64,6 +64,11 @@ import kirboSound from '../../assets/sounds/kirbo.wav'
 import mazmorraMusic from '../../assets/sounds/mazmorra.wav'
 import ratSound from '../../assets/sounds/rat.wav'
 
+import embestidaSound from '../../assets/sounds/embestida.wav'
+import freezingShootSound from '../../assets/sounds/freezingShoot.wav'
+import muereBossSound from '../../assets/sounds/muereBoss.wav'
+import victoriaSound from '../../assets/sounds/victoria.wav'
+
 import inventoryBackground from '../../assets/sprites/inventory.png'
 
 import churchjson from '../../assets/mapas/church.json'
@@ -131,6 +136,12 @@ export default class Boot extends Phaser.Scene {
     this.load.audio('kirboSound', kirboSound);
     this.load.audio('mazmorraMusic', mazmorraMusic);
     this.load.audio('ratSound', ratSound);
+
+    this.load.audio('embestidaSound', embestidaSound);
+    this.load.audio('freezingShootSound', freezingShootSound);
+    this.load.audio('muereBossSound', muereBossSound);
+    this.load.audio('victoriaSound', victoriaSound);
+
 
     this.load.image('background', background);
 
