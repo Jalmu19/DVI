@@ -351,7 +351,6 @@ export default class Zona_bosque extends GameScene {
 
         contenedor.add([fondo, mensaje, btnCerrar]);
         contenedor.setDepth(100);
-        this.input.enableDebug(zonaClick);
     }
 
     mostrarTutorialInventario(){
@@ -400,7 +399,6 @@ export default class Zona_bosque extends GameScene {
 
         contenedor.add([fondo, mensaje, btnCerrar]);
         contenedor.setDepth(100);
-        this.input.enableDebug(zonaClick);
     }
     
 }
