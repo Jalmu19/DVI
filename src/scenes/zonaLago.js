@@ -34,7 +34,7 @@ export default class Zona_Lago extends GameScene {
 
     preload() {
        this.load.image('castle',muralla);
-       this.load.image('puerta', puerta);
+       this.load.image('puertaMuralla', puerta);
        this.load.tilemapTiledJSON('entrada_ciudad',entrada_ciudad);
 
     }

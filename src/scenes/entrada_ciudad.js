@@ -50,7 +50,7 @@ export default class Entrada_ciudad extends GameScene{
         var img2 =  map.addTilesetImage('Arbol', 'arbol');
         var img3 = map.addTilesetImage('tierra', 'tierra');
         var img4 = map.addTilesetImage('castle','castle');
-        var img5 = map.addTilesetImage('puerta', 'puerta');        
+        var img5 = map.addTilesetImage('puerta', 'puertaMuralla');        
         var img6 = map.addTilesetImage('agua', 'agua');
         var img7 = map.addTilesetImage('Villa1', 'plantilla');
 
