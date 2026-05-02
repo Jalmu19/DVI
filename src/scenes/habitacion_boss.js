@@ -92,6 +92,9 @@ export default class HabitacionBoss extends GameScene{
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player); 
 
+        this.music = this.sound.add('bossMusic');
+        this.music.play();
+        this.music.setLoop(true);
     }
 
     cambiarScene(jugador, salidas){
@@ -109,6 +112,7 @@ export default class HabitacionBoss extends GameScene{
                 stats : this.player.getStats()
             });
         }
+        this.music.stop();
     } 
 
     hacerVisible(grupo, valor){

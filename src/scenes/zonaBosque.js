@@ -243,6 +243,8 @@ export default class Zona_bosque extends GameScene {
                 onComplete: () => {
                 }
             });
+
+            this.sound.add('kirboSound').play();
         }
        this.dialogBox.setVisible(boleano);
        this.dialogText.setVisible(boleano)

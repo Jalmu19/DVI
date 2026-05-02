@@ -58,6 +58,12 @@ import orugasSound from '../../assets/sounds/orugas.wav'
 import pickupSound from '../../assets/sounds/pickup.wav'
 import shootSound from '../../assets/sounds/shoot.wav'
 
+import bossMusic from '../../assets/sounds/boss.wav'
+import chestSound from '../../assets/sounds/chest.wav'
+import kirboSound from '../../assets/sounds/kirbo.wav'
+import mazmorraMusic from '../../assets/sounds/mazmorra.wav'
+import ratSound from '../../assets/sounds/rat.wav'
+
 import inventoryBackground from '../../assets/sprites/inventory.png'
 
 import churchjson from '../../assets/mapas/church.json'
@@ -117,6 +123,12 @@ export default class Boot extends Phaser.Scene {
     this.load.audio('orugasSound', orugasSound);
     this.load.audio('pickupSound', pickupSound);
     this.load.audio('shootSound', shootSound);
+
+    this.load.audio('bossMusic', bossMusic);
+    this.load.audio('chestSound', chestSound);
+    this.load.audio('kirboSound', kirboSound);
+    this.load.audio('mazmorraMusic', mazmorraMusic);
+    this.load.audio('ratSound', ratSound);
 
     this.load.image('background', background);
 

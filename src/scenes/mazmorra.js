@@ -139,6 +139,7 @@ export default class Mazmorra extends GameScene{
                 y : 112,
                 stats : this.player.getStats()
             });  
+            this.sound.stopAll();
         }
         else if(salidas.tag === 'salidaHabAnterior'){
             this.scene.start('mazmorra_inicial', {

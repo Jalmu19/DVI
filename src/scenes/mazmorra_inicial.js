@@ -128,6 +128,14 @@ export default class MazmorraInicial extends GameScene{
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);     
 
+        let existeMusica = this.sound.get('mazmorraMusic');
+        if (!existeMusica) {
+            existeMusica = this.sound.add('mazmorraMusic', { loop: true });
+            existeMusica.play();
+        } else if (!existeMusica.isPlaying) {
+            existeMusica.play();
+        }
+
     }
 
           
@@ -147,6 +155,7 @@ export default class MazmorraInicial extends GameScene{
                 y : 20,
                 stats : this.player.getStats()
             });
+            this.sound.stopAll();
         }
     }
         
