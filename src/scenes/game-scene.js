@@ -189,7 +189,7 @@ export default class GameScene extends Phaser.Scene {
 
     manageItems(player, items) {
 
-        this.physics.add.overlap(player, this.items, (player, item) => {
+        this.physics.add.overlap(player, items, (player, item) => {
             console.log("COGIDO")
             const added = Inventory.addItem(
                 item.itemData.id,

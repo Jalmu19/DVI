@@ -141,9 +141,9 @@ export default class Zona_Lago extends GameScene {
             var a = new Item(this, obj.x, obj.y, 'berry', 0,{ id: 'berry', name: obj.name, quantity: 1})
             this.bayas.add(a)
         })
-         this.manageItems(this.player, this.bayas);
+        
         //Colision baya-player
-        this.physics.add.overlap(this.player, this.bayas);
+        this.manageItems(this.player, this.bayas);
 
 
         //Colisiones de enemigos
