@@ -71,6 +71,9 @@ export default class InventoryScene extends Phaser.Scene {
             this.game.events.emit('healPlayer', 1); 
             console.log("CURA");
         }
+        else if(itemData.id.includes('staff')) {
+            this.game.events.emit('change-staff', itemData);
+        }
         
         Inventory.eliminateItem(itemData.id);
 

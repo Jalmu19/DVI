@@ -72,6 +72,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.onSpellChange = (data) => { this.changeSpell(data) };
         this.scene.game.events.on('spell-changed', this.onSpellChange);
 
+        this.onStaffChange = (data) => { this.changeStaff(data) };
+        this.scene.game.events.on('change-staff', this.onStaffChange);
+
         this.cursors = this.scene.input.keyboard.addKeys({
             up: Phaser.Input.Keyboard.KeyCodes.W,
             down: Phaser.Input.Keyboard.KeyCodes.S,
@@ -84,6 +87,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         this.on('destroy', () => {
             this.scene.game.events.off('spell-changed', this.onSpellChange);
+            this.scene.game.events.off('change-staff', this.onStaffChange);
         });
 
         scene.game.events.on('healPlayer', (puntos) => {        //Evento para recuperar vida si toma item curativo
@@ -146,6 +150,22 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.play('chest-find');
         this.displayedItem = this.scene.add.image(this.x, this.y - 20, item.texture, item.frame);
         this.openingChest = true;
+    }
+
+    changeStaff(staffstats) {
+        if(this.weapon){
+            let bs = 0;
+            if(staffstats.id === 'staff-lago') bs = 0.5;
+
+            let stats = {
+                texture: staffstats.texture,
+                bonus : bs
+            }
+
+            Inventory.addItem(this.weapon.id,this.weapon.id, 0, 1, this.weapon.texture);
+
+            this.weapon.setStats(stats);
+        }
     }
 
     /**
