@@ -19,6 +19,7 @@ import playerjson from '../../assets/sprites/player.json'
 import health from '../../assets/sprites/health.png'
 import proyectiles from '../../assets/sprites/proyectiles.png'
 import palo from '../../assets/sprites/palo.png'
+import paloLago from '../../assets/sprites/paloLago.png'
 import shoot from '../../assets/sprites/basic-spell.png'
 import shootjson from '../../assets/sprites/basic-spell.json'
 import freezing_shoot from '../../assets/sprites/freeze-spell.png'
@@ -157,6 +158,7 @@ export default class Boot extends Phaser.Scene {
     this.load.spritesheet('proyectiles', proyectiles, { frameWidth: 32, frameHeight: 32 });
     this.load.aseprite('chest', chest, chestjson);
     this.load.image('palo', palo);
+    this.load.image('paloLago', paloLago);
     this.load.aseprite('shoot', shoot, shootjson);
     this.load.aseprite('freezing_shoot', freezing_shoot, freezing_shootjson);
     this.load.image('grimorio-basico', grimorioBasico);
