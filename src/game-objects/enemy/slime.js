@@ -8,6 +8,7 @@ export default class Slime extends BaseEnemy {
         this.speed = ENEMY.SLIME.SPEED.NORMAL;
         this.dashRange = 60;
         this.isDashing = false;
+        this.preparingDash = false;
         this.canDash = true;
         this.visionRange = 150;
     }
@@ -32,8 +33,10 @@ export default class Slime extends BaseEnemy {
         this.setVelocity(0, 0);
 
         const prepareTime = 200;
+        this.preparingDash = true;
 
         this.scene.time.delayedCall(prepareTime, () => {
+            this.preparingDash = false;
             this.speed = ENEMY.SLIME.SPEED.DASH;
             const angle = Phaser.Math.Angle.Between(this.x, this.y, this.scene.player.x, this.scene.player.y);
             this.scene.physics.velocityFromRotation(angle, ENEMY.SLIME.SPEED.DASH, this.body.velocity);
@@ -63,8 +66,7 @@ export default class Slime extends BaseEnemy {
             else if(vY < 0) this.lastDir = 'back';
         }
 
-        // De momento el kockde tiene idle pero tendra otra expresion
-        let anim = this.knocked ? 'slime-idle-' + this.lastDir : 'slime-walk-' + this.lastDir;
+        let anim = this.preparingDash ? 'slime-prdash-' + this.lastDir : 'slime-walk-' + this.lastDir;
 
         this.play(anim,true);
     }
