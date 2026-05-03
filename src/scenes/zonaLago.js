@@ -42,6 +42,12 @@ export default class Zona_Lago extends GameScene {
 
 
     create() {
+        this.registry.set('escenaActual', {
+            scene: 'zonaLago', 
+            x: 37,               
+            y: 233               
+        });
+
         this.initSpellEventListener();
         var map = this.make.tilemap({ key: 'zonaLago' });
         console.log(map.tilesets.map(t => t.name));

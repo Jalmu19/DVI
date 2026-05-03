@@ -13,6 +13,7 @@ export default class Slime extends BaseEnemy {
         this.visionRange = 150;
         this.canBeFreezed = true;
         this.dieSound = 'slimeSound';
+        this.ralentiza = true;
     }
 
     chasing(distance) {

@@ -313,4 +313,18 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     setProtection() { this.protected = true; }
     removeProtection() { this.protected = false; }
     isProtected() { return this.protected; }
+
+    ralentiza(){
+        if (this.speed == PLAYER.SPEED) { 
+            this.speed -= 60;
+            this.setTint(0x82ccdd);
+        }
+
+    this.scene.time.delayedCall(2000, () => {
+        if (this.active) {
+            this.speed = PLAYER.SPEED;
+            this.clearTint();
+        }
+    });
+    }
 }

@@ -19,6 +19,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
         this.knockVel = 100;
         this.lastDir = 'front'; // En base enemy de momento no se usa
         this.isBoss = false;
+        this.ralentiza = false;
 
         this.offset = 1.5707963267948966;
         this.freezed = false;
@@ -199,9 +200,12 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
         //DAÑO AL JUGADOR
-        if (this.scene.physics.overlap(this.scene.player.hurtbox, this))
+        if (this.scene.physics.overlap(this.scene.player.hurtbox, this)){
             this.scene.player.takeDamage(this.dmgGiven, this.x, this.y);
-
+            if(this.ralentiza){
+                this.scene.player.ralentiza();
+            }
+        }
         if (!this.knocked) {
             if (!this.isRebounding) {
                 if (!this.canBeFreezed || !this.freezed) {
