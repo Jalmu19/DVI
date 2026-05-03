@@ -59,7 +59,12 @@ export default class Zona_Lago extends GameScene {
         map.createLayer('hielo', img7, 0,0);
         this.lago = map.createLayer('Agua',[img4, img1] ,0,0)
         map.createLayer('DetallesAgua', img5, 0, 0)
-        map.createLayer('islotes', [img1,img6], 0,0);
+        this.islotes = map.createLayer('islotes', [img1,img6], 0,0);
+        this.islotes.forEachTile(tileIslote => {
+            if (tileIslote.index !== -1) {
+                this.lago.removeTileAt(tileIslote.x, tileIslote.y);
+            }
+        });
         map.createLayer('Camino',img1, 0 ,0)
         
         
@@ -153,10 +158,25 @@ export default class Zona_Lago extends GameScene {
     freezeWater(shoot, tile) {
         if (shoot.spellKey === SPELLS.FREEZE_SHOOT.KEY && tile.properties.esAgua) {
             console.log("congelado");
+            const map = this.lago.tilemap;
             const tilesetHielo = this.lago.layer.tilemapLayer.tilemap.getTileset('hielo');
             const idHielo = tilesetHielo.firstgid;
-
+            
             this.lago.putTileAt(idHielo, tile.x, tile.y);
+
+            const radio = 1; 
+
+            for (let x = -radio; x <= radio; x++) {
+                for (let y = -radio; y <= radio; y++) {
+                    const targetTile = map.getTileAt(tile.x + x, tile.y + y, true, 'Agua');
+
+                    if (targetTile && targetTile.properties.esAgua && !targetTile.properties.esHielo) {
+                        const newTile = this.lago.putTileAt(idHielo, targetTile.x, targetTile.y);                        
+                        newTile.properties.esAgua = false;                        
+                        this.lago.setCollision(newTile.index, false);
+                    }
+                }
+            }
 
             shoot.setActive(false);
             shoot.setVisible(false);
