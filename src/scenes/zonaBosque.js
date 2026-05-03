@@ -77,6 +77,11 @@ export default class Zona_bosque extends GameScene {
 
 
     create() {
+        this.registry.set('escenaActual', {
+            scene: 'zonaBosque', 
+            x: 80,               
+            y: 210               
+        });
         this.initSpellEventListener();
         var map = this.make.tilemap({ key: 'zBosque' });
 
@@ -124,14 +129,17 @@ export default class Zona_bosque extends GameScene {
             this.ladron = this.physics.add.group({immovable: true, allowGravity: false });
             this.capaLadron = map.getObjectLayer('Ladron');
             this.capaLadron.objects.forEach(obj => {
-                var a ;
                 if(obj.name === "Kirbo"){
-                    a = new Ladron(this, obj.x, obj.y);
+                    this.spriteLadron = new Ladron(this, obj.x, obj.y);
+                    this.spriteLadron.setAlpha(0);
+                    this.ladron.add(this.spriteLadron);
                 }               
                 else{
-                    a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
+                    var a = new Salidas(this, obj.x, obj.y, obj.width, obj.height, obj.name);
+                    this.ladron.add(a);
                 }               
-                this.ladron.add(a);
+                
+                
             })
 
             this.colision = this.physics.add.collider(this.player, this.ladron, this.cambiarVisibilidad, null, this);
@@ -168,14 +176,29 @@ export default class Zona_bosque extends GameScene {
         this.crearGrafico();
         this.numLines = 1;
         
+        if (!this.registry.get('tutorialHechizo')) {
+            this.mostrarTutorialHechizo();
+        }
+     
+        this.events.once('ObjetoRecogido', () => {
+        if (!this.registry.get('tutorialInventario')) {
+            this.mostrarTutorialInventario();
+        }
+        });
+
+        let existeMusica = this.sound.get('forestMusic');
+        if (!existeMusica) {
+            existeMusica = this.sound.add('forestMusic', { loop: true });
+            existeMusica.play();
+        } else if (!existeMusica.isPlaying) {
+            existeMusica.play();
+        }
     }
    
 
     next(){
  
         if(this.numLines === this.STORY.length){  
-            this.registry.set('dialogLadron', true);
-            
             this.limpiarEscena();
             this.cambiarVisibilidad(false)
         }
@@ -192,9 +215,18 @@ export default class Zona_bosque extends GameScene {
 
     limpiarEscena(){
         this.cambiarVisibilidad(false);
-       
-        if(this.ladron)
-            this.ladron.clear(true , true)
+        this.registry.set('dialogLadron', true);
+            this.tweens.add({
+            targets: this.spriteLadron,
+            alpha: 0,
+            duration: 1500,
+            ease: 'Power2',
+            onComplete: () => {
+                if(this.ladron)
+                this.ladron.clear(true , true)
+            }
+        });
+        
 
         if(this.colision)
             this.colision.destroy()
@@ -202,6 +234,18 @@ export default class Zona_bosque extends GameScene {
     }
 
     cambiarVisibilidad(boleano){
+        if(boleano){
+            this.tweens.add({
+                targets: this.spriteLadron,
+                alpha: 1,
+                duration: 1500,
+                ease: 'Power2',
+                onComplete: () => {
+                }
+            });
+
+            this.sound.add('kirboSound').play();
+        }
        this.dialogBox.setVisible(boleano);
        this.dialogText.setVisible(boleano)
        this.player.inDialog = boleano;
@@ -249,6 +293,7 @@ export default class Zona_bosque extends GameScene {
                 x : 37,
                 y : 233,
                 stats : this.player.getStats()})
+            this.sound.stopAll();
         }
         else{
             this.scene.switch('bosque', {
@@ -256,7 +301,104 @@ export default class Zona_bosque extends GameScene {
                 y : 26,
                 stats : this.player.getStats()
             });
+            this.sound.stopAll();
         }
     }
 
+    mostrarTutorialHechizo() {
+        const { width, height } = this.scale;
+        const contenedor = this.add.container(width / 2 + 70, height / 2 + 60).setScrollFactor(0);
+        contenedor.setAlpha(0);
+
+        this.tweens.add({
+            targets: contenedor,
+            alpha: 1,         
+            duration: 500,    
+            ease: 'Power2'  
+        });
+
+        const fondo = this.add.rectangle(0, 0, 170, 30, 0x000080, 0.8);
+        fondo.setStrokeStyle(2, 0xffffff);
+
+        const mensaje = this.add.text(0, 1, 'Apuntar: click derecho\nDisparar: click izquierdo.', {
+            fontSize: '10px',
+            fill: '#fff',
+        }).setOrigin(0.5);
+
+        const btnCerrar = this.add.text(81, -15, 'X', {
+            fontSize: '10px',
+            fill: '#000000',
+            backgroundColor: '#ff96ea'
+        })
+        .setOrigin(0.5)
+        .setPadding(2)
+
+       const zonaClick = this.add.zone(311, 135, 10, 10); 
+        zonaClick.setInteractive({ useHandCursor: true });
+        zonaClick.setScrollFactor(0);
+        zonaClick.on('pointerdown', () => {
+            this.tweens.add({
+                targets: contenedor,
+                alpha: 0,
+                duration: 300,
+                onComplete: () => {
+                    this.registry.set('tutorialHechizo', true);
+                    contenedor.destroy();
+                    zonaClick.destroy();
+                }
+            });
+        });
+
+        contenedor.add([fondo, mensaje, btnCerrar]);
+        contenedor.setDepth(100);
+    }
+
+    mostrarTutorialInventario(){
+      const { width, height } = this.scale;
+        const contenedor = this.add.container(width / 2 + 70, height / 2 + 60).setScrollFactor(0);
+        contenedor.setAlpha(0);
+
+        this.tweens.add({
+            targets: contenedor,
+            alpha: 1,         
+            duration: 500,    
+            ease: 'Power2'  
+        });
+
+        const fondo = this.add.rectangle(0, 0, 170, 30, 0x000080, 0.8);
+        fondo.setStrokeStyle(2, 0xffffff);
+
+        const mensaje = this.add.text(0, 1, 'Abrir inventario : F.', {
+            fontSize: '12px',
+            fill: '#fff',
+        }).setOrigin(0.5);
+
+        const btnCerrar = this.add.text(81, -15, 'X', {
+            fontSize: '10px',
+            fill: '#000000',
+            backgroundColor: '#ff96ea'
+        })
+        .setOrigin(0.5)
+        .setPadding(2)
+
+       const zonaClick = this.add.zone(311, 135, 10, 10); 
+        zonaClick.setInteractive({ useHandCursor: true });
+        zonaClick.setScrollFactor(0);
+        zonaClick.on('pointerdown', () => {
+            this.tweens.add({
+                targets: contenedor,
+                alpha: 0,
+                duration: 300,
+                onComplete: () => {
+                    this.registry.set('tutorialInventario', true);
+                    contenedor.destroy();
+                    zonaClick.destroy();
+                }
+            });
+        });
+
+        contenedor.add([fondo, mensaje, btnCerrar]);
+        contenedor.setDepth(100);
+    }
+    
 }

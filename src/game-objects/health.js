@@ -18,12 +18,14 @@ export default class Health {
      * Metodo que se encarga de reducir la vida en dmg-cantidad
      */
     reduceHealth(dmg) {
+        this.scene.sound.add('hitHurtSound').play();
         this.actualHealth - dmg >= 0 ? this.actualHealth -= dmg : this.actualHealth = 0;
         this.scene.game.events.emit('health-changed', { heartNum: this.maxHearts, actualHealth: this.actualHealth });
     }
 
     /** Recupera puntos de vida */
     increaseHealth(points) {
+        this.scene.sound.add('healthSound').play();
         this.actualHealth + points < this.maxHearts*2 ? this.actualHealth += points : this.actualHealth = this.maxHearts*2;
         this.scene.game.events.emit('health-changed', { heartNum: this.maxHearts, actualHealth: this.actualHealth });
     }

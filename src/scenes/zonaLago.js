@@ -7,16 +7,16 @@ import GameScene from "./game-scene.js";
 import villa from '../../assets/sprites/villa1.png'
 import arbol from '../../assets/sprites/arbol.png'
 import flor from '../../assets/sprites/florAmarilla.png'
-
-import star from '../../assets/sprites/star.png'
 import Rata from "../game-objects/enemy/rata.js";
 
 import hielo from '../../assets/sprites/hielo.png'
 import {SPELLS } from '../constants';
 
 
-import mapaCueva from '../../assets/mapas/mapaCueva.json'
-import tileCueva from '../../assets/sprites/cueva.png'
+import entrada_ciudad from '../../assets/mapas/entrada_ciudad.json'
+import muralla from '../../assets/sprites/muralla.png'
+import puerta from '../../assets/sprites/puerta_muralla.png'
+import Slime from "../game-objects/enemy/slime.js";
 
 
 
@@ -33,13 +33,9 @@ export default class Zona_Lago extends GameScene {
     }
 
     preload() {
-       this.load.tilemapTiledJSON('laberinto', laberinto);
-       
-       this.load.spritesheet('star', star, { frameWidth: 32, frameHeight: 32 });
-
-
-        this.load.spritesheet('cueva', tileCueva, {  frameWidth: 16,   frameHeight: 16, margin: 0, spacing: 0 });
-        this.load.tilemapTiledJSON('mapaCueva', mapaCueva);
+       this.load.image('castle',muralla);
+       this.load.image('puertaMuralla', puerta);
+       this.load.tilemapTiledJSON('entrada_ciudad',entrada_ciudad);
 
     }
 
@@ -117,12 +113,17 @@ export default class Zona_Lago extends GameScene {
                 a = new Oruga(this, obj.x, obj.y,'oruga');
             }
             else{
-                a = new Rata(this, obj.x, obj.y,'rata');
+                a = new Slime(this, obj.x, obj.y,'slime');
             }
             
             this.enemigos.add(a);
 
         })
+
+        //Colisiones de enemigos
+        this.physics.add.collider(this.enemigos, this.lago);
+        this.physics.add.collider(this.enemigos, this.arboles);
+        this.physics.add.collider(this.enemigos, this.enemigos);
         
         Object.values(this.player.mapOfSpells).forEach(group => {
             if (group instanceof Phaser.Physics.Arcade.Group) {
@@ -156,21 +157,15 @@ export default class Zona_Lago extends GameScene {
         }
     }
 
-    cambiarScene(jugador, salidas) {
-       /* if(salidas.tag === 'salidaLaberinto' ){
-            this.scene.start('laberinto', {
-                x : 143,
-                y : 30,
+    cambiarScene(jugador, salidas) {       
+       
+       if(salidas.tag === 'salidaCiudad' ){
+            this.scene.start('entrada_ciudad', {
+                x : 63,
+                y : 470,
                 stats : this.player.getStats()
             });
-        }*/
-        if(salidas.tag === 'salidaLaberinto' ){
-            this.scene.start('escenaCueva', {
-                x : 985,
-                y : 928,
-                stats : this.player.getStats()
-            });
-        }
+       }
         else{
             this.scene.switch('zonaBosque', {
                 x : 453,

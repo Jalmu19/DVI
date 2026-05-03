@@ -45,7 +45,13 @@ export default class GameOver extends Phaser.Scene {
     this.input.keyboard.on('keydown', function (_event) { 
       //this.scene.wake('ui');
       this.scene.launch('ui');
-      this.scene.start('bosque', { x: 251, y: 381, stats: null });
+      //this.scene.start('bosque', { x: 251, y: 381, stats: null });
+      const datosEscena = this.registry.get('escenaActual');
+      this.scene.start(datosEscena.scene, {
+        x: datosEscena.x,
+        y: datosEscena.y,
+        stats: null
+      });
     }, this);
   }
 

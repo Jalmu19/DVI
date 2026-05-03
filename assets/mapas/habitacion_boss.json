@@ -1,12 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"json",
-         "target":"habitacion_boss.json"
-        }
-    },
  "height":17,
  "infinite":false,
  "layers":[
@@ -141,7 +133,7 @@
                         {
                          "name":"id",
                          "type":"string",
-                         "value":"freezing_shoot"
+                         "value":"grimorio-freezing_shoot"
                         }, 
                         {
                          "name":"name",
@@ -156,7 +148,7 @@
                         {
                          "name":"texture",
                          "type":"string",
-                         "value":"freezing_shoot"
+                         "value":"grimorio-freezing_shoot"
                         }],
                  "rotation":0,
                  "type":"",

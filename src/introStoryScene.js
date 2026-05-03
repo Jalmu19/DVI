@@ -2,70 +2,70 @@ import Phaser from "phaser";
 
 const STORY = [
     {
-        text: 'Hasta aquí el encuentro de hoy. Podéis marchar.'
+        text: 'Sacerdote: Hasta aquí el encuentro de hoy. Podéis marchar.'
     },
     {
-        text: 'Nos vemos la siguiente semana.'
+        text: 'Sacerdote: Nos vemos la siguiente semana.'
     },
     {
-        text: 'Bien. Volvamos a casa.', delay: 1500
+        text: 'Abuela de Lilith: Bien. Volvamos a casa.', delay: 1500
     },
     {
-        text: '¿Eh? ¿Qué pasa Lilith?', delay: 1000
+        text: 'Abuela de Lilith: ¿Eh? ¿Qué pasa Lilith?', delay: 1000
     },
     {
-        text: '¿Algo que contarnos? Estás muy seria. No te preocupes, tus abuelos te escucharán. Dinos, ¿qué es ese asunto que nos quieres decir?'
+        text: 'Abuela de Lilith: ¿Algo que contarnos? Estás muy seria. No te preocupes, tus abuelos te escucharán. Dinos, ¿qué es ese asunto que nos quieres decir?'
     },
     {
         text: '...'
     },
     {
-        text: '¿QUE QUIERES IRTE A EXPLORAR EL MUNDO?'
+        text: 'Abuela de Lilith: ¿QUE QUIERES IRTE A EXPLORAR EL MUNDO?'
     },
     {
-        text: 'Escúchame bien, ahí fuera hay muchos peligros. Animales, criaturas mágicas... Por no hablar que en la escuela solo aprendísteis lo básico de la magia. '
+        text: 'Abuela de Lilith: Escúchame bien, ahí fuera hay muchos peligros. Animales, criaturas mágicas... Por no hablar que en la escuela solo aprendísteis lo básico de la magia. '
     },
     {
-        text: '¿Cómo vas a sobrevivir ahí afuera? Ni pensarlo jovencita. Es mucho más seguro que te quedes aquí, conmigo y con tu abuelo.'
+        text: 'Abuela de Lilith: ¿Cómo vas a sobrevivir ahí afuera? Ni pensarlo jovencita. Es mucho más seguro que te quedes aquí, conmigo y con tu abuelo.'
     },
     {
-        text: 'Si ganas de explorar tienes, podemos ir contigo a la capital algún día.'
+        text: 'Abuela de Lilith: Si ganas de explorar tienes, podemos ir contigo a la capital algún día.'
     },
     {
-        text: '¡Eh! ¿A dónde vas?', action: 'lilith_goes'
+        text: 'Abuela de Lilith: ¡Eh! ¿A dónde vas?', action: 'lilith_goes'
     },
     {
-        text: 'Esta chica...', delay: 2000
+        text: 'Abuela de Lilith: Esta chica...', delay: 2000
     },
     {
-        text: 'Querida... Quizá deberíamos reconsiderar su petición... Ya es mayor, no podemos estar protegiéndola por siempre.'
+        text: 'Abuelo de Lilith: Querida... Quizá deberíamos reconsiderar su petición... Ya es mayor, no podemos estar protegiéndola por siempre.'
     },
     {
-        text: 'Solo quiero que esté bien. Es lo que sus padres hubieran querido.'
+        text: 'Abuela de Lilith: Solo quiero que esté bien. Es lo que sus padres hubieran querido.'
     },
     {
-        text: '¿Y qué hay de su felicidad?'
+        text: 'Abuelo de Lilith: ¿Y qué hay de su felicidad?'
     },
     {
-        text: 'Yo... Puede que tengas razón.', delay: 1000
+        text: 'Abuela de Lilith: Yo... Puede que tengas razón.', delay: 1000
     },
     {
-        text: '¡Lilith, baja un momento!', action: 'changeRoomScene'
+        text: 'Abuelo de Lilith: ¡Lilith, baja un momento!', action: 'changeRoomScene'
     },
     {
-        text: 'Lo hemos hablado y queríamos decirte que hemos decidido respetar tus deseos. Eres libre de vivir tu propia vida y puedes irte si es lo que quieres.', delay: 1000, action: 'changeHomeScene'
+        text: 'Abuelo de Lilith: Lo hemos hablado y queríamos decirte que hemos decidido respetar tus deseos. Eres libre de vivir tu propia vida y puedes irte si es lo que quieres.', delay: 1000, action: 'changeHomeScene'
     },
     {
-        text: 'Antes de marchar... Tengo algo que darte.'
+        text: 'Abuela de Lilith: Antes de marchar... Tengo algo que darte.'
     },
     {
         text: 'Has recibido: Colgante de metal.'
     },
     {
-        text: 'Era de tu madre, un recuerdo de una de sus muchas aventuras. Quizá de ahí te viene la curiosidad.'
+        text: 'Abuela de Lilith: Era de tu madre, un recuerdo de una de sus muchas aventuras. Quizá de ahí te viene la curiosidad.'
     },
     {
-        text: 'Ten cuidado ahí fuera, tesoro. Y ya sabes aquí siempre tendrás un lugar donde volver.'
+        text: 'Abuela de Lilith: Ten cuidado ahí fuera, tesoro. Y ya sabes aquí siempre tendrás un lugar donde volver.'
     }
 ];
 
@@ -119,7 +119,6 @@ export default class IntroStoryScene extends Phaser.Scene {
 
         this.skipKey.once('down', () => {
             this.skipIntro();
-            this.music.stop();
         });
 
         this.music = this.sound.add('introMusic');

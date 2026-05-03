@@ -22,6 +22,7 @@ import palo from '../../assets/sprites/palo.png'
 import shoot from '../../assets/sprites/basic-spell.png'
 import shootjson from '../../assets/sprites/basic-spell.json'
 import freezing_shoot from '../../assets/sprites/freeze-spell.png'
+import freezing_shootjson from '../../assets/sprites/freeze-spell.json'
 import grimorioBasico from '../../assets/sprites/grimorio-basico.png'
 import grimorioShoot from '../../assets/sprites/grimorio-shoot.png'
 import grimorioFrezShoot from '../../assets/sprites/grimorio-freezing_shoot.png'
@@ -29,6 +30,8 @@ import grimorioShield from '../../assets/sprites/grimorio-shield.png'
 import spike from '../../assets/sprites/spikes-placeholder.png'
 import oruga from '../../assets/sprites/oruga.png'
 import orugajson from '../../assets/sprites/oruga.json'
+import slime from '../../assets/sprites/slime.png'
+import slimejson from '../../assets/sprites/slime.json'
 import rata from '../../assets/sprites/rata.png'
 import boss from '../../assets/sprites/dungeon1-boss.png'
 import bossjson from '../../assets/sprites/dungeon1-boss.json'
@@ -48,6 +51,24 @@ import musicaGameOver from '../../assets/sounds/game-over.mp3'
 import musicaGetItem from '../../assets/sounds/item-obtained.mp3'
 import musicaEnemiesPunch from '../../assets/sounds/enemies-punch.mp3'
 import musicInitialTown from '../../assets/sounds/town.mp3'
+
+import healthSound from '../../assets/sounds/health.wav'
+import hitHurtSound from '../../assets/sounds/hitHurt.wav'
+import orugasSound from '../../assets/sounds/orugas.wav'
+import pickupSound from '../../assets/sounds/pickup.wav'
+import shootSound from '../../assets/sounds/shoot.wav'
+
+import bossMusic from '../../assets/sounds/boss.wav'
+import chestSound from '../../assets/sounds/chest.wav'
+import kirboSound from '../../assets/sounds/kirbo.wav'
+import mazmorraMusic from '../../assets/sounds/mazmorra.wav'
+import ratSound from '../../assets/sounds/rat.wav'
+
+import embestidaSound from '../../assets/sounds/embestida.wav'
+import freezingShootSound from '../../assets/sounds/freezingShoot.wav'
+import muereBossSound from '../../assets/sounds/muereBoss.wav'
+import victoriaSound from '../../assets/sounds/victoria.wav'
+
 import inventoryBackground from '../../assets/sprites/inventory.png'
 
 import churchjson from '../../assets/mapas/church.json'
@@ -92,6 +113,8 @@ export default class Boot extends Phaser.Scene {
     /*this.load.image('platform', platform);
     this.load.image('base', base);
     this.load.image('star', star);*/
+    this.crearPantallaCarga();
+
     this.load.audio('playSound', playSound);
     this.load.audio('menuSound', menuSound);
     this.load.audio('introMusic', introMusic);
@@ -101,6 +124,25 @@ export default class Boot extends Phaser.Scene {
     this.load.audio('musicaGetItem', musicaGetItem);
     this.load.audio('enemiesPunch', musicaEnemiesPunch);
     this.load.audio('musicInitialTown', musicInitialTown);
+
+    this.load.audio('healthSound', healthSound);
+    this.load.audio('hitHurtSound', hitHurtSound);
+    this.load.audio('orugasSound', orugasSound);
+    this.load.audio('pickupSound', pickupSound);
+    this.load.audio('shootSound', shootSound);
+
+    this.load.audio('bossMusic', bossMusic);
+    this.load.audio('chestSound', chestSound);
+    this.load.audio('kirboSound', kirboSound);
+    this.load.audio('mazmorraMusic', mazmorraMusic);
+    this.load.audio('ratSound', ratSound);
+
+    this.load.audio('embestidaSound', embestidaSound);
+    this.load.audio('freezingShootSound', freezingShootSound);
+    this.load.audio('muereBossSound', muereBossSound);
+    this.load.audio('victoriaSound', victoriaSound);
+
+
     this.load.image('background', background);
 
     this.load.aseprite('player', player, playerjson);
@@ -109,7 +151,7 @@ export default class Boot extends Phaser.Scene {
     this.load.aseprite('chest', chest, chestjson);
     this.load.image('palo', palo);
     this.load.aseprite('shoot', shoot, shootjson);
-    this.load.image('freezing_shoot', freezing_shoot);
+    this.load.aseprite('freezing_shoot', freezing_shoot, freezing_shootjson);
     this.load.image('grimorio-basico', grimorioBasico);
     this.load.image('grimorio-shoot', grimorioShoot);
     this.load.image('grimorio-freezing_shoot', grimorioFrezShoot);
@@ -117,6 +159,7 @@ export default class Boot extends Phaser.Scene {
     this.load.image('spike',spike);
     this.load.aseprite('oruga', oruga, orugajson);
     this.load.image('rata', rata);
+    this.load.aseprite('slime', slime,slimejson);
     this.load.aseprite('boss1', boss, bossjson);
     this.load.image('shield', shield);
     this.load.image('plantilla', villa);
@@ -164,11 +207,40 @@ export default class Boot extends Phaser.Scene {
 
     this.anims.createFromAseprite('player');
     this.anims.createFromAseprite('shoot');
+    this.anims.createFromAseprite('freezing_shoot');
     this.anims.createFromAseprite('chest');
     this.anims.createFromAseprite('oruga');
-    this.anims.createFromAseprite('boss1');
-    
-    
-    this.scene.start('mainmenu');
+    this.anims.createFromAseprite('slime');
+    this.anims.createFromAseprite('boss1');    
+  }
+
+  crearPantallaCarga(){
+    let progressBar = this.add.graphics();
+    let progressBox = this.add.graphics();
+    progressBox.fillStyle(0x87CEEB, 0.8);
+    progressBox.fillRect(30, 90, 250, 50);
+
+    let width = this.cameras.main.width;
+    let height = this.cameras.main.height;
+    let loadingText = this.make.text({
+        x: width / 2,
+        y: height / 2 - 30,
+        text: 'Cargando...',
+        style: { font: '20px monospace', fill: '#ffffff' }
+    });
+    loadingText.setOrigin(0.5, 0.5);
+
+    this.load.on('progress', (value) => {
+        progressBar.clear();
+        progressBar.fillStyle(0xFFFF00, 1);
+        progressBar.fillRect(30, 90, 250 * value, 50);
+    });
+
+    this.load.on('complete', () => {
+        progressBar.destroy();
+        progressBox.destroy();
+        loadingText.destroy();
+        this.scene.start('mainmenu');
+    });
   }
 }

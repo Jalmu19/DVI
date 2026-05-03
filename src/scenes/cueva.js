@@ -126,9 +126,9 @@ export default class Cueva extends GameScene{
 
 
     cambiarScene(jugador, salidas){    
-        this.scene.start('zonaLago', {
-            x : 122,
-            y : 138,
+        this.scene.start('entrada_ciudad', {
+            x : 17,
+            y : 48,
             stats : this.player.getStats()
             
         });     

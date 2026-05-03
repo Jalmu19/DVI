@@ -31,6 +31,13 @@ export const ENEMY = {
     RAT: {
         SPEED: 40
     },
+    SLIME: {
+        SPEED: {
+            NORMAL: 50,
+            DASH: 200
+        },
+        DASH_COOLDOWN : 4000
+    },
     BOSS: {
         HEALTH: 25,
         SPEED: 70,
@@ -64,6 +71,13 @@ export const UI = {
     }
 }
 
+export const NPCS = {
+    VIEW: {
+        FRONT: 0,
+        R_SIDE: 1,
+        L_SIDE: 2
+    }
+}
 export const NUM_ESTRELLAS_LABERINTO = 3;
 export const FRAME_APAGADO = 1361;
 export const FRAME_ENCENDIDO = 1305;

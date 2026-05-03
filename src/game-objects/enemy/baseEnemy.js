@@ -65,6 +65,8 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
             if (this.movEvent) this.movEvent.destroy();
             if (this.weakSpot) this.weakSpot.destroy();
         });
+
+        this.dieSound = 'orugasSound';
     }
 
     movement() {
@@ -97,6 +99,8 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
             console.log("ENEMIGO HERIDO, HP: ", this.health);
 
             if (this.health <= 0) {
+                this.scene.sound.add(this.dieSound).play();
+
                 this.destroy();
             }
             else {
@@ -120,7 +124,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
                     this.setTint(0xff0000);
                     this.knockBack(spell.x, spell.y);
                     this.scene.time.addEvent({
-                        delay: 500,
+                        delay: 100,
                         callback: () => {
                             this.invicible = false;
                             this.clearTint();
@@ -180,30 +184,36 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
+    chasing(distance) {
+        this.isChasing = true;
+        this.rotation = this.scene.physics.moveToObject(this, this.target, this.speed) + this.offset;
+    }
+
+    notChasing() {
+        this.isChasing = false;
+        this.setVelocity(0, 0);
+    }
+
+    updateAnimation() { }
+
     preUpdate(t, dt) {
         super.preUpdate(t, dt);
         //DAÑO AL JUGADOR
         if (this.scene.physics.overlap(this.scene.player.hurtbox, this))
             this.scene.player.takeDamage(this.dmgGiven, this.x, this.y);
 
-        if(!this.knocked) {
+        if (!this.knocked) {
             if (!this.isRebounding) {
                 if (!this.canBeFreezed || !this.freezed) {
                     this.scene.player.getPlayer(this.target);
                     const distance = Phaser.Math.Distance.Between(this.x, this.y, this.target.x, this.target.y);
-                    if (distance < this.visionRange) {
-                        this.isChasing = true;
-                        this.rotation = this.scene.physics.moveToObject(this, this.target, this.speed) + this.offset;
-                    }
-                    else {
-                        this.isChasing = false;
-                        this.setVelocity(0, 0);
-                    }
+                    if (distance < this.visionRange) this.chasing(distance);
+                    else this.notChasing();
                 }
                 else if (this.canBeFreezed) this.setVelocity(0, 0);
             }
         }
-
+        this.updateAnimation();
     }
 
 

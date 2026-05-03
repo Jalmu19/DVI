@@ -27,7 +27,7 @@ export default class InteriorScene extends GameScene {
             map.addTilesetImage('demo church', 'demo_church')
         ];
       
-        //this.player = new Player(this, this.spawnX, this.spawnY, /*this.playerStats*/);
+        this.player = new Player(this, this.spawnX, this.spawnY,this.playerStats);
         this.player.setDepth(1);
         
         
@@ -82,8 +82,8 @@ export default class InteriorScene extends GameScene {
     cambiarScene(jugador, salidas){
         if(salidas.tag === 'salida' ){
             this.scene.start('bosque', {
-                x : 250,
-                y : 370,
+                x : 251,
+                y : 381,
                 stats : this.player.getStats()
             })  
         }
@@ -105,8 +105,8 @@ export default class InteriorScene extends GameScene {
         }
         else if(salidas.tag === 'salidaIglesia' ){
             this.scene.start('bosque', {
-                x : 65,
-                y : 200,
+                x : 62,
+                y : 207,
                 stats : this.player.getStats()
             })  
         }

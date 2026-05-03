@@ -181,15 +181,48 @@
                  "width":64,
                  "x":128,
                  "y":0
+                }, 
+                {
+                 "height":16,
+                 "id":17,
+                 "name":"iglesia",
+                 "rotation":0,
+                 "type":"interiorScene",
+                 "visible":true,
+                 "width":32,
+                 "x":48.25,
+                 "y":183
+                }, 
+                {
+                 "height":16,
+                 "id":20,
+                 "name":"casa",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":240,
+                 "y":357
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":10,
+         "name":"Casas",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":10,
- "nextobjectid":13,
+ "nextlayerid":11,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
@@ -206,6 +239,150 @@
          "spacing":0,
          "tilecount":625,
          "tileheight":16,
+         "tiles":[
+                {
+                 "id":1,
+                 "properties":[
+                        {
+                         "name":"esAgua",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":26,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":0,
+                             "id":1,
+                             "name":"",
+                             "polygon":[
+                                    {
+                                     "x":0,
+                                     "y":0
+                                    }, 
+                                    {
+                                     "x":1.17084,
+                                     "y":-0.750539
+                                    }, 
+                                    {
+                                     "x":2.76199,
+                                     "y":-0.900647
+                                    }, 
+                                    {
+                                     "x":5.61404,
+                                     "y":0.990712
+                                    }, 
+                                    {
+                                     "x":8.70626,
+                                     "y":0.180129
+                                    }, 
+                                    {
+                                     "x":10.3274,
+                                     "y":1.83132
+                                    }, 
+                                    {
+                                     "x":13.93,
+                                     "y":2.01145
+                                    }, 
+                                    {
+                                     "x":15.9114,
+                                     "y":-0.810583
+                                    }, 
+                                    {
+                                     "x":-0.0300216,
+                                     "y":-0.870626
+                                    }],
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":0,
+                             "x":0.0600432,
+                             "y":0.900647
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }, 
+                {
+                 "id":375,
+                 "objectgroup":
+                    {
+                     "draworder":"index",
+                     "id":2,
+                     "name":"",
+                     "objects":[
+                            {
+                             "height":0,
+                             "id":1,
+                             "name":"",
+                             "polygon":[
+                                    {
+                                     "x":0,
+                                     "y":0
+                                    }, 
+                                    {
+                                     "x":-0.120086,
+                                     "y":3.81274
+                                    }, 
+                                    {
+                                     "x":0.780561,
+                                     "y":4.32311
+                                    }, 
+                                    {
+                                     "x":-0.930669,
+                                     "y":5.91425
+                                    }, 
+                                    {
+                                     "x":-1.02073,
+                                     "y":9.03649
+                                    }, 
+                                    {
+                                     "x":0.210151,
+                                     "y":9.75701
+                                    }, 
+                                    {
+                                     "x":0,
+                                     "y":13.96
+                                    }, 
+                                    {
+                                     "x":-1.29093,
+                                     "y":13.96
+                                    }, 
+                                    {
+                                     "x":-1.08078,
+                                     "y":15.7613
+                                    }, 
+                                    {
+                                     "x":-8.0758,
+                                     "y":15.8214
+                                    }, 
+                                    {
+                                     "x":-8.01576,
+                                     "y":-0.120086
+                                    }],
+                             "rotation":0,
+                             "type":"",
+                             "visible":true,
+                             "width":0,
+                             "x":8.0758,
+                             "y":0.120086
+                            }],
+                     "opacity":1,
+                     "type":"objectgroup",
+                     "visible":true,
+                     "x":0,
+                     "y":0
+                    }
+                }],
          "tilewidth":16
         }, 
         {

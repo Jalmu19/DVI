@@ -58,11 +58,11 @@ export default class Laberinto extends GameScene{
         //this.physics.add.collider(this.player, this.arboles);
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-        this.scale.resize(map.widthInPixels, map.heightInPixels);
+        //this.scale.resize(map.widthInPixels, map.heightInPixels);
         
         //limites de camara
-        //this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);        
-        //this.cameras.main.startFollow(this.player); 
+        this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);        
+        this.cameras.main.startFollow(this.player); 
 
         //ESTRELLAS
         // Obtenemos la lista del registry

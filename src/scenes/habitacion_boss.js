@@ -19,6 +19,12 @@ export default class HabitacionBoss extends GameScene{
     }
 
     create(){
+        this.registry.set('escenaActual', {
+            scene: 'habitacion_boss', 
+            x: 350,               
+            y: 112               
+        });
+
         this.initSpellEventListener();
         var map = this.make.tilemap({key : 'habitacion_boss'});
 
@@ -56,9 +62,16 @@ export default class HabitacionBoss extends GameScene{
             this.hacerVisible(this.cofre, true);
             this.hacerVisible(this.salidas, true);
             this.hacerVisible(this.puertas, false); //desactivamos la puerta
+            this.sound.add('victoriaSound').play();
+            this.sound.stopByKey('bossMusic');
+            this.music = this.sound.play('mazmorraMusic', { loop: true });
         });
 
         //BOSS
+        if (!this.registry.has('BossDerrotado')) {
+            this.registry.set('BossDerrotado', false);
+        }
+
         if(this.registry.get('passedDungeons') <= 0){ //si es la primera vez
             this.boss = this.physics.add.group();
             this.capaBoss = map.getObjectLayer('Boss');
@@ -71,8 +84,13 @@ export default class HabitacionBoss extends GameScene{
         else if(this.registry.get('passedDungeons') == 1){ //si ya he derrotado al boss
             this.hacerVisible(this.cofre, true);
             this.hacerVisible(this.salidas, true);
-        }
 
+            if(!this.registry.get('BossDerrotado')) {
+                this.registry.set('BossDerrotado', true);
+                this.sound.stopByKey('bossMusic');
+                this.sound.play('mazmorraMusic', { loop: true });
+            }
+        }
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
@@ -92,6 +110,9 @@ export default class HabitacionBoss extends GameScene{
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player); 
 
+        this.music = this.sound.add('bossMusic');
+        this.music.play();
+        this.music.setLoop(true);
     }
 
     cambiarScene(jugador, salidas){
@@ -109,6 +130,7 @@ export default class HabitacionBoss extends GameScene{
                 stats : this.player.getStats()
             });
         }
+        this.music.stop();
     } 
 
     hacerVisible(grupo, valor){

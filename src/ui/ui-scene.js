@@ -25,8 +25,8 @@ export default class UIScene extends Phaser.Scene {
         this.drawProyectiles(10);
         this.game.events.on('ammo-changed', (data) => this.updateProyectiles(data.maxAmmo, data.actualAmmo));
 
-        this.fsButton = this.add.image(SCENE.WIDTH - 20, SCENE.HEIGHT - 20, 'fullscreen');
-        this.fsButton.setInteractive().on('pointerdown', () => {
+        this.fsButton = this.add.image(SCENE.WIDTH - 300, SCENE.HEIGHT - 20, 'fullscreen');
+        this.fsButton.setInteractive({ useHandCursor: true }).on('pointerdown', () => {
             if (this.scale.isFullscreen) this.scale.stopFullscreen();
             else this.scale.startFullscreen();
         });

@@ -9,9 +9,12 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
        
         this.dmg = SPELLS.SHOOT.DMG;
         this.freeze = false;
+        this.s = this.scene.sound.add('shootSound')
     }
 
     fire(x, y, rotation){
+        this.s.play();
+
         const posX = x + Math.cos(rotation);
         const posY = y + Math.sin(rotation);
 
@@ -41,7 +44,8 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
 
     impact() {
         this.setVelocity(0, 0);
-        this.play('impact');
+        let anim =  this.freeze ? 'frimpact' : 'impact';
+        this.play(anim);
         this.body.setEnable(false);       
         this.scene.time.delayedCall(200, () => {
             this.setActive(false)

@@ -128,6 +128,18 @@ export default class MazmorraInicial extends GameScene{
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);     
 
+        let existeMusica = this.sound.get('mazmorraMusic');
+        if (!existeMusica) {
+            existeMusica = this.sound.add('mazmorraMusic', { loop: true });
+            existeMusica.play();
+        } else if (!existeMusica.isPlaying) {
+            existeMusica.play();
+        }
+
+        if (!this.registry.get('tutorialCofres')) {
+            this.mostrarTutorialCofres();
+        }
+
     }
 
           
@@ -147,6 +159,7 @@ export default class MazmorraInicial extends GameScene{
                 y : 20,
                 stats : this.player.getStats()
             });
+            this.sound.stopAll();
         }
     }
         
@@ -176,5 +189,55 @@ export default class MazmorraInicial extends GameScene{
             if (caja.body.touching.none) caja.setVelocity(0); 
         });
     }
+
+    mostrarTutorialCofres() {
+        const { width, height } = this.scale;
+        const contenedor = this.add.container(width / 2 + 70, height / 2 + 60).setScrollFactor(0);
+        contenedor.setAlpha(0);
+
+        this.tweens.add({
+            targets: contenedor,
+            alpha: 1,         
+            duration: 500,    
+            ease: 'Power2'  
+        });
+
+        const fondo = this.add.rectangle(0, 0, 170, 30, 0x000080, 0.8);
+        fondo.setStrokeStyle(2, 0xffffff);
+
+        const mensaje = this.add.text(0, 1, 'Empujar \no arrastrar con E + WASD', {
+            fontSize: '10px',
+            fill: '#fff',
+        }).setOrigin(0.5);
+
+        const btnCerrar = this.add.text(81, -15, 'X', {
+            fontSize: '10px',
+            fill: '#000000',
+            backgroundColor: '#ff96ea'
+        })
+        .setOrigin(0.5)
+        .setPadding(2)
+
+       const zonaClick = this.add.zone(311, 135, 10, 10); 
+        zonaClick.setInteractive({ useHandCursor: true });
+        zonaClick.setScrollFactor(0);
+        zonaClick.on('pointerdown', () => {
+            this.tweens.add({
+                targets: contenedor,
+                alpha: 0,
+                duration: 300,
+                onComplete: () => {
+                    this.registry.set('tutorialCofres', true);
+                    contenedor.destroy();
+                    zonaClick.destroy();
+                }
+            });
+        });
+
+        contenedor.add([fondo, mensaje, btnCerrar]);
+        contenedor.setDepth(100);
+    }
+
+
 
 }
