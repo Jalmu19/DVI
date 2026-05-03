@@ -123,9 +123,13 @@ export default class Bosque extends GameScene{
         this.physics.add.collider(this.player,casas);            
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
-        this.music = this.sound.add('townMusic');
-        this.music.play();
-        this.music.setLoop(true);
+        let existeMusica = this.sound.get('townMusic');
+        if (!existeMusica) {
+            existeMusica = this.sound.add('townMusic', { loop: true });
+            existeMusica.play();
+        } else if (!existeMusica.isPlaying) {
+            existeMusica.play();
+        }
 
     }
 
@@ -136,6 +140,7 @@ export default class Bosque extends GameScene{
             y : 210,
             stats : this.player.getStats()
             });   
+            this.sound.stopAll();
         }
         else if(salidas.tag == "casa"){
             this.scene.start("InteriorScene", {
@@ -153,9 +158,6 @@ export default class Bosque extends GameScene{
                 stats : this.player.getStats()
             })
         }
-        
-        
-        this.music.stop();
     }
 
     buscarNPCCercano() {
