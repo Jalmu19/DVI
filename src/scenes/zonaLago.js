@@ -140,7 +140,14 @@ export default class Zona_Lago extends GameScene {
             }
         });
         
-        
+        let existeMusica = this.sound.get('lakeMusic');
+        if (!existeMusica) {
+            existeMusica = this.sound.add('lakeMusic', { loop: true });
+            existeMusica.play();
+        } else if (!existeMusica.isPlaying) {
+            existeMusica.play();
+        }
+
     }
    
     freezeWater(shoot, tile) {
@@ -172,6 +179,8 @@ export default class Zona_Lago extends GameScene {
                 y : 160,
                 stats : this.player.getStats()
             });
+            this.sound.stopAll();
+
         }
     }
 

@@ -12,6 +12,7 @@ export default class Slime extends BaseEnemy {
         this.canDash = true;
         this.visionRange = 150;
         this.canBeFreezed = true;
+        this.dieSound = 'slimeSound';
     }
 
     chasing(distance) {
@@ -41,6 +42,7 @@ export default class Slime extends BaseEnemy {
             this.speed = ENEMY.SLIME.SPEED.DASH;
             const angle = Phaser.Math.Angle.Between(this.x, this.y, this.scene.player.x, this.scene.player.y);
             this.scene.physics.velocityFromRotation(angle, ENEMY.SLIME.SPEED.DASH, this.body.velocity);
+            this.scene.sound.add('dashSound').play();
 
             const dashDur = 400;
 

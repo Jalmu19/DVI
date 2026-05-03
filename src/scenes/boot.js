@@ -64,6 +64,10 @@ import kirboSound from '../../assets/sounds/kirbo.wav'
 import mazmorraMusic from '../../assets/sounds/mazmorra.wav'
 import ratSound from '../../assets/sounds/rat.wav'
 
+import lakeMusic from '../../assets/sounds/lake.wav'
+import slimeSound from '../../assets/sounds/slime.wav'
+import dashSound from '../../assets/sounds/dash.wav'
+
 import embestidaSound from '../../assets/sounds/embestida.wav'
 import freezingShootSound from '../../assets/sounds/freezingShoot.wav'
 import muereBossSound from '../../assets/sounds/muereBoss.wav'
@@ -142,6 +146,9 @@ export default class Boot extends Phaser.Scene {
     this.load.audio('muereBossSound', muereBossSound);
     this.load.audio('victoriaSound', victoriaSound);
 
+    this.load.audio('lakeMusic', lakeMusic);
+    this.load.audio('slimeSound', slimeSound);
+    this.load.audio('dashSound', dashSound);
 
     this.load.image('background', background);
 
