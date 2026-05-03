@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"entrada_cueva.json"
+        }
+    },
  "height":15,
  "infinite":false,
  "layers":[
@@ -140,43 +148,16 @@
  "tileheight":16,
  "tilesets":[
         {
-         "columns":1,
          "firstgid":1,
-         "image":"..\/sprites\/cesped.png",
-         "imageheight":16,
-         "imagewidth":16,
-         "margin":0,
-         "name":"cesped",
-         "spacing":0,
-         "tilecount":1,
-         "tileheight":16,
-         "tilewidth":16
+         "source":"..\/..\/..\/..\/..\/..\/..\/..\/Downloads\/Tiled\/cesped.tsx"
         }, 
         {
-         "columns":3,
          "firstgid":2,
-         "image":"..\/sprites\/arbol.png",
-         "imageheight":48,
-         "imagewidth":48,
-         "margin":0,
-         "name":"arbol",
-         "spacing":0,
-         "tilecount":9,
-         "tileheight":16,
-         "tilewidth":16
+         "source":"..\/..\/..\/..\/..\/..\/..\/..\/Downloads\/Tiled\/arbol.tsx"
         }, 
         {
-         "columns":28,
          "firstgid":11,
-         "image":"..\/sprites\/cueva.png",
-         "imageheight":880,
-         "imagewidth":448,
-         "margin":0,
-         "name":"cueva",
-         "spacing":0,
-         "tilecount":1540,
-         "tileheight":16,
-         "tilewidth":16
+         "source":"..\/..\/..\/..\/..\/..\/..\/..\/Downloads\/Tiled\/cueva.tsx"
         }],
  "tilewidth":16,
  "type":"map",
