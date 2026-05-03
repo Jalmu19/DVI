@@ -11,6 +11,7 @@ export default class Slime extends BaseEnemy {
         this.preparingDash = false;
         this.canDash = true;
         this.visionRange = 150;
+        this.canBeFreezed = true;
     }
 
     chasing(distance) {
@@ -66,7 +67,10 @@ export default class Slime extends BaseEnemy {
             else if(vY < 0) this.lastDir = 'back';
         }
 
-        let anim = this.preparingDash ? 'slime-prdash-' + this.lastDir : 'slime-walk-' + this.lastDir;
+        let anim;
+        if(this.preparingDash) anim = 'slime-prdash-' + this.lastDir ;
+        else if(this.freezed) anim = 'slime-idle-' + this.lastDir;
+        else anim = 'slime-walk-' + this.lastDir;
 
         this.play(anim,true);
     }
