@@ -12,7 +12,7 @@ export const PLAYER = {
 export const SPELLS = {
     SHOOT: {
         SPEED: 200,
-        DMG: 3,
+        DMG: 1,
         KEY: 'shoot'
     },
     FREEZE_SHOOT: {
