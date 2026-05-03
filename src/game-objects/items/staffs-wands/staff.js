@@ -17,7 +17,7 @@ export default class Staff extends Phaser.GameObjects.Sprite {
             if(pointer.isDown){
                 if(pointer.rightButtonDown()) {
                     this.setActive(true).setVisible(true);
-                    if(pointer.leftButtonDown()) this.player.lanzarHechizo(this.x,this.y, this.rotation - Phaser.Math.DegToRad(45));
+                    if(pointer.leftButtonDown()) this.player.lanzarHechizo(this.x,this.y, this.rotation - Phaser.Math.DegToRad(45), this.bonusDmg);
                 }
             }  
         }
@@ -34,6 +34,15 @@ export default class Staff extends Phaser.GameObjects.Sprite {
             this.scene.input.off('pointerdown', this.onPointerDown);
             this.scene.input.off('pointerup', this.onPointerUp);
         });
+    }
+
+    /**
+     * Actualiza el bonus de daño que tiene esa varita
+     * @param {Number} bonus 
+     */
+    setStats(stats) {
+        this.bonusDmg = stats.bonus;
+        if (stats.texture) this.setTexture(stats.texture);
     }
 
     preUpdate(t,dt) {

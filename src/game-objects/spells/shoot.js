@@ -12,8 +12,10 @@ export default class Shoot extends Phaser.Physics.Arcade.Sprite{
         this.s = this.scene.sound.add('shootSound')
     }
 
-    fire(x, y, rotation){
+    fire(x, y, rotation, bonus){
         this.s.play();
+
+        this.dmg = SPELLS.SHOOT.DMG + bonus;
 
         const posX = x + Math.cos(rotation);
         const posY = y + Math.sin(rotation);

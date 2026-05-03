@@ -18,12 +18,12 @@ export default class Shoots extends Phaser.Physics.Arcade.Group {
         this.createMultiple({ key: this.key, frameQuantity: this.maxAmmo, active: false, visible: false });
     }
 
-    fire(x, y, rotation) {
+    fire(x, y, rotation, bonus) {
         if (!this.isReloading && this.ammo > 0) {
             const shoot = this.getFirstDead(false);
 
             if (shoot) {
-                shoot.fire(x, y, rotation);
+                shoot.fire(x, y, rotation, bonus);
                 this.ammo--;
                 this.emitUi();
 

@@ -131,9 +131,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     /**
      * Método que que dispara siempre y cuando se tenga un hechizo
      */
-    lanzarHechizo(x, y, rotation) {
+    lanzarHechizo(x, y, rotation, bonus) {
         if (this.actualSpell) {
-            this.actualSpell.fire(x, y, rotation);
+            this.actualSpell.fire(x, y, rotation, bonus);
         }
     }
 
