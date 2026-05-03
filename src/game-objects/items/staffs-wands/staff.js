@@ -11,6 +11,7 @@ export default class Staff extends Phaser.GameObjects.Sprite {
         this.setVisible(false);
         this.setOrigin(0.21875,0.75)
         this.player = player;
+        this.id = 'staff-base';
         this.bonusDmg = 0;
         this.scene.input.mouse.disableContextMenu();
         this.onPointerDown = pointer => {
@@ -42,7 +43,16 @@ export default class Staff extends Phaser.GameObjects.Sprite {
      */
     setStats(stats) {
         this.bonusDmg = stats.bonus;
+        this.id = stats.id;
         if (stats.texture) this.setTexture(stats.texture);
+    }
+
+    getStats() {
+        return {
+            staffId : this.id,
+            bonusDmg : this.bonusDmg,
+            texture : this.texture
+        }
     }
 
     preUpdate(t,dt) {
