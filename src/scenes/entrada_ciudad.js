@@ -3,19 +3,11 @@ import Salidas from '../game-objects/enemy/salidas.js'
 import Player from '../game-objects/player/player.js'
 
 import laberinto from '../../assets/mapas/laberinto.json'
-import mapaCueva from '../../assets/mapas/mapaCueva.json'
-import suelo from '../../assets/sprites/dungeon.png'
-import puerta from '../../assets/sprites/puerta.png'
-import puerta_entrada from '../../assets/sprites/dungeon.png'
-import paredes from '../../assets/sprites/dungeon.png'
-import cofre_rojo from '../../assets/sprites/cofre_rojo.png'
-import bandera_roja from '../../assets/sprites/bandera_roja.png'
+import entrada_cueva from '../../assets/mapas/entrada_cueva.json'
 import tileCueva from '../../assets/sprites/cueva.png'
 import GameScene from "./game-scene.js";
 
 import star from '../../assets/sprites/star.png'
-import Rata from "../game-objects/enemy/rata.js";
-
 
 
 
@@ -33,13 +25,12 @@ export default class Entrada_ciudad extends GameScene{
 
     //preload de la escena siguiente    
     preload(){        
-        //Cueva
-        this.load.spritesheet('star', star, { frameWidth: 32, frameHeight: 32 });
-        this.load.spritesheet('cueva', tileCueva, {  frameWidth: 16,   frameHeight: 16, margin: 0, spacing: 0 });
-        this.load.tilemapTiledJSON('mapaCueva', mapaCueva);
-
         //Laberinto
+        this.load.spritesheet('star', star, { frameWidth: 32, frameHeight: 32 });
         this.load.tilemapTiledJSON('laberinto', laberinto);
+
+        this.load.tilemapTiledJSON('entrada_cueva', entrada_cueva);
+        this.load.spritesheet('cueva', tileCueva, {  frameWidth: 16,   frameHeight: 16, margin: 0, spacing: 0 });
     }
 
 
@@ -106,9 +97,9 @@ export default class Entrada_ciudad extends GameScene{
             
         }
         else  if(salidas.tag === 'salidaCueva' ){
-            this.scene.start('escenaCueva', {
-                x : 985,
-                y : 928,
+            this.scene.start('entrada_cueva', {
+                x : 245,
+                y : 210,
                 stats : this.player.getStats()
             });
            
@@ -121,5 +112,4 @@ export default class Entrada_ciudad extends GameScene{
             });
         }
     } 
-
 }

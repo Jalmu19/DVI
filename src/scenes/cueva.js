@@ -126,9 +126,9 @@ export default class Cueva extends GameScene{
 
 
     cambiarScene(jugador, salidas){    
-        this.scene.start('entrada_ciudad', {
-            x : 17,
-            y : 48,
+        this.scene.start('entrada_cueva', {
+            x : 72,
+            y : 83,
             stats : this.player.getStats()
             
         });     
@@ -233,7 +233,8 @@ export default class Cueva extends GameScene{
         else 
             this.colisionParedes.active = true;
 
-        this.atravesarPlataforma = false; //reseteo para el próximo
+        this.atravesarPlataforma = false; //reseteo para el próximo 
+
     }
 
         

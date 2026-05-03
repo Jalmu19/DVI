@@ -10,6 +10,7 @@ import zBosque from './scenes/zonaBosque.js';
 import zonaLago from './scenes/zonaLago.js'
 import Laberinto from './scenes/laberinto.js';
 import LaberintoFinal from './scenes/laberinto_final.js';
+import EntradaCueva from './scenes/entrada_cueva.js';
 import Cueva from './scenes/cueva.js';
 import GameOver from './scenes/game-over.js';
 import MainMenu from './mainMenu.js';
@@ -32,7 +33,7 @@ let config = {
     },
     pixelArt: true,
     scene: [Boot, MainMenu, IntroStoryScene, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,
-        Entrada_ciudad,Laberinto, LaberintoFinal, Cueva, GameOver, UIScene, InventoryScene, InteriorScene ],
+        Entrada_ciudad,Laberinto, LaberintoFinal, EntradaCueva, Cueva, GameOver, UIScene, InventoryScene, InteriorScene ],
     physics: {
         default: 'arcade',
         arcade: {
