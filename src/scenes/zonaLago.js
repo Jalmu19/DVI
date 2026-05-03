@@ -8,6 +8,7 @@ import villa from '../../assets/sprites/villa1.png'
 import arbol from '../../assets/sprites/arbol.png'
 import flor from '../../assets/sprites/florAmarilla.png'
 import Rata from "../game-objects/enemy/rata.js";
+import Item from '../game-objects/item.js';
 
 import hielo from '../../assets/sprites/hielo.png'
 import {SPELLS } from '../constants';
@@ -85,11 +86,12 @@ export default class Zona_Lago extends GameScene {
                                                         immovable: true,
                                                         allowGravity: false })
         this.capaCofre = map.getObjectLayer('Cofre');
-
         this.llenarCofre(this.capaCofre, this.cofre);
 
       
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
+        //Colision cofre-player
+        this.physics.add.collider(this.player, this.cofre);
         
         //Añadiendo colision a las fisicas
         this.arboles.setCollisionByExclusion([-1], true);
@@ -130,6 +132,19 @@ export default class Zona_Lago extends GameScene {
             this.enemigos.add(a);
 
         })
+
+
+        //bayas
+        this.bayas = this.physics.add.staticGroup();
+        this.capaBayas = map.getObjectLayer('bayas')
+        this.capaBayas.objects.forEach(obj =>{
+            var a = new Item(this, obj.x, obj.y, 'berry', 0,{ id: 'berry', name: obj.name, quantity: 1})
+            this.bayas.add(a)
+        })
+         this.manageItems(this.player, this.bayas);
+        //Colision baya-player
+        this.physics.add.overlap(this.player, this.bayas);
+
 
         //Colisiones de enemigos
         this.physics.add.collider(this.enemigos, this.lago);
