@@ -57,6 +57,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             this.lastDir = stats.lastDir;
             this.protected = stats.protected;
             this.health.setStats(stats.health);
+            this.weapon.setStats(stats.weapon);
             console.log(stats.actualSpell);
             stats.mapOfSpells.forEach(key => {
                 this.añadirHechizo(key, false);
@@ -326,7 +327,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             actualSpell : this.actualSpell.key,
             lastDir : this.lastDir,
             protected : this.protected,
-            health : this.health.getStats()
+            health : this.health.getStats(),
+            weapon : this.weapon.getStats()
         }
     }
 
