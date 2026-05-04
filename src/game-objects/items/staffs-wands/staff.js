@@ -49,7 +49,7 @@ export default class Staff extends Phaser.GameObjects.Sprite {
 
     getStats() {
         return {
-            if : this.id,
+            id : this.id,
             bonus : this.bonusDmg,
             texture : this.texture
         }

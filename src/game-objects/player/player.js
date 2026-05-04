@@ -159,6 +159,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             if(staffstats.id === 'staff-lago') bs = 0.5;
 
             let stats = {
+                id: staffstats.id,
                 texture: staffstats.texture,
                 bonus : bs
             }

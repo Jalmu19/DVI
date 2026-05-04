@@ -19,13 +19,14 @@ export default class InventoryScene extends Phaser.Scene {
 
     create() {
         this.paintInventory();
-        this.input.keyboard.on('keydown-F', () => {     //Registra la accion pulsar F para cerrar el inventario
+        this.input.keyboard.once('keydown-F', () => {     //Registra la accion pulsar F para cerrar el inventario
             this.game.events.emit('inventoryMenu', this.backgroundScene);
         });
     }
 
     paintInventory(){
         this.children.removeAll();                                                                      //Borra todo lo anterior
+        this.positions = [];
         this.add.image(this.cameras.main.centerX, this.cameras.main.centerY,'inventoryBackground');     //Pinta el fondo
         this.paintItems();
     }
