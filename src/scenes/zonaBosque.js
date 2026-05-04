@@ -296,7 +296,7 @@ export default class Zona_bosque extends GameScene {
             this.sound.stopAll();
         }
         else{
-            this.scene.switch('bosque', {
+            this.scene.start('bosque', {
                 x : 156,
                 y : 26,
                 stats : this.player.getStats()

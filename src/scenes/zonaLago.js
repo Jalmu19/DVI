@@ -215,7 +215,7 @@ export default class Zona_Lago extends GameScene {
             });
        }
         else{
-            this.scene.switch('zonaBosque', {
+            this.scene.start('zonaBosque', {
                 x : 453,
                 y : 160,
                 stats : this.player.getStats()
