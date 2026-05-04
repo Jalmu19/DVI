@@ -13,8 +13,11 @@ export default class FreezingShoot extends Shoot{
         this.s =  this.scene.sound.add('freezingShootSound')
     }
 
-    fire(x, y, rotation){
+    fire(x, y, rotation, bonus){
         this.s.play();
+
+        this.dmg = SPELLS.FREEZE_SHOOT.DMG + bonus;
+
         const posX = x + Math.cos(rotation);
         const posY = y + Math.sin(rotation);
 
