@@ -7,6 +7,12 @@ import entrada_cueva from '../../assets/mapas/entrada_cueva.json'
 import tileCueva from '../../assets/sprites/cueva.png'
 import GameScene from "./game-scene.js";
 
+import ciudad from '../../assets/mapas/ciudad.json'
+import suelos_ciudad from '../../assets/sprites/suelos_ciudad.png'
+import tejados_ciudad from '../../assets/sprites/tejados_ciudad.png'
+import tejados_lado_ciudad from '../../assets/sprites/tejados_lado_ciudad.png'
+import paredes_casaciudad from '../../assets/sprites/paredes_casaciudad.png'
+
 import star from '../../assets/sprites/star.png'
 
 
@@ -31,6 +37,13 @@ export default class Entrada_ciudad extends GameScene{
 
         this.load.tilemapTiledJSON('entrada_cueva', entrada_cueva);
         this.load.spritesheet('cueva', tileCueva, {  frameWidth: 16,   frameHeight: 16, margin: 0, spacing: 0 });
+
+        this.load.tilemapTiledJSON('ciudad', ciudad);
+        this.load.image('suelos_ciudad', suelos_ciudad);
+        this.load.image('tejados_ciudad', tejados_ciudad);
+        this.load.image('tejados_lado_ciudad', tejados_lado_ciudad);
+        this.load.image('paredes_casaciudad', paredes_casaciudad);
+
     }
 
 
@@ -44,17 +57,17 @@ export default class Entrada_ciudad extends GameScene{
         var img5 = map.addTilesetImage('puerta', 'puertaMuralla');        
         var img6 = map.addTilesetImage('agua', 'agua');
         var img7 = map.addTilesetImage('Villa1', 'plantilla');
+        var img8 =map.addTilesetImage('valla', 'valla');
 
 
 
-        map.createLayer('suelo', img1, 0,0);
-        this.arboles = map.createLayer('Arboles', img2, 0,0);
+        map.createLayer('suelo', [img3 , img1], 0,0);
+        this.arboles = map.createLayer('Arboles', [img2, img8], 0,0);
         map.createLayer('Camino', [img3, img4], 0,0);
         map.createLayer('Ciudad', img4, 0,0);
         map.createLayer('detalles', img4, 0,0);
-        map.createLayer('foso', [img6, img4, img7,img3], 0,0);
+        this.agua = map.createLayer('foso', [img6, img4, img7], 0,0);
         map.createLayer('puerta', img5, 0,0);
-
 
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
@@ -63,6 +76,9 @@ export default class Entrada_ciudad extends GameScene{
         //COLISIONES
         this.arboles.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, this.arboles);
+
+        this.agua.setCollisionByExclusion([-1], true);
+        this.physics.add.collider(this.player, this.agua);
 
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         
@@ -93,7 +109,6 @@ export default class Entrada_ciudad extends GameScene{
                 y : 30,
                 stats : this.player.getStats()
             });
-
             
         }
         else  if(salidas.tag === 'salidaCueva' ){
@@ -103,6 +118,13 @@ export default class Entrada_ciudad extends GameScene{
                 stats : this.player.getStats()
             });
            
+        }
+        else if(salidas.tag === 'entradaCiudad'){
+            this.scene.start('ciudad', {
+                x : 843,
+                y : 210,
+                stats : this.player.getStats()
+            });
         }
         else{
             this.scene.start('zonaLago', {

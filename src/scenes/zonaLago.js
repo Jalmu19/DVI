@@ -17,6 +17,7 @@ import {SPELLS } from '../constants';
 import entrada_ciudad from '../../assets/mapas/entrada_ciudad.json'
 import muralla from '../../assets/sprites/muralla.png'
 import puerta from '../../assets/sprites/puerta_muralla.png'
+import valla from '../../assets/sprites/valla.png';
 import Slime from "../game-objects/enemy/slime.js";
 
 
@@ -35,6 +36,7 @@ export default class Zona_Lago extends GameScene {
 
     preload() {
        this.load.image('castle',muralla);
+       this.load.image('valla',valla)
        this.load.image('puertaMuralla', puerta);
        this.load.tilemapTiledJSON('entrada_ciudad',entrada_ciudad);
 
