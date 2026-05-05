@@ -121,8 +121,8 @@ export default class Entrada_ciudad extends GameScene{
         }
         else if(salidas.tag === 'entradaCiudad'){
             this.scene.start('ciudad', {
-                x : 843,
-                y : 210,
+                x : 400,
+                y : 1000,
                 stats : this.player.getStats()
             });
         }

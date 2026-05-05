@@ -35,21 +35,33 @@ export default class Entrada_ciudad extends GameScene{
         var img1 = map.addTilesetImage('castle','castle');     
         var img2 = map.addTilesetImage('agua', 'agua');
         var img3 = map.addTilesetImage('Villa1', 'plantilla');
+        var img4 = map.addTilesetImage('suelos_ciudad', 'suelos_ciudad');
+        var img5 = map.addTilesetImage('tejados_ciudad', 'tejados_ciudad');
+        var img6 = map.addTilesetImage('tejados_lado_ciudad', 'tejados_lado_ciudad');
+        var img7 = map.addTilesetImage('paredes_casaciudad', 'paredes_casaciudad');
+        var img8 = map.addTilesetImage('Villa1', 'plantilla')
 
 
 
-        map.createLayer('suelo', img1, 0,0);
-        map.createLayer('foso', img2, 0,0);
-        map.createLayer('puerta', img5, 0,0);
-
+        map.createLayer('suelo', [img4], 0,0);
+        this.agua = map.createLayer('foso', [img2, img8], 0,0);
+        this.muralla = map.createLayer('muralla', img1, 0,0);
+        this.casas = map.createLayer('casas', [img7], 0,0);
+        map.createLayer('detallesCasas', [img5, img1], 0,0);
+        map.createLayer('tejados', [img5, img6], 0,0);
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
         
         //COLISIONES
-        this.arboles.setCollisionByExclusion([-1], true);
-        this.physics.add.collider(this.player, this.arboles);
+        this.agua.setCollisionByExclusion([-1], true);
+        this.muralla.setCollisionByExclusion([-1], true);
+        this.casas.setCollisionByExclusion([-1], true);
 
+        this.physics.add.collider(this.player, this.casa);
+        this.physics.add.collider(this.player, this.agua);
+        this.physics.add.collider(this.player, this.muralla);
+         
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         
         //limites de camara
