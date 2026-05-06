@@ -14,6 +14,7 @@ import puente from '../../assets/sprites/Bridges.png'
 import tierra from '../../assets/sprites/tierra.png'
 import piedras_tierra from '../../assets/sprites/piedras_tierra.png'
 import escaleras from '../../assets/sprites/escaleras.png'
+import escaleras_laterales from '../../assets/sprites/escaleras_laterales.png'
 import pared_mazmorra from '../../assets/sprites/pared_mazmorra.png'
 import puerta_mazmorra from '../../assets/sprites/dungeon.png'
 import islotes from '../../assets/sprites/islotesLago.png'
@@ -70,6 +71,7 @@ export default class Zona_bosque extends GameScene {
         this.load.image('tierra', tierra);
         this.load.image('piedras_tierra', piedras_tierra);
         this.load.image('escaleras', escaleras);
+        this.load.image('escaleras_laterales', escaleras_laterales);
         this.load.image('pared_mazmorra', pared_mazmorra);
         this.load.image('puerta_mazmorra', puerta_mazmorra);
 
