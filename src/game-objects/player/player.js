@@ -63,15 +63,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 this.añadirHechizo(key, false);
             })
             this.actualSpell = this.mapOfSpells[stats.actualSpell];
+            this.scene.game.events.emit('change-spell', stats.actualSpell);
         }
         else {
             this.añadirHechizo(SPELLS.SHOOT.KEY);
             this.añadirHechizo(SPELLS.FREEZE_SHOOT.KEY);
             this.actualSpell = this.mapOfSpells[SPELLS.SHOOT.KEY];
+            this.scene.game.events.emit('change-spell', SPELLS.SHOOT.KEY);
         }
-
-        this.onSpellChange = (data) => { this.changeSpell(data) };
-        this.scene.game.events.on('spell-changed', this.onSpellChange);
 
         this.onStaffChange = (data) => { this.changeStaff(data) };
         this.scene.game.events.on('change-staff', this.onStaffChange);
@@ -82,12 +81,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             left: Phaser.Input.Keyboard.KeyCodes.A,
             right: Phaser.Input.Keyboard.KeyCodes.D,
             interact: Phaser.Input.Keyboard.KeyCodes.E,
-            spellMenu: Phaser.Input.Keyboard.KeyCodes.TAB,
-            inventoryMenu: Phaser.Input.Keyboard.KeyCodes.F
+            inventoryMenu: Phaser.Input.Keyboard.KeyCodes.F,
+            firstSpell: Phaser.Input.Keyboard.KeyCodes.ONE,
+            secondSpell: Phaser.Input.Keyboard.KeyCodes.TWO,
+            thirdSpell: Phaser.Input.Keyboard.KeyCodes.THREE
         });
 
         this.on('destroy', () => {
-            this.scene.game.events.off('spell-changed', this.onSpellChange);
             this.scene.game.events.off('change-staff', this.onStaffChange);
         });
 
@@ -113,7 +113,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.emit('to-set-up-colliders', aux);
         aux.emitUi();
         this.mapOfSpells[spell] = aux;
-        if (emit) this.scene.game.events.emit('spell-gained', spell);
     }
 
     /**
@@ -121,10 +120,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
      * @param {String} spell El key del hechizo que al que se cambia
      */
     changeSpell(spell) {
-        if (spell !== this.actualSpell.key) {
+        if (spell !== this.actualSpell.key && this.mapOfSpells[spell]) {
             let aux = this.mapOfSpells[spell];
             this.actualSpell = aux;
             this.actualSpell.emitUi();
+            this.scene.game.events.emit('change-spell', spell);
         }
     }
 
@@ -234,20 +234,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         if (!this.knocked) {
             this.body.setVelocity(0);
 
-            // Comprueba si se abre el menu de hechizos
-            if (this.cursors.spellMenu.isDown) {
-                this.scene.game.events.emit('open-menu');
-                this.scene.slowTime();
-                this.menuOpened = true;
-            }
-
-            // Cierrra el menu de hechizos solo si anteriormente se ha abierto
-            if (!this.cursors.spellMenu.isDown && this.menuOpened) {
-                this.scene.game.events.emit('close-menu');
-                this.scene.resetTime();
-                this.menuOpened = false;
-            }
-
             let anim;
             let vY = 0;
             let vX = 0;
@@ -295,6 +281,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 }
                 else this.play(anim, true);
             }
+
+            if(Phaser.Input.Keyboard.JustDown(this.cursors.firstSpell)) this.changeSpell(SPELLS.SHOOT.KEY);
+
+            if(Phaser.Input.Keyboard.JustDown(this.cursors.secondSpell)) this.changeSpell(SPELLS.FREEZE_SHOOT.KEY);
+
+            if(Phaser.Input.Keyboard.JustDown(this.cursors.thirdSpell)) this.changeSpell(SPELLS.SHIELD.KEY);
         
 
             if (Phaser.Input.Keyboard.JustDown(this.cursors.inventoryMenu)) {

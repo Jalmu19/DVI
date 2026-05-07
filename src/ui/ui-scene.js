@@ -1,4 +1,4 @@
-import { SCENE, UI, PLAYER } from "../constants";
+import { SCENE, UI, PLAYER, SPELLS } from "../constants";
 
 export default class UIScene extends Phaser.Scene {
     constructor() {
@@ -10,15 +10,10 @@ export default class UIScene extends Phaser.Scene {
         this.drawHearts(PLAYER.MAX_HEALTH_CONTAINER); // Al principio los corazones maximos son 3 TODO crear clase de constantes
         this.game.events.on('health-changed', (data) => { this.updateHearts(data.heartNum, data.actualHealth) });
 
-        this.spells = []; // Teniendo solo un hechizo no se podra abrir el menú
-        this.chosenSpell;
-        this.menuX = SCENE.WIDTH / 2;
-        this.menuY = SCENE.HEIGHT / 2;
-        this.spellsMenu = this.add.container(this.menuX, this.menuY);
+        this.spellsMenu = this.add.container();
         this.drawSpellsMenu();
-        this.game.events.on('spell-gained', (data) => { this.spells.push(data); this.drawGrimores(); }) // Data será el tag del hechizo 
-        this.game.events.on('open-menu', () => this.updateSpellsMenu());
-        this.game.events.on('close-menu', () => this.updateSpell());
+        this.game.events.on('change-spell', (data) => this.drawGrimores(data));
+
         this.game.events.on('inventoryMenu', (actualScene) => this.inventoryMenu(actualScene));
 
         this.ammo = this.add.group();
@@ -33,7 +28,7 @@ export default class UIScene extends Phaser.Scene {
 
         this.events.once('shutdown', () => {
             this.game.events.off('health-changed');
-            this.game.events.off('spell-gained');
+            this.game.events.off('change-spell');
             this.game.events.off('open-menu');
             this.game.events.off('close-menu');
             this.game.events.off('inventoryMenu');
@@ -74,85 +69,18 @@ export default class UIScene extends Phaser.Scene {
      * Método que dibuja el menú para elegir los hechizos
      */
     drawSpellsMenu() {
-        let bg = this.add.circle(0, 0, 70, 0x000000, 0.7);
+        let bg = this.add.rectangle(27.5, 40, 26, 26, 0x000000, 0.7).setStrokeStyle(1, 0xffffff);
         bg.setData('background');
         this.spellsMenu.add(bg);
-        this.drawGrimores();
+        this.grimore = this.add.image(27.5, 40, 'grimorio-' + SPELLS.SHOOT.KEY).setScale(0.7);
+        this.spellsMenu.add(this.grimore);
     }
 
     /**
      * Método que dibuja los grimorios del menú de hechizos
      */
-    drawGrimores() {
-        let i = this.spellsMenu.list.length;
-        while (i >= 0) {
-            const objeto = this.spellsMenu.list[i];
-            if (objeto instanceof Phaser.GameObjects.Image)
-                this.spellsMenu.remove(objeto, true); // true = lo destruye de la memoria
-            --i;
-        }
-
-        const radius = 40;
-
-        for (let i = 0; i < this.spells.length; ++i) {
-            const rad = Phaser.Math.DegToRad((i * (360 / this.spells.length)) - 90);
-            let x = Math.cos(rad) * radius;
-            let y = Math.sin(rad) * radius;
-
-            let icon = this.add.image(x, y, 'grimorio-' + this.spells[i]);
-            icon.setData('id', this.spells[i]);
-            this.spellsMenu.add(icon);
-        }
-
-        this.spellsMenu.setVisible(false);
-    }
-
-    /**
-     * Metodo que se encarga de seguir al puntero del raton para elegir el hechizo del menu
-     */
-    updateSpellsMenu() {
-        this.spellsMenu.setVisible(true)
-        const pointer = this.input.activePointer;
-        const centerX = this.cameras.main.width / 2;
-        const centerY = this.cameras.main.height / 2;
-
-        const angle = Phaser.Math.Angle.Between(centerX, centerY, pointer.x, pointer.y);
-        let degs = Phaser.Math.RadToDeg(angle);
-        if (degs < 0) degs += 360;
-
-        // MAGIA: Calculamos el índice basado en el ángulo
-        // Sumamos 90 para compensar el desfase del dibujo inicial
-        let fit = (degs + 90 + (180 / this.spells.length)) % 360;
-        let index = Math.floor(fit / (360 / this.spells.length));
-
-        // Limitar el índice por si acaso
-        index = Phaser.Math.Clamp(index, 0, this.spells.length - 1);
-
-        // Logica para mostrar por pantalla cual libro se va seleccionando
-        let icons = this.spellsMenu.list.filter(child => child.getData('id') !== undefined);
-
-        icons.forEach((icon, i) => {
-            if (i === index) {
-                // ELEMENTO SELECCIONADO
-                icon.setScale(1.2);
-                icon.setAlpha(2);
-            } else {
-                // ELEMENTOS NO SELECCIONADOS
-                icon.setScale(1);
-                icon.setAlpha(1);
-            }
-        });
-
-        this.chosenSpell = this.spells[index];
-
-    }
-
-    /**
-     * Método que emite el evento para cambiar al hechizo seleccionado en la ui 
-     */
-    updateSpell() {
-        this.spellsMenu.setVisible(false)
-        this.game.events.emit('spell-changed', this.chosenSpell);
+    drawGrimores(spell) {
+        this.grimore.setTexture('grimorio-' + spell);
     }
 
     /**
