@@ -10,6 +10,8 @@ import cesped from "../../assets/sprites/cesped.png"
 import tierra from "../../assets/sprites/tierra.png"
 import arbol from "../../assets/sprites/arbol.png"
 import laberinto_final from "../../assets/mapas/laberinto_final.json"
+import Avispa from "../game-objects/enemy/avispa.js";
+import avispaSprite from "../../assets/sprites/avispa.png"
 
 
 export default class Laberinto extends GameScene{
@@ -35,11 +37,17 @@ export default class Laberinto extends GameScene{
         this.load.image('cesped', cesped);
         this.load.image('tierra', tierra);
         this.load.image('arbol', arbol);
-
+        this.load.image('avispaSprite', avispaSprite);
         this.load.tilemapTiledJSON('laberinto_final', laberinto_final);
     }
 
     create(){
+        this.registry.set('escenaActual', {
+            scene: 'laberinto', 
+            x: 143,               
+            y: 30               
+        });
+
         this.initSpellEventListener();
         var map = this.make.tilemap({key : 'laberinto'});
 
@@ -79,6 +87,10 @@ export default class Laberinto extends GameScene{
         });
         this.physics.add.overlap(this.player, this.estrellas, this.collectStar, null, this);
       
+        this.avispas = this.physics.add.group({ classType: Avispa, runChildUpdate: true });
+        this.physics.add.collider(this.avispas, this.avispas);
+        this.generarAvispas();
+
         //SALIDA Y CAMBIO DE MAPA
         this.salidas = this.physics.add.group();
         this.capaSalidas = map.getObjectLayer('Salidas');
@@ -156,5 +168,25 @@ export default class Laberinto extends GameScene{
         }
     }
 
+    generarAvispas() {
+        const MAX_AVISPAS = 5;
 
+        if (Phaser.Math.Between(1, 100) > 40 && this.avispas.getLength() < MAX_AVISPAS) {
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 200; 
+            const spawnX = this.player.x + Math.cos(angle) * distance;
+            const spawnY = this.player.y + Math.sin(angle) * distance;
+
+            const avispa = new Avispa(this, spawnX, spawnY, 'avispaSprite');
+            this.avispas.add(avispa);
+            console.log("avispa creada");
+        }
+
+        this.time.addEvent({
+            delay: Phaser.Math.Between(3000, 7000),
+            callback: this.generarAvispas,
+            callbackScope: this
+        });
+
+    }
 }

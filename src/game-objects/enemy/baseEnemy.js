@@ -71,9 +71,11 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
     }
 
     movement() {
+        if (!this.active || !this.scene) return;
         this.setVelocity(0, 0);
         if (!this.freezed) {
             this.scene.time.delayedCall(200, () => {       //para que haga pausas mientras se mueve
+                if (!this.active || !this.scene) return;
                 this.setRandomVelocity()
 
                 this.movEvent = this.scene.time.addEvent({
@@ -87,6 +89,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
     }
 
     setRandomVelocity() {
+        if (!this.body) return;
         const randomDirection = Phaser.Math.Between(0, 3);
         if (randomDirection === 0) this.setVelocity(0, -this.speed);
         else if (randomDirection === 1) this.setVelocity(0, this.speed);

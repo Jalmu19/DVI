@@ -58,6 +58,9 @@ export const ENEMY = {
             }
 
         }
+    },
+    AVISPA: {
+        SPEED: 70
     }
 }
 
