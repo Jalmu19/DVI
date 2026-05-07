@@ -98,8 +98,9 @@ export default class HabitacionBoss extends GameScene{
         this.paredes.setCollisionByExclusion([-1], true);
         this.physics.add.collider(this.player, this.paredes);
         this.physics.add.collider(this.player, this.cofre); //COLISION CON COFRE
-        this.physics.add.collider(this.player, this.puertas);
-
+        this.physics.add.collider(this.player, this.puertas, (player, puerta) => {
+            this.player.setVelocity(0,0);
+        });
 
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 

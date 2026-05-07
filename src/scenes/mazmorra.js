@@ -57,7 +57,7 @@ export default class Mazmorra extends GameScene{
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
         this.paredes_y_entrada.setCollisionByExclusion([-1], true);
-        
+    
         //salidas  
         this.salidas = this.physics.add.group();
         this.capaSalidas = map.getObjectLayer('Salidas');
@@ -120,7 +120,7 @@ export default class Mazmorra extends GameScene{
         //colisiones
         this.logicaCajas(this.player, this.cajas);
         this.physics.add.collider(this.player, this.paredes_y_entrada);  
-        this.physics.add.collider(this.player, this.puertas); 
+        this.physics.add.collider(this.player, this.puertas);
         this.physics.add.collider(this.puertas, this.paredes_y_entrada);
         this.physics.add.collider(this.cajas, this.paredes_y_entrada);
         this.physics.add.collider(this.cajas, this.puertas); //para que al empujar una caja no se desplace la puerta
@@ -153,8 +153,8 @@ export default class Mazmorra extends GameScene{
         }
         else if(salidas.tag === 'salidaHabAnterior'){
             this.scene.start('mazmorra_inicial', {
-                x : 110,
-                y : 18,
+                x : 81,
+                y : 29,
                 stats : this.player.getStats()
             });
         }
@@ -197,7 +197,7 @@ export default class Mazmorra extends GameScene{
         // Recorremos todas las cajas y si no tienen a nadie empujando, velocidad 0
         this.cajas.children.iterate(caja => {
             // Si la caja se está moviendo, la frenamos
-            if (caja.body.touching.none) caja.setVelocity(0); 
+            caja.setVelocity(0); 
         });
     }
 

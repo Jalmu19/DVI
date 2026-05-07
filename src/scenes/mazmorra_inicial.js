@@ -70,6 +70,10 @@ export default class MazmorraInicial extends GameScene{
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
 
+        //puertas
+        this.puertas = this.physics.add.group();
+        this.capaPuertas = map.getObjectLayer('Puertas');
+        this.crearObjeto(this.puertas, this.capaPuertas, Puertas);
 
         //Recuperar datos
         const datosGuardados = this.registry.get('estado_mazmorra_inicial');
@@ -91,12 +95,6 @@ export default class MazmorraInicial extends GameScene{
         }
 
 
-        //puertas
-        this.puertas = this.physics.add.group();
-        this.capaPuertas = map.getObjectLayer('Puertas');
-        this.crearObjeto(this.puertas, this.capaPuertas, Puertas);
- 
-
         //banderas
         this.banderas = this.physics.add.group();
         this.capaBanderas = map.getObjectLayer('Bandera');
@@ -117,7 +115,7 @@ export default class MazmorraInicial extends GameScene{
         
         this.logicaCajas(this.player, this.cajas);
         this.physics.add.collider(this.player, this.paredes_y_entrada);  
-        this.physics.add.collider(this.player, this.puertas); 
+        this.physics.add.collider(this.player, this.puertas);
         this.physics.add.collider(this.puertas, this.paredes_y_entrada);
         this.physics.add.collider(this.cajas, this.puertas); //para que al empujar una caja no se desplace la puerta
         this.physics.add.collider(this.cajas, this.paredes_y_entrada); // También colisión entre las cajas y el escenario (paredes)
@@ -186,8 +184,9 @@ export default class MazmorraInicial extends GameScene{
         // Recorremos todas las cajas y si no tienen a nadie empujando, velocidad 0
         this.cajas.children.iterate(caja => {
             // Si la caja se está moviendo, la frenamos
-            if (caja.body.touching.none) caja.setVelocity(0); 
+            caja.setVelocity(0); 
         });
+        console.log(this.player.x, this.player.y);
     }
 
     mostrarTutorialCofres() {

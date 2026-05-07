@@ -10,8 +10,9 @@ export default class Puertas extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this);
         scene.physics.add.existing(this);
 
-        this.body.setImmovable(true);
+        this.body.setImmovable(true);  // No reacciona a choques
         this.body.moves = false;
+        this.body.onOverlap = false;  // Evita bugs de solapamiento
         
         this.properties = objeto.properties;
         this.id = objeto.id;

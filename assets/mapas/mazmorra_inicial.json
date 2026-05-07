@@ -106,6 +106,39 @@
         }, 
         {
          "draworder":"topdown",
+         "id":8,
+         "name":"Salidas",
+         "objects":[
+                {
+                 "height":3.31818181818182,
+                 "id":7,
+                 "name":"salidaSigHab",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32.5,
+                 "x":63.7047869353281,
+                 "y":0.173450591908693
+                }, 
+                {
+                 "height":15.75,
+                 "id":11,
+                 "name":"salidaEntrada_bosque",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.5,
+                 "x":112.375,
+                 "y":160.375
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":5,
          "name":"Puertas",
          "objects":[
@@ -144,39 +177,6 @@
                  "width":16,
                  "x":79.613877844419,
                  "y":15.946177864636
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":8,
-         "name":"Salidas",
-         "objects":[
-                {
-                 "height":16.5,
-                 "id":7,
-                 "name":"salidaSigHab",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32.5,
-                 "x":63.7956960262372,
-                 "y":-2.19018577172767
-                }, 
-                {
-                 "height":15.75,
-                 "id":11,
-                 "name":"salidaEntrada_bosque",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":31.5,
-                 "x":112.375,
-                 "y":160.375
                 }],
          "opacity":1,
          "type":"objectgroup",
