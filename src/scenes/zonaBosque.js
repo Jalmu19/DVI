@@ -21,6 +21,7 @@ import islotes from '../../assets/sprites/islotesLago.png'
 import agua from '../../assets/sprites/agua.png'
 import detalleAgua from '../../assets/sprites/detalleAgua.png'
 import hielo from '../../assets/sprites/hielo.png'
+import curvas from '../../assets/sprites/curvas.png'
 
 import Inventory from '../inventory.js';
 import Oruga from "../game-objects/enemy/oruga.js";
@@ -59,6 +60,7 @@ export default class Zona_bosque extends GameScene {
          this.load.image('agua', agua)
          this.load.image('islotesAgua', islotes);
          this.load.image('detalleAgua', detalleAgua);
+         this.load.image('curvas', curvas);
         // this.load.image()
 
     }

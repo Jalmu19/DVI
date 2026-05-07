@@ -61,11 +61,15 @@ export default class Zona_Lago extends GameScene {
         var img4 = map.addTilesetImage('agua', 'agua');
         var img5 = map.addTilesetImage('detalleAgua', 'detalleAgua');
         var img6 = map.addTilesetImage('elevacionAgua', 'islotesAgua')
-        var img7 = map.addTilesetImage('hielo', 'hielo')
+        var img7 = map.addTilesetImage('hielo', 'hielo');
+        var img8 = map.addTilesetImage('curvas', 'curvas');
+        var img9 = map.addTilesetImage('Hierba', 'hierba');
 
     
-        map.createLayer('fondo', [img1, img3], 0, 0);
+        map.createLayer('fondo', [img1, img9,img6, img3], 0, 0);
         map.createLayer('hielo', img7, 0,0);
+        map.createLayer('Camino',[img1], 0 ,0)
+        map.createLayer('bordesCamino', [img8],  0,0);
         this.lago = map.createLayer('Agua',[img4, img1] ,0,0)
         map.createLayer('DetallesAgua', img5, 0, 0)
         this.islotes = map.createLayer('islotes', [img1,img6], 0,0);
@@ -74,11 +78,11 @@ export default class Zona_Lago extends GameScene {
                 this.lago.removeTileAt(tileIslote.x, tileIslote.y);
             }
         });
-        map.createLayer('Camino',img1, 0 ,0)
         
         
-        this.arboles = map.createLayer('Arboles', img2, 0, 0);
-
+        
+        this.arboles = map.createLayer('Arboles', [img2,img8], 0, 0);
+ 
         //Tamaño del mundo fisico
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
@@ -92,6 +96,7 @@ export default class Zona_Lago extends GameScene {
 
       
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
+        
         //Colision cofre-player
         this.physics.add.collider(this.player, this.cofre);
         
@@ -101,7 +106,7 @@ export default class Zona_Lago extends GameScene {
        
         this.lago.setCollisionByExclusion([-1],true);
         this.physics.add.collider(this.player, this.lago);
-
+ 
         //limites de camara
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);
@@ -149,9 +154,9 @@ export default class Zona_Lago extends GameScene {
 
 
         //Colisiones de enemigos
-        this.physics.add.collider(this.enemigos, this.lago);
+       /* this.physics.add.collider(this.enemigos, this.lago);
         this.physics.add.collider(this.enemigos, this.arboles);
-        this.physics.add.collider(this.enemigos, this.enemigos);
+        this.physics.add.collider(this.enemigos, this.enemigos); */
         
         Object.values(this.player.mapOfSpells).forEach(group => {
             if (group instanceof Phaser.Physics.Arcade.Group) {
