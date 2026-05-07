@@ -33,7 +33,7 @@ let config = {
     },
     pixelArt: true,
     scene: [Boot, MainMenu, IntroStoryScene, Bosque,zBosque,zonaLago, Entrada_mazmorra, MazmorraInicial, Mazmorra, HabitacionCofre, HabitacionBoss,
-        Entrada_ciudad,Laberinto, LaberintoFinal, EntradaCueva, Cueva, GameOver, UIScene, InventoryScene, InteriorScene ],
+        Entrada_ciudad,Laberinto, LaberintoFinal, EntradaCueva, Cueva, GameOver, InteriorScene, UIScene, InventoryScene],
     physics: {
         default: 'arcade',
         arcade: {

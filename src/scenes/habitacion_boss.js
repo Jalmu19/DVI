@@ -130,7 +130,7 @@ export default class HabitacionBoss extends GameScene{
                 stats : this.player.getStats()
             });
         }
-        this.music.stop();
+        this.sound.stopAll();
     } 
 
     hacerVisible(grupo, valor){
