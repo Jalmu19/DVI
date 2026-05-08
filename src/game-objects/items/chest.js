@@ -72,7 +72,7 @@ export default class Chest extends Phaser.Physics.Arcade.Sprite {
         const fondo = this.scene.add.rectangle(0, 0, 170, 30, 0x000080, 0.8);
         fondo.setStrokeStyle(2, 0xffffff);
 
-        const mensaje = this.scene.add.text(0, 1, 'Cambiar hechizos : Tabulador', {
+        const mensaje = this.scene.add.text(0, 1, 'Cambiar hechizos : Numeros', {
             fontSize: '10px',
             fill: '#fff',
         }).setOrigin(0.5);
