@@ -51,7 +51,36 @@ export default class MainMenu extends Phaser.Scene
             botonJugar.disableInteractive();
             this.cameras.main.fadeOut(1000, 0, 0, 0);
                 
-        }); 
+        });
+
+        const botonCreditos = this.add.text(160, 150, 'CREDITOS', {
+            fontSize: '15px',
+            fill: '#c92efd',
+            backgroundColor: '#fff64f',
+            padding: { x: 5, y: 5 }
+        }).setOrigin(0.5);
+
+        botonCreditos.setInteractive({ useHandCursor: true });
+
+        botonCreditos.on('pointerover', () => botonCreditos.setStyle({ fill: 'rgb(255, 255, 255)' })); 
+        botonCreditos.on('pointerout', () => botonCreditos.setStyle({ fill: '#c92efd' }));  
+        botonCreditos.on('pointerdown', () => {
+            this.tweens.add({
+            targets: botonCreditos,
+            scale: 0.9,
+            duration: 100,
+            yoyo: true
+            });
+            this.tweens.add({
+            targets: this.music,
+            volume: 0,
+            duration: 1000
+            });
+            playSound.play();
+            botonCreditos.disableInteractive();
+            this.scene.start('credits');
+                
+        });         
 
         this.cameras.main.once('camerafadeoutcomplete', (camera, effect) => {
             this.scene.start('IntroStoryScene'); 
