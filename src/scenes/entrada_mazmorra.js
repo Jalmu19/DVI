@@ -57,7 +57,7 @@ export default class Entrada_mazmorra extends GameScene{
         var img9 = map.addTilesetImage('escaleras', 'escaleras');
         var img10 = map.addTilesetImage('pared_mazmorra', 'pared_mazmorra');
         var img11 = map.addTilesetImage('puerta_mazmorra', 'puerta_mazmorra');
-        var img12 = map.addTilesetImage('escaleras_laterales', 'escaleras_laterales');
+        var img12 = map.addTilesetImage('escalera_lat', 'escalera_lat');
 
         map.createLayer('Suelo', [img1, img7, img8], 0,0);
         var dungeon = map.createLayer('mazmorra', [img10, img11], 0,0);

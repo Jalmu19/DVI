@@ -145,7 +145,7 @@
                         {
                          "name":"id",
                          "type":"string",
-                         "value":"grimorio-freezing_shoot"
+                         "value":"freezing_shoot"
                         }, 
                         {
                          "name":"name",

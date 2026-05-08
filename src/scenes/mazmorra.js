@@ -99,7 +99,7 @@ export default class Mazmorra extends GameScene{
 
 
          // Enemigos
-    /*    this.enemigos = this.physics.add.group();
+        this.enemigos = this.physics.add.group();
         this.capaEnemigos = map.getObjectLayer('Enemigos');
 
         if (datosGuardados) {
@@ -112,13 +112,12 @@ export default class Mazmorra extends GameScene{
                 var a = new Rata(this, obj.x, obj.y, 'rata');
                 this.enemigos.add(a);
             });
-        }*/
-
+        }
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);
 
         //colisiones
-       /* this.logicaCajas(this.player, this.cajas);
+        this.logicaCajas(this.player, this.cajas);
         this.physics.add.collider(this.player, this.paredes_y_entrada);  
         this.physics.add.collider(this.player, this.puertas);
         this.physics.add.collider(this.puertas, this.paredes_y_entrada);
@@ -126,7 +125,7 @@ export default class Mazmorra extends GameScene{
         this.physics.add.collider(this.cajas, this.puertas); //para que al empujar una caja no se desplace la puerta
         this.physics.add.collider(this.enemigos, this.paredes_y_entrada);
         this.physics.add.collider(this.enemigos, this.enemigos);
-        this.physics.add.collider(this.enemigos, this.puertas);*/
+        this.physics.add.collider(this.enemigos, this.puertas);
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
 
@@ -134,14 +133,14 @@ export default class Mazmorra extends GameScene{
         this.cameras.main.setBounds(0,0, map.widthInPixels, map.heightInPixels);
         this.cameras.main.startFollow(this.player);    
         
-       /*  if (!this.registry.get('tutorialCofres')) {
+        if (!this.registry.get('tutorialCofres')) {
             this.mostrarTutorialCofres();
-        }*/
+        }
 
     }
 
     cambiarScene(jugador, salidas){
-       // this.guardarEstado();
+        this.guardarEstado();
 
         if(salidas.tag === 'salidaBossFinal' ){
            this.scene.start('habitacion_boss', {

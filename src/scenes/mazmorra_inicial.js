@@ -186,7 +186,6 @@ export default class MazmorraInicial extends GameScene{
             // Si la caja se está moviendo, la frenamos
             caja.setVelocity(0); 
         });
-        console.log(this.player.x, this.player.y);
     }
 
     mostrarTutorialCofres() {
