@@ -21,10 +21,12 @@ export default class Laberinto extends GameScene{
 
         var img1 = map.addTilesetImage('cesped', 'cesped');
         var img2 = map.addTilesetImage('tierra', 'tierra');
-        var img3 = map.addTilesetImage('arbol', 'arbol');
+        var img3 = map.addTilesetImage('curvas', 'curvas');
+        var img4 = map.addTilesetImage('arbol', 'arbol');
 
-        map.createLayer('suelo', [img1, img2], 0,0);
-        this.arboles = map.createLayer('arboles', [img3], 0,0);
+        map.createLayer('camino', img2, 0, 0);
+        map.createLayer('suelo', [img1, img3], 0,0);
+        this.arboles = map.createLayer('arboles', [img4], 0,0);
 
         
        //Cofre
