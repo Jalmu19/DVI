@@ -46,7 +46,10 @@ export default class Chest extends Phaser.Physics.Arcade.Sprite {
             let itemName = this.itemIn ? this.itemIn.name : "Objeto desconocido";
             this.scene.dialogo("Has recibido: " + itemName);
             
-            if(itemName === "hechizo de hielo"){
+            if(itemName === "hechizo de hielo y collar de metal"){
+                this.scene.time.delayedCall(2500, () => {
+                    this.scene.dialogo("Lillith: Qué bien!! He recuperado mi collar!!");
+                });
                 this.scene.time.delayedCall(4000, () => {
                     this.mostrarTutorialCambiarHechizos();
                 });
