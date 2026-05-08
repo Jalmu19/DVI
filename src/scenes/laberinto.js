@@ -108,8 +108,8 @@ export default class Laberinto extends GameScene{
 
         if(salidas.tag === "entrada"){
             this.scene.start('entrada_ciudad', {
-                x : 25,
-                y : 40,
+                x : 441,
+                y : 558,
                 stats : this.player.getStats()
             }); 
         }
