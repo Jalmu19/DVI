@@ -20,14 +20,15 @@ import IntroStoryScene from './introStoryScene.js'
 import InteriorScene from './scenes/InteriorScene.js';
 import Entrada_ciudad from './scenes/entrada_ciudad.js';
 import ciudad from './scenes/ciudad.js'
+import { SCENE } from './constants.js';
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
  */
 let config = {
     type: Phaser.AUTO,
-    width: 320,
-    height: 180,
+    width: SCENE.WIDTH,
+    height: SCENE.HEIGHT,
     parent: 'juego',
     scale: {
         mode: Phaser.Scale.FIT

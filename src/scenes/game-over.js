@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 
+import { SCENE } from "../constants";
+
 /**
  * Escena de Game Over. Cuando el player pierde toda su vida, se presenta un
  * texto que indica que ha perdido.
@@ -33,7 +35,7 @@ export default class GameOver extends Phaser.Scene {
     this.musicaGameOver = this.sound.add('musicaGameOver', config);
     this.musicaGameOver.play()
 
-    this.add.text(160, 90, 'GAME OVER!\nPerdiste todos tus corazones\nPulsa cualquier tecla\n para volver a jugar', {fontSize : 15})
+    this.add.text(SCENE.WIDTH/2, SCENE.HEIGHT/2, 'GAME OVER!\nPerdiste todos tus corazones\nPulsa cualquier tecla\n para volver a jugar', {fontSize : 15})
         .setOrigin(0.5, 0.5)  // Colocamos el pivote en el centro de cuadro de texto 
         .setAlign('center');  // Centramos el texto dentro del cuadro de texto
 
