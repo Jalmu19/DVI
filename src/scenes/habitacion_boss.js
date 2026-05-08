@@ -84,6 +84,7 @@ export default class HabitacionBoss extends GameScene{
         else if(this.registry.get('passedDungeons') == 1){ //si ya he derrotado al boss
             this.hacerVisible(this.cofre, true);
             this.hacerVisible(this.salidas, true);
+            this.hacerVisible(this.puertas, false); //desactivamos la puerta
 
             if(!this.registry.get('BossDerrotado')) {
                 this.registry.set('BossDerrotado', true);

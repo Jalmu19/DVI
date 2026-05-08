@@ -53,9 +53,6 @@ export default class GameOver extends Phaser.Scene {
         stats: null
       });
 
-      this.registry.set('BossDerrotado', false);
-      this.registry.set('passedDungeons', 0);
-
     }, this);
   }
 
