@@ -127,6 +127,10 @@ export default class Cueva extends GameScene{
         this.cargarSalidas(this.capaSalidas, this.salidas);
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
+        this.music = this.sound.add('cuevaMusic');
+        this.music.loop = true;
+        this.music.play();
+
     }
 
 
@@ -137,7 +141,8 @@ export default class Cueva extends GameScene{
             y : 83,
             stats : this.player.getStats()
             
-        });     
+        });   
+        this.music.stop();  
     } 
 
 

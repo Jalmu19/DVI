@@ -95,6 +95,13 @@ export default class Entrada_ciudad extends GameScene{
 
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
         
+        let existeMusica = this.sound.get('lakeMusic');
+        if (!existeMusica) {
+            existeMusica = this.sound.add('lakeMusic', { loop: true });
+            existeMusica.play();
+        } else if (!existeMusica.isPlaying) {
+            existeMusica.play();
+        }
 
     }
 
@@ -109,7 +116,7 @@ export default class Entrada_ciudad extends GameScene{
                 y : 30,
                 stats : this.player.getStats()
             });
-            
+             this.sound.stopAll();
         }
         else  if(salidas.tag === 'salidaCueva' ){
             this.scene.start('entrada_cueva', {
@@ -117,7 +124,7 @@ export default class Entrada_ciudad extends GameScene{
                 y : 210,
                 stats : this.player.getStats()
             });
-           
+            this.sound.stopAll();
         }
         else if(salidas.tag === 'entradaCiudad'){
             this.scene.start('ciudad', {
@@ -125,6 +132,7 @@ export default class Entrada_ciudad extends GameScene{
                 y : 1000,
                 stats : this.player.getStats()
             });
+             this.sound.stopAll();
         }
         else{
             this.scene.start('zonaLago', {
@@ -132,6 +140,9 @@ export default class Entrada_ciudad extends GameScene{
                 y : 210,
                 stats : this.player.getStats()
             });
+            
         }
+
+       
     } 
 }

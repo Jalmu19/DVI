@@ -100,6 +100,13 @@ export default class Laberinto extends GameScene{
 
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
 
+       let existeMusica = this.sound.get('laberintoMusic');
+        if (!existeMusica) {
+            existeMusica = this.sound.add('laberintoMusic', { loop: true });
+            existeMusica.play();
+        } else if (!existeMusica.isPlaying) {
+            existeMusica.play();
+        }
     }
 
     cambiarScene(jugador, salidas){
@@ -111,6 +118,7 @@ export default class Laberinto extends GameScene{
                 y : 558,
                 stats : this.player.getStats()
             }); 
+            this.sound.stopAll();
         }
         else if(salidas.tag === "entrada1") this.changePosition(this.player, 618, 538);
         else if(salidas.tag === "entrada2") this.changePosition(this.player, 22, 489);

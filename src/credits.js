@@ -43,7 +43,7 @@ export default class CreditsScene extends Phaser.Scene {
             "Desarrollado con Phaser 3",
             "Sprites diseñados con Aseprite",
             "Mapas creados con Tiled",
-            "Música creada con ---Lo que sea---",
+            "Música creada con Beepbox",
             "",
             "¡GRACIAS POR JUGAR!"
         ];
@@ -56,7 +56,7 @@ export default class CreditsScene extends Phaser.Scene {
         this.tweens.add({
             targets: textoAnimado,
             y: -textoAnimado.height,
-            duration: 15000,
+            duration: 30000,
             repeat: -1
         });
 

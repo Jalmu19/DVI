@@ -74,6 +74,9 @@ import freezingShootSound from '../../assets/sounds/freezingShoot.wav'
 import muereBossSound from '../../assets/sounds/muereBoss.wav'
 import victoriaSound from '../../assets/sounds/victoria.wav'
 
+import laberintoMusic from '../../assets/sounds/lab.wav'
+import cuevaMusic from '../../assets/sounds/cueva.wav'
+
 import inventoryBackground from '../../assets/sprites/inventory.png'
 
 import churchjson from '../../assets/mapas/church.json'
@@ -150,6 +153,9 @@ export default class Boot extends Phaser.Scene {
     this.load.audio('lakeMusic', lakeMusic);
     this.load.audio('slimeSound', slimeSound);
     this.load.audio('dashSound', dashSound);
+
+    this.load.audio('laberintoMusic', laberintoMusic);
+    this.load.audio('cuevaMusic', cuevaMusic);
 
     this.load.image('background', background);
 
