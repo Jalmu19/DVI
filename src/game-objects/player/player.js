@@ -6,7 +6,7 @@ import FreezingShoot from '../spells/freezingShoot';
 import Shield from '../spells/shield';
 import Shoot from '../spells/shoot';
 import Inventory from '../../inventory';
-import { PLAYER, SPELLS } from '../../constants';
+import { PLAYER, SPELLS, STAFFS } from '../../constants';
 
 /**
  * Clase que representa el jugador del juego. El jugador se mueve por el mundo usando los cursores.
@@ -156,7 +156,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     changeStaff(staffstats) {
         if(this.weapon){
             let bs = 0;
-            if(staffstats.id === 'staff-lago') bs = 0.5;
+            if(staffstats.id === STAFFS.LAKE.KEY) bs = STAFFS.LAKE.BONUS;
 
             let stats = {
                 id: staffstats.id,

@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import Inventory from '.././inventory.js';
+import { STAFFS } from "../constants.js";
 
 /** Clase para la interfaz grafica del inventario */
 export default class InventoryScene extends Phaser.Scene {
@@ -89,8 +90,8 @@ export default class InventoryScene extends Phaser.Scene {
                     objetoTexto += `Una baya que restaura un poco de salud.\nCura: Medio corazón`;
                 } 
                 else if (item.id.includes('staff')) {
-                    if(item.id === 'staff-lago') objetoTexto += `Un báculo. \nBonus Daño : 0.5`;
-                    else objetoTexto += `Un báculo viejo. \nBonus Daño : 0`;
+                    if(item.id === STAFFS.LAKE.KEY) objetoTexto += `Un báculo. \nBonus Daño : ${STAFFS.LAKE.BONUS}`;
+                    else objetoTexto += `Un báculo viejo. \nBonus Daño : ${STAFFS.BASIC.BONUS}`;
                 }
 
                 this.tooltipText.setText(objetoTexto);

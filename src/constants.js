@@ -25,6 +25,17 @@ export const SPELLS = {
     }
 }
 
+export const STAFFS = {
+    BASIC : {
+        KEY : 'staff-base',
+        BONUS : 0
+    },
+    LAKE : {
+        KEY : 'staff-lago',
+        BONUS : 0.5
+    }
+}
+
 export const ENEMY = {
     BASE_SPEED: 10,
     BASE_HEALTH: 5,

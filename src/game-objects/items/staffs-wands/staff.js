@@ -1,3 +1,5 @@
+import { STAFFS } from "../../../constants";
+
 export default class Staff extends Phaser.GameObjects.Sprite {
     /**
      * Constructor de la varita o baculo
@@ -11,8 +13,8 @@ export default class Staff extends Phaser.GameObjects.Sprite {
         this.setVisible(false);
         this.setOrigin(0.21875,0.75)
         this.player = player;
-        this.id = 'staff-base';
-        this.bonusDmg = 0;
+        this.id = STAFFS.BASIC.KEY;
+        this.bonusDmg = STAFFS.BASIC.BONUS;
         this.scene.input.mouse.disableContextMenu();
         this.onPointerDown = pointer => {
             if(pointer.isDown){
