@@ -29,6 +29,12 @@ export default class Cueva extends GameScene{
 
 
     create(){
+        this.registry.set('escenaActual', {
+            scene: 'escenaCueva', 
+            x: 961,               
+            y: 986               
+        });
+
         var map = this.make.tilemap({key : 'mapaCueva'});
 
         var img1 = map.addTilesetImage('cueva', 'cueva');   
@@ -215,6 +221,7 @@ export default class Cueva extends GameScene{
 
         //aplicar la máscara inversa
         const mask = new Phaser.Display.Masks.BitmapMask(this, this.lightCircle);
+        this.lightCircle.setScale(0.5);
         mask.invertAlpha = true; // oculta lo negro donde está el círculo
         oscuro.setMask(mask);
    }
