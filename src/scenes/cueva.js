@@ -181,7 +181,7 @@ export default class Cueva extends GameScene{
             // para que el círculo del jugador vuelva a hacerse pequeño
             this.tweens.add({
                 targets: this.lightCircle,
-                scale: 0.75,              //el foco se hace más pequeño
+                scale: 0.3,              //el foco se hace más pequeño
                 duration: 1000
             });
         }
@@ -221,7 +221,7 @@ export default class Cueva extends GameScene{
 
         //aplicar la máscara inversa
         const mask = new Phaser.Display.Masks.BitmapMask(this, this.lightCircle);
-        this.lightCircle.setScale(0.5);
+        this.lightCircle.setScale(0.3);
         mask.invertAlpha = true; // oculta lo negro donde está el círculo
         oscuro.setMask(mask);
    }

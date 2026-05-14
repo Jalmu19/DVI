@@ -165,16 +165,11 @@ export default class Zona_bosque extends GameScene {
         this.items = this.physics.add.staticGroup()
         this.capaBayas = map.getObjectLayer('Bayas')
         this.capaBayas.objects.forEach(obj =>{
-            var a = new Item(this, obj.x, obj.y, 'berry', 0,{ id: 'berry', name: obj.name, quantity: 1})
-            this.items.add(a)
+            var a = new Item(this, obj.x, obj.y, 'berry', 0,{ id: 'berry', name: obj.name, quantity: 1});
+            this.items.add(a);
+            a.body.setSize(12, 12);
 
         })
-        /*const berry1 = new Item(this, 100, 100, 'berry', 0, { id: 'berry', name: 'berry1', quantity: 1});
-        const berry2 = new Item(this, 150, 100, 'berry', 0, { id: 'berry2', name: 'berry2',  quantity: 3});
-        const berry3 = new Item(this, 200, 100, 'berry', 0, { id: 'berry', name: 'berry3', quantity: 1});
-        this.items.add(berry1)
-        this.items.add(berry2)
-        this.items.add(berry3) */
         this.manageItems(this.player, this.items)
 
         this.crearGrafico();
