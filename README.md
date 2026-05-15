@@ -158,12 +158,13 @@ Cambios realizados a partir de los comentarios realizados por los que jugaron:
 <br>
 
 ## 10. Herramientas de desarrollo
--Phaser: motor del videojuego
+- Phaser: motor del videojuego
 -Tiled: mapas
--GitHub: control de versiones
--Itch.io: assets
--Beepbox: composición de música
--jxfxr: efectos de sonidos
+- GitHub: control de versiones
+- Itch.io: assets
+- Beepbox: composición de música
+- jxfxr: efectos de sonidos
+  
 <br>
 
 ## 10. Referencias
