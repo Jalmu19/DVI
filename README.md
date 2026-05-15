@@ -14,7 +14,7 @@ Enchantments es un juego en el que el jugador será una maga aspirante a ser la 
  ### 1.2 Género
 Acción-Aventura
  ### 1.3 Setting
- Lilith es una maga que tras descubrir un pasado mágico que tu familia te ha estado ocultando todo este tiempo decide salir para explorar más territorio a parte del bosque en el que vive. En el camino, una rata mágica le roba el mapa y tras recuperarlo decide ir a la [ciudad] . Allí descubrirá la liga mágica, un lugar donde los mejores magos y brujas se baten en duelo para ser la mejor de la región y alcanzar la gloria eterna, es entonces cuando descubre que ese era su destino todo este tiempo. Explorando las diversas zonas de la región,  Lilith aprenderá los hechizos más poderosos para poder hacer frente a la liga y cumplir así con su objetivo.
+En una región de fantasía, medieval y llena de magia se encuentra Lilith, una maga que lleva toda su vida viviendo en su pequeña aldea natal con sus abuelos. La vida allí es tranquila, llena de paz y seguridad. Pero Lilith ansía salir y explorar mundo. Tras una discusión con sus abuelos por su libertad, ellos entran en razón y le permiten que viva su vida a su manera. Así empieza su aventura y recorrido para convertirse en la mejor maga de la región. Durante su travesía, es asaltada por un ladrón que le roba un objeto muy valioso para ella y va tras él. Tras enfrentar un desafío que pone a prueba su fuerza e inteligencia consigue superarlo, recuperando su objeto y aprendiendo otro hechizo. Sin miedo, sigue avanzando y explorando, superando otras pruebas y adquiriendo mejoras y nuevas técnicas hasta que llega a la capital. En ese lugar descubrirá la liga mágica, un lugar donde los mejores magos se baten en duelo contra el campeón para ser el mejor de la región.
  ### 1.4 Características principales
 - Explora las zonas y ciudades de la región mágica
 - Colecciona grimorios para aprender nuevos hechizos y usarlos en combate contra enemigos.
@@ -25,7 +25,7 @@ Acción-Aventura
 
 ## 2. Gameplay
 ### 2.1 Objetivo del juego
-El objetivo del juego es ir aprendiendo hechizos de manera que al final seas el mejor hechicero del mundo. Para conseguir los hechizos deberás pasar ciertas mazmorras que se encuentran en distintas zonas del mapa. Estas consisten en puzzles en los que el jugador interactúa con el entorno para resolverlo.
+El objetivo del juego es ir aprendiendo hechizos de manera que al final seas el mejor hechicero de la región. Para conseguir los hechizos deberás pasar ciertas mazmorras que se encuentran en distintas zonas del mapa. Estas consisten en puzzles en los que el jugador interactúa con el entorno para resolverlo.
 
 En cada zona habrá una mazmorra y un camino donde encontrar objetos y probar tus habilidades contra enemigos.
 
@@ -65,19 +65,18 @@ Para empujar los objetos que haya, por ejemplo las cajas de la mazmorra, bastar�
 
 ## 4. Sistemas
 ### 4.1. Sistema de vida
-El jugador tiene 3 corazones al iniciar el juego, a medida que avanza en la aventura puede encontrarse objetos que aumente los corazones totales del jugador en uno. Se perderá un cuarto, mitad o corazón entero cada vez que se reciba un ataque dependiendo del enemigo, si se pierde todos los corazones se reiniciará el juego.
+El jugador tiene 3 corazones al iniciar el juego, a medida que avanza en la aventura puede encontrarse objetos que aumente los corazones totales del jugador en uno. Se perderá un cuarto, mitad o corazón entero cada vez que se reciba un ataque dependiendo del enemigo, si se pierde todos los corazones reaparecerá en la escena que ha muerto.
 ### 4.2. Sistema de estadísticas
-El jugador tendrá una serie de estadísticas que puede aumentar o disminuir dependiendo de los objetos que lleve equipados y de los hechizos que use.
+Las armas tienen una serie de estadísticas que puede aumentar o disminuir el daño de ciertos hechizos.
 
 <br>
 
 ## 5. Interfaz
 ### 5.1 Controles
 - WASD Para movimiento multidireccional (en ejes cartesianos)
-- E para interaccionar con objetos
-- Mantener click derecho del ratón -> Apuntar
-- Click izquierdo del ratón -> Lanzar hechizos
-- Tabulador para abrir el menú de hechizos
+- E para interaccionar con NPC's, objetos y dialogos.
+- 1,2,3... Para seleccionar el hechizo actual
+- F para abrir el inventario
 
 
 ### 5.2 Cámara
@@ -85,13 +84,12 @@ Cámara top-down o cenital centrada en el protagonista.
 ### 5.3 HUD
 El HUD contiene información sobre:
  - El numero de vidas del jugador
- - El numero de hechizos que el jugador tiene disponible
+ - El numero de disparo del hechizo que el jugador está usando en el momento
  - Botón para cambiar a pantalla completa
+ - Imagen del hechizo equipado
 
 ### 5.4 Menús
-El juego tiene dos menús:
-	- Menú principal con la opción de iniciar el juego
-	- Menú de los hechizos para seleccionar el hechizo que quieres usar. Este menu aparece si pulsas el tabulador y, para seleccionar el hechizo simplemente debes posicionar el ratón encima del grimorio a utilizar.
+- Menú principal con la opción de iniciar el juego
 
 
 <br>
@@ -111,10 +109,12 @@ Es el boss final de la mazmorra. Se mueve aleatoriamente y, cuando ataca al juga
 Cuando muere, aparece un cofre que contiene el hechizo de hielo que podrá utilizar en la zona del lago para llegar hasta el cofre de esa zona.
 ##### 6.1.2.4 Barril
 Aparece en la cueva que hay en la entrada a la ciudad. Estos barriles se mueven en horizontal o vertical a velocidad constante y rebotando con las paredes. Si el jugador se choca con ellos, perderá tres cuartos de una vida. No podrá eliminarlos y, por tanto deberá tratar de esquivarlos.
+##### 6.1.2.4 Avispas
+Las avispas aparecen en la zona del laberinto de manera aleatoria en intervalos de tiempos aleatorios. El número máximo de avispas en la zona son 5. Persiguen al jugador en toda la zona, ienen 5 vidas y cada vez que el jugador las ataca pierden 1 vida.
 
 ### 6.2 Objetos
 Dentro del juego hay varios objetos con los que el jugador puede interaccionar o usar.
-   - Bayas curativas: son bayas que se guardarán en el inventario y, al usarlas, se recargará la vida del jugador en medio corazón. Si se utiliza con todas las vidas recargadas, no aumenta nada. Para interactuar con ellas basta con pasar por encima.
+   - Bayas curativas: son bayas que se guardarán en el inventario y, al usarlas, se recargará la vida del jugador en medio corazón. Si se utiliza con todas las vidas recargadas, no aumenta nada. Para recogerlas basta con pasar por encima.
    - Cofres: aparecen en varias zonas del juego y tendrán un objeto en su interior. Dependiendo de la zona en la que se encuentre el cofre, el jugador podrá obtener bayas curativas, 1 corazón extra o hechizos nuevos que podrá utilizar. Para interactuar con ellos, el jugador debe situarse delante del cofre y pulsar la tecla E.
    - Luminarias: aparecen en la cueva y ofrecen luz en la cueva ya que esta estará poco iluminada. Una vez que el jugador pasa por encima de ellas se ilumina la cueva por un tiempo de 10 segundos. Pasado ese tiempo, vuelve a estar oscuro.
    - Hechizos: sirven para hacer daño a los enemigos o interactuar con el entorno, como el hechizo del hielo que, además de ralentizar a los enemigos, puede usarse para formar un camino helado sobre el agua.
@@ -140,7 +140,7 @@ La versión del juego probada incluyó las siquientes zonas:
 	6. Habitación del cofre en la mazmorra donde consigues un corazón extra.
 	7. Habitación del boss donde se enfrenta al jabalí y aparece un cofre con el hechizo del hielo cuando lo derrota.
 	8. Zona del lago	
-El proceso de prueba consistió en grabar la pantalla usando x y dejar que el jugador empezara a jugar. Hubo ocasiones en las que no sabían como disparar o cómo arrastrar las cajas y tuvimos que decirles los controles.
+El proceso de prueba consistió en grabar la pantalla usando "OBS" y dejar que el jugador empezara a jugar. Hubo ocasiones en las que no sabían como disparar o cómo arrastrar las cajas y tuvimos que decirles los controles.
 	
 En este play-test el 100% de la gente resolvió la mazmorra.
 
@@ -157,7 +157,16 @@ Cambios realizados a partir de los comentarios realizados por los que jugaron:
 - Arreglo de los disparos. Ahora no atraviesan las paredes.
 <br>
 
-## 9. Referencias
+## 10. Herramientas de desarrollo
+-Phaser: motor del videojuego
+-Tiled: mapas
+-GitHub: control de versiones
+-Itch.io: assets
+-Beepbox: composición de música
+-jxfxr: efectos de sonidos
+<br>
+
+## 10. Referencias
 	- The Legend of Zelda
 	- Pokemon
 
