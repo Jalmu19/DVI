@@ -160,11 +160,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
             let stats = {
                 id: staffstats.id,
+                name: staffstats.name,
                 texture: staffstats.texture,
                 bonus : bs
             }
 
-            Inventory.addItem(this.weapon.id,this.weapon.id, 0, 1, this.weapon.texture);
+            Inventory.addItem(this.weapon.id,this.weapon.name, 0, 1, this.weapon.texture);
 
             this.weapon.setStats(stats);
         }

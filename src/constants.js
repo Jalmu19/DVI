@@ -27,6 +27,7 @@ export const SPELLS = {
 
 export const STAFFS = {
     BASIC : {
+        NAME: 'Báculo Básico',
         KEY : 'staff-base',
         BONUS : 0
     },
