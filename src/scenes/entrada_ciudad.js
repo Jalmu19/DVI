@@ -57,17 +57,26 @@ export default class Entrada_ciudad extends GameScene{
         var img5 = map.addTilesetImage('puerta', 'puertaMuralla');        
         var img6 = map.addTilesetImage('agua', 'agua');
         var img7 = map.addTilesetImage('Villa1', 'plantilla');
-        var img8 =map.addTilesetImage('valla', 'valla');
+        var img8 =map.addTilesetImage('valla', 'valla');        
+        var img9 = map.addTilesetImage('curvas', 'curvas');
+        var img11= map.addTilesetImage('curvas2','curvas2');
+        var img10 = map.addTilesetImage('elevacionAgua', 'islotesAgua')
+        var img12 = map.addTilesetImage('flor1', 'flor');
 
 
 
-        map.createLayer('suelo', [img3 , img1], 0,0);
-        this.arboles = map.createLayer('Arboles', [img2, img8], 0,0);
-        map.createLayer('Camino', [img3, img4], 0,0);
+        map.createLayer('suelo', [img3 , img1], 0,0);      
+        map.createLayer('suelo_camino', [img4,img7], 0,0);
+        map.createLayer('bordes_camino',[img9,img11],0,0);
+
+        map.createLayer('detalles', [img4, img7, img12], 0,0);
+
         map.createLayer('Ciudad', img4, 0,0);
-        map.createLayer('detalles', img4, 0,0);
-        this.agua = map.createLayer('foso', [img6, img4, img7], 0,0);
-        map.createLayer('puerta', img5, 0,0);
+        map.createLayer('puerta', img5, 0,0); 
+        this.agua = map.createLayer('foso', [img6, img4, img7, img10], 0,0);
+        this.arboles = map.createLayer('Arboles', [img2, img8], 0,0);
+             
+       
 
 
         this.player = new Player(this, this.datos[0], this.datos[1], this.datos[2]);

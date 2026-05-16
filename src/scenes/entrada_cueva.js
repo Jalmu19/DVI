@@ -80,8 +80,8 @@ export default class Entrada_cueva extends GameScene{
         }
         else{
             this.scene.start('entrada_ciudad', {
-                x : 53,
-                y : 34,
+                x : 34,
+                y : 27,
                 stats : this.player.getStats()
             });
         }

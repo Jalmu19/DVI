@@ -18,6 +18,7 @@ import entrada_ciudad from '../../assets/mapas/entrada_ciudad.json'
 import muralla from '../../assets/sprites/muralla.png'
 import puerta from '../../assets/sprites/puerta_muralla.png'
 import valla from '../../assets/sprites/valla.png';
+import curvas2 from '../../assets/sprites/curvas2.png';
 import Slime from "../game-objects/enemy/slime.js";
 
 
@@ -38,6 +39,7 @@ export default class Zona_Lago extends GameScene {
        this.load.image('castle',muralla);
        this.load.image('valla',valla)
        this.load.image('puertaMuralla', puerta);
+       this.load.image('curvas2', curvas2);
        this.load.tilemapTiledJSON('entrada_ciudad',entrada_ciudad);
 
     }
@@ -216,8 +218,8 @@ export default class Zona_Lago extends GameScene {
        
        if(salidas.tag === 'salidaCiudad' ){
             this.scene.start('entrada_ciudad', {
-                x : 63,
-                y : 470,
+                x : 28,
+                y : 405,
                 stats : this.player.getStats()
             });
        }
