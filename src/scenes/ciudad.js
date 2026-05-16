@@ -81,39 +81,10 @@ export default class Entrada_ciudad extends GameScene{
     }
 
     cambiarScene(jugador, salidas){
-       /* 
-        if(salidas.tag === 'salidaPlaya' ){
-                  
-        }
-        else if(salidas.tag === 'salidaLaberinto' ){
-            this.scene.start('laberinto', {
-                x : 143,
-                y : 30,
-                stats : this.player.getStats()
-            });
-            
-        }
-        else  if(salidas.tag === 'salidaCueva' ){
-            this.scene.start('entrada_cueva', {
-                x : 245,
-                y : 210,
-                stats : this.player.getStats()
-            });
-           
-        }
-        else if(salidas.tag === 'entradaCiudad'){
-            this.scene.start('ciudad', {
-                x : 843,
-                y : 210,
-                stats : this.player.getStats()
-            });
-        }
-        else{
-            this.scene.start('zonaLago', {
-                x : 843,
-                y : 210,
-                stats : this.player.getStats()
-            });
-        } */
+       this.scene.start('entrada_ciudad', {
+            x : 403,
+            y : 190,
+            stats : this.player.getStats()
+        });
     } 
 }

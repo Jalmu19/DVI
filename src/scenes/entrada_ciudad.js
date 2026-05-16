@@ -136,12 +136,27 @@ export default class Entrada_ciudad extends GameScene{
             this.sound.stopAll();
         }
         else if(salidas.tag === 'entradaCiudad'){
-            this.scene.start('ciudad', {
-                x : 400,
-                y : 1000,
-                stats : this.player.getStats()
-            });
-             this.sound.stopAll();
+                       
+            let action = confirm("Esta zona del mapa no esta terminada. ¿Quieres continuar?");
+            console.log(action)
+            if(action === true){
+                this.scene.start('ciudad', {
+                    x : 372,
+                    y : 908,
+                    stats : this.player.getStats()
+                });
+                this.sound.stopAll();
+            }
+            else{
+                this.player.lastDir ='front-idle';
+                this.scene.start('entrada_ciudad', {
+                    x : 403,
+                    y : 190,
+                    stats : this.player.getStats()
+                });
+              
+            }
+            
         }
         else{
             this.scene.start('zonaLago', {
