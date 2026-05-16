@@ -31,7 +31,7 @@ export const STAFFS = {
         BONUS : 0
     },
     LAKE : {
-        KEY : 'staff-lago',
+        KEY : 'staff_chest',
         BONUS : 0.5
     }
 }
