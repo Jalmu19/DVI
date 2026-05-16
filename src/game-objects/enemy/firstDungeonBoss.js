@@ -20,7 +20,7 @@ export default class FirstDungeonBoss extends BaseEnemy {
         this.weakSpot = scene.add.zone(x, y, 12, 10);
         scene.physics.add.existing(this.weakSpot);
 
-        this.knockVel = 50;
+        this.knockVel = ENEMY.BOSS.KNOCKBACKVEL;
 
         //NO PERSIGUE AL JUGADOR
         this.isChasing = false;
@@ -45,8 +45,14 @@ export default class FirstDungeonBoss extends BaseEnemy {
         return this.weakSpot ? this.weakSpot : null;
     }
 
+    knockBack(proyX, proyY) {
+        if(this.state !== "CHARGE") super.knockBack(proyX,proyY);
+    }
+
     movement() {
-        if (!this.active || !this.scene ||this.knocked) return;
+        if (!this.active || !this.scene) return;
+
+        if(this.knocked) this.scene.time.delayedCall(100, this.movement);
 
         const r = Phaser.Math.Between(0, 10);
 
@@ -70,7 +76,7 @@ export default class FirstDungeonBoss extends BaseEnemy {
             this.setRandomVelocity(); // Tu lógica actual
         }
         else if (this.state === 'CHARGE') {
-            // 1. Se detiene y parpadea (Aviso/Telegraph)
+            // Aviso de carga
             this.setVelocity(0, 0);
             this.setTint(0xffaa00);
 

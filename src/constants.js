@@ -52,6 +52,7 @@ export const ENEMY = {
     BOSS: {
         HEALTH: 25,
         SPEED: 70,
+        KNOCKBACKVEL: 50,
         FIRST: {
             HITBOX: {
                 'side': {
