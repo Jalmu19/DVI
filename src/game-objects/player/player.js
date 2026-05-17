@@ -50,6 +50,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.openingChest = false;
         this.displayedItem = null // El item que muestra cuando coge de un cofre
         this.pushing = false;
+        this.pulling = false;
 
         this.mapOfSpells = [];
         this.protected = false;

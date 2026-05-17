@@ -28,7 +28,7 @@ export default class Cajas extends Phaser.Physics.Arcade.Sprite  {
     }
 
     interact(player) {
-         if (!this.ejeBloqueado) {
+        if (!this.ejeBloqueado) {
             const diffX = Math.abs(player.x - this.x);
             const diffY = Math.abs(player.y - this.y);
 
@@ -77,12 +77,14 @@ export default class Cajas extends Phaser.Physics.Arcade.Sprite  {
 
                 anim = (player.y < this.y) ? 'front' : 'back';
             }
+            player.pulling = pulling;
 
             player.play('idle-pull-' + anim);
         }
 
         if (player.cursors.interact.isUp) {
             this.ejeBloqueado = null;
+            player.pulling = false;
             this.setImmovable(false);
         }
     }

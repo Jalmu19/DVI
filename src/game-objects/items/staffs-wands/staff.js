@@ -19,7 +19,7 @@ export default class Staff extends Phaser.GameObjects.Sprite {
         this.scene.input.mouse.disableContextMenu();
         this.onPointerDown = pointer => {
             if(pointer.isDown){
-                if(pointer.rightButtonDown()) {
+                if(pointer.rightButtonDown() && !this.player.pushing && !this.player.pulling) {
                     this.setActive(true).setVisible(true);
                     if(pointer.leftButtonDown()) this.player.lanzarHechizo(this.x,this.y, this.rotation - Phaser.Math.DegToRad(45), this.bonusDmg);
                 }
