@@ -1,48 +1,75 @@
 # DVI
-# 📄 Informe de Contribución: [Nombre del Videojuego]
+# 📄 Informe de Contribución: ENCHANTMENTS
 
-**Fecha del informe:** 29 de Enero, 2026
-**Estado del proyecto:** [Comienzo] [Ej: Beta / Finalizado / Sprint 3]
+**Fecha del informe:** 17 de Mayo, 2026
+**Estado del proyecto:** Finalizado
 
 ---
 
 ## 👥 Desglose por Miembros
 
 ### 👤 @yo262
-* **Rol:** 
+* **Rol:** Programador Mapas / Diseño de Mapas
 * **Tareas Realizadas:**
-    * 
-* **Valoración General:**
+    * Diseño e implementación de las zonas: bosque, mazmorra, cueva, laberinto.
+    * Level design de la mazmorra
+
+* **Valoración General:** La implementación de sus mapas han sido buenos, destacando el puzzle de la mazmorra y la implementación de la zona de la cueva.  Aún así el ritmo de trabajo no ha hecho posible el desarrollo de otras zonas planeadas y el diseño puede haberse pulido más.
     
-* **Puntuación:** ⭐⭐⭐⭐⭐ (5/5)
+* **Puntuación:** ⭐⭐⭐⭐☆ (4/5)
 
 ---
 
 ### 👤 @ERTUTAS
-* **Rol:** 
+* **Rol:** Programador / Diseño de Sprites
 * **Tareas Realizadas:**
-    * 
-* **Valoración General:**
+    * Implementación del jugador
+    * Implementación del cambio de hechizos y cambio de arma
+    * Implementación cofres
+    * Implementación de los creditos
+    * Corrección de bugs críticos
+    * Diseño y animación del personaje principal
+    * Diseño y animación del boss
+    * Diseño de la interfaz de usuario (HUD): vida, número de hechizos y hechizo equipado
+    * Diseño conceptual de la zona entrada a la ciudad
+    * Diseño de NPC's
+    * Animación de los enemigos y disparo de los hechizos
+    
+* **Valoración General:** Trabajo constante y encontrador de bugs profesional. Ha implementado gran parte de la lógica y se ha ocupado de todas las animaciones que han quedado muy bien. Además ayudó al principio en el uso de git y ha resuelto problemas de organización y herencia de código.
    
 * **Puntuación:** ⭐⭐⭐⭐⭐ (5/5)
 
 ---
 
 ### 👤 @sesils
-* **Rol:** 
+* **Rol:** Programador / Level Design / Diseño de Sprites / Diseño de Sonido
 * **Tareas Realizadas:**
-    *
-* **Valoración General:**
-* **Puntuación:** ⭐⭐⭐⭐☆ (4/5)
+    * Level design de las zonas
+    * Implementación de los hechizos y enemigos
+    * Implementación de los tutoriales
+    * Implementación del menú de inicial
+    * Diseño de NPC's e implementación de sus dialogos
+    * Diseño e implementación de la historia de introducción
+    * Diseño de la interfaz de usuario (HUD): Inventario y su lógica
+    * Diseño e implementación de mapas de los interiores
+    * Diseño página web
+    * Diseño de enemigos
+    * Diseño de items
+    * Composición de la música
+    * Creación de efectos de sonido (SFX)
+   
+* **Valoración General:** Se ha ocupado de la implementación de parte de la lógica del juego, se ha encargado de la música y diseño de algunos sprites. Ha trabajado a un ritmo bueno.
+* **Puntuación:** ⭐⭐⭐⭐⭐ (5/5)
 
 ---
 
 ### 👤 @Jalmu19
-* **Rol:** 
+* **Rol:** Programador / Diseño de Mapas
 * **Tareas Realizadas:**
-    * 
-* **Valoración General:**
-* **Puntuación:** ⭐⭐☆☆☆ (2/5)
+    * Diseño e implementación de las zonas: pueblo inicial, bosque, lago, entrada ciudad, ciudad.
+    * Implementación de la escena del ladrón
+* **Valoración General:** Ha contribuido en los mapas y ha destacado la estética empleada al inicio que sirvió de referencia para el resto de zonas. Aún así en ciertas semanas ha tenido un ritmo lento que no ha hecho posible el desarrollo de otras zonas planeadas.
+* **Puntuación:** ⭐⭐⭐⭐☆ (4/5)
 
 ---
 
@@ -50,7 +77,7 @@
 
 | Usuario (GitHub)    | Rol             | Puntuación | Puntuación como número |
 |:--------------------|:----------------|:----------:|:----------------------:|
-| **@yo262**  | Programación    |   ⭐⭐⭐⭐⭐ |           5            |
-| **@ERTUTAS** | Arte / UI       |   ⭐⭐⭐⭐⭐ |           5            |
-| **@sesils**     | Audio / Diseño  |   ⭐⭐⭐⭐☆ |           4            |
-| **@Jalmu19**   | Programación UI |   ⭐⭐☆☆☆  |           2            |
+| **@yo262**  | Programador y Arte de Mapas |   ⭐⭐⭐⭐☆ |           4            |
+| **@ERTUTAS** | Programador y Arte |   ⭐⭐⭐⭐⭐ |           5            |
+| **@sesils**     | Programador, diseño, arte  y audio  |   ⭐⭐⭐⭐⭐ |           5            |
+| **@Jalmu19**   | Programador y Arte de Mapas |   ⭐⭐⭐⭐☆  |           4            |
