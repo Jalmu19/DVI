@@ -41,22 +41,39 @@ export default class Cajas extends Phaser.Physics.Arcade.Sprite  {
         if (player.cursors.interact.isDown && this.ejeBloqueado) {
 
             let anim;
+            let pulling = false;    // variable para limitar que se pueda empujar tambien si presionas la e
             
             if (this.ejeBloqueado === 'x') {
                 // Bloqueamos el movimiento vertical tanto del player como de la caja
                 player.body.velocity.y = 0; 
-                this.setVelocity(player.body.velocity.x * this.pesoFactor, 0);
-                
-                player.body.velocity.x *= this.pesoFactor;
+
+                if ((player.x < this.x && player.body.velocity.x < 0) || (player.x > this.x && player.body.velocity.x > 0)) pulling = true;
+
+                if(pulling) {
+                    this.setVelocity(player.body.velocity.x * this.pesoFactor, 0);
+                    player.body.velocity.x *= this.pesoFactor;
+                }
+                else {
+                    this.setImmovable(true); 
+                    this.setVelocity(0,0);
+                }
 
                 anim = (player.x < this.x) ? 'rside' : 'lside';
             } 
             else if (this.ejeBloqueado === 'y') {
                 // Bloqueamos el movimiento horizontal tanto del player como de la caja
                 player.body.velocity.x = 0;
-                this.setVelocity(0, player.body.velocity.y * this.pesoFactor);
-                
-                player.body.velocity.y *= this.pesoFactor;
+
+                if ((player.y < this.y && player.body.velocity.y < 0) || (player.y > this.y && player.body.velocity.y > 0)) pulling = true;
+
+                if(pulling) {
+                    this.setVelocity(0, player.body.velocity.y * this.pesoFactor);
+                    player.body.velocity.y *= this.pesoFactor;
+                }
+                else{
+                    this.setImmovable(true); 
+                    this.setVelocity(0,0);
+                }
 
                 anim = (player.y < this.y) ? 'front' : 'back';
             }
@@ -66,6 +83,7 @@ export default class Cajas extends Phaser.Physics.Arcade.Sprite  {
 
         if (player.cursors.interact.isUp) {
             this.ejeBloqueado = null;
+            this.setImmovable(false);
         }
     }
 
