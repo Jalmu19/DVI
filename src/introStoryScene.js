@@ -108,8 +108,8 @@ export default class IntroStoryScene extends Phaser.Scene {
         this.skipText();
 
         this.dialog();
-
-        this.input.on('pointerdown', () => {
+        this.teclaE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        this.teclaE.on('down', () => {
             if(!this.sceneChanging) this.next();
         });
 

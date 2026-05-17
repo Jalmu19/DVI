@@ -264,8 +264,8 @@ export default class Zona_bosque extends GameScene {
 
 
         this.dialogText.setText(this.STORY[0])
-
-        this.input.on('pointerdown', ()=>{
+        this.teclaE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        this.teclaE.on('down', ()=>{
             if (this.dialogBox.visible) {
                 this.dialogText.setText("");
                 this.next()
