@@ -23,13 +23,9 @@
 ### 👤 @ERTUTAS
 * **Rol:** Programador / Diseño de Sprites
 * **Tareas Realizadas:**
-    * Implementación del jugador
-    * Implementación del cambio de hechizos y cambio de arma
-    * Implementación cofres
-    * Implementación de los creditos
+    * Implementación del jugador, cofres, creditos, cambio de hechizos y cambio de arma 
     * Corrección de bugs críticos
-    * Diseño y animación del personaje principal
-    * Diseño y animación del boss
+    * Diseño y animación del personaje principal, del boss
     * Diseño de la interfaz de usuario (HUD): vida, número de hechizos y hechizo equipado
     * Diseño conceptual de la zona entrada a la ciudad
     * Diseño de NPC's
@@ -45,16 +41,10 @@
 * **Rol:** Programador / Level Design / Diseño de Sprites / Diseño de Sonido
 * **Tareas Realizadas:**
     * Level design de las zonas
-    * Implementación de los hechizos y enemigos
-    * Implementación de los tutoriales
-    * Implementación del menú de inicial
-    * Diseño de NPC's e implementación de sus dialogos
-    * Diseño e implementación de la historia de introducción
+    * Implementación de los hechizos y enemigos, los tutoriales, menú inicial
+    * Diseño de NPC's e implementación de sus dialogos, la historia de introducción, mapas de los interiores
     * Diseño de la interfaz de usuario (HUD): Inventario y su lógica
-    * Diseño e implementación de mapas de los interiores
-    * Diseño página web
-    * Diseño de enemigos
-    * Diseño de items
+    * Diseño página web, enemigos, items
     * Composición de la música
     * Creación de efectos de sonido (SFX)
    
