@@ -105,12 +105,12 @@ Es el primer enemigo que encuentra el jugador. No se mueve pero si el jugador la
 ##### 6.1.2.2 Rata
 Es el segundo enemigo que aparece. Cuando el jugador entra en su campo de visión, empieza a perseguirle y, si le ataca, el jugador pierde un cuarto de vida. Las ratas tienen 5 vidas y, cada vez que el jugador las ataca pierden 1 vida. El jugador las podrá encontrar en varias zonas del juego.
 ##### 6.1.2.3 Jabalí
-Es el boss final de la mazmorra. Se mueve aleatoriamente y, cuando ataca al jugador, este pierde 1 vida. Tiene un punto débil en la cabeza al que habrá que apuntar para poder hacerle daño. Este enemigo tiene x vidas y, cada vez que el jugador le da en el punto débil, pierde x.
+Es el boss final de la mazmorra. Se mueve aleatoriamente y, cuando ataca al jugador, este pierde 1 vida. Tiene un punto débil en la cabeza al que habrá que apuntar para poder hacerle daño. Este enemigo tiene 25 vidas y, cada vez que el jugador le da en el punto débil, pierde 1.
 Cuando muere, aparece un cofre que contiene el hechizo de hielo que podrá utilizar en la zona del lago para llegar hasta el cofre de esa zona.
 ##### 6.1.2.4 Barril
 Aparece en la cueva que hay en la entrada a la ciudad. Estos barriles se mueven en horizontal o vertical a velocidad constante y rebotando con las paredes. Si el jugador se choca con ellos, perderá tres cuartos de una vida. No podrá eliminarlos y, por tanto deberá tratar de esquivarlos.
 ##### 6.1.2.4 Avispas
-Las avispas aparecen en la zona del laberinto de manera aleatoria en intervalos de tiempos aleatorios. El número máximo de avispas en la zona son 5. Persiguen al jugador en toda la zona, ienen 5 vidas y cada vez que el jugador las ataca pierden 1 vida.
+Las avispas aparecen en la zona del laberinto de manera aleatoria en intervalos de tiempos aleatorios. El número máximo de avispas en la zona son 5. Persiguen al jugador en toda la zona, tienen 5 vidas y cada vez que el jugador las ataca pierden 1 vida.
 
 ### 6.2 Objetos
 Dentro del juego hay varios objetos con los que el jugador puede interaccionar o usar.
@@ -132,14 +132,14 @@ El juego es de estilo pixel-art de 16x16 pixeles. Está ambientado en un mundo f
 ## 8. Experiencia de juego
 Para medir la experiencia del juego se realizó un play-test en el laboratorio con 8 compañeros de clase.
 La versión del juego probada incluyó las siquientes zonas: 
-	1. Pueblo (zona inicial) 
-	2. Bosque donde aparecen las orugas por primera vez.
-	3. Zona de las plataformas con las escaleras.
-	4. Habitación inicial de la mazmorra donde se enseña la dinámica para resolver la mazmorra y abrir las puertas.
-	5. Habitación grande de la mazmorra donde se encuentra a las ratas y debe mover las cajas debajo de las banderas.
-	6. Habitación del cofre en la mazmorra donde consigues un corazón extra.
-	7. Habitación del boss donde se enfrenta al jabalí y aparece un cofre con el hechizo del hielo cuando lo derrota.
-	8. Zona del lago	
+	#####1. Pueblo (zona inicial) 
+	#####2. Bosque donde aparecen las orugas por primera vez.
+	#####3. Zona de las plataformas con las escaleras.
+	#####4. Habitación inicial de la mazmorra donde se enseña la dinámica para resolver la mazmorra y abrir las puertas.
+	#####5. Habitación grande de la mazmorra donde se encuentra a las ratas y debe mover las cajas debajo de las banderas.
+	#####6. Habitación del cofre en la mazmorra donde consigues un corazón extra.
+	#####7. Habitación del boss donde se enfrenta al jabalí y aparece un cofre con el hechizo del hielo cuando lo derrota.
+	#####8. Zona del lago	
 El proceso de prueba consistió en grabar la pantalla usando "OBS" y dejar que el jugador empezara a jugar. Hubo ocasiones en las que no sabían como disparar o cómo arrastrar las cajas y tuvimos que decirles los controles.
 	
 En este play-test el 100% de la gente resolvió la mazmorra.
