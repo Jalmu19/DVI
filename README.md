@@ -132,14 +132,14 @@ El juego es de estilo pixel-art de 16x16 pixeles. Está ambientado en un mundo f
 ## 8. Experiencia de juego
 Para medir la experiencia del juego se realizó un play-test en el laboratorio con 8 compañeros de clase.
 La versión del juego probada incluyó las siquientes zonas: 
-	- Pueblo (zona inicial) 
-	- Bosque donde aparecen las orugas por primera vez.
-	- Zona de las plataformas con las escaleras.
-	- Habitación inicial de la mazmorra donde se enseña la dinámica para resolver la mazmorra y abrir las puertas.
-	- Habitación grande de la mazmorra donde se encuentra a las ratas y debe mover las cajas debajo de las banderas.
-	- Habitación del cofre en la mazmorra donde consigues un corazón extra.
-	- Habitación del boss donde se enfrenta al jabalí y aparece un cofre con el hechizo del hielo cuando lo derrota.
-	- Zona del lago	
+- Pueblo (zona inicial) 
+- Bosque donde aparecen las orugas por primera vez.
+- Zona de las plataformas con las escaleras.
+- Habitación inicial de la mazmorra donde se enseña la dinámica para resolver la mazmorra y abrir las puertas.
+- Habitación grande de la mazmorra donde se encuentra a las ratas y debe mover las cajas debajo de las banderas.
+- Habitación del cofre en la mazmorra donde consigues un corazón extra.
+- Habitación del boss donde se enfrenta al jabalí y aparece un cofre con el hechizo del hielo cuando lo derrota.
+- Zona del lago	
 El proceso de prueba consistió en grabar la pantalla usando "OBS" y dejar que el jugador empezara a jugar. Hubo ocasiones en las que no sabían como disparar o cómo arrastrar las cajas y tuvimos que decirles los controles.
 	
 En este play-test el 100% de la gente resolvió la mazmorra.
