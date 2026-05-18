@@ -14,7 +14,8 @@
     * Diseño e implementación de las zonas: bosque, mazmorra, cueva, laberinto.
     * Level design de la mazmorra
 
-* **Valoración General:** La implementación de sus mapas han sido buenos, destacando el puzzle de la mazmorra y la implementación de la zona de la cueva.  Aún así el ritmo de trabajo no ha hecho posible el desarrollo de otras zonas planeadas y el diseño puede haberse pulido más.
+* **Valoración General:** La implementación de sus mapas han sido buenos, destacando el puzzle de la mazmorra y la implementación de la zona de la cueva. Debido a las limitaciones de tiempo y a la prioridad de hacer las zonas funcionales más importantes, no se pudieron desarrollar otras zonas inicialmente planeadas. A pesar de ello, la base lograda es sólida y de calidad.
+
     
 * **Puntuación:** ⭐⭐⭐⭐☆ (4/5)
 
@@ -58,7 +59,7 @@
 * **Tareas Realizadas:**
     * Diseño e implementación de las zonas: pueblo inicial, bosque, lago, entrada ciudad, ciudad.
     * Implementación de la escena del ladrón
-* **Valoración General:** Ha contribuido en los mapas y ha destacado la estética empleada al inicio que sirvió de referencia para el resto de zonas. Aún así en ciertas semanas ha tenido un ritmo lento que no ha hecho posible el desarrollo de otras zonas planeadas.
+* **Valoración General:** Ha contribuido en los mapas y ha destacado la dirección estética empleada al inicio que sirvió de referencia para el resto del juego. Por la necesidad de priorizar la jugabilidad en las áreas claves dentro del plazo establecido, el diseño se concentró en estas, dejando fuera algunas de las áreas previstas en el plan original.
 * **Puntuación:** ⭐⭐⭐⭐☆ (4/5)
 
 ---
