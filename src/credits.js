@@ -40,6 +40,8 @@ export default class CreditsScene extends Phaser.Scene {
             "(FREE) Village Top Down Asset Pack\n by judsonHolanda on Instagram",
             "The fantasy tileset castles and fortresses\n by ventilatore",
             "Medieval Village Exterior - RPG Tileset\n by Hypnobius",
+            "The church based tileset\n by diednight",
+            "Top down house\n by Penzilla",
             "",
             "SPRITES",
             "S001 nyknck by nyknck",
