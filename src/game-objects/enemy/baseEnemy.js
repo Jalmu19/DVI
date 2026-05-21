@@ -58,11 +58,6 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
         this.on('destroy', () => {
             this.scene.events.off('to-set-up-colliders', this.onNewSpell);
 
-
-            if (this.isBoss) {
-                this.scene.events.emit('boss_dead');
-                this.scene.registry.set('passedDungeons', this.scene.registry.get('passedDungeons') + 1);
-            }
             if (this.movEvent) this.movEvent.destroy();
             if (this.weakSpot) this.weakSpot.destroy();
         });
@@ -104,7 +99,7 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
 
             if (this.health <= 0) {
                 this.scene.sound.add(this.dieSound).play();
-
+                this.getKilled();
                 this.destroy();
             }
             else {
@@ -138,6 +133,8 @@ export default class BaseEnemy extends Phaser.Physics.Arcade.Sprite {
             }
         }
     }
+
+    getKilled() { }
 
     /**
     * Método que mueve al enemigo cuando le dan

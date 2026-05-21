@@ -41,6 +41,11 @@ export default class FirstDungeonBoss extends BaseEnemy {
         this.dieSound = 'muereBossSound';
     }
 
+    getKilled() {
+        this.scene.events.emit('boss_dead');
+        this.scene.registry.set('passedDungeons', this.scene.registry.get('passedDungeons') + 1);
+    }
+
     getCollisionTarget() {
         return this.weakSpot ? this.weakSpot : null;
     }
