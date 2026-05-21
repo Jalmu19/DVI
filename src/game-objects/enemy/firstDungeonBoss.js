@@ -131,7 +131,7 @@ export default class FirstDungeonBoss extends BaseEnemy {
         }
         // Prioridad: Animación lateral
         else if (Math.abs(vX) > Math.abs(vY)) {
-            this.play('side-idle', true); // 'true' hace que no se reinicie si ya está sonando
+            this.play('boss1-side-walk', true);
             this.lastDir = 'side';
             this.flipX = vX < 0;
             if(this.flipX) this.weakSpot.x = this.x - ENEMY.BOSS.FIRST.HITBOX.side.weak.offsetX;
@@ -141,13 +141,13 @@ export default class FirstDungeonBoss extends BaseEnemy {
         }
         // Animación vertical
         else if (vY > 0) {
-            this.play('front-idle', true);
+            this.play('boss1-front-walk', true);
             this.lastDir = 'front';
             this.weakSpot.x = this.x + ENEMY.BOSS.FIRST.HITBOX.front.weak.offsetX;
             this.weakSpot.y = this.y + ENEMY.BOSS.FIRST.HITBOX.front.weak.offsetY;
             currentConfig = ENEMY.BOSS.FIRST.HITBOX.front;
         } else if (vY < 0) {
-            this.play('back-idle', true);
+            this.play('boss1-back-walk', true);
             this.lastDir = 'back';
             this.weakSpot.x = this.x + ENEMY.BOSS.FIRST.HITBOX.back.weak.offsetX;
             this.weakSpot.y = this.y + ENEMY.BOSS.FIRST.HITBOX.back.weak.offsetY;
