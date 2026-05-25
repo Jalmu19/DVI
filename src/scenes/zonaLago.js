@@ -131,13 +131,13 @@ export default class Zona_Lago extends GameScene {
         this.capaEnemigos = map.getObjectLayer('Enemigos');
         this.capaEnemigos.objects.forEach(obj =>{
             var a;
-            if(obj.name === "Oruga"){
+           
+           if(obj.name === "oruga"){
                 a = new Oruga(this, obj.x, obj.y,'oruga');
             }
             else{
                 a = new Slime(this, obj.x, obj.y,'slime');
-            }
-            
+            }            
             this.enemigos.add(a);
 
         })

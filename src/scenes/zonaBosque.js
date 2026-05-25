@@ -61,8 +61,7 @@ export default class Zona_bosque extends GameScene {
          this.load.image('islotesAgua', islotes);
          this.load.image('detalleAgua', detalleAgua);
          this.load.image('curvas', curvas);
-        // this.load.image()
-
+        
     }
 
     cargaEntrada_mazmorra(){

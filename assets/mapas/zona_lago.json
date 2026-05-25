@@ -320,7 +320,7 @@
                         {
                          "name":"name",
                          "type":"string",
-                         "value":"paloLago"
+                         "value":"baculo"
                         }, 
                         {
                          "name":"quantity",
@@ -353,7 +353,7 @@
                 {
                  "height":0,
                  "id":11,
-                 "name":"",
+                 "name":"slime",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -401,7 +401,7 @@
                 {
                  "height":0,
                  "id":17,
-                 "name":"",
+                 "name":"slime",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -413,7 +413,7 @@
                 {
                  "height":0,
                  "id":18,
-                 "name":"",
+                 "name":"slime",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -425,7 +425,7 @@
                 {
                  "height":0,
                  "id":19,
-                 "name":"",
+                 "name":"oruga",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -437,7 +437,7 @@
                 {
                  "height":0,
                  "id":20,
-                 "name":"Oruga",
+                 "name":"oruga",
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -804,6 +804,19 @@
          "name":"Hierba",
          "spacing":0,
          "tilecount":1,
+         "tileheight":16,
+         "tilewidth":16
+        }, 
+        {
+         "columns":3,
+         "firstgid":662,
+         "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/curvas2.png",
+         "imageheight":48,
+         "imagewidth":48,
+         "margin":0,
+         "name":"curvas2",
+         "spacing":0,
+         "tilecount":9,
          "tileheight":16,
          "tilewidth":16
         }],
