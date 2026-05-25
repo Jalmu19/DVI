@@ -68,7 +68,7 @@ export default class Zona_Lago extends GameScene {
         var img9 = map.addTilesetImage('Hierba', 'hierba');
 
     
-        map.createLayer('fondo', [img1, img9,img6, img3], 0, 0);
+        map.createLayer('fondo', [img1, img9, img6, img3], 0, 0);
         map.createLayer('hielo', img7, 0,0);
         map.createLayer('Camino',[img1], 0 ,0)
         map.createLayer('bordesCamino', [img8],  0,0);
