@@ -8,6 +8,7 @@ export default class CreditsScene extends Phaser.Scene {
     create() {
         this.add.text(10, 10, 'Pulsa ESC para volver', { 
             fontSize: 10, 
+            fontStyle: "bold",
             fill: '#aaaaaa',
             fontFamily: 'monospace'
         });
