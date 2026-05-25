@@ -3,21 +3,21 @@
  "infinite":false,
  "layers":[
         {
-         "data":[528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528,
-            528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528, 528],
+         "data":[452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452,
+            452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452, 452],
          "height":15,
          "id":2,
          "name":"fondo",
@@ -31,18 +31,18 @@
         {
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 520, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 520, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 444, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 444, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 520, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 444, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 559, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 520, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 483, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 444, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 520, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 444, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 520, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 272, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 444, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 196, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":15,
          "id":8,
@@ -86,7 +86,7 @@
          "name":"Ladron",
          "objects":[
                 {
-                 "gid":803,
+                 "gid":484,
                  "height":32,
                  "id":68,
                  "name":"Kirbo",
@@ -217,7 +217,7 @@
                 {
                  "height":0,
                  "id":108,
-                 "name":"baya1",
+                 "name":"baya",
                  "point":true,
                  "properties":[
                         {
@@ -235,7 +235,7 @@
                 {
                  "height":0,
                  "id":109,
-                 "name":"baya3",
+                 "name":"baya",
                  "point":true,
                  "properties":[
                         {
@@ -253,7 +253,7 @@
                 {
                  "height":0,
                  "id":110,
-                 "name":"baya2",
+                 "name":"baya",
                  "point":true,
                  "properties":[
                         {
@@ -270,7 +270,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -356,7 +356,7 @@
          "margin":0,
          "name":"Arbol",
          "spacing":0,
-         "tilecount":9,
+         "tilecount":0,
          "tileheight":16,
          "tilewidth":16
         }, 
@@ -369,20 +369,20 @@
          "margin":0,
          "name":"Arboles",
          "spacing":0,
-         "tilecount":9,
+         "tilecount":0,
          "tileheight":16,
          "tilewidth":16
         }, 
         {
          "columns":5,
-         "firstgid":19,
+         "firstgid":10,
          "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaAzul.png",
          "imageheight":112,
          "imagewidth":80,
          "margin":0,
          "name":"Casa",
          "spacing":0,
-         "tilecount":35,
+         "tilecount":12,
          "tileheight":16,
          "tiles":[
                 {
@@ -390,7 +390,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -416,7 +415,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -442,7 +440,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -489,7 +486,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -526,7 +522,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -584,7 +579,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -621,7 +615,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -647,7 +640,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -673,7 +665,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -699,7 +690,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -765,7 +755,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -820,7 +809,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -845,53 +833,53 @@
         }, 
         {
          "columns":2,
-         "firstgid":54,
+         "firstgid":45,
          "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/TERRAIN SET 3 CURVES - DAY.png",
          "imageheight":32,
          "imagewidth":32,
          "margin":0,
          "name":"cuvas",
          "spacing":0,
-         "tilecount":4,
+         "tilecount":0,
          "tileheight":16,
          "tilewidth":16
         }, 
         {
          "columns":1,
-         "firstgid":58,
+         "firstgid":45,
          "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/GRASS DETAIL 2 - DAY.png",
          "imageheight":16,
          "imagewidth":16,
          "margin":0,
          "name":"flor1",
          "spacing":0,
-         "tilecount":1,
+         "tilecount":0,
          "tileheight":16,
          "tilewidth":16
         }, 
         {
          "columns":8,
-         "firstgid":59,
+         "firstgid":45,
          "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/HOUSE 2 - DAY.png",
          "imageheight":112,
          "imagewidth":128,
          "margin":0,
          "name":"Iglesia",
          "spacing":0,
-         "tilecount":56,
+         "tilecount":0,
          "tileheight":16,
          "tilewidth":16
         }, 
         {
          "columns":8,
-         "firstgid":115,
+         "firstgid":45,
          "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/casaGrande.png",
          "imageheight":112,
          "imagewidth":128,
          "margin":0,
          "name":"IglesiaBien",
          "spacing":0,
-         "tilecount":56,
+         "tilecount":6,
          "tileheight":16,
          "tiles":[
                 {
@@ -899,7 +887,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -925,7 +912,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -951,7 +937,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -977,7 +962,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -1003,7 +987,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -1029,7 +1012,6 @@
                  "objectgroup":
                     {
                      "draworder":"index",
-                     "id":2,
                      "name":"",
                      "objects":[
                             {
@@ -1054,33 +1036,33 @@
         }, 
         {
          "columns":2,
-         "firstgid":171,
+         "firstgid":101,
          "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/pozo.png",
          "imageheight":48,
          "imagewidth":32,
          "margin":0,
          "name":"Pozo",
          "spacing":0,
-         "tilecount":6,
+         "tilecount":0,
          "tileheight":16,
          "tilewidth":16
         }, 
         {
          "columns":25,
-         "firstgid":177,
+         "firstgid":101,
          "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/villa1.png",
          "imageheight":400,
          "imagewidth":400,
          "margin":0,
          "name":"Villa1",
          "spacing":0,
-         "tilecount":625,
+         "tilecount":0,
          "tileheight":16,
          "tilewidth":16
         }, 
         {
          "columns":1,
-         "firstgid":802,
+         "firstgid":484,
          "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/TILESET VILLAGE TOP DOWN\/FENCE 2 - DAY.png",
          "imageheight":16,
          "imagewidth":16,
@@ -1093,46 +1075,46 @@
                  "value":true
                 }],
          "spacing":0,
-         "tilecount":1,
+         "tilecount":0,
          "tileheight":16,
          "tilewidth":16
         }, 
         {
          "columns":1,
-         "firstgid":803,
+         "firstgid":484,
          "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/kirbo.png",
          "imageheight":16,
          "imagewidth":16,
          "margin":0,
          "name":"kirbo",
          "spacing":0,
-         "tilecount":1,
+         "tilecount":0,
          "tileheight":16,
          "tilewidth":16
         }, 
         {
          "columns":4,
-         "firstgid":804,
+         "firstgid":485,
          "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/Rook-Sheet.png",
          "imageheight":64,
          "imagewidth":64,
          "margin":0,
          "name":"cuervoEnemigo",
          "spacing":0,
-         "tilecount":16,
+         "tilecount":0,
          "tileheight":16,
          "tilewidth":16
         }, 
         {
          "columns":1,
-         "firstgid":820,
+         "firstgid":485,
          "image":"..\/..\/..\/..\/..\/..\/_Galaxy_Al\/_UCM\/3\u00ba Carrera\/2\u00ba Cuatrimestre\/Desarrollo de juegos con tecnologias web\/mapaVilla\/hierba.png",
          "imageheight":16,
          "imagewidth":16,
          "margin":0,
          "name":"Hierba",
          "spacing":0,
-         "tilecount":1,
+         "tilecount":0,
          "tileheight":16,
          "tilewidth":16
         }],
