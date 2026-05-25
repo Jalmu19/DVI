@@ -59,6 +59,9 @@ export default class HabitacionBoss extends GameScene{
 
         //Cofre y salida aparecen solo cuando se mata al boss
         this.events.once('boss_dead', ()=>{
+            let aux = this.registry.get('passedDungeons');
+            this.registry.set('passedDungeons',aux + 1);
+
             this.hacerVisible(this.cofre, true);
             this.hacerVisible(this.salidas, true);
             this.hacerVisible(this.puertas, false); //desactivamos la puerta
