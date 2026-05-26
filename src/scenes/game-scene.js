@@ -224,7 +224,8 @@ export default class GameScene extends Phaser.Scene {
         this.player.inDialog = true;
 
 
-        this.input.on('pointerdown', () => {
+        this.teclaE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        this.teclaE.on('down', () => {
             this.visibilityDialog(false);
             this.isDialogOpen = false;
             this.player.inDialog = false;
