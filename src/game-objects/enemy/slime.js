@@ -39,6 +39,7 @@ export default class Slime extends BaseEnemy {
         this.preparingDash = true;
 
         this.scene.time.delayedCall(prepareTime, () => {
+            if (!this || !this.body || !this.scene) return;
             this.preparingDash = false;
             this.speed = ENEMY.SLIME.SPEED.DASH;
             const angle = Phaser.Math.Angle.Between(this.x, this.y, this.scene.player.x, this.scene.player.y);
@@ -48,6 +49,7 @@ export default class Slime extends BaseEnemy {
             const dashDur = 400;
 
             this.scene.time.delayedCall(dashDur, () => {
+                if (!this || !this.body || !this.scene) return;
                 this.isDashing = false;
                 this.speed = ENEMY.SLIME.SPEED.NORMAL;
                 this.setVelocity(0,0);
