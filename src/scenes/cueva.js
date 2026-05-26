@@ -32,8 +32,7 @@ export default class Cueva extends GameScene{
         this.registry.set('escenaActual', {
             scene: 'escenaCueva', 
             x: 961,               
-            y: 986,
-            stats: this.datos.stats             
+            y: 986      
         });
 
         var map = this.make.tilemap({key : 'mapaCueva'});

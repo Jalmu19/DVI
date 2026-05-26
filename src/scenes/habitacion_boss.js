@@ -22,8 +22,7 @@ export default class HabitacionBoss extends GameScene{
         this.registry.set('escenaActual', {
             scene: 'habitacion_boss', 
             x: 350,               
-            y: 112,
-            stats: this.datos.stats                
+            y: 112              
         });
 
         this.initSpellEventListener();
