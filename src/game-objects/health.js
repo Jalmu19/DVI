@@ -45,6 +45,7 @@ export default class Health {
             this.maxHearts++;
             this.actualHealth = this.maxHearts*2;
             this.scene.game.events.emit('health-changed', { heartNum: this.maxHearts, actualHealth: this.actualHealth });
+            this.containers = 0;
         }
     }
 
