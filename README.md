@@ -43,15 +43,15 @@ El juego termina al llegar a la última zona y vencer en la liga mágica o si se
 ### 3.1 Movimiento horizontal
 El jugador se encarga de mover al personaje. Lilith se mueve a una velocidad constante de izquierda a derecha o viceversa. En el caso en el que llegue al límite de la pantalla tanto por la izquierda como por la derecha, se choca y deja de avanzar en esa dirección.
 Parámetros:
-- Velocidad horizontal: Velocidad (m/s) a la que se mueve el personaje.
+- Velocidad horizontal: 6.25 (m/s) a la que se mueve el personaje.
 ### 3.2 Movimiento vertical
 El jugador se encarga de mover al personaje. Lilith se mueve a una velocidad constante de arriba a abajo y viceversa. En el caso en el que llegue al límite de la pantalla tanto por arriba como por abajo, se choca y deja de avanzar en esa dirección.
 Parámetros:
-- Velocidad vertical: Velocidad (m/s) a la que se mueve el personaje.
+- Velocidad vertical: 6.25 (m/s) a la que se mueve el personaje.
 ### 3.2 Movimiento diagonal
 El jugador se encarga de mover al personaje. Lilith se mueve a una velocidad constante en diagonal. En el caso en el que llegue al límite de la pantalla por cualquier lado se choca y deja de avanzar en esa dirección.
 Parámetros:
-- Velocidad diagonal: Velocidad (m/s) a la que se mueve el personaje.
+- Velocidad diagonal: 6.25 (m/s) a la que se mueve el personaje.
 ### 3.3 Recolectar objetos
 Lilith puede recoger los objetos, ya sea de los cofres (pulsando la tecla E) o de aquellos que se encuentre por el camino (pasando por encima de ellos).
 ### 3.4 Atacar / Usar hechizos
