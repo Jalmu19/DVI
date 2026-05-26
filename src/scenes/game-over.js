@@ -46,7 +46,7 @@ export default class GameOver extends Phaser.Scene {
     this.datos[0].health.actualHealth = this.datos[0].health.maxHearts * 2; // TODO generalizar esto
     this.input.keyboard.on('keydown', function (_event) { 
       //this.scene.wake('ui');
-      this.scene.launch('ui');
+      this.scene.launch('ui', {stats : this.datos[0].health.maxHearts});
       //this.scene.start('bosque', { x: 251, y: 381, stats: null });
       const datosEscena = this.registry.get('escenaActual');
       this.scene.start(datosEscena.scene, {

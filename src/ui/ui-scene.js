@@ -5,9 +5,13 @@ export default class UIScene extends Phaser.Scene {
         super({ key: 'ui' });
     }
 
+    init(data) {
+        this.maxHearts = data ? data.stats : PLAYER.MAX_HEALTH_CONTAINER;
+    }
+
     create() {
         this.hearts = this.add.group();
-        this.drawHearts(PLAYER.MAX_HEALTH_CONTAINER); // Al principio los corazones maximos son 3 TODO crear clase de constantes
+        this.drawHearts(this.maxHearts); // Al principio los corazones maximos son 3
         this.game.events.on('health-changed', (data) => { this.updateHearts(data.heartNum, data.actualHealth) });
 
         this.spellsMenu = this.add.container();
