@@ -107,9 +107,11 @@ Es el segundo enemigo que aparece. Cuando el jugador entra en su campo de visió
 ##### 6.1.2.3 Jabalí
 Es el boss final de la mazmorra. Se mueve aleatoriamente y, cuando ataca al jugador, este pierde 1 vida. Tiene un punto débil en la cabeza al que habrá que apuntar para poder hacerle daño. Este enemigo tiene 25 vidas y, cada vez que el jugador le da en el punto débil, pierde 1.
 Cuando muere, aparece un cofre que contiene el hechizo de hielo que podrá utilizar en la zona del lago para llegar hasta el cofre de esa zona.
-##### 6.1.2.4 Barril
+##### 6.1.2.4 Slime
+Este enemigo se encuentra en la zona del lago tras haber derrotado al jefe de la primera dungeon. Normalmente se mueve aleatoriamente en el eje vertical y horizontal, pero en el momento en el que el jugador entra en su amplio rango de visión empezará a seguir al jugador. Puesto que el jugador tiene una velocidad mayor a la del slime, este tiene un dash que usará cuando el jugador se aleje demasiado. Cuando ataca al jugador además de quitarle medio corazón, lo envuelve en un liquido baboso que reduce la velocidad de movimiento durante un tiempo.
+##### 6.1.2.5 Barril
 Aparece en la cueva que hay en la entrada a la ciudad. Estos barriles se mueven en horizontal o vertical a velocidad constante y rebotando con las paredes. Si el jugador se choca con ellos, perderá tres cuartos de una vida. No podrá eliminarlos y, por tanto deberá tratar de esquivarlos.
-##### 6.1.2.4 Avispas
+##### 6.1.2.6 Avispas
 Las avispas aparecen en la zona del laberinto de manera aleatoria en intervalos de tiempos aleatorios. El número máximo de avispas en la zona son 5. Persiguen al jugador en toda la zona, tienen 5 vidas y cada vez que el jugador las ataca pierden 1 vida.
 
 ### 6.2 Objetos
@@ -157,7 +159,7 @@ Cambios realizados a partir de los comentarios realizados por los que jugaron:
 - Arreglo de los disparos. Ahora no atraviesan las paredes.
 <br>
 
-## 10. Herramientas de desarrollo
+## 9. Herramientas de desarrollo
 - Phaser: motor del videojuego
 -Tiled: mapas
 - GitHub: control de versiones
