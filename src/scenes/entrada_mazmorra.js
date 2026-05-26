@@ -134,6 +134,14 @@ export default class Entrada_mazmorra extends GameScene{
         this.cargarSalidas(this.capaSalidas, this.salidas);
 
         this.physics.add.overlap(this.player, this.salidas, this.cambiarScene, null, this);
+
+        let existeMusica = this.sound.get('forestMusic');
+        if (!existeMusica) {
+            existeMusica = this.sound.add('forestMusic', { loop: true });
+            existeMusica.play();
+        } else if (!existeMusica.isPlaying) {
+            existeMusica.play();
+        }
     }
 
     cambiarScene(jugador, salidas){
