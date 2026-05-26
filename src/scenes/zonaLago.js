@@ -50,7 +50,8 @@ export default class Zona_Lago extends GameScene {
         this.registry.set('escenaActual', {
             scene: 'zonaLago', 
             x: 37,               
-            y: 233               
+            y: 233,
+            stats: this.datos.stats               
         });
 
         this.initSpellEventListener();

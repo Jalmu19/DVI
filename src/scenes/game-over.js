@@ -52,7 +52,7 @@ export default class GameOver extends Phaser.Scene {
       this.scene.start(datosEscena.scene, {
         x: datosEscena.x,
         y: datosEscena.y,
-        stats: null
+        stats: datosEscena.stats
       });
 
     }, this);

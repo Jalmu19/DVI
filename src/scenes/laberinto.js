@@ -45,7 +45,8 @@ export default class Laberinto extends GameScene{
         this.registry.set('escenaActual', {
             scene: 'laberinto', 
             x: 143,               
-            y: 30               
+            y: 30,
+            stats: this.datos.stats               
         });
 
         this.initSpellEventListener();

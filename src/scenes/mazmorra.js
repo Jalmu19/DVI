@@ -37,7 +37,8 @@ export default class Mazmorra extends GameScene{
         this.registry.set('escenaActual', {
             scene: 'mazmorra', 
             x: 48,               
-            y: 292               
+            y: 292,
+             stats: this.datos.stats              
         });
 
         this.initSpellEventListener();
