@@ -6,7 +6,7 @@ export default class UIScene extends Phaser.Scene {
     }
 
     init(data) {
-        this.maxHearts = data ? data.stats : PLAYER.MAX_HEALTH_CONTAINER;
+        this.maxHearts = data && data.stats ? data.stats : PLAYER.MAX_HEALTH_CONTAINER;
     }
 
     create() {
