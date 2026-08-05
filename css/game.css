@@ -18,7 +18,14 @@ body {
     height: 60px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+
     border-bottom: 2px solid #ffffff;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;   
+    
 }
 
 .nav-container {
@@ -40,12 +47,13 @@ body {
          2px  2px 0 #705d19;
 }
 
-.github-link {
+.link {
     color: rgb(0, 0, 0);
     text-decoration: none;
     background: #f4f4f4;
     padding: 8px 15px;
-    border-radius: 5px;
+    margin :3px;
+    border-radius: 10px;
 }
 
 .main-content {
